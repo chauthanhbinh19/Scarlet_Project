@@ -127,7 +127,6 @@ public class account_activity extends Activity {
 		account_ek1 = (TextView) findViewById(R.id.account_ek1);
 		order = (TextView) findViewById(R.id.order);
 		general_information = (TextView) findViewById(R.id.general_information);
-		_bg__profile_ek1 = (View) findViewById(R.id._bg__profile_ek1);
 		rectangle_25 = (View) findViewById(R.id.rectangle_25);
 		profile_ek2 = (TextView) findViewById(R.id.profile_ek2);
 		edit_1 = (ImageView) findViewById(R.id.edit_1);
@@ -170,14 +169,14 @@ public class account_activity extends Activity {
 
 		
 		//custom code goes here
-		RelativeLayout profile_button=findViewById(R.id.profile_button);
-		profile_button.setOnClickListener(new View.OnClickListener(){
-			@Override
-			public void onClick(View v){
-				Intent intent= new Intent(account_activity.this,profile_activity.class);
-				startActivity(intent);
-			}
-		});
+//		RelativeLayout profile_button=findViewById(R.id.profile_button);
+//		profile_button.setOnClickListener(new View.OnClickListener(){
+//			@Override
+//			public void onClick(View v){
+//				Intent intent= new Intent(account_activity.this,profile_activity.class);
+//				startActivity(intent);
+//			}
+//		});
 	}
 }
 	
