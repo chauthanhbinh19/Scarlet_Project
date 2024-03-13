@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Scarlet"
+        tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".sign_in_activity" android:exported="true"/>
+        <activity android:name=".sign_up_activity" android:exported="true"/>
+        <activity android:name=".account_activity" android:exported="true"/>
+        <activity android:name=".app_version_activity" android:exported="true"/>
+        <activity android:name=".cart_activity" android:exported="true"/>
+        <activity android:name=".change_password_activity" android:exported="true"/>
+        <activity android:name=".confirm_activity" android:exported="true"/>
+        <activity android:name=".deals_activity" android:exported="true"/>
+        <activity android:name=".delivery_activity" android:exported="true"/>
+        <activity android:name=".edit_profile_activity" android:exported="true"/>
+        <activity android:name=".favourite_activity" android:exported="true"/>
+        <activity android:name=".food___all_activity" android:exported="true"/>
+        <activity android:name=".LoadingActivity" android:exported="true"/>
+        <activity android:name=".payment_activity" android:exported="true"/>
+        <activity android:name=".policies_activity" android:exported="true"/>
+        <activity android:name=".product_details_activity" android:exported="true"/>
+        <activity android:name=".profile_activity" android:exported="true"/>
+        <activity android:name=".setting_activity" android:exported="true"/>
+        <activity android:name=".status_activity" android:exported="true"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+
+    <color name="_bg___loading_color">#FAF0F0</color>
+    <color name="burgundy">#A03232</color>
+    <color name="lightbrown">#938989</color>
+    <color name="transparent">#00000000</color>
+    <!-- sign_in colors -->
+
+    <color name="_bg__sign_in_color">#FAF0F0</color>
+    <color name="sign_in_color">#A03232</color>
+    <color name="password_color">#938989</color>
+    <color name="sign_in_ek1_color">#FFFFFF</color>
+    <color name="forgot_password__color">#787272</color>
+
+    <!-- sign_up colors -->
+
+    <color name="_bg__sign_up_color">#FAF0F0</color>
+    <color name="sign_up_color">#A03232</color>
+    <color name="_sign_up_ek1_color">#FFFFFF</color>
+
+    <!-- food___all colors -->
+
+    <color name="_bg__food___all_color">#FFFFFF</color>
+    <color name="_bg__frame_2_ek1_color">#10000008</color>
+    <color name="rectangle_1_color">#FAF0F0</color>
+    <color name="search_color">#A03232</color>
+
+    <!-- product_details colors -->
+
+    <color name="_bg__product_details_color">#FFFFFF</color>
+    <color name="_bg__frame_3_ek1_color">#000000</color>
+    <color name="rectangle_2_color">#A03232</color>
+    <color name="ellipse_9_color">#FAF0F0</color>
+    <color name="ellipse_11_color">#938989</color>
+    <color name="_bg__frame_5_ek1_color">#F8F8F8</color>
+
+    <!-- favourite colors -->
+
+
+    <color name="_bg__favourite_color">#FFFFFF</color>
+    <color name="_bg__group_1_ek1_color">#000000</color>
+    <color name="rectangle_3_color">#A03232</color>
+    <color name="_bg__frame_6_ek1_color">#F9F9F9</color>
+    <color name="ellipse_15_color">#FAF0F0</color>
+    <!-- deals colors -->
+
+    <color name="_bg__deals_color">#FFFFFF</color>
+
+    <!-- account colors -->
+
+    <color name="_bg__account_color">#FFFFFF</color>
+    <color name="_bg__group_7_ek1_color">#000000</color>
+    <color name="rectangle_30_color">#FAF0F0</color>
+    <color name="faqs_color">#A03232</color>
+    <color name="info_1_color">#ffffff</color>
+
+    <!-- cart colors -->
+
+    <color name="_bg__cart_color">#FFFFFF</color>
+    <color name="home_color">#A03232</color>
+    <color name="ellipse_6_color">#FAF0F0</color>
+
+    <!-- profile colors -->
+
+    <color name="_bg__profile_color">#FFFFFF</color>
+    <color name="gender_color">#938989</color>
+    <color name="ellipse_25_color">#D9D9D9</color>
+
+    <!-- edit_profile colors -->
+
+    <color name="_bg__edit_profile_color">#FFFFFF</color>
+    <color name="last_name_color">#938989</color>
+
+    <!-- setting colors -->
+
+    <color name="_bg__setting_color">#FFFFFF</color>
+    <color name="rectangle_47_color">#FAF0F0</color>
+
+    <!-- app_version colors -->
+
+    <color name="_bg__app_version_color">#FAF0F0</color>
+
+    <!-- change_password colors -->
+
+    <color name="_bg__change_password_color">#FFFFFF</color>
+    <color name="enter_old_password_color">#938989</color>
+    <!-- confirm colors -->
+
+    <color name="_bg__confirm_color">#FFFFFF</color>
+    <color name="_bg__group_52_ek1_color">#000000</color>
+    <color name="rectangle_18_color">#ECEBEB</color>
+
+    <!-- delivery colors -->
+
+    <color name="_bg__delivery_color">#FFFFFF</color>
+    <color name="_bg__group_53_ek1_color">#000000</color>
+
+    <color name="_bg__frame_7_ek1_color">#F9F9F9</color>
+    <color name="ellipse_16_color">#A90000</color>
+    <color name="ellipse_17_color">#787272</color>
+    <!--  payment colors  -->
+
+    <color name="_bg__payment_color">#FFFFFF</color>
+    <color name="ellipse_18_color">#A90000</color>
+    <color name="card_number_color">#938989</color>
+    <!-- status colors -->
+
+    <color name="_bg__status_color">#FFFFFF</color>
+    <color name="rectangle_22_color">#A03232</color>
+    <color name="ellipse_19_color">#FAF0F0</color>
+    <!-- policies colors -->
+
+    <color name="_bg__policies_color">#FFFFFF</color>
+    <color name="scarlet_application_terms___conditions_last_updated_13_06_2023_please_read_these_terms_of_use_carefully__downloading__installing__accessing_or_using_this_mobile_application_constitutes_acceptance_of_these_terms_of_use___terms____as_such_may_be_revised_by_scarlet_service___scarlet____we____us__or__our___from_time_to_time__and_is_a_legal_binding_agreement_between_you__whether_personally_or_on_behalf_of_an_entity___user__or__you___and_scarlet_governing_your_access_to_and_use_of_the_application__if_user_does_not_agree_to_all_of_these_terms__then_user_is_expressly_prohibited_from_using_the_application_and_must_discontinue_use_immediately__these_terms_contain_disclaimers_and_other_provisions_that_limit_our_liability_to_user__we_reserve_the_right__in_our_sole_discretion__to_make_changes_or_modifications_to_these_terms_at_any_time_and_for_any_reason__we_will_alert_you_about_any_changes_by_updating_the__last_updated__date_of_these_terms_and_you_waive_any_right_to_receive_specific_notice_of_each_such_change__you_will_be_subject_to__and_will_be_deemed_to_have_been_made_aware_of_and_to_have_accepted__the_changes_and_modifications_in_any_revised_terms_and_conditions_by_your_continued_use_of_the_application_after_the_date_such_revised_terms_are_posted__registration_in_order_to_use_certain_functions_of_our_application__you_will_need_to_register_for_an_account__you_agree_to_keep_your_password_confidential_and_will_be_responsible_for_all_use_of_your_account_and_password__we_reserve_the_right_to_remove__reclaim__reject_or_request_to_change_a_username_you_select_if_we_determine__in_our_sole_discretion__that_such_username_is_inappropriate_or_otherwise_objectionable__user_representations_by_using_the_application__you_represent_and_warrant_that___a__you_create_only_one_account___b__all_registration_information_you_submit_will_be_accurate__true__current_and_complete____c__you_will_maintain_the_accuracy_of_such_information_and_promptly_update_such_registration_information_as_necessary___d__you_have_the_legal_capacity_and_you_agree_to_comply_with_these_terms___e__you_will_maintain_the_security_of_your_account_by_not_sharing_your_password_with_others_and_restricting_access_to_your_account_and_your_mobile___e__you_will_promptly_notify_highlands_coffee_if_you_discover_or_otherwise_suspect_any_security_breaches_relating_to_the_application__and__f__take_responsibility_for_all_activities_that_occur_under_your_account_and_accept_all_risks_of_unauthorized_access__if_you_provide_any_information_that_is_untrue__inaccurate__not_current__or_incomplete__we_have_the_right_to_suspend_or_terminate_your_account_and_refuse_any_and_all_current_or_future_use_of_the_application__or_any_portion_thereof___user_acknowledges_and_agrees_that__scarlet_has_the_right_to_block__delete_your_account_and_name_immediately_or_remove__take_down_some_or_all_content_without_notification_or_being_responsible_to_user_or_any_third_party_in_the_event_that_the_user___i__breaches_these_terms___ii__violates_any_regulations___iii__takes_any_action_harmful_to_other_users__rights_and_benefits_of_highlands_coffee__we_reserve_the_right_to_report_any_unlawful_use_of_scarlet_account_to_competent_authorities_without_any_advance_notice__user_may_request_us_to_cancel_his_her_account_by_inform_to_scarlet__despite_of_cancellation_of_user_account__any_responsibilities_and_obligations_of_user_for_any_pending_transaction__created_before_or_after_such_cancelation__or_delivery_still_remain__accordingly__user_is_required_to_contact_scarlet_after_completion_of_such_transaction__highlands_coffee_disclaims_any_liabilities_and_shall_not_be_responsible_for_any_other_losses_may_arise_from_any_action_in_relation_to_this_section__color">#000000</color>
+</resources>

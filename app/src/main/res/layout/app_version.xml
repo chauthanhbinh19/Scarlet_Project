@@ -1,0 +1,136 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent" android:layout_height="wrap_content" >
+
+	<ScrollView android:id="@+id/app_version" 
+		android:layout_width="wrap_content" 
+		android:layout_height="match_parent" >
+
+		<RelativeLayout android:id="@+id/content_container" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" >
+
+			<View   android:id="@+id/_bg__app_version"
+				android:background="@drawable/_bg__lightpink"
+				android:layout_marginTop="0dp"
+				android:layout_width="410dp"
+				android:layout_height="800dp" />
+
+
+			<RelativeLayout android:id="@+id/frame_1"
+				android:layout_marginTop="224dp"
+				android:layout_marginStart="0dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg__frame_1_ek1"
+					android:background="@drawable/_bg__lightpink"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="410dp"
+					android:layout_height="216dp" />
+
+				<View   android:id="@+id/ellipse_1"
+					android:background="@drawable/ellipse_burgundy"
+					 android:layout_marginStart="100dp"
+					android:layout_marginTop="0dp"
+					android:layout_centerHorizontal="true"
+					android:layout_width="200dp"
+					android:layout_height="200dp" />
+
+				<TextView android:id="@+id/scarlet"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:textSize="50sp"
+					android:layout_centerHorizontal="true"
+					android:textColor="@color/white"
+					android:layout_marginLeft="115dp"
+					android:layout_marginTop="65dp"
+					android:layout_width="165dp"
+					android:layout_height="71.8dp"
+					android:text="@string/scarlet_string"
+					 />
+
+			</RelativeLayout>
+
+
+
+			<TextView android:id="@+id/app_version_1_0"
+				android:textStyle="bold"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="28sp"
+				android:textColor="@color/black"
+				android:layout_marginTop="458dp"
+				android:layout_width="272dp"
+				android:layout_height="50.8dp"
+				android:text="@string/app_version_1_0_string"
+				android:layout_centerHorizontal="true"
+				 />
+
+			<TextView android:id="@+id/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh"
+				android:layout_gravity="center_horizontal|center"
+				android:layout_centerHorizontal="true"
+				android:gravity="center"
+				android:textSize="16sp"
+				android:textColor="@color/black"
+				android:layout_marginLeft="40dp"
+				android:layout_marginTop="556dp"
+				android:layout_width="286dp"
+				android:layout_height="32.6dp"
+				android:text="@string/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh_string"
+				 />
+
+
+			<RelativeLayout android:id="@+id/group_11"
+				android:layout_marginTop="50dp"
+				android:layout_marginStart="25dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+
+				<View   android:id="@+id/rectangle_3"
+					android:background="@drawable/btn_burgundy"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="55dp"
+					android:layout_height="50dp" />
+
+
+				<RelativeLayout android:id="@+id/____icon__arrow_left_"
+					android:layout_marginTop="15dp"
+					android:layout_marginStart="18dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+
+					<ImageView android:id="@+id/vector"
+						android:src="@drawable/vector"
+						android:contentDescription="vector"
+						 android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_width="20dp"
+						android:layout_height="20dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+			<TextView android:id="@+id/team_10"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="20sp"
+				android:layout_centerHorizontal="true"
+				android:textColor="@color/black"
+				android:layout_marginTop="518dp"
+				android:layout_width="176dp"
+				android:layout_height="26dp"
+				android:text="@string/team_10_string"
+				 />
+
+		</RelativeLayout>
+
+	</ScrollView>
+</HorizontalScrollView>

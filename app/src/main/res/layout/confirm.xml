@@ -1,0 +1,364 @@
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent" android:layout_height="wrap_content" >
+	<ScrollView android:id="@+id/confirm" 
+		android:layout_width="wrap_content" 
+		android:layout_height="match_parent" >
+
+		<RelativeLayout android:id="@+id/content_container" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" >
+
+			<View
+				android:id="@+id/_bg__confirm"
+				android:layout_width="410dp"
+				android:layout_height="800dp"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:background="@drawable/_bg__confirm_shape" />
+
+
+			<RelativeLayout android:id="@+id/group_23"
+				android:layout_marginTop="653dp"
+				android:layout_marginStart="-25dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+
+				<ImageView android:id="@+id/ellipse_4"
+					android:src="@drawable/ellipse_4"
+					android:contentDescription="ellipse_4"
+					android:layout_marginStart="-30dp"
+					android:layout_marginTop="60dp"
+					android:layout_width="500dp"
+					android:layout_height="110dp" />
+
+				<ImageView android:id="@+id/ellipse_7"
+					android:src="@drawable/ellipse_7"
+					android:contentDescription="ellipse_7"
+					android:layout_marginStart="166dp"
+					android:layout_marginTop="10dp"
+					android:layout_width="119dp"
+					android:layout_height="106.88dp" />
+
+				<RelativeLayout android:id="@+id/cart_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="192dp"
+					android:layout_marginTop="10dp"
+					android:clickable="true">
+
+					<View
+						android:id="@+id/ellipse_6"
+						android:layout_width="70dp"
+						android:layout_height="70dp"
+						android:layout_marginTop="24dp"
+						android:background="@drawable/ellipse_lightpink" />
+
+					<TextView
+						android:id="@+id/cart"
+						android:layout_width="91.2dp"
+						android:layout_height="27.2dp"
+						android:layout_gravity="center_horizontal|center"
+						android:layout_marginLeft="-10dp"
+						android:layout_marginTop="65dp"
+						android:gravity="center"
+						android:text="@string/cart_string"
+						android:textColor="@color/faqs_color"
+						android:textSize="12sp" />
+
+					<ImageView android:id="@+id/shopping_cart"
+						android:src="@drawable/shopping_cart__1__1"
+						android:contentDescription="shopping_cart"
+						android:layout_marginStart="20dp"
+						android:layout_marginTop="39dp"
+						android:layout_width="30dp"
+						android:layout_height="30dp" />
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/home_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="40dp"
+					android:layout_marginTop="77dp"
+					android:clickable="true">
+
+					<ImageView android:id="@+id/home_ek1"
+						android:src="@drawable/home_ek1"
+						android:contentDescription="home_ek1"
+						android:layout_centerHorizontal="true"
+						android:layout_marginStart="40dp"
+						android:layout_marginTop="5dp"
+						android:layout_width="30dp"
+						android:layout_height="30dp" />
+
+					<TextView android:id="@+id/home"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="12sp"
+						android:textColor="@color/faqs_color"
+						android:layout_marginLeft="0dp"
+						android:layout_marginTop="40dp"
+						android:layout_centerHorizontal="true"
+						android:layout_width="54.2dp"
+						android:layout_height="27.2dp"
+						android:text="@string/home_string"
+						/>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/favourite_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="100dp"
+					android:layout_marginTop="77dp"
+					android:clickable="true">
+
+					<TextView
+						android:id="@+id/favourite"
+						android:layout_width="91.2dp"
+						android:layout_height="27.2dp"
+						android:layout_gravity="center_horizontal|center"
+						android:layout_marginLeft="0dp"
+						android:layout_marginTop="40dp"
+						android:gravity="center"
+						android:text="@string/favourite_string"
+						android:textColor="@color/faqs_color"
+						android:textSize="12sp" />
+
+					<ImageView
+						android:id="@+id/heart"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_centerHorizontal="true"
+						android:layout_marginStart="40dp"
+						android:layout_marginTop="5dp"
+						android:contentDescription="heart"
+						android:src="@drawable/heart" />
+
+
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/deals_button"
+					android:layout_marginStart="260dp"
+					android:layout_marginTop="72dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:clickable="true">
+
+					<ImageView android:id="@+id/discount"
+						android:src="@drawable/discount"
+						android:contentDescription="discount"
+						android:layout_centerHorizontal="true"
+						android:layout_marginStart="40dp"
+						android:layout_marginTop="10dp"
+						android:layout_width="40dp"
+						android:layout_height="40dp" />
+
+					<TextView android:id="@+id/deals"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="12sp"
+						android:textColor="@color/faqs_color"
+						android:layout_centerHorizontal="true"
+						android:layout_marginLeft="0dp"
+						android:layout_marginTop="45dp"
+						android:layout_width="91.2dp"
+						android:layout_height="27.2dp"
+						android:text="@string/deals_string"
+						/>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/account_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="335dp"
+					android:layout_marginTop="77dp"
+					android:clickable="true">
+
+					<ImageView android:id="@+id/user__1__1"
+						android:src="@drawable/user"
+						android:contentDescription="user__1__1"
+						android:layout_centerHorizontal="true"
+						android:layout_marginTop="20px"
+						android:layout_width="30dp"
+						android:layout_height="30dp" />
+
+					<TextView android:id="@+id/account_1"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="12sp"
+						android:layout_centerHorizontal="true"
+						android:textColor="@color/faqs_color"
+						android:layout_marginLeft="0dp"
+						android:layout_marginTop="40dp"
+						android:layout_width="91.2dp"
+						android:layout_height="27.2dp"
+						android:text="@string/account_string"
+						/>
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+			<TextView android:id="@+id/checkout"
+				android:textStyle="bold"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="24sp"
+				android:textColor="@color/_bg__confirm_color"
+				android:layout_marginLeft="172dp"
+				android:layout_marginTop="607dp"
+				android:layout_width="133.4dp"
+				android:layout_height="35.4dp"
+				android:text="@string/checkout_string"
+				 />
+
+			<View
+				android:id="@+id/rectangle_18"
+				android:layout_width="410dp"
+				android:layout_height="104dp"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="46dp"
+				android:alpha="0.5"
+				android:background="@drawable/rectangle_18_shape" />
+
+			<View
+				android:id="@+id/rectangle_20"
+				android:layout_width="410dp"
+				android:layout_height="128dp"
+				android:layout_marginStart="-1dp"
+				android:layout_marginTop="492dp"
+				android:alpha="0.5"
+				android:background="@drawable/rectangle_20_shape" />
+
+			<ImageView
+				android:id="@+id/basemap_image"
+				android:layout_width="410dp"
+				android:layout_height="283dp"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="167dp"
+				android:contentDescription="basemap_image"
+				android:src="@drawable/basemap_image" />
+
+
+			<RelativeLayout android:id="@+id/default_marker_component"
+				android:layout_marginTop="204dp"
+				android:layout_marginStart="110dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
+
+				<View   android:id="@+id/_bg__default_marker_component_ek1"
+					android:background="@drawable/_bg__default_marker_component_ek1_shape"
+					 android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="16dp"
+					android:layout_height="20dp" />
+
+
+				<RelativeLayout android:id="@+id/frame"
+					android:layout_marginTop="0dp"
+					android:layout_marginStart="0dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+					<View   android:id="@+id/_bg__frame_ek1"
+						android:background="@drawable/_bg__frame_ek1_shape"
+						 android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_width="16dp"
+						android:layout_height="20dp" />
+
+					<ImageView android:id="@+id/vector"
+						android:src="@drawable/vector"
+						android:contentDescription="vector"
+						 android:layout_marginStart="0.11dp"
+						android:layout_marginTop="0.2dp"
+						android:layout_width="14.91dp"
+						android:layout_height="19.12dp" />
+
+					<ImageView android:id="@+id/vector_ek1"
+						android:src="@drawable/vector_ek1"
+						android:contentDescription="vector_ek1"
+						 android:layout_marginStart="0.11dp"
+						android:layout_marginTop="0.2dp"
+						android:layout_width="7.46dp"
+						android:layout_height="19.12dp" />
+
+				</RelativeLayout>
+
+			</RelativeLayout>
+
+			<ImageView android:id="@+id/confirm_1"
+				android:src="@drawable/confirm_1"
+				android:contentDescription="confirm_1"
+				 android:layout_marginStart="20dp"
+				android:layout_marginTop="73dp"
+				android:layout_width="50dp"
+				android:layout_height="50dp" />
+
+			<TextView
+				android:id="@+id/confirmation__aaaaaaa"
+				android:layout_width="203.2dp"
+				android:layout_height="23.2dp"
+				android:layout_marginLeft="85dp"
+				android:layout_marginTop="73dp"
+				android:text="@string/confirmation__aaaaaaa_string"
+				android:textColor="@color/black"
+				android:textSize="12sp" />
+
+			<TextView
+				android:id="@+id/thank_you__aria_"
+				android:layout_width="199.2dp"
+				android:layout_height="38.2dp"
+				android:layout_marginLeft="87dp"
+				android:layout_marginTop="98dp"
+				android:text="@string/thank_you__aria__string"
+				android:textColor="@color/black"
+				android:textSize="12sp" />
+
+			<TextView android:id="@+id/your_order_is_confirmed"
+				android:textStyle="bold"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="18sp"
+				android:textColor="@color/_bg__group_52_ek1_color"
+				android:layout_marginLeft="-3dp"
+				android:layout_marginTop="500dp"
+				android:layout_width="234dp"
+				android:layout_height="25.8dp"
+				android:text="@string/your_order_is_confirmed_string"
+				 />
+
+			<View   android:id="@+id/rectangle_21"
+				android:background="@drawable/rectangle_21_shape"
+				 android:layout_marginStart="15dp"
+				android:layout_marginTop="631dp"
+				android:layout_width="140dp"
+				android:layout_height="40dp" />
+
+			<TextView android:id="@+id/track_your_order"
+				android:textStyle="bold"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="14sp"
+				android:textColor="@color/_bg__confirm_color"
+				android:layout_marginLeft="21dp"
+				android:layout_marginTop="642dp"
+				android:layout_width="130.4dp"
+				android:layout_height="22.4dp"
+				android:text="@string/track_your_order_string"
+				 />
+
+
+
+			<TextView android:id="@+id/we_ve_accepted_your_order__and_we_re_getting_it_ready__come_back_to_this_page_for_updates_on_your_shipment_status_"
+				android:textSize="14sp"
+				android:textColor="@color/_bg__group_52_ek1_color"
+				android:layout_marginLeft="11dp"
+				android:layout_marginTop="538dp"
+				android:layout_width="355.4dp"
+				android:layout_height="73.4dp"
+				android:text="@string/we_ve_accepted_your_order__and_we_re_getting_it_ready__come_back_to_this_page_for_updates_on_your_shipment_status__string"
+				 />
+
+		</RelativeLayout>
+
+	</ScrollView>
+</HorizontalScrollView>
