@@ -68,21 +68,21 @@
 				android:layout_centerHorizontal="true"
 				 />
 
-			<TextView android:id="@+id/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh"
-				android:layout_gravity="center_horizontal|center"
+			<TextView
+				android:id="@+id/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh"
+				android:layout_width="323dp"
+				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
-				android:gravity="center"
-				android:textSize="16sp"
-				android:textColor="@color/black"
+				android:layout_gravity="center_horizontal|center"
 				android:layout_marginLeft="40dp"
 				android:layout_marginTop="556dp"
-				android:layout_width="286dp"
-				android:layout_height="32.6dp"
+				android:gravity="center"
 				android:text="@string/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh_string"
-				 />
+				android:textColor="@color/black"
+				android:textSize="16sp" />
 
 
-			<RelativeLayout android:id="@+id/group_11"
+			<RelativeLayout android:id="@+id/back_btn"
 				android:layout_marginTop="50dp"
 				android:layout_marginStart="25dp"
 				android:layout_width="wrap_content"
@@ -92,29 +92,21 @@
 
 				<View   android:id="@+id/rectangle_3"
 					android:background="@drawable/btn_burgundy"
-					 android:layout_marginStart="0dp"
+					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
 					android:layout_width="55dp"
 					android:layout_height="50dp" />
 
 
-				<RelativeLayout android:id="@+id/____icon__arrow_left_"
-					android:layout_marginTop="15dp"
-					android:layout_marginStart="18dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-					<ImageView android:id="@+id/vector"
+				<ImageView android:id="@+id/vector"
 						android:src="@drawable/vector"
 						android:contentDescription="vector"
-						 android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
+						android:layout_centerHorizontal="true"
+						android:layout_centerVertical="true"
 						android:layout_width="20dp"
 						android:layout_height="20dp" />
 
-				</RelativeLayout>
+
 
 			</RelativeLayout>
 

@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.account);
+        setContentView(R.layout.change_password);
 
 //        Button _create_account_ =findViewById(R.id._create_account_);
 //        _create_account_.setOnClickListener(new View.OnClickListener(){
@@ -43,13 +43,13 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-        RelativeLayout profile_button=findViewById(R.id.profile_button);
-        profile_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent= new Intent(MainActivity.this,profile_activity.class);
-                startActivity(intent);
-            }
-        });
+//        RelativeLayout profile_button=findViewById(R.id.profile_button);
+//        profile_button.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                Intent intent= new Intent(MainActivity.this,profile_activity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

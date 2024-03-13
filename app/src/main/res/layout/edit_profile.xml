@@ -59,27 +59,31 @@
 						/>
 
 
-					<RelativeLayout android:id="@+id/group_13"
-						android:layout_marginTop="0dp"
-						android:layout_marginStart="20dp"
+					<RelativeLayout android:id="@+id/back_btn"
+						android:layout_marginTop="22dp"
+						android:layout_marginStart="25dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						>
 
+
 						<View   android:id="@+id/rectangle_3"
 							android:background="@drawable/btn_burgundy"
 							android:layout_marginStart="0dp"
-							android:layout_marginTop="20dp"
-							android:layout_width="55dp"
-							android:layout_height="50dp" />
+							android:layout_marginTop="0dp"
+							android:layout_width="45dp"
+							android:layout_height="40dp" />
+
 
 						<ImageView android:id="@+id/vector"
-							android:src="@drawable/vector_1"
+							android:src="@drawable/vector"
 							android:contentDescription="vector"
-							android:layout_marginStart="18dp"
-							android:layout_marginTop="35dp"
-							android:layout_width="20dp"
-							android:layout_height="20dp" />
+							android:layout_centerHorizontal="true"
+							android:layout_centerVertical="true"
+							android:layout_width="15dp"
+							android:layout_height="15dp" />
+
+
 
 					</RelativeLayout>
 

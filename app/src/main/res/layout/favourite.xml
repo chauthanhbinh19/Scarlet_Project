@@ -71,38 +71,31 @@
 						 />
 
 
-					<RelativeLayout android:id="@+id/group_10"
-						android:layout_marginTop="20dp"
-						android:layout_marginStart="19dp"
+					<RelativeLayout android:id="@+id/back_btn"
+						android:layout_marginTop="22dp"
+						android:layout_marginStart="25dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						>
 
+
 						<View   android:id="@+id/rectangle_3"
 							android:background="@drawable/btn_burgundy"
-							 android:layout_marginStart="0dp"
+							android:layout_marginStart="0dp"
 							android:layout_marginTop="0dp"
-							android:layout_width="55dp"
-							android:layout_height="50dp" />
+							android:layout_width="45dp"
+							android:layout_height="40dp" />
 
 
-						<RelativeLayout android:id="@+id/____icon__arrow_left_"
-							android:layout_marginTop="15dp"
-							android:layout_marginStart="18dp"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							>
+						<ImageView android:id="@+id/vector"
+							android:src="@drawable/vector"
+							android:contentDescription="vector"
+							android:layout_centerHorizontal="true"
+							android:layout_centerVertical="true"
+							android:layout_width="15dp"
+							android:layout_height="15dp" />
 
 
-							<ImageView android:id="@+id/vector"
-								android:src="@drawable/vector"
-								android:contentDescription="vector_1"
-								 android:layout_marginStart="0dp"
-								android:layout_marginTop="0dp"
-								android:layout_width="20dp"
-								android:layout_height="20dp" />
-
-						</RelativeLayout>
 
 					</RelativeLayout>
 

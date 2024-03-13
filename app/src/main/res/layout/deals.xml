@@ -16,28 +16,6 @@
 				android:layout_height="800dp" />
 
 
-			<RelativeLayout android:id="@+id/group_1"
-				android:layout_marginTop="36dp"
-				android:layout_marginStart="1dp"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				>
-
-
-				<RelativeLayout android:id="@+id/frame_2"
-					android:layout_marginTop="0dp"
-					android:layout_marginStart="0dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-					<View   android:id="@+id/_bg__frame_2_ek1"
-						android:background="@drawable/_bg__white"
-						 android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="410dp"
-						android:layout_height="148dp" />
-
 					<View   android:id="@+id/rectangle_1"
 						android:background="@drawable/rectangle_lightpink"
 						 android:layout_marginStart="0dp"
@@ -72,9 +50,9 @@
 						 />
 
 
-					<RelativeLayout android:id="@+id/group_10"
-						android:layout_marginTop="20dp"
-						android:layout_marginStart="19dp"
+					<RelativeLayout android:id="@+id/back_btn"
+						android:layout_marginTop="22dp"
+						android:layout_marginStart="25dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						>
@@ -82,29 +60,21 @@
 
 						<View   android:id="@+id/rectangle_3"
 							android:background="@drawable/btn_burgundy"
-							 android:layout_marginStart="0dp"
+							android:layout_marginStart="0dp"
 							android:layout_marginTop="0dp"
-							android:layout_width="55dp"
-							android:layout_height="50dp" />
+							android:layout_width="45dp"
+							android:layout_height="40dp" />
 
 
-						<RelativeLayout android:id="@+id/____icon__arrow_left_"
-							android:layout_marginTop="15dp"
-							android:layout_marginStart="18dp"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							>
+						<ImageView android:id="@+id/vector"
+							android:src="@drawable/vector"
+							android:contentDescription="vector"
+							android:layout_centerHorizontal="true"
+							android:layout_centerVertical="true"
+							android:layout_width="15dp"
+							android:layout_height="15dp" />
 
 
-							<ImageView android:id="@+id/vector"
-								android:src="@drawable/vector_1"
-								android:contentDescription="vector"
-								 android:layout_marginStart="0dp"
-								android:layout_marginTop="0dp"
-								android:layout_width="20dp"
-								android:layout_height="20dp" />
-
-						</RelativeLayout>
 
 					</RelativeLayout>
 
@@ -115,10 +85,6 @@
 						android:layout_marginTop="96dp"
 						android:layout_width="20dp"
 						android:layout_height="20dp" />
-
-				</RelativeLayout>
-
-			</RelativeLayout>
 
 
 			<RelativeLayout android:id="@+id/frame_6"
