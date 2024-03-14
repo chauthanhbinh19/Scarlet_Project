@@ -15,6 +15,11 @@
     <color name="burgundy">#A03232</color>
     <color name="lightbrown">#938989</color>
     <color name="transparent">#00000000</color>
+    <color name="db8181">#db8181</color>
+    <color name="fbcbcb">#faf0f4</color>
+    <color name="dc8383">#dc8383</color>
+
+
     <!-- sign_in colors -->
 
     <color name="_bg__sign_in_color">#FAF0F0</color>

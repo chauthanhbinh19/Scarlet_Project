@@ -49,6 +49,7 @@
 						android:textStyle="bold"
 						android:layout_gravity="center_horizontal|center"
 						android:gravity="center"
+						android:layout_centerHorizontal="true"
 						android:textSize="20sp"
 						android:textColor="@color/black"
 						android:layout_marginLeft="110dp"

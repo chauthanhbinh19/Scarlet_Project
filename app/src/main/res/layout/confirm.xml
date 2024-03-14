@@ -1,7 +1,11 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<ScrollView android:id="@+id/confirm" 
-		android:layout_width="wrap_content" 
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<ScrollView android:id="@+id/confirm"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container" 
@@ -17,183 +21,6 @@
 				android:background="@drawable/_bg__confirm_shape" />
 
 
-			<RelativeLayout android:id="@+id/group_23"
-				android:layout_marginTop="653dp"
-				android:layout_marginStart="-25dp"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				>
-
-
-				<ImageView android:id="@+id/ellipse_4"
-					android:src="@drawable/ellipse_4"
-					android:contentDescription="ellipse_4"
-					android:layout_marginStart="-30dp"
-					android:layout_marginTop="60dp"
-					android:layout_width="500dp"
-					android:layout_height="110dp" />
-
-				<ImageView android:id="@+id/ellipse_7"
-					android:src="@drawable/ellipse_7"
-					android:contentDescription="ellipse_7"
-					android:layout_marginStart="166dp"
-					android:layout_marginTop="10dp"
-					android:layout_width="119dp"
-					android:layout_height="106.88dp" />
-
-				<RelativeLayout android:id="@+id/cart_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="192dp"
-					android:layout_marginTop="10dp"
-					android:clickable="true">
-
-					<View
-						android:id="@+id/ellipse_6"
-						android:layout_width="70dp"
-						android:layout_height="70dp"
-						android:layout_marginTop="24dp"
-						android:background="@drawable/ellipse_lightpink" />
-
-					<TextView
-						android:id="@+id/cart"
-						android:layout_width="91.2dp"
-						android:layout_height="27.2dp"
-						android:layout_gravity="center_horizontal|center"
-						android:layout_marginLeft="-10dp"
-						android:layout_marginTop="65dp"
-						android:gravity="center"
-						android:text="@string/cart_string"
-						android:textColor="@color/faqs_color"
-						android:textSize="12sp" />
-
-					<ImageView android:id="@+id/shopping_cart"
-						android:src="@drawable/shopping_cart__1__1"
-						android:contentDescription="shopping_cart"
-						android:layout_marginStart="20dp"
-						android:layout_marginTop="39dp"
-						android:layout_width="30dp"
-						android:layout_height="30dp" />
-				</RelativeLayout>
-				<RelativeLayout android:id="@+id/home_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="40dp"
-					android:layout_marginTop="77dp"
-					android:clickable="true">
-
-					<ImageView android:id="@+id/home_ek1"
-						android:src="@drawable/home_ek1"
-						android:contentDescription="home_ek1"
-						android:layout_centerHorizontal="true"
-						android:layout_marginStart="40dp"
-						android:layout_marginTop="5dp"
-						android:layout_width="30dp"
-						android:layout_height="30dp" />
-
-					<TextView android:id="@+id/home"
-						android:layout_gravity="center_horizontal|center"
-						android:gravity="center"
-						android:textSize="12sp"
-						android:textColor="@color/faqs_color"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="40dp"
-						android:layout_centerHorizontal="true"
-						android:layout_width="54.2dp"
-						android:layout_height="27.2dp"
-						android:text="@string/home_string"
-						/>
-				</RelativeLayout>
-				<RelativeLayout android:id="@+id/favourite_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="100dp"
-					android:layout_marginTop="77dp"
-					android:clickable="true">
-
-					<TextView
-						android:id="@+id/favourite"
-						android:layout_width="91.2dp"
-						android:layout_height="27.2dp"
-						android:layout_gravity="center_horizontal|center"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="40dp"
-						android:gravity="center"
-						android:text="@string/favourite_string"
-						android:textColor="@color/faqs_color"
-						android:textSize="12sp" />
-
-					<ImageView
-						android:id="@+id/heart"
-						android:layout_width="30dp"
-						android:layout_height="30dp"
-						android:layout_centerHorizontal="true"
-						android:layout_marginStart="40dp"
-						android:layout_marginTop="5dp"
-						android:contentDescription="heart"
-						android:src="@drawable/heart" />
-
-
-				</RelativeLayout>
-				<RelativeLayout android:id="@+id/deals_button"
-					android:layout_marginStart="260dp"
-					android:layout_marginTop="72dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:clickable="true">
-
-					<ImageView android:id="@+id/discount"
-						android:src="@drawable/discount"
-						android:contentDescription="discount"
-						android:layout_centerHorizontal="true"
-						android:layout_marginStart="40dp"
-						android:layout_marginTop="10dp"
-						android:layout_width="40dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/deals"
-						android:layout_gravity="center_horizontal|center"
-						android:gravity="center"
-						android:textSize="12sp"
-						android:textColor="@color/faqs_color"
-						android:layout_centerHorizontal="true"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="45dp"
-						android:layout_width="91.2dp"
-						android:layout_height="27.2dp"
-						android:text="@string/deals_string"
-						/>
-				</RelativeLayout>
-				<RelativeLayout android:id="@+id/account_button"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="335dp"
-					android:layout_marginTop="77dp"
-					android:clickable="true">
-
-					<ImageView android:id="@+id/user__1__1"
-						android:src="@drawable/user"
-						android:contentDescription="user__1__1"
-						android:layout_centerHorizontal="true"
-						android:layout_marginTop="20px"
-						android:layout_width="30dp"
-						android:layout_height="30dp" />
-
-					<TextView android:id="@+id/account_1"
-						android:layout_gravity="center_horizontal|center"
-						android:gravity="center"
-						android:textSize="12sp"
-						android:layout_centerHorizontal="true"
-						android:textColor="@color/faqs_color"
-						android:layout_marginLeft="0dp"
-						android:layout_marginTop="40dp"
-						android:layout_width="91.2dp"
-						android:layout_height="27.2dp"
-						android:text="@string/account_string"
-						/>
-				</RelativeLayout>
-
-			</RelativeLayout>
 
 			<TextView android:id="@+id/checkout"
 				android:textStyle="bold"
@@ -361,4 +188,175 @@
 		</RelativeLayout>
 
 	</ScrollView>
-</HorizontalScrollView>
+
+	<RelativeLayout android:id="@+id/nav"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:layout_marginTop="885dp"
+		android:layout_marginStart="0dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		>
+
+
+		<ImageView android:id="@+id/ellipse_4"
+			android:src="@drawable/navigation"
+			android:contentDescription="ellipse_4"
+			android:layout_marginStart="0dp"
+			android:layout_marginTop="60dp"
+			android:layout_width="412dp"
+			android:layout_height="105dp"/>
+
+
+		<RelativeLayout android:id="@+id/cart_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="40dp"
+			android:clickable="true">
+
+
+
+			<TextView
+				android:id="@+id/cart"
+				android:layout_width="91.2dp"
+				android:layout_height="27.2dp"
+				android:layout_gravity="center_horizontal|center"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="65dp"
+				android:gravity="center"
+				android:text="@string/cart_string"
+				android:textColor="@color/faqs_color"
+				android:textSize="12sp" />
+
+
+			<ImageView android:id="@+id/shopping_cart"
+				android:src="@drawable/shopping_cart__1__1"
+				android:contentDescription="shopping_cart"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="39dp"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/home_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="5dp"
+			android:layout_marginTop="90dp"
+			android:clickable="true">
+
+			<ImageView android:id="@+id/home_ek1"
+				android:src="@drawable/home_ek1"
+				android:contentDescription="home_ek1"
+				android:layout_centerHorizontal="true"
+				android:layout_marginStart="40dp"
+				android:layout_marginTop="5dp"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
+
+			<TextView android:id="@+id/home"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="12sp"
+				android:textColor="@color/faqs_color"
+				android:layout_marginLeft="0dp"
+				android:layout_marginTop="40dp"
+				android:layout_centerHorizontal="true"
+				android:layout_width="54.2dp"
+				android:layout_height="27.2dp"
+				android:text="@string/home_string"
+				/>
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/favourite_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="60dp"
+			android:layout_marginTop="90dp"
+			android:clickable="true">
+
+			<TextView
+				android:id="@+id/favourite"
+				android:layout_width="91.2dp"
+				android:layout_height="27.2dp"
+				android:layout_gravity="center_horizontal|center"
+				android:layout_marginLeft="0dp"
+				android:layout_marginTop="40dp"
+				android:gravity="center"
+				android:text="@string/favourite_string"
+				android:textColor="@color/faqs_color"
+				android:textSize="12sp" />
+
+			<ImageView
+				android:id="@+id/heart"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:layout_centerHorizontal="true"
+				android:layout_marginStart="40dp"
+				android:layout_marginTop="5dp"
+				android:contentDescription="heart"
+				android:src="@drawable/heart" />
+
+
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/deals_button"
+			android:layout_marginStart="250dp"
+			android:layout_marginTop="82dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:clickable="true">
+
+			<ImageView
+				android:id="@+id/discount"
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_centerHorizontal="true"
+				android:layout_marginStart="40dp"
+				android:layout_marginTop="10dp"
+				android:contentDescription="discount"
+				android:src="@drawable/discount" />
+
+			<TextView android:id="@+id/deals"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="12sp"
+				android:textColor="@color/faqs_color"
+				android:layout_centerHorizontal="true"
+				android:layout_marginLeft="0dp"
+				android:layout_marginTop="46dp"
+				android:layout_width="91.2dp"
+				android:layout_height="27.2dp"
+				android:text="@string/deals_string"
+				/>
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/account_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="330dp"
+			android:layout_marginTop="87dp"
+			android:clickable="true">
+
+			<ImageView android:id="@+id/user__1__1"
+				android:src="@drawable/user"
+				android:contentDescription="user__1__1"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="20px"
+				android:layout_width="30dp"
+				android:layout_height="30dp" />
+
+			<TextView android:id="@+id/account_1"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:textSize="12sp"
+				android:layout_centerHorizontal="true"
+				android:textColor="@color/faqs_color"
+				android:layout_marginLeft="0dp"
+				android:layout_marginTop="40dp"
+				android:layout_width="91.2dp"
+				android:layout_height="27.2dp"
+				android:text="@string/account_string"
+				/>
+		</RelativeLayout>
+
+	</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
