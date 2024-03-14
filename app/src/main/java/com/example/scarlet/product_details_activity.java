@@ -66,9 +66,6 @@ public class product_details_activity extends Activity {
 		_bg______icon__alternate_map_marker__ek1 = (View) findViewById(R.id._bg______icon__alternate_map_marker__ek1);
 		vector = (ImageView) findViewById(R.id.vector);
 		uit = (TextView) findViewById(R.id.uit);
-		rectangle_2 = (View) findViewById(R.id.rectangle_2);
-		_bg______icon__arrow_left__ek1 = (View) findViewById(R.id._bg______icon__arrow_left__ek1);
-		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 		shopping_bag_1 = (ImageView) findViewById(R.id.shopping_bag_1);
 		ellipse_9 = (View) findViewById(R.id.ellipse_9);
 		add_to_cart = (TextView) findViewById(R.id.add_to_cart);
