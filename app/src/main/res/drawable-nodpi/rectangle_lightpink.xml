@@ -2,6 +2,6 @@
 <!-- rectangle_1 from your XD file. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
 	android:shape="rectangle" >
-	<solid android:color="@color/ellipse_6_color" />
+	<solid android:color="@color/lightpink" />
 </shape>
 

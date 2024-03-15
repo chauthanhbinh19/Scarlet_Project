@@ -1,8 +1,13 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android" >
 
-	<ScrollView android:id="@+id/app_version" 
-		android:layout_width="wrap_content" 
+<ScrollView android:id="@+id/app_version"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container" 
@@ -69,7 +74,7 @@
 				 />
 
 			<TextView
-				android:id="@+id/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh"
+				android:id="@+id/des"
 				android:layout_width="323dp"
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
@@ -77,7 +82,7 @@
 				android:layout_marginLeft="40dp"
 				android:layout_marginTop="556dp"
 				android:gravity="center"
-				android:text="@string/___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh_string"
+				android:text="Đường Hàn Thuyên, khu phố 6, phường Thủ Đức, thành phố Hồ Chí Minh"
 				android:textColor="@color/black"
 				android:textSize="16sp" />
 
@@ -94,8 +99,8 @@
 					android:background="@drawable/btn_burgundy"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:layout_width="55dp"
-					android:layout_height="50dp" />
+					android:layout_width="45dp"
+					android:layout_height="40dp" />
 
 
 				<ImageView android:id="@+id/vector"
@@ -103,8 +108,8 @@
 						android:contentDescription="vector"
 						android:layout_centerHorizontal="true"
 						android:layout_centerVertical="true"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
+						android:layout_width="15dp"
+						android:layout_height="15dp" />
 
 
 
@@ -125,4 +130,4 @@
 		</RelativeLayout>
 
 	</ScrollView>
-</HorizontalScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

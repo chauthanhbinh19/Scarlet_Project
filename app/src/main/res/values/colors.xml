@@ -57,18 +57,11 @@
     <color name="_bg__group_1_ek1_color">#000000</color>
     <color name="rectangle_3_color">#A03232</color>
     <color name="_bg__frame_6_ek1_color">#F9F9F9</color>
-    <color name="ellipse_15_color">#FAF0F0</color>
+    <color name="lightpink">#FAF0F0</color>
     <!-- deals colors -->
 
     <color name="_bg__deals_color">#FFFFFF</color>
 
-    <!-- account colors -->
-
-    <color name="_bg__account_color">#FFFFFF</color>
-    <color name="_bg__group_7_ek1_color">#000000</color>
-    <color name="rectangle_30_color">#FAF0F0</color>
-    <color name="faqs_color">#A03232</color>
-    <color name="info_1_color">#ffffff</color>
 
     <!-- cart colors -->
 
@@ -92,9 +85,7 @@
     <color name="_bg__setting_color">#FFFFFF</color>
     <color name="rectangle_47_color">#FAF0F0</color>
 
-    <!-- app_version colors -->
 
-    <color name="_bg__app_version_color">#FAF0F0</color>
 
     <!-- change_password colors -->
 

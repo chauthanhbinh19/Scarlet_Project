@@ -2,6 +2,6 @@
 <!-- rectangle_41 from your XD file. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
 	android:shape="rectangle" >
-	<solid android:color="@color/faqs_color" />
+	<solid android:color="@color/burgundy" />
 </shape>
 

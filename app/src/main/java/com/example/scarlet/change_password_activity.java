@@ -66,7 +66,6 @@ public class change_password_activity extends Activity {
 		
 		_bg__change_password = (View) findViewById(R.id._bg__change_password);
 
-		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
 		change_password = (TextView) findViewById(R.id.change_password_1);
 
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
@@ -90,8 +89,7 @@ public class change_password_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 		deals = (TextView) findViewById(R.id.deals);
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
+
 		cart = (TextView) findViewById(R.id.cart);
 		discount = (ImageView) findViewById(R.id.discount);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);
