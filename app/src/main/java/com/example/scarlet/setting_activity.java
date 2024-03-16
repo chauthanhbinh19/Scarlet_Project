@@ -64,9 +64,7 @@ public class setting_activity extends Activity {
 
 		
 		_bg__setting = (View) findViewById(R.id._bg__setting);
-		_bg__group_1_ek1 = (View) findViewById(R.id._bg__group_1_ek1);
 		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
-		settings = (TextView) findViewById(R.id.settings);
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 		vector = (ImageView) findViewById(R.id.vector);
 		setup_account = (TextView) findViewById(R.id.setup_account);

@@ -1,19 +1,19 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<ScrollView android:id="@+id/sign_in" 
+	<RelativeLayout android:id="@+id/sign_in"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container" 
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content" >
+			android:layout_height="match_parent" >
 
 			<View
 				android:id="@+id/_bg__sign_in"
 				android:layout_width="412dp"
-				android:layout_height="915dp"
+				android:layout_height="match_parent"
 				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
+				android:layout_marginTop="-10dp"
 				android:background="@drawable/_bg__lightpink" />
 
 			<TextView
@@ -21,35 +21,35 @@
 				android:layout_width="247dp"
 				android:layout_height="132dp"
 				android:layout_gravity="center_horizontal|center"
-				android:layout_marginLeft="80dp"
+				android:layout_centerHorizontal="true"
 				android:layout_marginTop="250dp"
 				android:gravity="center"
-				android:text="@string/sign_in_string"
+				android:text="Sign In"
 				android:textColor="@color/sign_in_color"
-				android:textSize="68sp" />
+				android:textSize="55sp" />
 
 			<TextView android:id="@+id/or"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
-				android:textSize="45sp"
+				android:layout_centerHorizontal="true"
+				android:textSize="40sp"
 				android:textColor="@color/sign_in_color"
-				android:layout_marginLeft="158dp"
-				android:layout_marginTop="640dp"
+				android:layout_marginTop="670dp"
 				android:layout_width="100dp"
-				android:layout_height="98dp"
+				android:layout_height="wrap_content"
 				android:text="@string/or_string"
 				 />
 
 			<View   android:id="@+id/rectangle_1"
 				android:background="@drawable/rectangle_white_stroke"
-				 android:layout_marginStart="55dp"
+				 android:layout_centerHorizontal="true"
 				android:layout_marginTop="380dp"
 				android:layout_width="301dp"
 				android:layout_height="55dp" />
 
 			<View   android:id="@+id/rectangle_2"
 				android:background="@drawable/rectangle_white_stroke"
-				 android:layout_marginStart="55dp"
+				 android:layout_centerHorizontal="true"
 				android:layout_marginTop="450dp"
 				android:layout_width="301dp"
 				android:layout_height="55dp" />
@@ -64,7 +64,7 @@
 				android:layout_width="280.6dp"
 				android:layout_height="47.6dp"
 				android:hint="@string/password_string"
-				android:background="@drawable/_bg__white"
+				android:background="@color/transparent"
 				 />
 
 			<EditText android:id="@+id/username_or_email"
@@ -75,26 +75,8 @@
 				android:layout_width="280.6dp"
 				android:layout_height="47.6dp"
 				android:hint="@string/username_or_email_string"
-				android:background="@drawable/_bg__white"
+				android:background="@color/transparent"
 				 />
-<!--			<View   android:id="@+id/_rectangle_3"-->
-<!--				android:background="@drawable/_btn_burgundy_stroke"-->
-<!--				android:layout_marginStart="55dp"-->
-<!--				android:layout_marginTop="570dp"-->
-<!--				android:layout_width="301dp"-->
-<!--				android:layout_height="50dp" />-->
-<!--			<TextView android:id="@+id/sign_in_ek1"-->
-<!--				android:textStyle="bold"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:gravity="center"-->
-<!--				android:textSize="30sp"-->
-<!--				android:textColor="@color/white"-->
-<!--				android:layout_marginLeft="120dp"-->
-<!--				android:layout_marginTop="570dp"-->
-<!--				android:layout_width="179dp"-->
-<!--				android:layout_height="45dp"-->
-<!--				android:text="@string/sign_in_ek1_string"-->
-<!--				 />-->
 
 			<Button
 				android:id="@+id/sign_in_button"
@@ -103,9 +85,9 @@
 				android:textColor="@color/white"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
+				android:layout_centerHorizontal="true"
 				android:textSize="24sp"
-				android:layout_marginStart="55dp"
-				android:layout_marginTop="570dp"
+				android:layout_marginTop="590dp"
 				android:layout_width="301dp"
 				android:layout_height="50dp"
 				android:background="@drawable/_btn_burgundy_stroke"  />
@@ -129,10 +111,10 @@
 
 			<ImageView
 				android:id="@+id/mask_group"
-				android:layout_width="480dp"
+				android:layout_width="match_parent"
 				android:layout_height="260dp"
-				android:layout_marginStart="-35dp"
-				android:layout_marginTop="0dp"
+				android:layout_marginStart="-25dp"
+				android:layout_marginTop="-10dp"
 				android:contentDescription="mask_group"
 				android:src="@drawable/signin" />
 
@@ -140,33 +122,35 @@
 				android:textStyle="bold"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
-				android:textSize="12sp"
+				android:textSize="13sp"
 				android:textColor="@color/lightbrown"
 				android:layout_marginLeft="245dp"
-				android:layout_marginTop="510dp"
-				android:layout_width="122.2dp"
-				android:layout_height="48.2dp"
+				android:layout_marginTop="524dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:text="@string/forgot_password__string"
+				android:theme="@style/MyButtonTheme"
 				android:background="@color/transparent"
 				 />
 
 			<Button
 				android:id="@+id/_create_account_"
-				android:layout_width="122.2dp"
-				android:layout_height="48.2dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:layout_gravity="top"
 				android:layout_marginLeft="50dp"
-				android:layout_marginTop="510dp"
+				android:layout_marginTop="524dp"
 				android:background="@color/transparent"
 				android:gravity="center"
 				android:text="@string/_create_account__string"
 				android:textColor="@color/lightbrown"
-				android:textSize="12sp"
+				android:textSize="13sp"
+				android:theme="@style/MyButtonTheme"
 				android:textStyle="bold" />
 
 
 
 		</RelativeLayout>
 
-	</ScrollView>
-</HorizontalScrollView>
+	</RelativeLayout>
+</RelativeLayout>

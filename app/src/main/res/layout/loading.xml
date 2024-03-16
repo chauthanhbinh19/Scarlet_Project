@@ -1,7 +1,8 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent" android:layout_height="wrap_content" >
-    <ScrollView android:id="@+id/loading"
-        android:layout_width="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <RelativeLayout android:id="@+id/loading"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
         <RelativeLayout android:id="@+id/content_container"
@@ -12,8 +13,8 @@
                 android:background="@drawable/_bg___loading_shape"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:layout_width="410dp"
-                android:layout_height="800dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
 
             <RelativeLayout android:id="@+id/frame_1"
@@ -21,18 +22,21 @@
                 android:layout_marginStart="0dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
                 >
 
-                <View   android:id="@+id/_bg__frame_1_ek1"
-                    android:background="@drawable/_bg__lightpink"
+                <View
+                    android:id="@+id/_bg__frame_1_ek1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
                     android:layout_marginStart="0dp"
                     android:layout_marginTop="0dp"
-                    android:layout_width="410dp"
-                    android:layout_height="216dp" />
+                    android:background="@drawable/_bg__lightpink" />
 
                 <View   android:id="@+id/ellipse_1"
                     android:background="@drawable/ellipse_burgundy"
-                    android:layout_marginStart="100dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="0dp"
                     android:layout_width="200dp"
                     android:layout_height="200dp" />
@@ -40,38 +44,42 @@
                 <TextView android:id="@+id/scarlet"
                     android:layout_gravity="center_horizontal|center"
                     android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
                     android:textSize="50sp"
                     android:textColor="@color/white"
                     android:layout_marginLeft="115dp"
                     android:layout_marginTop="65dp"
-                    android:layout_width="165dp"
-                    android:layout_height="71.8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="@string/scarlet_string"
                     />
 
             </RelativeLayout>
 
-            <ImageView android:id="@+id/croissant__1__1"
-                android:src="@drawable/croissant__1__1"
-                android:contentDescription="croissant__1__1"
-                android:layout_marginStart="169dp"
-                android:layout_marginTop="579dp"
+            <ImageView
+                android:id="@+id/croissant__1__1"
                 android:layout_width="70dp"
-                android:layout_height="70dp" />
+                android:layout_height="70dp"
+                android:layout_marginStart="169dp"
+                android:layout_marginTop="700dp"
+                android:contentDescription="croissant__1__1"
+                android:src="@drawable/croissant__1__1" />
 
-            <ImageView android:id="@+id/cake_2"
-                android:src="@drawable/cake_2"
-                android:contentDescription="cake_2"
-                android:layout_marginStart="23dp"
-                android:layout_marginTop="499dp"
+            <ImageView
+                android:id="@+id/cake_2"
                 android:layout_width="80dp"
-                android:layout_height="80dp" />
+                android:layout_height="80dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="580dp"
+
+                android:src="@drawable/cake_2" />
 
             <ImageView android:id="@+id/cold_coffee_1"
                 android:src="@drawable/cold_coffee_1"
                 android:contentDescription="cold_coffee_1"
                 android:layout_marginStart="150dp"
-                android:layout_marginTop="75dp"
+                android:layout_marginTop="125dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
 
@@ -79,7 +87,7 @@
                 android:src="@drawable/cake_1"
                 android:contentDescription="cake_1"
                 android:layout_marginStart="280dp"
-                android:layout_marginTop="465dp"
+                android:layout_marginTop="590dp"
                 android:layout_width="80dp"
                 android:layout_height="78.24dp" />
 
@@ -87,7 +95,7 @@
                 android:src="@drawable/piece_of_cake_1"
                 android:contentDescription="piece_of_cake_1"
                 android:layout_marginStart="280dp"
-                android:layout_marginTop="115dp"
+                android:layout_marginTop="200dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
 
@@ -95,7 +103,7 @@
                 android:src="@drawable/cupcake__1__1"
                 android:contentDescription="cupcake__1__1"
                 android:layout_marginStart="28dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="200dp"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
 
@@ -103,5 +111,5 @@
 
         </RelativeLayout>
 
-    </ScrollView>
-</HorizontalScrollView>
+    </RelativeLayout>
+</RelativeLayout>

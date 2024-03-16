@@ -1,22 +1,11 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent" android:layout_height="wrap_content" >
-	<!-- 
-	/*
-	 *	This content is generated from the API File Info.
-	 *	(Alt+Shift+Ctrl+I).
-	 *
-	 *	@desc 		
-	 *	@file 		product_details
-	 *	@date 		Saturday 09th of March 2024 02:39:56 AM
-	 *	@title 		User
-	 *	@author 	
-	 *	@keywords 	
-	 *	@generator 	Export Kit v1.3.figma
-	 *
-	 */
-	-->
-	<ScrollView android:id="@+id/product_details" 
-		android:layout_width="wrap_content" 
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+<ScrollView android:id="@+id/product_details"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container" 
@@ -25,12 +14,9 @@
 
 			<View
 				android:id="@+id/_bg__product_details"
-				android:layout_width="412dp"
+				android:layout_width="match_parent"
 				android:layout_height="915dp"
 				android:layout_alignParentEnd="true"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_marginEnd="56dp"
 				android:background="@drawable/_bg__product_details_shape" />
 
 
@@ -125,25 +111,6 @@
 
 			</RelativeLayout>
 
-			<View   android:id="@+id/ellipse_9"
-				android:background="@drawable/ellipse_9_shape"
-				 android:layout_marginStart="-35dp"
-				android:layout_marginTop="740dp"
-				android:layout_width="470dp"
-				android:layout_height="239dp" />
-
-			<TextView android:id="@+id/add_to_cart"
-				android:textStyle="bold"
-				android:layout_gravity="center_horizontal|center"
-				android:gravity="center"
-				android:textSize="22sp"
-				android:textColor="@color/rectangle_2_color"
-				android:layout_marginLeft="110dp"
-				android:layout_marginTop="770dp"
-				android:layout_width="182.2dp"
-				android:layout_height="40.2dp"
-				android:text="@string/add_to_cart_string"
-				 />
 
 			<TextView android:id="@+id/black_coffee"
 				android:textStyle="bold"
@@ -357,4 +324,33 @@
 		</RelativeLayout>
 
 	</ScrollView>
-</HorizontalScrollView>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent">
+
+		<View   android:id="@+id/ellipse_9"
+			android:background="@drawable/ellipse_9_shape"
+
+			android:layout_marginTop="740dp"
+			android:layout_width="match_parent"
+			android:layout_height="239dp"
+			android:layout_marginBottom="300dp"/>
+
+		<TextView android:id="@+id/add_to_cart"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="center"
+			android:textSize="22sp"
+			android:textColor="@color/rectangle_2_color"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="780dp"
+			android:layout_width="182.2dp"
+			android:layout_height="40.2dp"
+			android:text="@string/add_to_cart_string"
+			/>
+	</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

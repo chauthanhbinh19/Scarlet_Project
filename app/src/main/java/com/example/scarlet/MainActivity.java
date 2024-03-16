@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sign_in);
+        setContentView(R.layout.loading);
 
 //        Button _create_account_ =findViewById(R.id._create_account_);
 //        _create_account_.setOnClickListener(new View.OnClickListener(){

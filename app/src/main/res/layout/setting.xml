@@ -1,9 +1,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
+	android:layout_height="match_parent"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<ScrollView android:id="@+id/settings"
+	<RelativeLayout android:id="@+id/settings"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
@@ -21,24 +21,12 @@
 
 
 			<RelativeLayout android:id="@+id/group_1"
-				android:layout_marginTop="32dp"
-				android:layout_marginStart="0dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				>
 
-				<View
-					android:id="@+id/_bg__group_1_ek1"
-					android:layout_width="410dp"
-					android:layout_height="99dp"
-					android:layout_marginStart="0dp"
-					android:layout_marginTop="-32dp"
-					android:background="@drawable/_bg__group_1_ek1_shape" />
-
 
 				<RelativeLayout android:id="@+id/frame_2"
-					android:layout_marginTop="0dp"
-					android:layout_marginStart="0dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					>
@@ -59,7 +47,7 @@
 						android:textSize="20sp"
 						android:textColor="@color/black"
 						android:layout_marginLeft="100dp"
-						android:layout_marginTop="32dp"
+						android:layout_marginTop="30dp"
 						android:layout_width="191dp"
 						android:layout_height="33dp"
 						android:text="@string/settings_string"
@@ -104,7 +92,7 @@
 				android:textSize="16sp"
 				android:textColor="@color/_bg__group_1_ek1_color"
 				android:layout_marginLeft="24dp"
-				android:layout_marginTop="123dp"
+				android:layout_marginTop="120dp"
 				android:layout_width="157.6dp"
 				android:layout_height="42.6dp"
 				android:text="@string/setup_account_string"
@@ -217,7 +205,7 @@
 
 		</RelativeLayout>
 
-	</ScrollView>
+	</RelativeLayout>
 
 	<RelativeLayout android:id="@+id/nav"
 		app:layout_constraintBottom_toBottomOf="parent"

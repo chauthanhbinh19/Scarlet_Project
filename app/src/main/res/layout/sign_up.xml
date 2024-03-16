@@ -1,8 +1,8 @@
-<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent" android:layout_height="wrap_content" >
 
-	<ScrollView android:id="@+id/sign_up" 
-		android:layout_width="wrap_content" 
+	<RelativeLayout android:id="@+id/sign_up"
+		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container" 
@@ -13,8 +13,8 @@
 				android:background="@drawable/_bg__sign_up_shape"
 				 android:layout_marginStart="0dp"
 				android:layout_marginTop="0dp"
-				android:layout_width="412dp"
-				android:layout_height="915dp" />
+				android:layout_width="match_parent"
+				android:layout_height="match_parent" />
 
 
 			<TextView
@@ -22,19 +22,19 @@
 				android:layout_width="247dp"
 				android:layout_height="132dp"
 				android:layout_gravity="center_horizontal|center"
-				android:layout_marginLeft="80dp"
+				android:layout_centerHorizontal="true"
 				android:layout_marginTop="250dp"
 				android:gravity="center"
 				android:text="Sign Up"
 				android:textColor="@color/burgundy"
-				android:textSize="68sp" />
+				android:textSize="55sp" />
 
 			<TextView android:id="@+id/or"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
-				android:textSize="45sp"
+				android:textSize="40sp"
 				android:textColor="@color/sign_in_color"
-				android:layout_marginLeft="158dp"
+				android:layout_centerHorizontal="true"
 				android:layout_marginTop="650dp"
 				android:layout_width="100dp"
 				android:layout_height="98dp"
@@ -93,32 +93,13 @@
 				android:hint="@string/username_or_email_string"
 				android:background="@drawable/_bg__white"
 				/>
-<!--			<View   android:id="@+id/_rectangle_3"-->
-<!--				android:background="@drawable/_btn_burgundy_stroke"-->
-<!--				android:layout_marginStart="55dp"-->
-<!--				android:layout_marginTop="590dp"-->
-<!--				android:layout_width="301dp"-->
-<!--				android:layout_height="50dp" />-->
-<!--			<TextView android:id="@+id/sign_up_ek1"-->
-<!--				android:textStyle="bold"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:gravity="center"-->
-<!--				android:textSize="30sp"-->
-<!--				android:textColor="@color/white"-->
-<!--				android:layout_marginLeft="120dp"-->
-<!--				android:layout_marginTop="590dp"-->
-<!--				android:layout_width="179dp"-->
-<!--				android:layout_height="45dp"-->
-<!--				android:text="Sign Up"-->
-<!--				/>-->
-
 
 			<Button
 				android:id="@+id/sign_up_ek1"
 				android:layout_width="301dp"
 				android:layout_height="50dp"
 				android:layout_gravity="center_horizontal|center"
-				android:layout_marginStart="55dp"
+				android:layout_centerHorizontal="true"
 				android:layout_marginTop="590dp"
 				android:background="@drawable/rectangle_burgundy_radius"
 				android:gravity="center"
@@ -147,10 +128,10 @@
 
 			<ImageView
 				android:id="@+id/mask_group"
-				android:layout_width="480dp"
+				android:layout_width="match_parent"
 				android:layout_height="260dp"
-				android:layout_marginStart="-35dp"
-				android:layout_marginTop="0dp"
+				android:layout_marginStart="-25dp"
+				android:layout_marginTop="-10dp"
 				android:contentDescription="mask_group"
 				android:src="@drawable/signup" />
 
@@ -159,5 +140,5 @@
 
 		</RelativeLayout>
 
-	</ScrollView>
-</HorizontalScrollView>
+	</RelativeLayout>
+</RelativeLayout>
