@@ -64,28 +64,19 @@ public class confirm_activity extends Activity {
 		home = (TextView) findViewById(R.id.home);
 		favourite = (TextView) findViewById(R.id.favourite);
 		deals = (TextView) findViewById(R.id.deals);
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		cart = (TextView) findViewById(R.id.cart);
 		discount = (ImageView) findViewById(R.id.discount);
 		heart = (ImageView) findViewById(R.id.heart);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);
-		checkout = (TextView) findViewById(R.id.checkout);
 		rectangle_18 = (View) findViewById(R.id.rectangle_18);
-		rectangle_20 = (View) findViewById(R.id.rectangle_20);
 		basemap_image = (ImageView) findViewById(R.id.basemap_image);
-		_bg__default_marker_component_ek1 = (View) findViewById(R.id._bg__default_marker_component_ek1);
-		_bg__frame_ek1 = (View) findViewById(R.id._bg__frame_ek1);
-		vector = (ImageView) findViewById(R.id.vector);
 		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 		confirm_1 = (ImageView) findViewById(R.id.confirm_1);
 		confirmation__aaaaaaa = (TextView) findViewById(R.id.confirmation__aaaaaaa);
 		thank_you__aria_ = (TextView) findViewById(R.id.thank_you__aria_);
 		your_order_is_confirmed = (TextView) findViewById(R.id.your_order_is_confirmed);
-		rectangle_21 = (View) findViewById(R.id.rectangle_21);
 		track_your_order = (TextView) findViewById(R.id.track_your_order);
-		we_ve_accepted_your_order__and_we_re_getting_it_ready__come_back_to_this_page_for_updates_on_your_shipment_status_ = (TextView) findViewById(R.id.we_ve_accepted_your_order__and_we_re_getting_it_ready__come_back_to_this_page_for_updates_on_your_shipment_status_);
-	
+
 		
 		//custom code goes here
 	

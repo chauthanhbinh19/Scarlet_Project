@@ -24,16 +24,15 @@
 			<RelativeLayout android:id="@+id/frame_7"
 				android:layout_marginTop="205dp"
 				android:layout_marginStart="0dp"
-				android:layout_width="wrap_content"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+
 				>
 
 				<View
 					android:id="@+id/_bg__frame_7_ek1"
 					android:layout_width="match_parent"
 					android:layout_height="600dp"
-					android:layout_marginStart="0dp"
-					android:layout_marginTop="0dp"
 					android:background="@drawable/_bg__white" />
 
 				<View   android:id="@+id/rectangle_14"
@@ -284,25 +283,23 @@
 				<ImageView android:id="@+id/line_2"
 					android:src="@drawable/line_2"
 					android:contentDescription="line_2"
-					 android:layout_marginStart="22dp"
 					android:layout_marginTop="106dp"
-					android:layout_width="312.01dp"
+					android:layout_width="match_parent"
 					android:layout_height="1dp" />
 
 				<ImageView android:id="@+id/line_3"
 					android:src="@drawable/line_3"
 					android:contentDescription="line_3"
-					 android:layout_marginStart="25dp"
+
 					android:layout_marginTop="340dp"
-					android:layout_width="312.01dp"
+					android:layout_width="match_parent"
 					android:layout_height="1dp" />
 
 				<ImageView android:id="@+id/line_4"
 					android:src="@drawable/line_4"
 					android:contentDescription="line_4"
-					 android:layout_marginStart="27dp"
 					android:layout_marginTop="478dp"
-					android:layout_width="312.01dp"
+					android:layout_width="match_parent"
 					android:layout_height="1dp" />
 
 				<ImageView android:id="@+id/dsc02313_optimized"

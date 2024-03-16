@@ -83,11 +83,8 @@ public class cart_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 		deals = (TextView) findViewById(R.id.deals);
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		cart = (TextView) findViewById(R.id.cart);
 
-		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
 		rectangle_1 = (View) findViewById(R.id.rectangle_1);
 		your_cart = (TextView) findViewById(R.id.your_cart);
 		uit = (TextView) findViewById(R.id.uit);
@@ -102,7 +99,6 @@ public class cart_activity extends Activity {
 		total = (TextView) findViewById(R.id.total);
 		_20_000_ = (TextView) findViewById(R.id._20_000_);
 		discount = (ImageView) findViewById(R.id.discount);
-		user = (ImageView) findViewById(R.id.user);
 		heart = (ImageView) findViewById(R.id.heart);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);
 		_bg__frame_6_ek1 = (View) findViewById(R.id._bg__frame_6_ek1);
@@ -123,9 +119,7 @@ public class cart_activity extends Activity {
 		vector_ek4 = (ImageView) findViewById(R.id.vector_ek4);
 		dsc02313_optimized = (ImageView) findViewById(R.id.dsc02313_optimized);
 		line_1 = (ImageView) findViewById(R.id.line_1);
-		rectangle_13 = (View) findViewById(R.id.rectangle_13);
-		checkout = (TextView) findViewById(R.id.checkout);
-	
+
 		
 		//custom code goes here
 	

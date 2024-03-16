@@ -116,8 +116,6 @@ public class home_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		shopping_cart = (ImageView) findViewById(R.id.shopping_cart);
 		cart = (TextView) findViewById(R.id.cart);
 		discount = (ImageView) findViewById(R.id.discount);

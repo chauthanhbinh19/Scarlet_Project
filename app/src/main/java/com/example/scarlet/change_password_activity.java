@@ -78,10 +78,8 @@ public class change_password_activity extends Activity {
 		new_password = (TextView) findViewById(R.id.new_password);
 		rectangle_33 = (View) findViewById(R.id.rectangle_33);
 		confirm_password = (TextView) findViewById(R.id.confirm_password);
-		password_must_be_at_least_8_characters = (TextView) findViewById(R.id.password_must_be_at_least_8_characters);
 
 		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
-		vector_ek2 = (ImageView) findViewById(R.id.vector_ek2);
 		vector_ek3 = (ImageView) findViewById(R.id.vector_ek3);
 
 		ellipse_4 = (ImageView) findViewById(R.id.ellipse_4);

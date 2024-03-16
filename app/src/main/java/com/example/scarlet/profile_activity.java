@@ -84,9 +84,7 @@ public class profile_activity extends Activity {
 		setContentView(R.layout.profile);
 
 		
-		_bg__profile = (View) findViewById(R.id._bg__profile);
 		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
-		rectangle_43 = (View) findViewById(R.id.rectangle_43);
 		profile = (TextView) findViewById(R.id.profile_1);
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 		vector = (ImageView) findViewById(R.id.vector);

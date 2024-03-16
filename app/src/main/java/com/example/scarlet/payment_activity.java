@@ -89,8 +89,6 @@ public class payment_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 		deals = (TextView) findViewById(R.id.deals);
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		cart = (TextView) findViewById(R.id.cart);
 		discount = (ImageView) findViewById(R.id.discount);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);

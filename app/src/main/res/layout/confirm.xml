@@ -4,7 +4,7 @@
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<ScrollView android:id="@+id/confirm"
+	<RelativeLayout android:id="@+id/confirm"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
@@ -155,7 +155,7 @@
 
 		</RelativeLayout>
 
-	</ScrollView>
+	</RelativeLayout>
 
 	<RelativeLayout android:id="@+id/nav"
 		app:layout_constraintBottom_toBottomOf="parent"

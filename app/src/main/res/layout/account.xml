@@ -1,9 +1,8 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:android="http://schemas.android.com/apk/res/android" >
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
 	<ScrollView android:id="@+id/account" 
 		android:layout_width="match_parent"
@@ -62,7 +61,7 @@
 				>
 
 				<View   android:id="@+id/_bg__frame_8_ek1"
-					android:background="@drawable/_bg__frame_8_ek1_shape"
+					android:background="@drawable/_bg_white_radius30"
 					 android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
 					android:layout_width="412dp"

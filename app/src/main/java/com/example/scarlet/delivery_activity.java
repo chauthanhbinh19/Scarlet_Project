@@ -103,8 +103,6 @@ public class delivery_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 		deals = (TextView) findViewById(R.id.deals);
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		cart = (TextView) findViewById(R.id.cart);
 		discount = (ImageView) findViewById(R.id.discount);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);
@@ -112,7 +110,6 @@ public class delivery_activity extends Activity {
 
 		heart = (ImageView) findViewById(R.id.heart);
 
-		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
 		rectangle_1 = (View) findViewById(R.id.rectangle_1);
 		delivery = (TextView) findViewById(R.id.delivery_1);
 		uit = (TextView) findViewById(R.id.uit);
@@ -157,14 +154,11 @@ public class delivery_activity extends Activity {
 		dsc02313_optimized = (ImageView) findViewById(R.id.dsc02313_optimized);
 		rectangle_15 = (View) findViewById(R.id.rectangle_15);
 		discount_code = (TextView) findViewById(R.id.discount_code);
-		rectangle_16 = (View) findViewById(R.id.rectangle_16);
 		apply = (TextView) findViewById(R.id.apply);
 		discount_ek2 = (TextView) findViewById(R.id.discount_ek2);
 		right_arrow_1 = (ImageView) findViewById(R.id.right_arrow_1);
 		right_arrow_2 = (ImageView) findViewById(R.id.right_arrow_2);
-		rectangle_17 = (View) findViewById(R.id.rectangle_17);
-		continue_to_payment = (TextView) findViewById(R.id.continue_to_payment);
-	
+
 		
 		//custom code goes here
 	

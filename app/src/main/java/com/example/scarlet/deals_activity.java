@@ -63,22 +63,17 @@ public class deals_activity extends Activity {
 		
 		_bg__deals = (View) findViewById(R.id._bg__deals);
 
-		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
-		rectangle_1 = (View) findViewById(R.id.rectangle_1);
 		deals = (TextView) findViewById(R.id.deals);
-		uit = (TextView) findViewById(R.id.uit);
 
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 
 		vector = (ImageView) findViewById(R.id.vector);
-		vector_ek1 = (ImageView) findViewById(R.id.vector_ek1);
 		_bg__frame_6_ek1 = (View) findViewById(R.id._bg__frame_6_ek1);
 		rectangle_12 = (View) findViewById(R.id.rectangle_12);
 		black_friday = (TextView) findViewById(R.id.black_friday);
 		discount_50__for_every_product = (TextView) findViewById(R.id.discount_50__for_every_product);
 		dsc02313_optimized = (ImageView) findViewById(R.id.dsc02313_optimized);
 		line_1 = (ImageView) findViewById(R.id.line_1);
-		rectangle_39 = (View) findViewById(R.id.rectangle_39);
 		order_now = (TextView) findViewById(R.id.order_now);
 
 		ellipse_4 = (ImageView) findViewById(R.id.ellipse_4);
@@ -86,8 +81,6 @@ public class deals_activity extends Activity {
 		favourite = (TextView) findViewById(R.id.favourite);
 
 
-		ellipse_7 = (ImageView) findViewById(R.id.ellipse_7);
-		ellipse_6 = (View) findViewById(R.id.ellipse_6);
 		cart = (TextView) findViewById(R.id.cart);
 		home_ek1 = (ImageView) findViewById(R.id.home_ek1);
 		shopping_cart = (ImageView) findViewById(R.id.shopping_cart);

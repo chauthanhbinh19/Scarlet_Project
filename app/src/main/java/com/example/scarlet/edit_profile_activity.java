@@ -85,7 +85,6 @@ public class edit_profile_activity extends Activity {
 
 		
 		_bg__frame_2_ek1 = (View) findViewById(R.id._bg__frame_2_ek1);
-		rectangle_43 = (View) findViewById(R.id.rectangle_43);
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 		vector = (ImageView) findViewById(R.id.vector);
 		ellipse_24 = (View) findViewById(R.id.ellipse_24);
