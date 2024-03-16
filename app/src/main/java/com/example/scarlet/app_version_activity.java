@@ -45,7 +45,6 @@ public class app_version_activity extends Activity {
 		scarlet = (TextView) findViewById(R.id.scarlet);
 
 		app_version_1_0 = (TextView) findViewById(R.id.app_version_1_0);
-		___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh = (TextView) findViewById(R.id.___ng_h_n_thuy_n__khu_ph__6_p__th____c__th_nh_ph__h__ch__minh);
 
 		rectangle_3 = (View) findViewById(R.id.rectangle_3);
 

@@ -4,7 +4,7 @@
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 	<ScrollView android:id="@+id/settings"
-		android:layout_width="wrap_content" 
+		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container"
@@ -51,7 +51,7 @@
 						android:layout_marginTop="0dp"
 						android:background="@drawable/_bg__white" />
 
-					<TextView android:id="@+id/settings"
+					<TextView android:id="@+id/settings_1"
 						android:textStyle="bold"
 						android:layout_gravity="center_horizontal|center"
 						android:gravity="center"
@@ -257,7 +257,7 @@
 				android:layout_marginTop="65dp"
 				android:gravity="center"
 				android:text="@string/cart_string"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:textSize="12sp" />
 
 			<ImageView
@@ -289,7 +289,7 @@
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
 				android:textSize="12sp"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="40dp"
 				android:layout_centerHorizontal="true"
@@ -314,7 +314,7 @@
 				android:layout_marginTop="40dp"
 				android:gravity="center"
 				android:text="@string/favourite_string"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:textSize="12sp" />
 
 			<ImageView
@@ -350,7 +350,7 @@
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
 				android:textSize="12sp"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_centerHorizontal="true"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="46dp"
@@ -379,7 +379,7 @@
 				android:gravity="center"
 				android:textSize="12sp"
 				android:layout_centerHorizontal="true"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="40dp"
 				android:layout_width="91.2dp"

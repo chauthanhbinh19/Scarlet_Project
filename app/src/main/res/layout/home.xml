@@ -631,7 +631,7 @@
 				android:layout_marginTop="65dp"
 				android:gravity="center"
 				android:text="@string/cart_string"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:textSize="12sp" />
 
 
@@ -665,7 +665,7 @@
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
 				android:textSize="12sp"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="40dp"
 				android:layout_centerHorizontal="true"
@@ -690,7 +690,7 @@
 				android:layout_marginTop="40dp"
 				android:gravity="center"
 				android:text="@string/favourite_string"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:textSize="12sp" />
 
 
@@ -728,7 +728,7 @@
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
 				android:textSize="12sp"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_centerHorizontal="true"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="46dp"
@@ -757,7 +757,7 @@
 				android:gravity="center"
 				android:textSize="12sp"
 				android:layout_centerHorizontal="true"
-				android:textColor="@color/faqs_color"
+				android:textColor="@color/burgundy"
 				android:layout_marginLeft="0dp"
 				android:layout_marginTop="40dp"
 				android:layout_width="91.2dp"
