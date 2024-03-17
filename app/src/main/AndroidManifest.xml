@@ -40,6 +40,8 @@
         <activity android:name=".profile_activity" android:exported="true"/>
         <activity android:name=".setting_activity" android:exported="true"/>
         <activity android:name=".status_activity" android:exported="true"/>
+        <activity android:name=".admin_customer_activity" android:exported="true"/>
+
     </application>
 
 </manifest>

@@ -21,6 +21,14 @@
     <color name="lightRed">#FECBC1</color>
     <color name="white1">#E9E9E9</color>
 
+
+
+
+    <color name="_bg__customer_color">#FFFFFF</color>
+    <color name="_bg__group_7_ek1_color">#000000</color>
+    <color name="_09_41_color">#111828</color>
+    <color name="customer_ek1_color">#A03232</color>
+    <color name="rectangle_1_color">#FAF0F0</color>
     <!-- sign_in colors -->
 
     <color name="_bg__sign_in_color">#FAF0F0</color>
@@ -39,7 +47,6 @@
 
     <color name="_bg__food___all_color">#FFFFFF</color>
     <color name="_bg__frame_2_ek1_color">#10000008</color>
-    <color name="rectangle_1_color">#FAF0F0</color>
     <color name="search_color">#A03232</color>
 
     <!-- product_details colors -->
