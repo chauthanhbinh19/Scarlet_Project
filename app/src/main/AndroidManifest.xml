@@ -21,26 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".sign_in_activity" android:exported="true"/>
-        <activity android:name=".sign_up_activity" android:exported="true"/>
-        <activity android:name=".account_activity" android:exported="true"/>
-        <activity android:name=".app_version_activity" android:exported="true"/>
-        <activity android:name=".cart_activity" android:exported="true"/>
-        <activity android:name=".change_password_activity" android:exported="true"/>
-        <activity android:name=".confirm_activity" android:exported="true"/>
-        <activity android:name=".deals_activity" android:exported="true"/>
-        <activity android:name=".delivery_activity" android:exported="true"/>
-        <activity android:name=".edit_profile_activity" android:exported="true"/>
-        <activity android:name=".favourite_activity" android:exported="true"/>
-        <activity android:name=".food___all_activity" android:exported="true"/>
-        <activity android:name=".LoadingActivity" android:exported="true"/>
-        <activity android:name=".payment_activity" android:exported="true"/>
-        <activity android:name=".policies_activity" android:exported="true"/>
-        <activity android:name=".product_details_activity" android:exported="true"/>
-        <activity android:name=".profile_activity" android:exported="true"/>
-        <activity android:name=".setting_activity" android:exported="true"/>
-        <activity android:name=".status_activity" android:exported="true"/>
-        <activity android:name=".admin_customer_activity" android:exported="true"/>
 
     </application>
 

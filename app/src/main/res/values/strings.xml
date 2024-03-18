@@ -175,5 +175,7 @@
     <string name="filter_string">Filter</string>
     <string name="add_string">Add</string>
     <string name="guest_string">Guest</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

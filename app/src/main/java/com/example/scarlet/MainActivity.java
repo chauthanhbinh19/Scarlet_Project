@@ -1,55 +1,87 @@
 package com.example.scarlet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.scarlet.Fragment.HomeFragment;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading);
+        setContentView(R.layout.activity_main);
 
-//        Button _create_account_ =findViewById(R.id._create_account_);
-//        _create_account_.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick (View v){
-//                Intent intent= new Intent(MainActivity.this,sign_up_activity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        Button forgot_password_ =findViewById(R.id.forgot_password_);
-//        forgot_password_.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick (View v){
-//                Intent intent= new Intent(MainActivity.this,sign_up_activity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        final EditText username=findViewById(R.id.username_or_email);
-//        final EditText password=findViewById(R.id.password);
-//        Button signIn = findViewById(R.id.sign_in_button);
-//        signIn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick (View v){
-//                Intent intent= new Intent(MainActivity.this,sign_up_activity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        RelativeLayout profile_button=findViewById(R.id.profile_button);
-//        profile_button.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                Intent intent= new Intent(MainActivity.this,profile_activity.class);
-//                startActivity(intent);
-//            }
-//        });
+        MeowBottomNavigation bottomNavigation=findViewById(R.id.bottomNavigation);
+        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home_ek1 ));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.heart));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.shopping_cart));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.discount));
+        bottomNavigation.add(new MeowBottomNavigation.Model(5,R.drawable.user));
+        bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                String name=null;
+                switch(model.getId()){
+                    case 1:name="Home";
+                        break;
+                    case 2:name="Favourite";
+                        break;
+                    case 3:name="Cart";
+                        break;
+                    case 4:name="Deals";
+                        break;
+                    case 5:name="Account";
+                        break;
+                }
+                Toast.makeText(MainActivity.this,name,Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        });
+        bottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                String name = null;
+                switch(model.getId()){
+                    case 1:name="Home";
+                            openHomeFragment();
+                            break;
+                    case 2:name="Favourite";
+                            break;
+                    case 3:name="Cart";
+                            break;
+                    case 4:name="Deals";
+                            break;
+                    case 5:name="Account";
+                            break;
+                    default:name="Home";
+                            openHomeFragment();
+                            break;
+                }
+                bottomNavigation.setCount(5,"1");
+                return null;
+            }
+        });
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
+        }
+
+    }
+    private void openHomeFragment(){
+        HomeFragment HomeFragment=new HomeFragment();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,HomeFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
