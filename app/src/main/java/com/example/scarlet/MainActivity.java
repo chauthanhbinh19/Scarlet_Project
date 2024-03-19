@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.scarlet.Fragment.AccountFragment;
+import com.example.scarlet.Fragment.CartFragment;
+import com.example.scarlet.Fragment.DealsFragment;
+import com.example.scarlet.Fragment.FavouriteFragment;
 import com.example.scarlet.Fragment.HomeFragment;
 
 import kotlin.Unit;
@@ -56,12 +60,16 @@ public class MainActivity extends AppCompatActivity {
                             openHomeFragment();
                             break;
                     case 2:name="Favourite";
+                            openFavouriteFragment();
                             break;
                     case 3:name="Cart";
+                            openCartFragment();
                             break;
                     case 4:name="Deals";
+                            openDealsFragment();
                             break;
                     case 5:name="Account";
+                            openAccountFragment();
                             break;
                     default:name="Home";
                             openHomeFragment();
@@ -74,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout, new HomeFragment()).commit();
         }
+        bottomNavigation.show(1,true);
 
     }
     private void openHomeFragment(){
@@ -81,6 +90,38 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout,HomeFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    private void openFavouriteFragment(){
+        FavouriteFragment favouriteFragment=new FavouriteFragment();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,favouriteFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    private void openCartFragment(){
+        CartFragment cartFragment=new CartFragment();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,cartFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    private void openDealsFragment(){
+        DealsFragment dealsFragment=new DealsFragment();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,dealsFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+    private void openAccountFragment(){
+        AccountFragment accountFragment=new AccountFragment();
+        FragmentManager fragmentManager=getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,accountFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
