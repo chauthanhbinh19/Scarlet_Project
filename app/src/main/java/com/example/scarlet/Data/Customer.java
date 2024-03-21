@@ -10,6 +10,7 @@ public class Customer {
     private String email;
     private String username;
     private String password;
+    private String avatar_img;
 
     public void setId(String id) {
         this.id = id;
@@ -47,19 +48,25 @@ public class Customer {
         this.password = password;
     }
 
+    public void setAvatar_img(String avatar_img) {
+        this.avatar_img = avatar_img;
+    }
+
     public Customer(){
 
     }
-    public Customer(String id,String name, String gender,String date_of_birth,String address,String phone_number, String email, String username, String password){
-        this.id=id;
-        this.name=name;
-        this.gender=gender;
-        this.address=address;
-        this.date_of_birth=date_of_birth;
-        this.phone_number=phone_number;
-        this.email=email;
-        this.username=username;
-        this.password=password;
+
+    public Customer(String id, String name, String gender, String date_of_birth, String address, String phone_number, String email, String username, String password, String avatar_img) {
+        this.id = id;
+        this.name = name;
+        this.gender = gender;
+        this.date_of_birth = date_of_birth;
+        this.address = address;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.avatar_img = avatar_img;
     }
 
     public String getId() {
@@ -95,5 +102,9 @@ public class Customer {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getAvatar_img() {
+        return avatar_img;
     }
 }

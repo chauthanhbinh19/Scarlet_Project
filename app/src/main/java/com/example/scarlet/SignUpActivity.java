@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     DatabaseReference myRef = database.getReference("customers");
 
                     String customerId = myRef.push().getKey();
-                    Customer customer = new Customer(customerId, "Customer", "Male", "01/01/1990", "123 Street, City", "0123456789", "customer.doe@email.com", username, password);
+                    Customer customer = new Customer(customerId, "Customer", "Male", "01/01/1990", "123 Street, City", "0123456789", "customer.doe@email.com", username, password,"none");
                     try{
                         myRef.child(customerId).setValue(customer);
                         Toast.makeText(SignUpActivity.this,"Register successfully",Toast.LENGTH_SHORT).show();
