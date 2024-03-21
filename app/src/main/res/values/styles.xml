@@ -10,6 +10,6 @@
     </style>
     <style name="roundedImageView">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">15%</item>
+        <item name="cornerSize">10%</item>
     </style>
 </resources>

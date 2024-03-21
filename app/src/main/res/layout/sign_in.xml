@@ -34,7 +34,7 @@
 				android:layout_centerHorizontal="true"
 				android:textSize="40sp"
 				android:textColor="@color/sign_in_color"
-				android:layout_marginTop="670dp"
+				android:layout_marginTop="660dp"
 				android:layout_width="100dp"
 				android:layout_height="wrap_content"
 				android:text="@string/or_string"
@@ -64,6 +64,7 @@
 				android:layout_width="280.6dp"
 				android:layout_height="47.6dp"
 				android:hint="@string/password_string"
+				android:inputType="textPassword"
 				android:background="@color/transparent"
 				 />
 
@@ -87,7 +88,7 @@
 				android:gravity="center"
 				android:layout_centerHorizontal="true"
 				android:textSize="24sp"
-				android:layout_marginTop="590dp"
+				android:layout_marginTop="570dp"
 				android:layout_width="301dp"
 				android:layout_height="50dp"
 				android:background="@drawable/_btn_burgundy_stroke"  />
@@ -96,7 +97,7 @@
 				android:src="@drawable/icons8_facebook_240_1"
 				android:contentDescription="icons8_facebook_240_1"
 				 android:layout_marginStart="230dp"
-				android:layout_marginTop="750dp"
+				android:layout_marginTop="740dp"
 				android:layout_width="50dp"
 				android:layout_height="50dp" />
 
@@ -105,7 +106,7 @@
 				android:layout_width="50dp"
 				android:layout_height="50dp"
 				android:layout_marginStart="140dp"
-				android:layout_marginTop="750dp"
+				android:layout_marginTop="740dp"
 				android:contentDescription="icons8_google_240_1"
 				android:src="@drawable/icons8_google_240_1" />
 
@@ -121,11 +122,11 @@
 			<Button android:id="@+id/forgot_password_"
 				android:textStyle="bold"
 				android:layout_gravity="center_horizontal|center"
-				android:gravity="center"
+				android:gravity="top"
 				android:textSize="13sp"
 				android:textColor="@color/lightbrown"
 				android:layout_marginLeft="245dp"
-				android:layout_marginTop="524dp"
+				android:layout_marginTop="515dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/forgot_password__string"
@@ -138,10 +139,10 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="top"
-				android:layout_marginLeft="50dp"
-				android:layout_marginTop="524dp"
+				android:layout_marginLeft="60dp"
+				android:layout_marginTop="515dp"
 				android:background="@color/transparent"
-				android:gravity="center"
+				android:gravity="top"
 				android:text="@string/_create_account__string"
 				android:textColor="@color/lightbrown"
 				android:textSize="13sp"

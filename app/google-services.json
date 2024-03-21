@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "213613513229",
+    "firebase_url": "https://scarletandroidproject-default-rtdb.firebaseio.com",
+    "project_id": "scarletandroidproject",
+    "storage_bucket": "scarletandroidproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213613513229:android:d72dacd58bc052c8056344",
+        "android_client_info": {
+          "package_name": "com.example.scarlet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB04Or0H9fXa9q8hXJovpyV5KJua8bVDUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

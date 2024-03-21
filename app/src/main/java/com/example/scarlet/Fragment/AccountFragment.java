@@ -1,9 +1,11 @@
 package com.example.scarlet.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import androidx.fragment.app.Fragment;
@@ -11,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.scarlet.R;
+import com.example.scarlet.SignInActivity;
 
 public class AccountFragment extends Fragment {
 
@@ -24,6 +27,7 @@ public class AccountFragment extends Fragment {
         RelativeLayout setting_btn=view.findViewById(R.id.settings_button);
         RelativeLayout policies_btn=view.findViewById(R.id.policies_button);
         RelativeLayout app_version_btn=view.findViewById(R.id.app_version_button);
+        Button create_account=view.findViewById(R.id.create_account_btn);
 
         profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +54,15 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openAppVersionFragment();
+            }
+        });
+
+        create_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
+
             }
         });
 
