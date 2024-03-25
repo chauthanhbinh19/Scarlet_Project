@@ -41,294 +41,18 @@
 				<RelativeLayout
 					android:layout_marginLeft="20dp"
 					android:layout_marginRight="20dp"
+					android:padding="10dp"
 					android:layout_below="@+id/menu"
+					android:background="@drawable/rectangle_white_stroke"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
-					<GridLayout
-						android:paddingLeft="15dp"
-						android:paddingRight="15dp"
-						android:paddingTop="15dp"
-						android:paddingBottom="15dp"
-						android:background="@drawable/rectangle_white_stroke"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:columnCount="5"
-						>
 
-						<RelativeLayout android:id="@+id/drinks_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="10dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
+						<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/category_recyclerView"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content" />
 
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
 
-							<ImageView android:id="@+id/image_1"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"
-								android:src="@drawable/bubble_tea"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_1"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Drinks"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/buns_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="10dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_2"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/croissant"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_2"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Buns"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/toasts_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="10dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_3"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/toast"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_3"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Toasts"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/sandwiches_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_4"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/sandwich"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_4"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Sandwiches"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/dry_cakes_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_5"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/cinnamon_roll"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_5"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Dry cakes"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/cakes_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_6"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/cake"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_6"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Cakes"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/cake_slices_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_7"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/cake_slice"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_7"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Cake slices"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/pudding_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_8"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/pudding"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_8"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Pudding"/>
-						</RelativeLayout>
-						<RelativeLayout android:id="@+id/cookies_category_btn"
-							android:layout_marginLeft="7dp"
-							android:layout_marginRight="7dp"
-							android:layout_marginBottom="7dp"
-							android:layout_width="55dp"
-							android:layout_height="wrap_content">
-
-							<ImageView
-								android:layout_width="48dp"
-								android:layout_height="48dp"
-								android:layout_centerHorizontal="true"
-								android:background="@drawable/rectangle_image_radius"/>
-							<ImageView android:id="@+id/image_9"
-								android:layout_marginTop="7dp"
-								android:layout_width="35dp"
-								android:layout_height="35dp"
-								android:layout_centerHorizontal="true"
-								android:src="@drawable/cookie"/>
-
-							<TextView
-								android:layout_marginTop="5dp"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:layout_centerHorizontal="true"
-								android:layout_below="@+id/image_9"
-								android:textSize="14sp"
-								android:gravity="center_horizontal"
-								android:textColor="@color/black"
-								android:text="Cookies"/>
-						</RelativeLayout>
-
-					</GridLayout>
 
 				</RelativeLayout>
 
@@ -349,146 +73,19 @@
 					android:layout_height="43dp"
 					android:text="Trends"
 					/>
-				<GridLayout
+				<RelativeLayout
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:padding="10dp"
+					android:layout_below="@+id/trends"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:columnCount="2">
-					<RelativeLayout android:id="@+id/product_trend_1"
-						android:layout_marginTop="50dp"
-						android:layout_marginStart="40dp"
+					android:layout_height="wrap_content">
+
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/trend_recyclerView"
 						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						>
-
-						<View   android:id="@+id/_bg__product_trend_1"
-							android:background="@drawable/_bg__product_shadow"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="143dp"
-							android:layout_height="157dp" />
-
-						<View
-							android:background="@drawable/rectangle_white_radius"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="137dp"
-							android:layout_height="149dp" />
-
-						<ImageView
-							android:src="@drawable/dsc02313_optimized"
-							android:layout_marginStart="16dp"
-							android:layout_marginTop="-9dp"
-							android:layout_width="105dp"
-							android:layout_height="105dp" />
-
-						<ImageView
-							android:src="@drawable/mask_group_ek1"
-							android:layout_marginStart="6.4dp"
-							android:layout_marginTop="8dp"
-							android:layout_width="137dp"
-							android:layout_height="149dp" />
-
-						<TextView
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/burgundy"
-							android:layout_marginLeft="12dp"
-							android:layout_marginTop="96dp"
-							android:layout_width="131.2dp"
-							android:layout_height="24.2dp"
-							android:text="@string/black_coffee_string"
-							/>
-
-						<TextView
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/black"
-							android:layout_marginLeft="12dp"
-							android:layout_marginTop="122dp"
-							android:layout_width="91.2dp"
-							android:layout_height="20.2dp"
-							android:text="@string/_120_000__string"
-							/>
-
-						<ImageView android:id="@+id/add_1_trend_1"
-							android:src="@drawable/add_1"
-							android:contentDescription="add_1"
-							android:layout_marginStart="111dp"
-							android:layout_marginTop="123dp"
-							android:layout_width="20dp"
-							android:layout_height="20dp" />
-
-					</RelativeLayout>
-
-					<RelativeLayout android:id="@+id/product_trend_2"
-						android:layout_marginTop="50dp"
-						android:layout_marginStart="40dp"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						>
-
-						<View   android:id="@+id/_bg__product_trend_2"
-							android:background="@drawable/_bg__product_shadow"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="143dp"
-							android:layout_height="157dp" />
-
-						<View
-							android:background="@drawable/rectangle_white_radius"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="137dp"
-							android:layout_height="149dp" />
-
-						<ImageView
-							android:src="@drawable/dsc02313_optimized"
-							android:layout_marginStart="16dp"
-							android:layout_marginTop="-9dp"
-							android:layout_width="105dp"
-							android:layout_height="105dp" />
-
-						<ImageView
-							android:src="@drawable/mask_group_ek1"
-							android:layout_marginStart="6.4dp"
-							android:layout_marginTop="8dp"
-							android:layout_width="137dp"
-							android:layout_height="149dp" />
-
-						<TextView
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/burgundy"
-							android:layout_marginLeft="12dp"
-							android:layout_marginTop="96dp"
-							android:layout_width="131.2dp"
-							android:layout_height="24.2dp"
-							android:text="@string/black_coffee_string"
-							/>
-
-						<TextView
-							android:textStyle="bold"
-							android:textSize="12sp"
-							android:textColor="@color/black"
-							android:layout_marginLeft="12dp"
-							android:layout_marginTop="122dp"
-							android:layout_width="91.2dp"
-							android:layout_height="20.2dp"
-							android:text="@string/_120_000__string"
-							/>
-
-						<ImageView
-							android:src="@drawable/add_1"
-							android:layout_marginStart="111dp"
-							android:layout_marginTop="123dp"
-							android:layout_width="20dp"
-							android:layout_height="20dp" />
-
-					</RelativeLayout>
-				</GridLayout>
-
-
-
+						android:layout_height="wrap_content" />
+				</RelativeLayout>
 
 			</RelativeLayout>
 			<RelativeLayout android:id="@+id/box_deals"
@@ -628,283 +225,18 @@
 					/>
 
 
-				<RelativeLayout android:id="@+id/product"
-					android:layout_marginTop="50dp"
-					android:layout_marginStart="40dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
+				<RelativeLayout
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:padding="10dp"
+					android:layout_below="@+id/featureproduct"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
 
-					<View   android:id="@+id/_bg__product_ek1"
-						android:background="@drawable/_bg__product_shadow"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="143dp"
-						android:layout_height="157dp" />
-
-					<View   android:id="@+id/rectangle_9"
-						android:background="@drawable/rectangle_white_radius"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<ImageView android:id="@+id/dsc02313_optimized"
-						android:src="@drawable/dsc02313_optimized"
-						android:contentDescription="dsc02313_optimized"
-						android:layout_marginStart="16dp"
-						android:layout_marginTop="-9dp"
-						android:layout_width="105dp"
-						android:layout_height="105dp" />
-
-					<ImageView android:id="@+id/mask_group"
-						android:src="@drawable/mask_group_ek1"
-						android:contentDescription="mask_group_ek1"
-						android:layout_marginStart="6.4dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<TextView android:id="@+id/black_coffee"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/burgundy"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="96dp"
-						android:layout_width="131.2dp"
-						android:layout_height="24.2dp"
-						android:text="@string/black_coffee_string"
-						/>
-
-					<TextView android:id="@+id/_120_000_"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="122dp"
-						android:layout_width="91.2dp"
-						android:layout_height="20.2dp"
-						android:text="@string/_120_000__string"
-						/>
-
-					<ImageView android:id="@+id/add_1"
-						android:src="@drawable/add_1"
-						android:contentDescription="add_1"
-						android:layout_marginStart="111dp"
-						android:layout_marginTop="123dp"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/product_ek2"
-					android:layout_marginTop="50dp"
-					android:layout_marginStart="230dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-					<View   android:id="@+id/_bg__product_ek3"
-						android:background="@drawable/_bg__product_shadow"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="143dp"
-						android:layout_height="157dp" />
-
-					<View   android:id="@+id/rectangle_9_ek1"
-						android:background="@drawable/rectangle_white_radius"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<ImageView android:id="@+id/dsc02313_optimized_ek1"
-						android:src="@drawable/dsc02313_optimized_ek1"
-						android:contentDescription="dsc02313_optimized_ek1"
-						android:layout_marginStart="16dp"
-						android:layout_marginTop="-9dp"
-						android:layout_width="105dp"
-						android:layout_height="105dp" />
-
-					<ImageView android:id="@+id/mask_group_ek1"
-						android:src="@drawable/mask_group_ek1"
-						android:contentDescription="mask_group_ek1"
-						android:layout_marginStart="6.4dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<TextView android:id="@+id/black_coffee_ek1"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/burgundy"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="96dp"
-						android:layout_width="131.2dp"
-						android:layout_height="24.2dp"
-						android:text="@string/black_coffee_ek1_string"
-						/>
-
-					<TextView android:id="@+id/_120_000__ek1"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="122dp"
-						android:layout_width="91.2dp"
-						android:layout_height="20.2dp"
-						android:text="@string/_120_000__ek1_string"
-						/>
-
-					<ImageView android:id="@+id/add_1_ek1"
-						android:src="@drawable/add_1_ek1"
-						android:contentDescription="add_1_ek1"
-						android:layout_marginStart="111dp"
-						android:layout_marginTop="123dp"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/product_ek4"
-					android:layout_marginTop="250dp"
-					android:layout_marginStart="40dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-					<View   android:id="@+id/_bg__product_ek5"
-						android:background="@drawable/_bg__product_shadow"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="143dp"
-						android:layout_height="157dp" />
-
-					<View   android:id="@+id/rectangle_9_ek2"
-						android:background="@drawable/rectangle_white_radius"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<ImageView android:id="@+id/dsc02313_optimized_ek2"
-						android:src="@drawable/dsc02313_optimized_ek2"
-						android:contentDescription="dsc02313_optimized_ek2"
-						android:layout_marginStart="16dp"
-						android:layout_marginTop="-9dp"
-						android:layout_width="105dp"
-						android:layout_height="105dp" />
-
-					<ImageView android:id="@+id/mask_group_ek2"
-						android:src="@drawable/mask_group_ek2"
-						android:contentDescription="mask_group_ek2"
-						android:layout_marginStart="6.4dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<TextView android:id="@+id/black_coffee_ek2"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/search_color"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="96dp"
-						android:layout_width="131.2dp"
-						android:layout_height="24.2dp"
-						android:text="@string/black_coffee_ek2_string"
-						/>
-
-					<TextView android:id="@+id/_120_000__ek2"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="122dp"
-						android:layout_width="91.2dp"
-						android:layout_height="20.2dp"
-						android:text="@string/_120_000__ek2_string"
-						/>
-
-					<ImageView android:id="@+id/add_1_ek2"
-						android:src="@drawable/add_1_ek2"
-						android:contentDescription="add_1_ek2"
-						android:layout_marginStart="111dp"
-						android:layout_marginTop="123dp"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/product_ek6"
-					android:layout_marginTop="250dp"
-					android:layout_marginStart="230dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-					<View   android:id="@+id/_bg__product_ek7"
-						android:background="@drawable/_bg__product_shadow"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="143dp"
-						android:layout_height="157dp" />
-
-					<View   android:id="@+id/rectangle_9_ek3"
-						android:background="@drawable/rectangle_white_radius"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<ImageView android:id="@+id/dsc02313_optimized_ek3"
-						android:src="@drawable/dsc02313_optimized_ek3"
-						android:contentDescription="dsc02313_optimized_ek3"
-						android:layout_marginStart="16dp"
-						android:layout_marginTop="-9dp"
-						android:layout_width="105dp"
-						android:layout_height="105dp" />
-
-					<ImageView android:id="@+id/mask_group_ek3"
-						android:src="@drawable/mask_group_ek3"
-						android:contentDescription="mask_group_ek3"
-						android:layout_marginStart="6.4dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="137dp"
-						android:layout_height="149dp" />
-
-					<TextView android:id="@+id/black_coffee_ek3"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/burgundy"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="96dp"
-						android:layout_width="131.2dp"
-						android:layout_height="24.2dp"
-						android:text="@string/black_coffee_ek3_string"
-						/>
-
-					<TextView android:id="@+id/_120_000__ek3"
-						android:textStyle="bold"
-						android:textSize="12sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="12dp"
-						android:layout_marginTop="122dp"
-						android:layout_width="91.2dp"
-						android:layout_height="20.2dp"
-						android:text="@string/_120_000__ek3_string"
-						/>
-
-					<ImageView android:id="@+id/add_1_ek3"
-						android:src="@drawable/add_1_ek3"
-						android:contentDescription="add_1_ek3"
-						android:layout_marginStart="111dp"
-						android:layout_marginTop="123dp"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
-
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/product_recyclerView"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content" />
 				</RelativeLayout>
 
 			</RelativeLayout>
@@ -923,13 +255,14 @@
 		android:paddingTop="5dp"
 		android:background="@color/white">
 		<TextView
-			android:layout_width="wrap_content"
+			android:layout_width="160dp"
 			android:layout_height="wrap_content"
-			android:id="@+id/hi_mess"
+			android:id="@+id/welcome_message"
 			android:layout_marginTop="20dp"
 			android:layout_marginStart="80dp"
-			android:textSize="22sp"
+			android:textSize="20sp"
 			android:text="Hi, Xxxx!"
+			android:singleLine="true"
 			android:layout_centerVertical="true"/>
 
 		<ImageView
@@ -942,8 +275,8 @@
 		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/hi_mess"
-			android:layout_marginStart="100dp"
+			android:layout_toRightOf="@id/welcome_message"
+			android:layout_marginStart="30dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
@@ -977,8 +310,8 @@
 		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/hi_mess"
-			android:layout_marginStart="190dp"
+			android:layout_toRightOf="@id/welcome_message"
+			android:layout_marginStart="120dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
@@ -1030,12 +363,12 @@
 		<EditText android:id="@+id/search"
 			android:textStyle="bold"
 			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
+			android:gravity="left|center_vertical"
 			android:layout_centerVertical="true"
 			android:textSize="16sp"
 			android:textColor="@color/burgundy"
 			android:layout_marginLeft="65dp"
-			android:layout_width="76dp"
+			android:layout_width="200dp"
 			android:layout_height="48dp"
 			android:hint="@string/search_string"
 			android:textColorHint="@color/burgundy"
@@ -1045,177 +378,4 @@
 
 	</RelativeLayout>
 
-
-<!--	<RelativeLayout android:id="@+id/nav"-->
-<!--		app:layout_constraintBottom_toBottomOf="parent"-->
-<!--		app:layout_constraintStart_toStartOf="parent"-->
-<!--		app:layout_constraintEnd_toEndOf="parent"-->
-<!--		android:layout_width="match_parent"-->
-<!--		android:layout_height="wrap_content"-->
-<!--		>-->
-
-
-<!--		<ImageView android:id="@+id/ellipse_4"-->
-<!--			android:src="@drawable/navigation"-->
-<!--			android:contentDescription="ellipse_4"-->
-<!--			android:layout_marginStart="0dp"-->
-<!--			android:layout_marginTop="60dp"-->
-<!--			android:layout_width="match_parent"-->
-<!--			android:layout_height="105dp" />-->
-
-
-<!--		<RelativeLayout android:id="@+id/cart_button"-->
-<!--			android:layout_width="wrap_content"-->
-<!--			android:layout_height="wrap_content"-->
-<!--			android:layout_centerHorizontal="true"-->
-<!--			android:layout_marginTop="40dp"-->
-<!--			android:clickable="true">-->
-
-
-
-<!--			<TextView-->
-<!--				android:id="@+id/cart"-->
-<!--				android:layout_width="91.2dp"-->
-<!--				android:layout_height="27.2dp"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginTop="65dp"-->
-<!--				android:gravity="center"-->
-<!--				android:text="@string/cart_string"-->
-<!--				android:textColor="@color/burgundy"-->
-<!--				android:textSize="12sp" />-->
-
-
-<!--			<ImageView-->
-<!--				android:id="@+id/shopping_cart"-->
-<!--				android:layout_width="30dp"-->
-<!--				android:layout_height="30dp"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginTop="39dp"-->
-<!--				android:contentDescription="shopping_cart"-->
-<!--				android:src="@drawable/shopping_cart" />-->
-<!--		</RelativeLayout>-->
-<!--		<RelativeLayout android:id="@+id/home_button"-->
-<!--			android:layout_width="wrap_content"-->
-<!--			android:layout_height="wrap_content"-->
-<!--			android:layout_marginStart="5dp"-->
-<!--			android:layout_marginTop="90dp"-->
-<!--			android:clickable="true">-->
-
-
-<!--			<ImageView android:id="@+id/home_ek1"-->
-<!--				android:src="@drawable/home_3"-->
-<!--				android:contentDescription="home_ek1"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginStart="40dp"-->
-<!--				android:layout_marginTop="5dp"-->
-<!--				android:layout_width="30dp"-->
-<!--				android:layout_height="30dp" />-->
-
-<!--			<TextView android:id="@+id/home"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:gravity="center"-->
-<!--				android:textSize="12sp"-->
-<!--				android:textColor="@color/burgundy"-->
-<!--				android:layout_marginLeft="0dp"-->
-<!--				android:layout_marginTop="40dp"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_width="54.2dp"-->
-<!--				android:layout_height="27.2dp"-->
-<!--				android:text="@string/home_string"-->
-<!--				/>-->
-<!--		</RelativeLayout>-->
-<!--		<RelativeLayout android:id="@+id/favourite_button"-->
-<!--			android:layout_width="wrap_content"-->
-<!--			android:layout_height="wrap_content"-->
-<!--			android:layout_marginStart="60dp"-->
-<!--			android:layout_marginTop="90dp"-->
-<!--			android:clickable="true">-->
-
-<!--			<TextView-->
-<!--				android:id="@+id/favourite"-->
-<!--				android:layout_width="91.2dp"-->
-<!--				android:layout_height="27.2dp"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:layout_marginLeft="0dp"-->
-<!--				android:layout_marginTop="40dp"-->
-<!--				android:gravity="center"-->
-<!--				android:text="@string/favourite_string"-->
-<!--				android:textColor="@color/burgundy"-->
-<!--				android:textSize="12sp" />-->
-
-
-<!--			<ImageView-->
-<!--				android:id="@+id/heart"-->
-<!--				android:layout_width="30dp"-->
-<!--				android:layout_height="30dp"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginStart="40dp"-->
-<!--				android:layout_marginTop="5dp"-->
-<!--				android:contentDescription="heart"-->
-<!--				android:src="@drawable/heart" />-->
-
-
-<!--		</RelativeLayout>-->
-<!--		<RelativeLayout android:id="@+id/deals_button"-->
-<!--			android:layout_marginStart="250dp"-->
-<!--			android:layout_marginTop="82dp"-->
-<!--			android:layout_width="wrap_content"-->
-<!--			android:layout_height="wrap_content"-->
-<!--			android:clickable="true">-->
-
-
-<!--			<ImageView-->
-<!--				android:id="@+id/discount"-->
-<!--				android:layout_width="40dp"-->
-<!--				android:layout_height="40dp"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginStart="40dp"-->
-<!--				android:layout_marginTop="10dp"-->
-<!--				android:contentDescription="discount"-->
-<!--				android:src="@drawable/discount" />-->
-
-<!--			<TextView android:id="@+id/deals"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:gravity="center"-->
-<!--				android:textSize="12sp"-->
-<!--				android:textColor="@color/burgundy"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginLeft="0dp"-->
-<!--				android:layout_marginTop="46dp"-->
-<!--				android:layout_width="91.2dp"-->
-<!--				android:layout_height="27.2dp"-->
-<!--				android:text="@string/deals_string"-->
-<!--				/>-->
-<!--		</RelativeLayout>-->
-<!--		<RelativeLayout android:id="@+id/account_button"-->
-<!--			android:layout_width="wrap_content"-->
-<!--			android:layout_height="wrap_content"-->
-<!--			android:layout_marginStart="330dp"-->
-<!--			android:layout_marginTop="87dp"-->
-<!--			android:clickable="true">-->
-
-<!--			<ImageView android:id="@+id/user__1__1"-->
-<!--				android:src="@drawable/user"-->
-<!--				android:contentDescription="user__1__1"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:layout_marginTop="20px"-->
-<!--				android:layout_width="30dp"-->
-<!--				android:layout_height="30dp" />-->
-
-<!--			<TextView android:id="@+id/account_1"-->
-<!--				android:layout_gravity="center_horizontal|center"-->
-<!--				android:gravity="center"-->
-<!--				android:textSize="12sp"-->
-<!--				android:layout_centerHorizontal="true"-->
-<!--				android:textColor="@color/burgundy"-->
-<!--				android:layout_marginLeft="0dp"-->
-<!--				android:layout_marginTop="40dp"-->
-<!--				android:layout_width="91.2dp"-->
-<!--				android:layout_height="27.2dp"-->
-<!--				android:text="@string/account_string"-->
-<!--				/>-->
-<!--		</RelativeLayout>-->
-
-<!--	</RelativeLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

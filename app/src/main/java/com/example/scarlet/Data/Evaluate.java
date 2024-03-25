@@ -1,20 +1,13 @@
 package com.example.scarlet.Data;
 
 public class Evaluate {
-    private String id;
     private String customerId;
     private String customerName;
     private String productId;
     private String productName;
     private int rate;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCustomerId() {
         return customerId;
@@ -59,8 +52,7 @@ public class Evaluate {
     public Evaluate() {
     }
 
-    public Evaluate(String id, String customerId, String customerName, String productId, String productName, int rate) {
-        this.id = id;
+    public Evaluate(String customerId, String customerName, String productId, String productName, int rate) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.productId = productId;

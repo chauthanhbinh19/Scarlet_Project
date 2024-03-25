@@ -21,7 +21,7 @@
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:mbn_circleColor="#ffffff"
+        app:mbn_circleColor="@color/lightpink"
         app:mbn_backgroundBottomColor="@color/lightpink"
         app:mbn_countBackgroundColor="@color/lightpink"
         app:mbn_countTextColor="@color/burgundy"

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    android:layout_marginBottom="10dp"
+    android:layout_width="55dp"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rectangle_image_radius"/>
+
+    <ImageView android:id="@+id/icon"
+        android:layout_marginTop="7dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rectangle_image_radius"
+        android:src="@drawable/bubble_tea"/>
+
+    <TextView android:id="@+id/name_category"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/icon"
+        android:textSize="12sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:text="Drinks"/>
+</RelativeLayout>
+

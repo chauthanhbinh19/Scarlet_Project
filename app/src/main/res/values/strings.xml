@@ -46,7 +46,7 @@
     <string name="discount_50__for_every_product_string">Discount 50% for every product</string>
     <string name="order_now_string">Order now</string>
     <string name="faqs_string">FAQs</string>
-    <string name="user_zjh_string">User zJh</string>
+    <string name="user_zjh_string">User</string>
     <string name="account_ek1_string">Account</string>
     <string name="order_string">Order</string>
     <string name="general_information_string">General Information</string>
@@ -180,5 +180,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="edit">Edit</string>
 
 </resources>

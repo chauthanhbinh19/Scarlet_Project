@@ -1,17 +1,9 @@
 package com.example.scarlet.Data;
 
 public class Category {
-    private String id;
+    private String key;
     private String name_category;
-    private String img;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    private int img;
 
     public String getName_category() {
         return name_category;
@@ -21,20 +13,32 @@ public class Category {
         this.name_category = name_category;
     }
 
-    public String getImg() {
+    public int getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(int img) {
         this.img = img;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public Category() {
     }
 
-    public Category(String id, String name_category, String img) {
-        this.id = id;
+    public Category(String name_category, int img) {
         this.name_category = name_category;
         this.img = img;
+    }
+    public Category(String name_category,int img,String key){
+        this.name_category=name_category;
+        this.img=img;
+        this.key=key;
     }
 }

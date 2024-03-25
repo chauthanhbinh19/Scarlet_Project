@@ -1,20 +1,22 @@
 package com.example.scarlet.Data;
 
 public class Product {
-    private String id;
+    private String key;
     private String name;
     private String description;
-    private String category;
-    private String price;
-    private String point;
-    private String img;
+    private String categoryId;
+    private String categoryName;
+    private double price;
+    private int point;
+    private int img;
+    private int icon;
 
-    public String getId() {
-        return id;
+    public String getKey() {
+        return key;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getName() {
@@ -33,48 +35,70 @@ public class Product {
         this.description = description;
     }
 
-    public String getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public String getPrice() {
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getPoint() {
+    public int getPoint() {
         return point;
     }
 
-    public void setPoint(String point) {
+    public void setPoint(int point) {
         this.point = point;
     }
 
-    public String getImg() {
+    public int getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(int img) {
         this.img = img;
+    }
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 
     public Product() {
     }
 
-    public Product(String id, String name, String description, String category, String price, String point, String img) {
-        this.id = id;
+    public Product(String name, String description, String categoryId, String categoryName, double price, int point, int img) {
         this.name = name;
         this.description = description;
-        this.category = category;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.price = price;
         this.point = point;
         this.img = img;
+    }
+    public Product(String name, double price, int img,int icon,String key) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.icon=icon;
+        this.key=key;
     }
 }

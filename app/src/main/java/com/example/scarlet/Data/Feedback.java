@@ -1,18 +1,11 @@
 package com.example.scarlet.Data;
 
 public class Feedback {
-    private String id;
     private String customerId;
     private String customerName;
     private String content;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCustomerId() {
         return customerId;
@@ -41,8 +34,7 @@ public class Feedback {
     public Feedback() {
     }
 
-    public Feedback(String id, String customerId, String customerName, String content) {
-        this.id = id;
+    public Feedback(String customerId, String customerName, String content) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.content = content;

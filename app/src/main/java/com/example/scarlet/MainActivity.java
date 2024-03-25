@@ -3,11 +3,15 @@ package com.example.scarlet;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.scarlet.Adapter.CategoryAdapter;
+import com.example.scarlet.Data.Category;
+import com.example.scarlet.Data.text;
 import com.example.scarlet.Fragment.AccountFragment;
 import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Fragment.DealsFragment;
@@ -16,16 +20,21 @@ import com.example.scarlet.Fragment.HomeFragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
 
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        text text=new text();
+//        text.createProductData();
 
         MeowBottomNavigation bottomNavigation=findViewById(R.id.bottomNavigation);
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.home_ek1 ));
@@ -77,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             openHomeFragment();
                             break;
                 }
-                bottomNavigation.setCount(5,"1");
+//                bottomNavigation.setCount(5,"1");
                 return null;
             }
         });

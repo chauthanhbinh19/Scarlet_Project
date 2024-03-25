@@ -1,7 +1,6 @@
 package com.example.scarlet.Data;
 
 public class Order {
-    private String id;
     private String customerId;
     private String customerName;
     private String address;
@@ -11,13 +10,7 @@ public class Order {
     private int status;
     private Cart cart;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getCustomerId() {
         return customerId;
@@ -86,8 +79,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(String id, String customerId, String customerName, String address, String phone_number, String orderDate, String deliveryDate, int status, Cart cart) {
-        this.id = id;
+    public Order(String customerId, String customerName, String address, String phone_number, String orderDate, String deliveryDate, int status, Cart cart) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.address = address;
