@@ -1,530 +1,372 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent">
-
-	<RelativeLayout android:id="@+id/frame_2"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<RelativeLayout android:id="@+id/account"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		>
-
-		<View   android:id="@+id/_bg__frame_2_ek1"
-			android:background="@drawable/_bg__frame_2_ek2_shape"
-			android:layout_marginStart="0dp"
-			android:layout_marginTop="70dp"
-			android:layout_width="412dp"
-			android:layout_height="200dp" />
-
-		<RelativeLayout android:id="@+id/group_27"
-			android:layout_marginTop="120dp"
-			android:layout_marginStart="19dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			>
-
-			<View   android:id="@+id/ellipse_24"
-				android:background="@drawable/ellipse_lightpink"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="90dp"
-				android:layout_height="90dp" />
-
-			<ImageView android:id="@+id/user__2__2"
-				android:src="@drawable/user__2__2"
-				android:contentDescription="user__2__2"
-				android:layout_marginStart="9dp"
-				android:layout_marginTop="9dp"
-				android:layout_width="72dp"
-				android:layout_height="72dp" />
-
-		</RelativeLayout>
-
-
-		<RelativeLayout android:id="@+id/group_54"
-			android:layout_marginTop="120dp"
-			android:layout_marginStart="138dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			>
-
-
-
-			<TextView android:id="@+id/point__120"
-				android:textStyle="bold"
-				android:textSize="12sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="27dp"
-				android:layout_marginTop="45dp"
-				android:layout_width="86.2dp"
-				android:layout_height="28.2dp"
-				android:text="@string/point__120_string"
-				/>
-
-			<TextView android:id="@+id/abca"
-				android:textStyle="bold"
-				android:textSize="16sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="83.6dp"
-				android:layout_height="43.6dp"
-				android:text="@string/abca_string"
-				/>
-
-			<TextView android:id="@+id/member"
-				android:textStyle="bold"
-				android:textSize="18sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="119dp"
-				android:layout_marginTop="4dp"
-				android:layout_width="96.8dp"
-				android:layout_height="35.8dp"
-				android:text="@string/member_string"
-				/>
-
-			<ImageView android:id="@+id/vip_1"
-				android:src="@drawable/vip_1"
-				android:contentDescription="vip_1"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="45dp"
-				android:layout_width="20dp"
-				android:layout_height="20dp" />
-
-		</RelativeLayout>
-
-	</RelativeLayout>
-
-	<ScrollView android:id="@+id/edit_profile" 
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		>
+		android:layout_height="match_parent">
 
 		<RelativeLayout android:id="@+id/content_container"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" >
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
 
-			<RelativeLayout android:id="@+id/frame_9"
-				android:layout_marginTop="244dp"
-				android:layout_marginStart="0dp"
+			<View   android:id="@+id/_bg__change_password"
+				android:background="@drawable/_bg__change_password_shape"
+				 android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:layout_width="410dp"
+				android:layout_height="750dp" />
+
+			<TextView android:id="@+id/edit_title"
+						android:textStyle="bold"
+						android:layout_gravity="center_horizontal|center"
+						android:gravity="center"
+						android:textSize="20sp"
+						android:textColor="@color/black"
+						android:layout_centerHorizontal="true"
+						android:layout_marginTop="32dp"
+						android:layout_width="239dp"
+						android:layout_height="33dp"
+						android:text="Edit profile"
+						 />
+
+
+			<RelativeLayout android:id="@+id/back_btn"
+						android:layout_marginTop="22dp"
+						android:layout_marginStart="25dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						>
+
+
+						<View   android:id="@+id/rectangle_3"
+							android:background="@drawable/btn_burgundy"
+							android:layout_marginStart="0dp"
+							android:layout_marginTop="0dp"
+							android:layout_width="45dp"
+							android:layout_height="40dp" />
+
+
+						<ImageView android:id="@+id/vector"
+							android:src="@drawable/vector"
+							android:contentDescription="vector"
+							android:layout_centerHorizontal="true"
+							android:layout_centerVertical="true"
+							android:layout_width="15dp"
+							android:layout_height="15dp" />
+
+
+
+					</RelativeLayout>
+			<TextView android:id="@+id/general_information"
+				android:textStyle="bold"
+				android:textSize="18sp"
+				android:textColor="@color/_bg__group_1_ek1_color"
+				android:layout_marginLeft="21dp"
+				android:layout_marginTop="10dp"
+				android:layout_width="236.6dp"
+				android:layout_height="42.6dp"
+				android:layout_below="@id/edit_title"
+				android:text="@string/general_information_string"
+				/>
+
+			<TextView
+				android:id="@+id/mobile_number"
+				android:layout_width="236.6dp"
+				android:layout_height="42.6dp"
+				android:layout_marginLeft="21dp"
+				android:layout_marginTop="10dp"
+				android:layout_below="@+id/address_box"
+				android:text="@string/mobile_number_string"
+				android:textColor="@color/_bg__group_1_ek1_color"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+
+			<TextView
+				android:id="@+id/email"
+				android:layout_width="236.6dp"
+				android:layout_height="42.6dp"
+				android:layout_marginLeft="21dp"
+				android:layout_marginTop="10dp"
+				android:layout_below="@+id/flag"
+				android:text="@string/email_string"
+				android:textColor="@color/_bg__group_1_ek1_color"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+
+			<RelativeLayout android:id="@+id/first_name_box"
+				android:layout_marginStart="27dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/general_information"
+				>
+
+
+
+				<View   android:id="@+id/rectangle_44"
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="135dp"
+					android:layout_height="48dp" />
+
+				<EditText android:id="@+id/first_name"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="24dp"
+					android:layout_width="104.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:hint="First name"
+					/>
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/flag"
+				android:layout_marginStart="27dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/mobile_number"
+				>
+
+
+				<View   android:id="@+id/rectangle_44_ek1"
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="91dp"
+					android:layout_height="48dp" />
+
+				<TextView android:id="@+id/__84"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:layout_centerVertical="true"
+					android:layout_marginLeft="45dp"
+					android:layout_width="46.4dp"
+					android:layout_height="27.4dp"
+					android:text="@string/__84_string"
+					/>
+
+				<ImageView android:id="@+id/vietnam_1"
+					android:src="@drawable/vietnam_1"
+					android:layout_centerVertical="true"
+					android:layout_marginStart="10dp"
+					android:layout_marginTop="5dp"
+					android:layout_width="30dp"
+					android:layout_height="30dp" />
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/gender_box"
+				android:layout_marginStart="27dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dp"
+				android:layout_below="@+id/first_name_box"
+				>
+
+
+				<View   android:id="@+id/rectangle_44_ek2"
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="350dp"
+					android:layout_height="48dp" />
+
+				<EditText android:id="@+id/gender"
+					android:textSize="14sp"
+					android:textColor="@color/lightbrown"
+					android:layout_marginLeft="24dp"
+					android:layout_width="239.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:hint="@string/gender_string"
+					/>
+
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/birthday_box"
+				android:layout_marginTop="10dp"
+				android:layout_marginStart="27dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/gender_box"
+				>
+
+
+
+				<View   android:id="@+id/rectangle_44_ek3"
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="350dp"
+					android:layout_height="48dp" />
+
+				<EditText android:id="@+id/birthday"
+					android:textSize="14sp"
+					android:textColor="@color/lightbrown"
+					android:layout_marginLeft="22dp"
+					android:layout_width="239.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:inputType="date"
+					android:hint="@string/birthday_string"
+					/>
+
+			</RelativeLayout>
+
+			<RelativeLayout android:id="@+id/address_box"
+				android:layout_marginTop="10dp"
+				android:layout_marginStart="27dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/birthday_box"
+				>
+
+
+
+				<View
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="350dp"
+					android:layout_height="48dp" />
+
+				<EditText android:id="@+id/address"
+					android:textSize="14sp"
+					android:textColor="@color/lightbrown"
+					android:layout_marginLeft="22dp"
+					android:layout_width="239.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:hint="@string/address_string"
+					/>
+
+			</RelativeLayout>
+
+			<RelativeLayout android:id="@+id/email_box"
+				android:layout_below="@+id/email"
+				android:layout_marginStart="27dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				>
 
-				<View   android:id="@+id/_bg__frame_9_ek1"
-					android:background="@drawable/_bg_white_radius30"
+
+
+				<View   android:id="@+id/rectangle_44_ek4"
+					android:background="@drawable/rectangle_lightpink"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:layout_width="412dp"
-					android:layout_height="500dp" />
+					android:layout_width="350dp"
+					android:layout_height="48dp" />
 
-				<TextView android:id="@+id/general_information"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/_bg__group_1_ek1_color"
-					android:layout_marginLeft="21dp"
-					android:layout_marginTop="10dp"
-					android:layout_width="236.6dp"
-					android:layout_height="42.6dp"
-					android:text="@string/general_information_string"
+				<EditText android:id="@+id/email_input"
+					android:textSize="14sp"
+					android:textColor="@color/lightbrown"
+					android:layout_marginLeft="16dp"
+					android:layout_width="239.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:hint="@string/email_ek1_string"
 					/>
 
-				<TextView android:id="@+id/edit_ek1"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/burgundy"
-					android:layout_marginLeft="320dp"
-					android:layout_marginTop="10dp"
-					android:layout_width="51.6dp"
-					android:layout_height="42.6dp"
-					android:text="Save"
+			</RelativeLayout>
+
+
+			<RelativeLayout android:id="@+id/last_name_box"
+				android:layout_marginStart="185dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/general_information"
+				>
+
+
+				<View   android:id="@+id/rectangle_45"
+					android:background="@drawable/rectangle_lightpink"
+					android:layout_marginStart="0dp"
+					android:layout_marginTop="0dp"
+					android:layout_width="190dp"
+					android:layout_height="48dp" />
+
+				<EditText android:id="@+id/last_name"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="12dp"
+					android:layout_width="104.4dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:hint="Last name"
 					/>
 
-				<TextView
-					android:id="@+id/mobile_number"
-					android:layout_width="236.6dp"
-					android:layout_height="42.6dp"
-					android:layout_marginLeft="21dp"
-					android:layout_marginTop="210dp"
-					android:text="@string/mobile_number_string"
-					android:textColor="@color/_bg__group_1_ek1_color"
-					android:textSize="16sp"
-					android:textStyle="bold" />
-
-				<TextView
-					android:id="@+id/email"
-					android:layout_width="236.6dp"
-					android:layout_height="42.6dp"
-					android:layout_marginLeft="21dp"
-					android:layout_marginTop="290dp"
-					android:text="@string/email_string"
-					android:textColor="@color/_bg__group_1_ek1_color"
-					android:textSize="16sp"
-					android:textStyle="bold" />
-
-				<TextView
-					android:id="@+id/linked_accounts"
-					android:layout_width="236.6dp"
-					android:layout_height="42.6dp"
-					android:layout_marginLeft="21dp"
-					android:layout_marginTop="375dp"
-					android:text="@string/linked_accounts_string"
-					android:textColor="@color/_bg__group_1_ek1_color"
-					android:textSize="16sp"
-					android:textStyle="bold" />
+			</RelativeLayout>
 
 
-				<RelativeLayout android:id="@+id/group_29"
-					android:layout_marginTop="53dp"
-					android:layout_marginStart="27dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
+			<RelativeLayout android:id="@+id/phone_box"
+				android:layout_below="@+id/mobile_number"
+				android:layout_marginStart="129dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				>
 
 
 
-					<View   android:id="@+id/rectangle_44"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="162dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/user"
-						android:textSize="14sp"
-						android:textColor="@color/lightbrown"
-						android:layout_marginLeft="24dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="104.4dp"
-						android:layout_height="27.88dp"
-						android:text="Last Name"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_32"
-					android:layout_marginTop="242dp"
-					android:layout_marginStart="27dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-
-					<View   android:id="@+id/rectangle_44_ek1"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="91dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/__84"
-						android:textSize="14sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="45dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="46.4dp"
-						android:layout_height="27.4dp"
-						android:text="@string/__84_string"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_30"
-					android:layout_marginTop="109dp"
-					android:layout_marginStart="27dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-					<View   android:id="@+id/rectangle_44_ek2"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="350dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/gender"
-						android:textSize="14sp"
-						android:textColor="@color/lightbrown"
-						android:layout_marginLeft="24dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="239.4dp"
-						android:layout_height="27.88dp"
-						android:text="@string/gender_string"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_31"
-					android:layout_marginTop="158dp"
-					android:layout_marginStart="27dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-
-					<View   android:id="@+id/rectangle_44_ek3"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="350dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/birthday"
-						android:textSize="14sp"
-						android:textColor="@color/lightbrown"
-						android:layout_marginLeft="22dp"
-						android:layout_marginTop="6dp"
-						android:layout_width="239.4dp"
-						android:layout_height="31.4dp"
-						android:text="@string/birthday_string"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_34"
-					android:layout_marginTop="320dp"
-					android:layout_marginStart="27dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-
-					<View   android:id="@+id/rectangle_44_ek4"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="350dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/email_ek1"
-						android:textSize="14sp"
-						android:textColor="@color/lightbrown"
-						android:layout_marginLeft="16dp"
-						android:layout_marginTop="9dp"
-						android:layout_width="239.4dp"
-						android:layout_height="29.4dp"
-						android:text="@string/email_ek1_string"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_28"
-					android:layout_marginTop="53dp"
-					android:layout_marginStart="185dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-					<View   android:id="@+id/rectangle_45"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="30dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="162dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/abca_ek1"
-						android:textSize="14sp"
-						android:textColor="@color/lightbrown"
-						android:layout_marginLeft="45dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="104.4dp"
-						android:layout_height="27.88dp"
-						android:text="First Name"
-						/>
-
-				</RelativeLayout>
-
-
-				<RelativeLayout android:id="@+id/group_33"
-					android:layout_marginTop="242dp"
-					android:layout_marginStart="129dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-
-					<View   android:id="@+id/rectangle_45_ek1"
-						android:background="@drawable/rectangle_lightpink"
-						android:layout_marginStart="0dp"
-						android:layout_marginTop="0dp"
-						android:layout_width="245dp"
-						android:layout_height="40dp" />
-
-					<TextView android:id="@+id/_0909432123"
-						android:textSize="14sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="17dp"
-						android:layout_marginTop="8dp"
-						android:layout_width="142.15dp"
-						android:layout_height="27.88dp"
-
-						/>
-
-					<ImageView android:id="@+id/insurance_1"
-						android:src="@drawable/insurance_1"
-						android:contentDescription="insurance_1"
-						android:layout_marginStart="200dp"
-						android:layout_marginTop="10dp"
-						android:layout_width="20dp"
-						android:layout_height="20dp" />
-
-				</RelativeLayout>
-
-				<View   android:id="@+id/rectangle_45_ek2"
+				<View   android:id="@+id/rectangle_45_ek1"
 					android:background="@drawable/rectangle_lightpink"
 					android:layout_marginStart="0dp"
-					android:layout_marginTop="407dp"
-					android:layout_width="412dp"
-					android:layout_height="46dp" />
+					android:layout_marginTop="0dp"
+					android:layout_width="245dp"
+					android:layout_height="48dp" />
 
-				<View   android:id="@+id/rectangle_46"
-					android:background="@drawable/rectangle_lightpink"
-					android:layout_marginStart="0dp"
-					android:layout_marginTop="453dp"
-					android:layout_width="412dp"
-					android:layout_height="46dp" />
+				<EditText android:id="@+id/phone"
+					android:textSize="14sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="17dp"
+					android:layout_width="142.15dp"
+					android:layout_height="48dp"
+					android:layout_centerVertical="true"
+					android:background="@color/lightpink"
+					android:text="Phone number"
+					/>
 
-				<ImageView
-					android:id="@+id/line_5"
-					android:layout_width="300dp"
-					android:layout_height="2.02dp"
-					android:layout_marginStart="0dp"
-					android:layout_marginTop="453.02dp"
-					android:contentDescription="line_5"
-					android:src="@drawable/line_5" />
-
-				<ImageView android:id="@+id/icons8_google_240_1"
-					android:src="@drawable/icons8_google_240_1"
-					android:contentDescription="icons8_google_240_1"
-					android:layout_marginStart="12dp"
-					android:layout_marginTop="415dp"
-					android:layout_width="30dp"
-					android:layout_height="30dp" />
-
-				<ImageView android:id="@+id/icons8_facebook_240_1"
-					android:src="@drawable/icons8_facebook_240_1"
-					android:contentDescription="icons8_facebook_240_1"
-					android:layout_marginStart="12dp"
-					android:layout_marginTop="460dp"
-					android:layout_width="30dp"
-					android:layout_height="30dp" />
-
-				<TextView
-					android:id="@+id/google"
-					android:layout_width="236.6dp"
-					android:layout_height="45dp"
-					android:layout_marginLeft="53dp"
-					android:layout_marginTop="418dp"
-					android:text="@string/google_string"
-					android:textColor="@color/burgundy"
-					android:textSize="16sp" />
-
-				<TextView
-					android:id="@+id/facebook"
-					android:layout_width="236.6dp"
-					android:layout_height="45dp"
-					android:layout_marginLeft="53dp"
-					android:layout_marginTop="465dp"
-					android:text="@string/facebook_string"
-					android:textColor="@color/burgundy"
-					android:textSize="16sp" />
-
-				<ImageView android:id="@+id/vietnam_1"
-					android:src="@drawable/vietnam_1"
-					android:contentDescription="vietnam_1"
-					android:layout_marginStart="36dp"
-					android:layout_marginTop="247dp"
-					android:layout_width="30dp"
-					android:layout_height="30dp" />
-
-				<View   android:id="@+id/ellipse_25"
-					android:background="@drawable/ellipse_lightgray_small"
-					android:layout_marginStart="325dp"
-					android:layout_marginTop="420dp"
-					android:layout_width="20dp"
-					android:layout_height="20dp" />
-
-				<View   android:id="@+id/ellipse_26"
-					android:background="@drawable/ellipse_lightgray_small"
-					android:layout_marginStart="325dp"
-					android:layout_marginTop="466dp"
+				<ImageView android:id="@+id/insurance_1"
+					android:src="@drawable/insurance_1"
+					android:contentDescription="insurance_1"
+					android:layout_marginStart="200dp"
+					android:layout_marginTop="10dp"
 					android:layout_width="20dp"
 					android:layout_height="20dp" />
 
 			</RelativeLayout>
 
-		</RelativeLayout>
-
-	</ScrollView>
-
-
-
-	<RelativeLayout
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		android:background="@color/white"
-		>
-		<RelativeLayout android:id="@+id/back_btn"
-			android:layout_marginTop="22dp"
-			android:layout_marginStart="25dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			>
-
-
-			<View   android:id="@+id/rectangle_3"
-				android:background="@drawable/btn_burgundy"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="45dp"
-				android:layout_height="40dp" />
-
-
-			<ImageView android:id="@+id/vector"
-				android:src="@drawable/vector"
-				android:contentDescription="vector"
-				android:layout_centerHorizontal="true"
-				android:layout_centerVertical="true"
-				android:layout_width="15dp"
-				android:layout_height="15dp" />
+				<Button
+					android:id="@+id/btn"
+					android:layout_marginTop="20dp"
+					android:layout_centerHorizontal="true"
+					android:gravity="center"
+					android:background="@drawable/rectangle_burgundy_radius"
+					android:textStyle="bold"
+					android:layout_width="300dp"
+					android:layout_height="48dp"
+					android:textSize="20sp"
+					android:layout_below="@+id/email_box"
+					android:textColor="@color/white"
+					android:theme="@style/MyButtonTheme"
+					android:text="Save"/>
 
 
 
-		</RelativeLayout>
 
-
-		<TextView android:id="@+id/profile_1"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:layout_centerHorizontal="true"
-			android:textSize="20sp"
-			android:textColor="@color/black"
-			android:layout_marginLeft="110dp"
-			android:layout_marginTop="20dp"
-			android:layout_width="191dp"
-			android:layout_height="40dp"
-			android:text="@string/profile_string"
-			/>
-
+			</RelativeLayout>
 	</RelativeLayout>
 
 

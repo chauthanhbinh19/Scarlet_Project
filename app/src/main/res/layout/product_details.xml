@@ -186,7 +186,6 @@
 				android:layout_marginLeft="5dp"
 				android:layout_width="30dp"
 				android:layout_height="30dp"
-				android:background="@drawable/bubble_tea"
 				android:layout_below="@+id/product_details_description"
 				android:layout_toRightOf="@+id/product_details_category"/>
 

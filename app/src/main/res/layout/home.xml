@@ -6,6 +6,7 @@
 	<ScrollView android:id="@+id/food___all" 
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
+		android:background="@color/white"
 		>
 
 		<RelativeLayout android:id="@+id/content_container" 
@@ -15,7 +16,8 @@
 
 			<com.google.android.material.imageview.ShapeableImageView
 				android:layout_width="match_parent"
-				android:layout_marginLeft="50dp"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
 				android:layout_height="210dp"
 				android:src="@drawable/slider_img2"
 				android:background="@color/burgundy"
@@ -360,7 +362,7 @@
 				android:layout_height="25dp" />
 
 
-		<EditText android:id="@+id/search"
+		<TextView android:id="@+id/search"
 			android:textStyle="bold"
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="left|center_vertical"
@@ -368,7 +370,7 @@
 			android:textSize="16sp"
 			android:textColor="@color/burgundy"
 			android:layout_marginLeft="65dp"
-			android:layout_width="200dp"
+			android:layout_width="300dp"
 			android:layout_height="48dp"
 			android:hint="@string/search_string"
 			android:textColorHint="@color/burgundy"

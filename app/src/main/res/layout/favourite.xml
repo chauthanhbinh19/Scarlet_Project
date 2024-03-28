@@ -109,7 +109,13 @@
 					android:layout_height="3.19dp" />
 
 			</RelativeLayout>
-
+				<EditText android:id="@+id/edit_btn_1"
+					android:layout_below="@+id/frame_6"
+					android:layout_centerHorizontal="true"
+					android:layout_width="100dp"
+					android:layout_height="48dp"
+					android:clickable="false"
+					android:hint="cccc"/>
 
 
 		</RelativeLayout>

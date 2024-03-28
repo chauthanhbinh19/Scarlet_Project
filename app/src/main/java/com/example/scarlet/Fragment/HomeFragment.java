@@ -1,22 +1,20 @@
 package com.example.scarlet.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.scarlet.Adapter.CategoryAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
@@ -24,6 +22,7 @@ import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
+import com.example.scarlet.SearchProductActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,6 +45,14 @@ public class HomeFragment extends Fragment {
         validateUser(view);
         createCategory(view);
         createTrend(view);
+        RelativeLayout search=view.findViewById(R.id.search_bar);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), SearchProductActivity.class);
+                startActivity(intent);
+            }
+        });
 //        createProduct(view);
         return view;
     }

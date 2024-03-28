@@ -1,10 +1,12 @@
 package com.example.scarlet.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +20,7 @@ import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
+import com.example.scarlet.SearchProductActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +40,15 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.product, container, false);
+
+        RelativeLayout search=view.findViewById(R.id.search_bar);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), SearchProductActivity.class);
+                startActivity(intent);
+            }
+        });
         createCategory(view);
         getProductData(view);
         return view;

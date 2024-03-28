@@ -28,6 +28,15 @@
             android:name=".SignUpActivity"
             android:exported="true"/>
         <activity
+            android:name=".ForgotPasswordActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".SearchProductActivity"
+            android:exported="true"/>
+        <activity
             android:name=".ProductDetailActivity"
             android:exported="true"/>
     </application>

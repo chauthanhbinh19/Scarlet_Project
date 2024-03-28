@@ -1,6 +1,7 @@
 package com.example.scarlet.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.scarlet.EditProfileActivity;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,14 +46,8 @@ public class ProfileFragment extends Fragment {
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(!isEditing){
-//                    enableEditing(view);
-//                    edit_btn.setText("Save");
-//                }else{
-//                    disableEditing(view);
-//                    edit_btn.setText("Edit");
-//                }
-//                isEditing=!isEditing;
+                Intent intent=new Intent(getContext(), EditProfileActivity.class);
+                startActivity(intent);
             }
         });
         return view;
