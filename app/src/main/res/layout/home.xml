@@ -247,8 +247,7 @@
 		</RelativeLayout>
 
 	</ScrollView>
-	<RelativeLayout
-		android:id="@+id/hi_bar"
+	<RelativeLayout android:id="@+id/hi_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintTop_toTopOf="parent"
@@ -262,7 +261,7 @@
 			android:id="@+id/welcome_message"
 			android:layout_marginTop="20dp"
 			android:layout_marginStart="80dp"
-			android:textSize="20sp"
+			android:textSize="18sp"
 			android:text="Hi, Xxxx!"
 			android:singleLine="true"
 			android:layout_centerVertical="true"/>

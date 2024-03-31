@@ -41,7 +41,7 @@ public class SearchProductActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 
-        createProduct(recyclerView);
+        getProductData(recyclerView);
         Button back_btn=(Button) findViewById(R.id.cancled_btn);
         EditText search=(EditText) findViewById(R.id.search);
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +60,7 @@ public class SearchProductActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String keyword=s.toString().trim();
                 if(keyword==null || keyword.isEmpty()){
-                    createProduct(recyclerView);
+                    getProductData(recyclerView);
                 }else{
                     searchProducts(keyword, recyclerView);
                 }
@@ -72,7 +72,7 @@ public class SearchProductActivity extends AppCompatActivity {
             }
         });
     }
-    private void createProduct(RecyclerView recyclerView){
+    private void getProductData(RecyclerView recyclerView){
         productList=new ArrayList<>();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -97,8 +97,10 @@ public class SearchProductActivity extends AppCompatActivity {
                                 productList.add(productWithIcon);
 
                             }
-                            productAdapter=new ProductSearchAdapter(productList);
-                            recyclerView.setAdapter(productAdapter);
+//                            if(productList.size()>0){
+//                                productAdapter=new ProductSearchAdapter(productList);
+//                                recyclerView.setAdapter(productAdapter);
+//                            }
                         }
 
                         @Override
@@ -118,15 +120,13 @@ public class SearchProductActivity extends AppCompatActivity {
     private void searchProducts(String keyword, RecyclerView recyclerView){
         productList=new ArrayList<>();
 
-        DatabaseReference categoryRef = FirebaseDatabase.getInstance().getReference("category");
-        Query query=FirebaseDatabase.getInstance().getReference("product")
-                .orderByChild("name")
-                .startAt(keyword)
-                .endAt(keyword+"uf8ff");
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference productRef = database.getReference("product");
+        DatabaseReference categoryRef = database.getReference("category");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot product: snapshot.getChildren()){
+            public void onDataChange(DataSnapshot productSnapshot) {
+                for (DataSnapshot product : productSnapshot.getChildren()) {
                     String productKey=product.getKey();
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
@@ -140,7 +140,7 @@ public class SearchProductActivity extends AppCompatActivity {
                                 int icon = categorySnapshot.child("img").getValue(int.class);
                                 Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                 productList.add(productWithIcon);
-
+                                productList=filterProduct(productList,keyword);
                             }
                             productAdapter=new ProductSearchAdapter(productList);
                             recyclerView.setAdapter(productAdapter);
@@ -155,10 +155,19 @@ public class SearchProductActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
             }
         });
+    }
+    private List<Product> filterProduct(List<Product> productList,String keyword){
+        List<Product> result=new ArrayList<>();
+        for(Product product : productList){
+            if(product.getName().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(product);
+            }
+        }
+        return result;
     }
 
 }

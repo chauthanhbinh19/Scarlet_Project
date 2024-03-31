@@ -60,7 +60,7 @@
             android:text="@string/_120_000__string"
             />
 
-        <ImageView android:id="@+id/add_1"
+        <ImageView android:id="@+id/add_btn"
             android:src="@drawable/plus_1"
             android:layout_alignParentRight="true"
             android:layout_marginTop="40dp"

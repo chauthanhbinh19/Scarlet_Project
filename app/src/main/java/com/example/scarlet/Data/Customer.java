@@ -10,6 +10,7 @@ public class Customer {
     private String email;
     private String username;
     private String password;
+    private String membershipId;
     private int avatar_img;
 
     public String getFirst_name() {
@@ -60,6 +61,14 @@ public class Customer {
         this.avatar_img = avatar_img;
     }
 
+    public String getMembershipId() {
+        return membershipId;
+    }
+
+    public void setMembershipId(String membershipId) {
+        this.membershipId = membershipId;
+    }
+
     public Customer(){
 
     }
@@ -76,6 +85,7 @@ public class Customer {
         this.username = username;
         this.password = password;
         this.avatar_img = avatar_img;
+        this.membershipId="-1";
     }
 
     public String getGender() {

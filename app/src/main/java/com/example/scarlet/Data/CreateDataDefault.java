@@ -5,9 +5,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class text {
+public class CreateDataDefault {
     public void createCategoryData(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("category");
@@ -187,5 +188,107 @@ public class text {
         productList.add(new Product("Chocolate Cookies","","8","Cookies",129000,100,R.drawable.dsc03142_optimized));
 
         myRef.setValue(productList);
+    }
+    public void createVoucherData()  {
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("deal");
+        List<Deal> dealList=new ArrayList<>();
+
+        List<String> productIdList=new ArrayList<>();
+        List<String> categoryIdList=new ArrayList<>();
+        productIdList.add("0");
+
+        Date date = new Date();
+        dealList.add(new Deal("Discount 10% for cake","A11A22A30",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A31",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A33",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A34",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A35",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A36",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A37",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A48",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+
+        dealList.add(new Deal("Discount 10% for cake","A11A22A38",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A39",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A40",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A41",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A42",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+
+        dealList.add(new Deal("Discount 10% for cake","A11A22A43",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A44",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A45",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A46",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        dealList.add(new Deal("Discount 10% for cake","A11A22A47",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+
+        myRef.setValue(dealList);
+    }
+    public void createMembershipData(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("membership");
+        List<Membership> membershipList=new ArrayList<>();
+        List<String> newList=new ArrayList<>();
+        membershipList.add(new Membership("New",0,newList));
+        List<String>bronzeList=new ArrayList<>();
+        bronzeList.add("Get 1 piece of birthday cake");
+        bronzeList.add("Privileges to redeem incentives with accumulated points");
+        bronzeList.add("Free 1 snack for orders over 100,000 VND");
+        membershipList.add(new Membership("Bronze",1,bronzeList));
+        List<String>silverList=new ArrayList<>();
+        silverList.add("Get 1 piece of birthday cake");
+        silverList.add("Privileges to redeem incentives with accumulated points");
+        silverList.add("Buy 2 get 1 free");
+        membershipList.add(new Membership("Silver",2,silverList));
+        List<String>goldList=new ArrayList<>();
+        goldList.add("Get 1 piece of birthday cake");
+        goldList.add("Privileges to redeem incentives with accumulated points");
+        goldList.add("1 free coffee or tea");
+        membershipList.add(new Membership("Gold",3,goldList));
+        List<String>diamondList=new ArrayList<>();
+        diamondList.add("Get 1 piece of birthday cake");
+        diamondList.add("Privileges to redeem incentives with accumulated points");
+        diamondList.add("1 free drink of any kind");
+        diamondList.add("Receive 1.5 accumulated points every day");
+        diamondList.add("Opportunity to experience privileges for the first time");
+        membershipList.add(new Membership("Diamond",4,diamondList));
+        myRef.setValue(membershipList);
+    }
+    public void createOfferData(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("offer");
+        List<Offer> offerList=new ArrayList<>();
+        Date startDate=new Date();
+        Date endDate=new Date();
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 18000VND",350,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 30000VND",400,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.setValue(offerList);
+    }
+    public void createOfferTransactionData(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("offer_transaction");
+        List<OfferTransaction> offerTransactionList=new ArrayList<>();
+        offerTransactionList.add(new OfferTransaction("-NtPjHAcxZSIj1aKHS3B","0","AAA",new Date(),100));
+        offerTransactionList.add(new OfferTransaction("-NtPjHAcxZSIj1aKHS3B","0","AAA",new Date(),100));
+        offerTransactionList.add(new OfferTransaction("-NtPjHAcxZSIj1aKHS3B","0","AAA",new Date(),100));
+        offerTransactionList.add(new OfferTransaction("-NtPjHAcxZSIj1aKHS3B","0","AAA",new Date(),100));
+        offerTransactionList.add(new OfferTransaction("-NtPjHAcxZSIj1aKHS3B","0","AAA",new Date(),100));
+        myRef.setValue(offerTransactionList);
+    }
+    public void createCartData(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=database.getReference("cart");
+        List<Cart> cartList=new ArrayList<>();
+        List<String> productIdList=new ArrayList<>();
+        productIdList.add("0");
+        productIdList.add("1");
+        cartList.add(new Cart("-NtPjHAcxZSIj1aKHS3B",productIdList));
+        myRef.setValue(cartList);
     }
 }

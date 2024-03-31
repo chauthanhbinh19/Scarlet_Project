@@ -49,11 +49,11 @@ public class ProductFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        createCategory(view);
+        getCategoryData(view);
         getProductData(view);
         return view;
     }
-    private void createCategory(View view){
+    private void getCategoryData(View view){
         RecyclerView recyclerView= view.findViewById(R.id.category_recyclerView);
         categoryList=new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
@@ -70,8 +70,10 @@ public class ProductFragment extends Fragment {
                     Category category=new Category(categoryName,categoryImage,categoryKey);
                     categoryList.add(category);
                 }
-                categoryAdapter=new CategoryAdapter(categoryList);
-                recyclerView.setAdapter(categoryAdapter);
+                if(categoryList.size()>0){
+                    categoryAdapter=new CategoryAdapter(categoryList);
+                    recyclerView.setAdapter(categoryAdapter);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -113,8 +115,10 @@ public class ProductFragment extends Fragment {
                                             productList.add(productWithIcon);
                                         }
                                     }
-                                    productAdapter=new ProductAdapter(productList);
-                                    recyclerView.setAdapter(productAdapter);
+                                    if(productList.size()>0){
+                                        productAdapter=new ProductAdapter(productList);
+                                        recyclerView.setAdapter(productAdapter);
+                                    }
                                 }
 
                                 @Override

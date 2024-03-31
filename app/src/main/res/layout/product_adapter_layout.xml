@@ -62,7 +62,7 @@
             android:text="@string/_120_000__string"
             />
 
-        <ImageView android:id="@+id/add_1"
+        <ImageView android:id="@+id/add_btn"
             android:src="@drawable/add_1"
             android:layout_marginStart="120dp"
             android:layout_marginTop="130dp"

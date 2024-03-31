@@ -2,205 +2,302 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="wrap_content"
->
-	<ScrollView android:id="@+id/deals_page"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" >
-
-		<RelativeLayout android:id="@+id/content_container" 
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content" >
-
-			<View   android:id="@+id/_bg__deals"
-				android:background="@drawable/_bg__white"
-				 android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="match_parent"
-				android:layout_height="800dp" />
-
-			<RelativeLayout android:id="@+id/frame_6"
-				android:layout_marginTop="150dp"
-				android:layout_marginStart="0dp"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				>
-
-				<View   android:id="@+id/_bg__frame_6_ek1"
-					android:background="@drawable/_bg__frame_lightgray"
-					 android:layout_marginStart="0dp"
-					android:layout_marginTop="0dp"
-					android:layout_width="410dp"
-					android:layout_height="176dp" />
-
-				<View   android:id="@+id/rectangle_12"
-					android:background="@drawable/rectangle_white_radius"
-					 android:layout_marginStart="30dp"
-					android:layout_marginTop="28dp"
-					android:layout_width="120dp"
-					android:layout_height="120dp" />
-
-				<TextView android:id="@+id/black_friday"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/black"
-					android:layout_marginStart="163dp"
-					android:layout_marginTop="28dp"
-					android:layout_width="149.8dp"
-					android:layout_height="32.8dp"
-					android:text="@string/black_friday_string"
-					 />
-
-				<TextView android:id="@+id/discount_50__for_every_product"
-					android:textStyle="bold"
-					android:textSize="12sp"
-					android:textColor="@color/black"
-					android:layout_marginStart="163dp"
-					android:layout_marginTop="61dp"
-					android:layout_width="209.2dp"
-					android:layout_height="30.2dp"
-					android:text="@string/discount_50__for_every_product_string"
-					 />
-
-				<ImageView android:id="@+id/dsc02313_optimized"
-					android:src="@drawable/dsc02313_optimized"
-					android:contentDescription="dsc02313_optimized"
-					 android:layout_marginStart="30dp"
-					android:layout_marginTop="28dp"
-					android:layout_width="120dp"
-					android:layout_height="120dp" />
-
-				<ImageView android:id="@+id/line_1"
-					android:src="@drawable/line_1"
-					android:contentDescription="line_1"
-					 android:layout_marginStart="25dp"
-					android:layout_marginTop="175.48dp"
-					android:layout_width="312dp"
-					android:layout_height="0.52dp" />
-
-				<Button  android:id="@+id/order_now"
-					android:background="@drawable/rectangle_burgundy_radius"
-					 android:layout_marginStart="254dp"
-					android:layout_marginTop="113dp"
-					android:layout_width="84dp"
-					android:layout_height="48dp"
-					android:textStyle="bold"
-					android:layout_gravity="center_horizontal|center"
-					android:gravity="center"
-					android:textSize="14sp"
-					android:textColor="@color/white"
-					android:layout_marginLeft="257dp"
-					android:text="@string/order_now_string"
-					android:theme="@style/MyButtonTheme"
-					/>
-
-			</RelativeLayout>
-
-		</RelativeLayout>
-
-	</ScrollView>
-
-	<RelativeLayout
+	android:layout_height="wrap_content">
+	<RelativeLayout android:id="@+id/hi_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintTop_toTopOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent">
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="80dp"
-			android:background="@color/white"/>
-
-		<RelativeLayout android:id="@+id/back_btn"
-		android:layout_marginTop="22dp"
-		android:layout_marginStart="25dp"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		>
-
-		<View   android:id="@+id/rectangle_3"
-			android:background="@drawable/btn_burgundy"
-			android:layout_marginStart="0dp"
-			android:layout_marginTop="0dp"
-			android:layout_width="45dp"
-			android:layout_height="40dp" />
-
-
-		<ImageView android:id="@+id/vector"
-			android:src="@drawable/vector"
-			android:contentDescription="vector"
-			android:layout_centerHorizontal="true"
-			android:layout_centerVertical="true"
-			android:layout_width="15dp"
-			android:layout_height="15dp" />
-
-
-
-	</RelativeLayout>
-
-		<TextView android:id="@+id/deals_1"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:layout_centerHorizontal="true"
-
+		app:layout_constraintLeft_toLeftOf="parent"
+		android:paddingTop="5dp"
+		android:background="@color/white">
+		<TextView
+			android:layout_width="160dp"
+			android:layout_height="wrap_content"
+			android:id="@+id/favourite_text"
+			android:layout_marginTop="20dp"
+			android:layout_marginStart="80dp"
 			android:textSize="20sp"
-			android:textColor="@color/black"
-			android:layout_marginLeft="124dp"
-			android:layout_marginTop="28dp"
-			android:layout_width="113dp"
-			android:layout_height="33dp"
+			android:textStyle="bold"
 			android:text="@string/deals_string"
+			android:singleLine="true"
+			android:textColor="@color/burgundy"
+			android:layout_centerVertical="true"
+			android:gravity="center_horizontal"
+			android:layout_centerHorizontal="true"/>
+
+		<ImageView
+			android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:src="@drawable/rollcake"
+			android:layout_marginStart="20dp"
+			android:layout_centerVertical="true"
 			/>
-		<View   android:id="@+id/rectangle_1"
-			android:background="@drawable/rectangle_lightpink"
-			android:layout_marginStart="0dp"
-			android:layout_marginTop="90dp"
-			android:layout_width="412dp"
-			android:layout_height="50dp" />
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/favourite_text"
+			android:layout_alignParentRight="true"
+			android:layout_marginLeft="60dp"
+			android:layout_marginRight="20dp"
+			android:layout_marginTop="7dp">
 
+			<ImageView
+				android:layout_width="40dp"
+				android:layout_height="40dp"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+				android:background="@drawable/rectangle_circle_white"
+				/>
 
+			<ImageView
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+				android:src="@drawable/notification"
+				/>
+		</RelativeLayout>
 
-		<TextView android:id="@+id/uit"
-			android:textStyle="bold"
-			android:textSize="14sp"
-			android:textColor="@color/black"
-			android:layout_marginLeft="59dp"
-			android:layout_marginTop="100dp"
-			android:layout_width="119.4dp"
-			android:layout_height="31.4dp"
-			android:text="@string/uit_string"
-			/>
-
-		<TextView android:id="@+id/_20_25min"
-			android:textStyle="bold"
-			android:textSize="14sp"
-			android:textColor="@color/black"
-			android:layout_marginLeft="277dp"
-			android:layout_marginTop="100dp"
-			android:layout_width="109.4dp"
-			android:layout_height="31.4dp"
-			android:text="@string/_20_25min_string"
-			/>
-
-
-
-		<ImageView android:id="@+id/vector_ek1"
-			android:src="@drawable/vector_ek1"
-			android:contentDescription="vector_ek1"
-			android:layout_marginStart="34dp"
-			android:layout_marginTop="100dp"
-			android:layout_width="20dp"
-			android:layout_height="20dp" />
-
-
-		<ImageView android:id="@+id/vector_ek2"
-			android:src="@drawable/vector_ek2"
-			android:contentDescription="vector_ek2"
-			android:layout_marginStart="250dp"
-			android:layout_marginTop="100dp"
-			android:layout_width="20dp"
-			android:layout_height="20dp" />
 	</RelativeLayout>
+	<RelativeLayout android:id="@+id/voucher_info"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginBottom="10dp"
+		android:background="@color/white2"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/hi_bar"
+		android:layout_below="@+id/hi_bar">
 
+		<RelativeLayout android:id="@+id/voucher_box"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp">
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="150dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginLeft="20dp"
+				android:background="@drawable/rectangle_gradient"/>
+
+			<TextView android:id="@+id/voucher_point"
+				android:layout_marginLeft="40dp"
+				android:textSize="20sp"
+				android:textStyle="bold"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/white"
+				android:text="100 point"/>
+
+			<Button
+				android:layout_width="wrap_content"
+				android:layout_height="35dp"
+				android:background="@drawable/rectangle_circle_white"
+				android:textColor="@color/burgundy"
+				android:textSize="12sp"
+				android:layout_marginTop="10dp"
+				android:paddingRight="15dp"
+				android:paddingLeft="15dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="40dp"
+				android:text="My voucher"/>
+
+			<TextView android:id="@+id/voucher_text_1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/voucher_point"
+				android:layout_marginTop="30dp"
+				android:layout_marginLeft="40dp"
+				android:textSize="12dp"
+				android:textColor="@color/white"
+				android:text="100 points left and you will advance"/>
+
+			<TextView android:id="@+id/voucher_text_2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/voucher_text_1"
+				android:layout_marginTop="5dp"
+				android:layout_marginLeft="40dp"
+				android:textSize="12dp"
+				android:textColor="@color/white"
+				android:text="Reward redemption does not affect your promotion"/>
+		</RelativeLayout>
+		<GridLayout android:id="@+id/voucher_feature_box"
+			android:layout_marginTop="10dp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/voucher_box"
+			android:layout_marginLeft="0dp"
+			android:layout_marginRight="0dp"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp"
+			android:background="@color/white2"
+			android:columnCount="2">
+
+			<RelativeLayout android:id="@+id/voucher_feature_1"
+				android:layout_columnWeight="1"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp">
+
+				<ImageView
+					android:layout_width="165dp"
+					android:layout_height="90dp"
+					android:layout_row="0"
+					android:layout_column="0"
+					android:background="@drawable/rectangle_circle_white_2"/>
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginLeft="20dp"
+					android:background="@drawable/crown"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="50dp"
+					android:layout_marginLeft="20dp"
+					android:textSize="14dp"
+					android:text="Membership class"/>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/voucher_feature_2"
+				android:layout_columnWeight="1"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp">
+
+				<ImageView
+					android:layout_width="165dp"
+					android:layout_height="90dp"
+					android:layout_row="0"
+					android:layout_column="0"
+					android:background="@drawable/rectangle_circle_white_2"/>
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginLeft="20dp"
+					android:background="@drawable/giftbox"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="50dp"
+					android:layout_marginLeft="20dp"
+					android:textSize="14dp"
+					android:text="Exchange points"/>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/voucher_feature_3"
+				android:layout_columnWeight="1"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp">
+
+				<ImageView
+					android:layout_width="165dp"
+					android:layout_height="90dp"
+					android:layout_row="0"
+					android:layout_column="0"
+					android:background="@drawable/rectangle_circle_white_2"/>
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginLeft="20dp"
+					android:background="@drawable/token"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="50dp"
+					android:layout_marginLeft="20dp"
+					android:textSize="14dp"
+					android:text="Point history"/>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/voucher_feature_4"
+				android:layout_columnWeight="1"
+				android:paddingLeft="10dp"
+				android:paddingRight="10dp"
+				android:paddingTop="10dp"
+				android:paddingBottom="10dp">
+
+				<ImageView
+					android:layout_width="165dp"
+					android:layout_height="90dp"
+					android:layout_row="0"
+					android:layout_column="0"
+					android:background="@drawable/rectangle_circle_white_2"/>
+
+				<ImageView
+					android:layout_width="20dp"
+					android:layout_height="20dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginLeft="20dp"
+					android:background="@drawable/secure"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="50dp"
+					android:layout_marginLeft="20dp"
+					android:textSize="14dp"
+					android:text="Your rights"/>
+			</RelativeLayout>
+		</GridLayout>
+	</RelativeLayout>
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@color/white2"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/voucher_info"
+		android:layout_below="@+id/voucher_info">
+		<TextView android:id="@+id/voucher_title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Voucher"
+			android:textSize="20sp"
+			android:layout_marginLeft="30dp"
+			android:textStyle="bold"/>
+
+		<TextView android:id="@+id/voucher_more"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="More >"
+			android:layout_alignParentRight="true"
+			android:textColor="@color/burgundy"
+			android:textSize="20sp"
+			android:background="@color/transparent"
+			android:layout_marginRight="30dp"
+			android:textStyle="bold"/>
+
+		<ScrollView android:layout_below="@+id/voucher_title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white2"
+			android:layout_marginBottom="500dp"
+			android:layout_marginTop="10dp">
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/voucher_recyclerView"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="20dp"
+				android:paddingRight="20dp"
+				android:layout_gravity="center_horizontal"
+				/>
+		</ScrollView>
+	</RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

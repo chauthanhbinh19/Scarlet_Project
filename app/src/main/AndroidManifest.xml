@@ -39,6 +39,21 @@
         <activity
             android:name=".ProductDetailActivity"
             android:exported="true"/>
+        <activity
+            android:name=".MemberShipActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".ExchangePointActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".PointHistoryActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".YourRightsActivity"
+            android:exported="true"/>
+        <activity
+            android:name=".VoucherActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>

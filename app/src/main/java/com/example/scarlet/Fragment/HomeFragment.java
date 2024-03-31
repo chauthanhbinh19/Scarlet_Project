@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.home, container, false);
         validateUser(view);
-        createCategory(view);
-        createTrend(view);
+        getCategoryData(view);
+        getTrendData(view);
         RelativeLayout search=view.findViewById(R.id.search_bar);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-//        createProduct(view);
+//        getProductData(view);
         return view;
     }
     private void validateUser(View view){
@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment {
             });
         }
     }
-    private void createCategory(View view){
+    private void getCategoryData(View view){
         RecyclerView recyclerView= view.findViewById(R.id.category_recyclerView);
         categoryList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),5));
@@ -98,8 +98,10 @@ public class HomeFragment extends Fragment {
                     Category category=new Category(categoryName,categoryImage,categoryKey);
                     categoryList.add(category);
                 }
-                categoryAdapter=new CategoryAdapter(categoryList);
-                recyclerView.setAdapter(categoryAdapter);
+                if(categoryList.size()>0){
+                    categoryAdapter=new CategoryAdapter(categoryList);
+                    recyclerView.setAdapter(categoryAdapter);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -107,19 +109,19 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-    private void createTrend(View view){
+    private void getTrendData(View view){
         RecyclerView recyclerView=view.findViewById(R.id.trend_recyclerView);
         productList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
-        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.lychee_coconut_pudding));
-        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.lychee_coconut_pudding));
+        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.banana_chocolate));
+        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.banana_peanut));
 
         productAdapter=new ProductAdapter(productList);
         recyclerView.setAdapter(productAdapter);
 
     }
-    private void createProduct(View view){
+    private void getProductData(View view){
         RecyclerView recyclerView=view.findViewById(R.id.product_recyclerView);
         productList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -147,10 +149,12 @@ public class HomeFragment extends Fragment {
                                 productList.add(productWithIcon);
 
                             }
-                            productAdapter=new ProductAdapter(productList);
-                            recyclerView.setAdapter(productAdapter);
-                        }
+                            if(productList.size()>0){
+                                productAdapter=new ProductAdapter(productList);
+                                recyclerView.setAdapter(productAdapter);
+                            }
 
+                        }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                             // Xử lý lỗi nếu có

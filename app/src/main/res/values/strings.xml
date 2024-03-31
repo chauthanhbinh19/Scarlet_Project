@@ -181,5 +181,9 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="edit">Edit</string>
-
+    <string name="member_ship">Member ship class</string>
+    <string name="point_history">Point history</string>
+    <string name="your_right">Your rights</string>
+    <string name="exchange_point">Exchange point</string>
+    <string name="voucher">Voucher</string>
 </resources>

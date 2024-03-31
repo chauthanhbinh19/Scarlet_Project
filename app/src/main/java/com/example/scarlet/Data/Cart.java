@@ -3,19 +3,30 @@ package com.example.scarlet.Data;
 import java.util.List;
 
 public class Cart {
-    private List<Product> listProduct;
-    private double total;
+    private String customerId;
+    private List<String> productId;
 
-    public double getTotal() {
-        return total;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public Cart(List<Product> listProduct, double total) {
-        this.listProduct = listProduct;
-        this.total = total;
+    public List<String> getProductId() {
+        return productId;
+    }
+
+    public void setProductId(List<String> productId) {
+        this.productId = productId;
+    }
+
+    public Cart() {
+    }
+
+    public Cart(String customerId, List<String> productId) {
+        this.customerId = customerId;
+        this.productId = productId;
     }
 }

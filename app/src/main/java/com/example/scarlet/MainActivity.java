@@ -3,35 +3,16 @@ package com.example.scarlet;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Rect;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.example.scarlet.Adapter.CategoryAdapter;
-import com.example.scarlet.Data.Category;
-import com.example.scarlet.Data.text;
+import com.example.scarlet.Data.CreateDataDefault;
 import com.example.scarlet.Fragment.AccountFragment;
 import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Fragment.DealsFragment;
 import com.example.scarlet.Fragment.FavouriteFragment;
 import com.example.scarlet.Fragment.HomeFragment;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -45,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         openHomeFragment();
-//        text text=new text();
-//        text.createProductData();
         createBottomNavigation(savedInstanceState);
+//        CreateDataDefault text=new CreateDataDefault();
+//        text.createCartData();
     }
     private void createBottomNavigation(Bundle savedInstanceState){
         bottomNavigation=findViewById(R.id.bottomNavigation);
@@ -77,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         openAccountFragment();
                         break;
                 }
-                Toast.makeText(MainActivity.this,name,Toast.LENGTH_SHORT).show();
+//                Toast.makeText(MainActivity.this,name,Toast.LENGTH_SHORT).show();
                 return null;
             }
         });

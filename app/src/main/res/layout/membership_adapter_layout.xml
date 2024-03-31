@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        >
+
+        <View   android:id="@+id/rectangle_9"
+            android:background="@drawable/_bg__white"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/rectangle_lightpink_circle"
+            android:layout_centerVertical="true"/>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="28dp"
+            android:background="@drawable/star"
+            android:layout_centerVertical="true"/>
+
+        <TextView android:id="@+id/priviliges"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="120dp"
+            android:text="Voucher number 1"/>
+    </RelativeLayout>
