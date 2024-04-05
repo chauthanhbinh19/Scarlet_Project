@@ -1,11 +1,10 @@
 package com.example.scarlet.Data;
 
-public class Customer {
+public class User {
     private String first_name;
     private String last_name;
     private String gender;
     private String date_of_birth;
-    private String address;
     private String phone_number;
     private String email;
     private String username;
@@ -37,10 +36,6 @@ public class Customer {
         this.date_of_birth = date_of_birth;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
@@ -69,17 +64,16 @@ public class Customer {
         this.membershipId = membershipId;
     }
 
-    public Customer(){
+    public User(){
 
     }
 
 
-    public Customer(String first_name, String last_name, String gender, String date_of_birth, String address, String phone_number, String email, String username, String password, int avatar_img) {
+    public User(String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, String username, String password, int avatar_img) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
         this.date_of_birth = date_of_birth;
-        this.address = address;
         this.phone_number = phone_number;
         this.email = email;
         this.username = username;
@@ -96,9 +90,6 @@ public class Customer {
         return date_of_birth;
     }
 
-    public String getAddress() {
-        return address;
-    }
 
     public String getPhone_number() {
         return phone_number;

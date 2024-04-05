@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--        <View   android:id="@+id/rectangle_9"-->
+<!--            android:background="@drawable/_bg__white"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_width="160dp"-->
+<!--            android:layout_height="179dp" />-->
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_alignParentLeft="true"
+            android:background="@color/lightpink"
+            android:elevation="4dp"
+            android:src="@drawable/a_2"
+            android:id="@+id/background_product"
+            app:shapeAppearanceOverlay="@style/roundedImageView"
+            android:scaleType="centerCrop"
+            />
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="52dp"
+            android:layout_marginLeft="90dp"
+            android:elevation="4dp"
+            android:background="@drawable/_bg__white"/>
+
+        <ImageView android:id="@+id/product_image"
+            android:src="@drawable/bacon_cheese_onion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            android:elevation="4dp"
+            android:layout_width="110dp"
+            android:layout_height="110dp" />
+
+        <ImageView android:id="@+id/product_category_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="10dp"
+            android:elevation="4dp"
+            android:layout_below="@id/background_product"
+            />
+
+        <TextView android:id="@+id/product_name"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/burgundy"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/background_product"
+            android:layout_width="90.2dp"
+            android:layout_height="24.2dp"
+            android:text="@string/black_coffee_string"
+            android:elevation="4dp"
+            android:singleLine="true"
+            />
+
+        <TextView android:id="@+id/product_price"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="20dp"
+            android:layout_width="90.2dp"
+            android:layout_height="20.2dp"
+            android:elevation="4dp"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/product_name"
+            android:text="@string/_120_000__string"
+            />
+
+        <ImageView
+            android:background="@drawable/rectangle_circle_linkwhite_500"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="26dp"
+            android:layout_below="@+id/background_product"
+            android:elevation="4dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <ImageView android:id="@+id/add_btn"
+            android:src="@drawable/add_to_cart_2"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="30dp"
+            android:elevation="4dp"
+            android:layout_below="@+id/background_product"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+
+    </RelativeLayout>

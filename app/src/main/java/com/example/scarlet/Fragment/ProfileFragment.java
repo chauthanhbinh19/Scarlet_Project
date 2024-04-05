@@ -58,7 +58,6 @@ public class ProfileFragment extends Fragment {
         EditText lastnameView=view.findViewById(R.id.last_name);
         EditText genderView=view.findViewById(R.id.gender);
         EditText birthdayView=view.findViewById(R.id.birthday);
-        EditText addressView=view.findViewById(R.id.address);
         EditText phoneView=view.findViewById(R.id.phone);
         EditText emailView=view.findViewById(R.id.email_input);
 
@@ -66,7 +65,6 @@ public class ProfileFragment extends Fragment {
         lastnameView.setEnabled(true);
         genderView.setEnabled(true);
         birthdayView.setEnabled(true);
-        addressView.setEnabled(true);
         phoneView.setEnabled(true);
         emailView.setEnabled(true);
     }
@@ -75,7 +73,6 @@ public class ProfileFragment extends Fragment {
         EditText lastnameView=view.findViewById(R.id.last_name);
         EditText genderView=view.findViewById(R.id.gender);
         EditText birthdayView=view.findViewById(R.id.birthday);
-        EditText addressView=view.findViewById(R.id.address);
         EditText phoneView=view.findViewById(R.id.phone);
         EditText emailView=view.findViewById(R.id.email_input);
 
@@ -83,7 +80,6 @@ public class ProfileFragment extends Fragment {
         lastnameView.setEnabled(false);
         genderView.setEnabled(false);
         birthdayView.setEnabled(false);
-        addressView.setEnabled(false);
         phoneView.setEnabled(false);
         emailView.setEnabled(false);
     }
@@ -93,7 +89,7 @@ public class ProfileFragment extends Fragment {
         String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference myRef=firebaseDatabase.getReference("customers").child(userKey);
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -104,13 +100,11 @@ public class ProfileFragment extends Fragment {
                         String dateofbirth=snapshot.child("date_of_birth").getValue(String.class);
                         String phone=snapshot.child("phone_number").getValue(String.class);
                         String email=snapshot.child("email").getValue(String.class);
-                        String address=snapshot.child("address").getValue(String.class);
 
                         EditText firstnameView=view.findViewById(R.id.first_name);
                         EditText lastnameView=view.findViewById(R.id.last_name);
                         EditText genderView=view.findViewById(R.id.gender);
                         EditText birthdayView=view.findViewById(R.id.birthday);
-                        EditText addressView=view.findViewById(R.id.address);
                         EditText phoneView=view.findViewById(R.id.phone);
                         EditText emailView=view.findViewById(R.id.email_input);
 
@@ -118,7 +112,6 @@ public class ProfileFragment extends Fragment {
                         lastnameView.setText(lastname);
                         genderView.setText(gender);
                         birthdayView.setText(dateofbirth);
-                        addressView.setText(address);
                         phoneView.setText(phone);
                         emailView.setText(email);
 
@@ -127,7 +120,6 @@ public class ProfileFragment extends Fragment {
                         lastnameView.setTextColor(blackcolor);
                         genderView.setTextColor(blackcolor);
                         birthdayView.setTextColor(blackcolor);
-                        addressView.setTextColor(blackcolor);
                         phoneView.setTextColor(blackcolor);
                         emailView.setTextColor(blackcolor);
                     }

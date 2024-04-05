@@ -78,7 +78,7 @@ public class SignInActivity extends AppCompatActivity {
     }
     private void ValidateUser(String usernameInput, String passwordInput){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
-        Query query=database.getReference("customers").orderByChild("username").equalTo(usernameInput);
+        Query query=database.getReference("user").orderByChild("username").equalTo(usernameInput);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

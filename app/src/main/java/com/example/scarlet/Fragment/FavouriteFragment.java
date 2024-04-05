@@ -57,7 +57,7 @@ public class FavouriteFragment extends Fragment {
         String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference myRef=firebaseDatabase.getReference("customers").child(userKey);
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

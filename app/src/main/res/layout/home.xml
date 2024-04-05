@@ -14,22 +14,11 @@
 			android:layout_height="wrap_content"
 			android:paddingBottom="60dp">
 
-			<com.google.android.material.imageview.ShapeableImageView
-				android:layout_width="match_parent"
-				android:layout_marginLeft="20dp"
-				android:layout_marginRight="20dp"
-				android:layout_height="210dp"
-				android:src="@drawable/slider_img2"
-				android:background="@color/burgundy"
-				android:scaleType="centerCrop"
-				app:shapeAppearanceOverlay="@style/roundedImageView"
-				android:layout_marginTop="140dp"
-				android:layout_centerHorizontal="true"
-				/>
+
 			<RelativeLayout android:id="@+id/box_menu"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="350dp">
+				android:layout_marginTop="110dp">
 				<TextView android:id="@+id/menu"
 					android:textStyle="bold"
 					android:textSize="20sp"
@@ -90,8 +79,22 @@
 				</RelativeLayout>
 
 			</RelativeLayout>
-			<RelativeLayout android:id="@+id/box_deals"
+			<com.google.android.material.imageview.ShapeableImageView
+				android:layout_width="match_parent"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:layout_height="210dp"
+				android:src="@drawable/slider_img2"
+				android:background="@color/burgundy"
+				android:scaleType="centerCrop"
+				android:id="@+id/box_image"
+				android:layout_marginTop="10dp"
+				app:shapeAppearanceOverlay="@style/roundedImageView"
 				android:layout_below="@+id/box_trend"
+				android:layout_centerHorizontal="true"
+				/>
+			<RelativeLayout android:id="@+id/box_deals"
+				android:layout_below="@+id/box_image"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 

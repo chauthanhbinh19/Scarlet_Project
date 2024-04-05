@@ -1,12 +1,10 @@
 package com.example.scarlet;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -17,16 +15,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scarlet.Data.Customer;
 import com.example.scarlet.Data.Favourite;
-import com.example.scarlet.Data.Product;
+import com.example.scarlet.Data.ProductQuantity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ProductDetailActivity extends AppCompatActivity {
@@ -41,6 +40,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         RelativeLayout back_button=findViewById(R.id.back_btn);
         ImageButton heart=findViewById(R.id.heart);
+        Button add=(Button) findViewById(R.id.add);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +52,12 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validateFavouriteProduct2(productKey,heart);
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addToCart(productKey);
             }
         });
     }
@@ -215,5 +221,61 @@ public class ProductDetailActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void addToCart(String productKey){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+        if(isLoggedIn && !userKey.isEmpty()){
+            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("cart");
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    List<ProductQuantity> productIdList=new ArrayList<>();
+                    boolean found=false;
+                    for(DataSnapshot snap: snapshot.getChildren()){
+                        if(snap.child("customerId").getValue(String.class).equals(userKey)){
+                            if(snap.child("productQuantityList").exists()){
+                                DataSnapshot productIdObject=snap.child("productQuantityList");
+                                if(productIdObject.getValue() instanceof List){
+                                    List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                    int quantity=1;
+                                    for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                        ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                        tempProductIdList.add(productQuantity);
+                                    }
+                                    productIdList=tempProductIdList;
+                                    for(ProductQuantity pd:productIdList){
+                                        if(pd.getProductId().equals(productKey)){
+                                            quantity=pd.getQuantity()+1;
+                                            pd.setQuantity(quantity);
+                                            found=true;
+                                            break;
+                                        }
+                                    }
+                                    if(!found){
+                                        productIdList.add(new ProductQuantity(productKey,quantity));
+                                    }
+
+                                    myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
+                                    break;
+                                }
+                            }else{
+                                productIdList.add(new ProductQuantity(productKey,1));
+                                myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
+                                break;
+                            }
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
 }

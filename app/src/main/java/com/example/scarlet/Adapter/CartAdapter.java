@@ -8,28 +8,29 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Data.Product;
+import com.example.scarlet.Interface.GetStringCallback;
 import com.example.scarlet.R;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartHolderView> {
-    private List<Product> productList;
-    public CartAdapter(List<Product> productList){
+    public List<Product> productList;
+    public GetStringCallback getStringCallback;
+    public CartAdapter(List<Product> productList, GetStringCallback getStringCallback1){
 
         this.productList=productList;
+        this.getStringCallback=getStringCallback1;
     }
-
-
     @NonNull
     @Override
     public CartHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_adapter_layout_3, parent, false);
-        return new CartHolderView(view);
+        return new CartHolderView(view).linkAdapter(this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CartHolderView holder, int position) {
-        holder.bindData(productList.get(position));
+        holder.bindData(productList.get(position),getStringCallback);
     }
 
     @Override
@@ -37,3 +38,4 @@ public class CartAdapter extends RecyclerView.Adapter<CartHolderView> {
         return productList.size();
     }
 }
+

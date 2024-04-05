@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scarlet.Data.Customer;
+import com.example.scarlet.Data.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseException;
@@ -18,9 +18,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -71,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
     private void SaveData(String username, String password){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Query query = database.getReference("customers").orderByChild("username").equalTo(username);
+        Query query = database.getReference("user").orderByChild("username").equalTo(username);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -81,10 +78,10 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Username was existed", Toast.LENGTH_SHORT).show();
                 } else {
                     // Username hợp lệ
-                    DatabaseReference myRef = database.getReference("customers");
+                    DatabaseReference myRef = database.getReference("user");
 
                     String customerId = myRef.push().getKey();
-                    Customer customer = new Customer( "user","kcck", "Male", "01/01/1990", "123 Street, City", "0123456789", "customer.doe@email.com", username, password,0);
+                    User customer = new User( "user","kcck", "Male", "01/01/1990", "0123456789", "customer.doe@email.com", username, password,0);
                     try{
                         myRef.child(customerId).setValue(customer);
                         Toast.makeText(SignUpActivity.this,"Register successfully",Toast.LENGTH_SHORT).show();

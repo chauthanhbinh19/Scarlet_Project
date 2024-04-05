@@ -3,8 +3,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<RelativeLayout
-		android:id="@+id/hi_bar"
+	<RelativeLayout android:id="@+id/hi_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintTop_toTopOf="parent"
@@ -149,13 +148,22 @@
 				android:layout_marginRight="20dp"
 				android:layout_marginBottom="0dp"
 				android:orientation="horizontal"/>
+		<TextView
+			android:layout_below="@id/category_recyclerView"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/category_text"
+			android:textStyle="bold"
+			android:textSize="20dp"
+			android:layout_marginBottom="5dp"
+			android:layout_marginLeft="20dp"
+			android:text="Drinks"/>
 		<ScrollView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-
 			android:paddingBottom="50dp"
 			android:layout_marginBottom="130dp"
-			android:layout_below="@id/category_recyclerView">
+			android:layout_below="@id/category_text">
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/product_recyclerView_1"
 				android:layout_width="wrap_content"

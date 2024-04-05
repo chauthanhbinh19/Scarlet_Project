@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Cart {
     private String customerId;
-    private List<String> productId;
+    private List<ProductQuantity> productQuantityList;
 
     public String getCustomerId() {
         return customerId;
@@ -14,19 +14,20 @@ public class Cart {
         this.customerId = customerId;
     }
 
-    public List<String> getProductId() {
-        return productId;
+
+    public List<ProductQuantity> getProductQuantityList() {
+        return productQuantityList;
     }
 
-    public void setProductId(List<String> productId) {
-        this.productId = productId;
+    public void setProductQuantityList(List<ProductQuantity> productQuantityList) {
+        this.productQuantityList = productQuantityList;
     }
 
     public Cart() {
     }
 
-    public Cart(String customerId, List<String> productId) {
+    public Cart(String customerId, List<ProductQuantity> productQuantityList) {
         this.customerId = customerId;
-        this.productId = productId;
+        this.productQuantityList = productQuantityList;
     }
 }

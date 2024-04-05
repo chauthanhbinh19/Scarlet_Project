@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:layout_height="130dp"
+        android:layout_marginBottom="5dp"
         >
 
         <View   android:id="@+id/rectangle_9"
-            android:background="@drawable/rectangle_circle_white_20"
+            android:background="@drawable/rectangle_circle_white_30"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_width="match_parent"
@@ -76,6 +77,7 @@
         <ImageView
             android:layout_width="95dp"
             android:layout_height="95dp"
+            android:elevation="11dp"
             android:layout_marginLeft="15dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_centerVertical="true"/>
@@ -84,6 +86,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="19dp"
+            android:elevation="11dp"
             android:layout_marginLeft="13dp"
             android:background="@color/burgundy"
             android:layout_marginTop="22dp"/>
@@ -91,6 +94,7 @@
         <ImageView android:id="@+id/delivery_method_icon"
             android:layout_width="27dp"
             android:layout_height="27dp"
+            android:elevation="11dp"
             android:layout_marginLeft="92dp"
             android:background="@drawable/delivery_bike"
             android:layout_marginTop="17dp"/>
@@ -98,6 +102,7 @@
         <TextView android:id="@+id/delivery_method"
             android:layout_width="100dp"
             android:layout_height="18dp"
+            android:elevation="11dp"
             android:layout_marginLeft="13dp"
             android:text="Delivery"
             android:gravity="center"
@@ -109,6 +114,7 @@
             android:layout_height="60dp"
             android:layout_marginLeft="25dp"
             android:text="40%"
+            android:elevation="11dp"
             android:gravity="center"
             android:textSize="38sp"
             android:textColor="@color/burgundy"
@@ -118,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:elevation="10dp"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="150dp"
             android:text="Voucher number 1"/>
@@ -126,6 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
+            android:elevation="10dp"
             android:textColor="@color/burgundy"
             android:layout_marginBottom="25dp"
             android:layout_alignParentBottom="true"

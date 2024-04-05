@@ -4,24 +4,27 @@
         android:layout_height="wrap_content"
         >
 
-        <View   android:id="@+id/_bg__product_ek1"
-            android:background="@drawable/_bg__product_shadow"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="0dp"
-            android:layout_width="148dp"
-            android:layout_height="163dp" />
+<!--        <View   android:id="@+id/_bg__product_ek1"-->
+<!--            android:background="@drawable/_bg__product_shadow"-->
+<!--            android:layout_marginStart="7dp"-->
+<!--            android:layout_marginTop="0dp"-->
+<!--            android:layout_width="158dp"-->
+<!--            android:layout_height="173dp" />-->
 
         <View   android:id="@+id/rectangle_9"
             android:background="@drawable/rectangle_white_radius"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
-            android:layout_width="150dp"
-            android:layout_height="159dp" />
+            android:layout_width="160dp"
+            android:elevation="4dp"
+            android:layout_height="169dp" />
+
 
         <ImageView android:id="@+id/product_image"
-            android:src="@drawable/dsc02313_optimized"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="1dp"
+            android:src="@drawable/bacon_cheese_onion"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
             android:layout_width="105dp"
             android:layout_height="105dp" />
 
@@ -29,13 +32,15 @@
             android:src="@drawable/mask_group_ek1"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5.5dp"
-            android:layout_width="137dp"
-            android:layout_height="165dp" />
+            android:elevation="10dp"
+            android:layout_width="148dp"
+            android:layout_height="176dp" />
 
         <ImageView android:id="@+id/product_category_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="6dp"
+            android:elevation="10dp"
             android:layout_below="@id/product_image"
             />
 
@@ -48,6 +53,7 @@
             android:layout_width="111.2dp"
             android:layout_height="24.2dp"
             android:text="@string/black_coffee_string"
+            android:elevation="10dp"
             android:singleLine="true"
             />
 
@@ -58,14 +64,16 @@
             android:layout_marginLeft="20dp"
             android:layout_width="90.2dp"
             android:layout_height="20.2dp"
+            android:elevation="10dp"
             android:layout_below="@id/product_name"
             android:text="@string/_120_000__string"
             />
 
         <ImageView android:id="@+id/add_btn"
             android:src="@drawable/add_1"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="140dp"
+            android:elevation="10dp"
             android:layout_width="20dp"
             android:layout_height="20dp" />
 

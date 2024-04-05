@@ -87,7 +87,7 @@
 			android:layout_marginTop="28dp"
 			android:layout_width="113dp"
 			android:layout_height="33dp"
-			android:text="Payment"
+			android:text="Information"
 			/>
 
 
@@ -105,6 +105,7 @@
 			/>
 
 		<TextView android:id="@+id/information_ek1"
+			android:textStyle="bold"
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="center"
 			android:textSize="13sp"
@@ -121,7 +122,7 @@
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="center"
 			android:textSize="13sp"
-			android:textColor="@color/burgundy"
+			android:textColor="@color/lightbrown"
 			android:layout_toRightOf="@+id/right_arrow_2"
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total_box"
@@ -135,7 +136,7 @@
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="center"
 			android:textSize="14sp"
-			android:textColor="@color/burgundy"
+			android:textColor="@color/lightbrown"
 			android:layout_toRightOf="@+id/right_arrow_3"
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total_box"
@@ -197,7 +198,7 @@
 
 				>
 
-				<TextView android:id="@+id/delivery_address_text"
+				<TextView android:id="@+id/delivery_method"
 					android:textStyle="bold"
 					android:textSize="20sp"
 					android:textColor="@color/black"
@@ -209,7 +210,7 @@
 					/>
 
 				<RelativeLayout android:id="@+id/delivery_box"
-					android:layout_below="@+id/delivery_address_text"
+					android:layout_below="@+id/delivery_method"
 					android:layout_marginRight="20dp"
 					android:layout_marginLeft="20dp"
 					android:layout_marginBottom="5dp"
@@ -219,156 +220,158 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
+					<RadioButton android:id="@+id/delivery_radio_btn"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						/>
+
+					<RadioButton android:id="@+id/pickup_radio_btn"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="50dp"
+						/>
+
+					<ImageView android:id="@+id/delivery_icon"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						android:layout_toRightOf="@+id/delivery_radio_btn"
+						android:background="@drawable/fast_delivery_1"/>
+
+					<ImageView android:id="@+id/pickup_icon"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_marginTop="48dp"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="5dp"
+						android:layout_toRightOf="@+id/delivery_radio_btn"
+						android:background="@drawable/shop_1"/>
 
 					<TextView android:id="@+id/delivery_text"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
-						android:text="Delivery address"
+						android:text="Delivery"
 						android:layout_marginTop="4dp"
-						android:textColor="@color/burgundy"
-						android:textSize="16sp"
+						android:layout_toRightOf="@+id/delivery_icon"
+						android:textColor="@color/black"
+						android:textSize="18sp"
 						android:textStyle="bold" />
 
-					<TextView android:id="@+id/delivery_address_content"
+					<TextView
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
+						android:text="Pick up"
+						android:layout_marginTop="24dp"
 						android:layout_below="@+id/delivery_text"
-						android:layout_marginRight="70dp"
-						android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"
-						android:layout_marginTop="4dp"
+						android:layout_toRightOf="@+id/pickup_icon"
 						android:textColor="@color/black"
-						android:textSize="16sp" />
-
-					<Button
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="Change"
-						android:textColor="@color/burgundy"
-						android:textSize="14sp"
-						android:theme="@style/MyButtonTheme"
-						android:layout_marginTop="10dp"
-						android:layout_alignParentRight="true"
-						android:background="@color/transparent"/>
+						android:textSize="18sp"
+						android:textStyle="bold" />
 				</RelativeLayout>
 
-				<TextView android:id="@+id/delivery_fee_text"
+				<TextView android:id="@+id/delivery_address"
 					android:textStyle="bold"
 					android:textSize="20sp"
+					android:layout_below="@+id/delivery_box"
 					android:textColor="@color/black"
-					android:layout_below="@id/delivery_box"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="25dp"
 					android:layout_width="193dp"
 					android:layout_height="33dp"
-					android:text="Add tip"
-					/>
-				<RelativeLayout android:id="@+id/tip_box"
-					android:layout_below="@id/delivery_fee_text"
-					android:layout_marginLeft="20dp"
-					android:layout_marginRight="20dp"
-					android:paddingRight="10dp"
-					android:paddingTop="10dp"
-					android:paddingLeft="10dp"
-					android:paddingBottom="10dp"
-					android:background="@drawable/rectangle_white_stroke"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
-
-					<TextView android:id="@+id/text_3"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:textColor="@color/black"
-						android:layout_marginBottom="10dp"
-						android:text="Show your support for the team at Scartlet store"/>
-
-					<RelativeLayout android:id="@+id/tip_box_1"
-						android:layout_centerHorizontal="true"
-						android:layout_below="@+id/text_3"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content">
-
-						<Button android:id="@+id/c1_btn"
-							android:background="@drawable/left_white_stroke_lightbrown"
-							android:layout_width="80dp"
-							android:layout_height="48dp"
-							android:paddingBottom="10dp"
-							android:paddingTop="10dp"
-							android:textSize="12sp"
-							android:text="15% \n 10000 đ"/>
-
-						<Button android:id="@+id/c2_btn"
-							android:layout_toRightOf="@+id/c1_btn"
-							android:background="@drawable/center_white_stroke_lightbrown"
-							android:layout_width="80dp"
-							android:layout_height="48dp"
-							android:paddingBottom="10dp"
-							android:paddingTop="10dp"
-							android:textSize="12sp"
-							android:text="18% \n 12000 đ"/>
-
-						<Button android:id="@+id/c3_btn"
-							android:layout_toRightOf="@+id/c2_btn"
-							android:background="@drawable/center_white_stroke_lightbrown"
-							android:layout_width="80dp"
-							android:layout_height="48dp"
-							android:paddingBottom="10dp"
-							android:paddingTop="10dp"
-							android:textSize="12sp"
-							android:text="20% \n 15000 đ"/>
-
-						<Button android:id="@+id/c4_btn"
-							android:layout_toRightOf="@+id/c3_btn"
-							android:background="@drawable/right_white_stroke_lightbrown"
-							android:layout_width="80dp"
-							android:layout_height="48dp"
-							android:paddingBottom="10dp"
-							android:paddingTop="10dp"
-							android:textSize="12sp"
-							android:text="None"/>
-					</RelativeLayout>
-
-					<TextView android:id="@+id/text_4"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:textColor="@color/black"
-						android:layout_below="@+id/tip_box_1"
-						android:layout_marginBottom="10dp"
-						android:layout_marginTop="10dp"
-						android:text="Thank you, we appreciate it"/>
-				</RelativeLayout>
-
-				<TextView android:id="@+id/payment_method_text"
-					android:textStyle="bold"
-					android:textSize="20sp"
-					android:textColor="@color/black"
-					android:layout_below="@id/tip_box"
-					android:layout_marginLeft="23dp"
-					android:layout_marginTop="25dp"
-					android:layout_width="193dp"
-					android:layout_height="33dp"
-					android:text="Payment"
+					android:text="Delivery address"
 					/>
 
-				<RelativeLayout android:id="@+id/payment_box"
-					android:layout_marginLeft="20dp"
+				<EditText android:id="@+id/street"
 					android:layout_marginRight="20dp"
-					android:paddingRight="10dp"
-					android:paddingTop="10dp"
-					android:paddingLeft="10dp"
-					android:paddingBottom="10dp"
-					android:layout_below="@+id/payment_method_text"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
 					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/delivery_address"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
+					android:layout_height="wrap_content"
+					android:hint="Street"/>
 
-				</RelativeLayout>
+				<EditText android:id="@+id/ward"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
+					android:layout_marginTop="14dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/street"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Ward"/>
+
+				<EditText android:id="@+id/district"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
+					android:layout_marginTop="14dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/ward"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="District"/>
+
+				<EditText android:id="@+id/province"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
+					android:layout_marginTop="14dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/district"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Province"/>
+
+				<EditText android:id="@+id/postalCode"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
+					android:layout_marginTop="14dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/province"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Postal Code"/>
+
+				<EditText android:id="@+id/addtionalInfo"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:paddingLeft="15dp"
+					android:paddingBottom="14dp"
+					android:paddingTop="14dp"
+					android:textSize="16sp"
+					android:layout_marginTop="14dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_below="@+id/postalCode"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="Addtional Information"/>
+
 				<Button   android:id="@+id/continue_btn"
 					android:background="@drawable/rectangle_burgundy_radius"
 					android:layout_marginStart="70dp"
 					android:layout_marginTop="30dp"
 					android:layout_width="300dp"
 					android:layout_height="48dp"
-					android:layout_below="@+id/payment_box"
+					android:layout_below="@+id/addtionalInfo"
 					android:textStyle="bold"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_centerHorizontal="true"
@@ -376,7 +379,7 @@
 					android:textSize="18sp"
 					android:textColor="@color/white"
 					android:theme="@style/MyButtonTheme"
-					android:text="Continue to payment"/>
+					android:text="Continue to delivery"/>
 			</RelativeLayout>
 
 

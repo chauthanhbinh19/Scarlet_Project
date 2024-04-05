@@ -10,6 +10,8 @@ public class Product {
     private int point;
     private int img;
     private int icon;
+    private int quantity;
+    private double total;
 
     public String getKey() {
         return key;
@@ -82,6 +84,22 @@ public class Product {
         this.icon = icon;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     public Product() {
     }
 
@@ -100,5 +118,14 @@ public class Product {
         this.img=img;
         this.icon=icon;
         this.key=key;
+    }
+    public Product(String name, double price, int img,int icon,String key,int quantity, double total) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.icon=icon;
+        this.key=key;
+        this.quantity=quantity;
+        this.total=total;
     }
 }

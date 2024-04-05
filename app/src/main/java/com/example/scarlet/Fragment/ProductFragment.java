@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -110,6 +111,9 @@ public class ProductFragment extends Fragment {
                                 public void onDataChange(DataSnapshot categorySnapshot) {
                                     if (categorySnapshot.exists()) {
                                         int icon = categorySnapshot.child("img").getValue(int.class);
+                                        String categoryText=categorySnapshot.child("name_category").getValue(String.class);
+                                        TextView category_text=view.findViewById(R.id.category_text);
+                                        category_text.setText(categoryText);
                                         Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                         if(categoryKey.equals(categoryId)){
                                             productList.add(productWithIcon);

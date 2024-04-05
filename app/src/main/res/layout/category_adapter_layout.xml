@@ -9,6 +9,7 @@
     <ImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:elevation="4dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_image_radius"/>
 
@@ -16,6 +17,7 @@
         android:layout_marginTop="7dp"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:elevation="4dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_image_radius"
         android:src="@drawable/bubble_tea"/>
@@ -27,6 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/icon"
         android:textSize="12sp"
+        android:elevation="4dp"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
         android:text="Drinks"/>

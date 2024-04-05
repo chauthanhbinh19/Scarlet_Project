@@ -186,4 +186,6 @@
     <string name="your_right">Your rights</string>
     <string name="exchange_point">Exchange point</string>
     <string name="voucher">Voucher</string>
+    <string name="quantity">Quantity:</string>
+    <string name="product_detail">Product detail</string>
 </resources>

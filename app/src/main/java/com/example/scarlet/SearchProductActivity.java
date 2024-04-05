@@ -97,10 +97,10 @@ public class SearchProductActivity extends AppCompatActivity {
                                 productList.add(productWithIcon);
 
                             }
-//                            if(productList.size()>0){
-//                                productAdapter=new ProductSearchAdapter(productList);
-//                                recyclerView.setAdapter(productAdapter);
-//                            }
+                            if(productList.size()>0){
+                                productAdapter=new ProductSearchAdapter(productList);
+                                recyclerView.setAdapter(productAdapter);
+                            }
                         }
 
                         @Override

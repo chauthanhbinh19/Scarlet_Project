@@ -285,10 +285,10 @@ public class CreateDataDefault {
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference myRef=database.getReference("cart");
         List<Cart> cartList=new ArrayList<>();
-        List<String> productIdList=new ArrayList<>();
-        productIdList.add("0");
-        productIdList.add("1");
-        cartList.add(new Cart("-NtPjHAcxZSIj1aKHS3B",productIdList));
+        List<ProductQuantity> productQuantityList=new ArrayList<>();
+        productQuantityList.add(new ProductQuantity("0",1));
+        productQuantityList.add(new ProductQuantity("1",1));
+        cartList.add(new Cart("-NtPjHAcxZSIj1aKHS3B",productQuantityList));
         myRef.setValue(cartList);
     }
 }

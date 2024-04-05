@@ -8,6 +8,7 @@
             android:background="@drawable/_bg__white"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
+            android:elevation="9dp"
             android:layout_width="match_parent"
             android:layout_height="130dp" />
 
@@ -15,6 +16,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="5.5dp"
             android:layout_width="110dp"
+            android:elevation="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_height="110dp" />
 
@@ -22,12 +24,14 @@
             android:src="@drawable/dsc02313_optimized"
             android:layout_marginStart="20dp"
             android:layout_marginTop="1dp"
+            android:elevation="10dp"
             android:layout_width="105dp"
             android:layout_height="105dp" />
 
         <ImageView android:id="@+id/product_category_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:elevation="10dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/product_image"
@@ -36,6 +40,7 @@
         <TextView android:id="@+id/product_name"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:elevation="10dp"
             android:textColor="@color/burgundy"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
@@ -47,9 +52,46 @@
             android:singleLine="true"
             />
 
+        <ImageButton android:id="@+id/minus"
+            android:layout_below="@+id/product_name"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:elevation="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_toRightOf="@id/product_image"
+            android:background="@drawable/minus_1"/>
+
+        <TextView android:id="@+id/product_quantity_text"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_toRightOf="@id/minus"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="18dp"
+            android:layout_below="@id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="24.2dp"
+            android:maxWidth="140dp"
+            android:text="1"
+            android:elevation="10dp"
+            android:singleLine="true"
+            />
+
+        <ImageButton android:id="@+id/plus"
+            android:layout_below="@+id/product_name"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:elevation="10dp"
+            android:layout_toRightOf="@id/product_quantity_text"
+            android:background="@drawable/plus_1"/>
+
         <TextView android:id="@+id/product_price"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:elevation="10dp"
             android:textColor="@color/black"
             android:layout_marginLeft="32dp"
             android:layout_width="90.2dp"
@@ -62,6 +104,7 @@
 
         <ImageView android:id="@+id/delete_btn"
             android:src="@drawable/delete"
+            android:elevation="10dp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="40dp"
             android:layout_marginRight="20dp"
