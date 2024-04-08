@@ -1,92 +1,113 @@
 package com.example.scarlet.Data;
 
+import java.util.Date;
+import java.util.List;
+
 public class Order {
-    private String customerId;
-    private String customerName;
-    private String address;
-    private String phone_number;
-    private String orderDate;
-    private String deliveryDate;
-    private int status;
-    private Cart cart;
+    private String userId;
+    private String orderStatus;
+    private Payment paymentMethod;
+    private Address shippingAddress;
+    private Date orderDate;
+    private double total;
+    private double tip;
+    private String deliveryStatus;
+    private double deliveryFee;
+    private List<Product> productList;
 
-
-
-    public String getCustomerId() {
-        return customerId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getOrderStatus() {
+        return orderStatus;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
-    public String getAddress() {
-        return address;
+    public Payment getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPaymentMethod(Payment paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public Address getShippingAddress() {
+        return shippingAddress;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getDeliveryDate() {
-        return deliveryDate;
+    public double getTotal() {
+        return total;
     }
 
-    public void setDeliveryDate(String deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public int getStatus() {
-        return status;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
-    public Cart getCart() {
-        return cart;
+    public double getTip() {
+        return tip;
     }
 
-    public void setCart(Cart cart) {
-        this.cart = cart;
+    public void setTip(double tip) {
+        this.tip = tip;
+    }
+
+    public String getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
+    public void setDeliveryStatus(String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
+
+    public double getDeliveryFee() {
+        return deliveryFee;
+    }
+
+    public void setDeliveryFee(double deliveryFee) {
+        this.deliveryFee = deliveryFee;
     }
 
     public Order() {
     }
 
-    public Order(String customerId, String customerName, String address, String phone_number, String orderDate, String deliveryDate, int status, Cart cart) {
-        this.customerId = customerId;
-        this.customerName = customerName;
-        this.address = address;
-        this.phone_number = phone_number;
+    public Order(String userId, String orderStatus, Payment paymentMethod, Address shippingAddress, Date orderDate, double total, double tip, String deliveryStatus, double deliveryFee, List<Product> productList) {
+        this.userId = userId;
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.shippingAddress = shippingAddress;
         this.orderDate = orderDate;
-        this.deliveryDate = deliveryDate;
-        this.status = status;
-        this.cart = cart;
+        this.total = total;
+        this.tip = tip;
+        this.deliveryStatus = deliveryStatus;
+        this.deliveryFee = deliveryFee;
+        this.productList = productList;
     }
 }

@@ -25,12 +25,16 @@ import java.util.List;
 public class VoucherActivity extends AppCompatActivity {
 
     private List<String> tabCount=new ArrayList<>();
+    RelativeLayout back_btn;
+    private void BindView(){
+        back_btn=findViewById(R.id.back_btn);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.voucher);
 
-        RelativeLayout back_btn=findViewById(R.id.back_btn);
+        BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

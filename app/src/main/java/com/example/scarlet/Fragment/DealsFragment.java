@@ -38,21 +38,27 @@ import java.util.List;
 public class DealsFragment extends Fragment {
     private DealAdapter dealAdapter;
     private List<Deal> dealList;
+    RecyclerView recyclerView;
+    RelativeLayout memberShip,exchangePoint,pointHistory,yourRights;
+    TextView more;
+    private void BindView(View view){
+        recyclerView=view.findViewById(R.id.voucher_recyclerView);
+        memberShip=view.findViewById(R.id.voucher_feature_1);
+        exchangePoint=view.findViewById(R.id.voucher_feature_2);
+        pointHistory=view.findViewById(R.id.voucher_feature_3);
+        yourRights=view.findViewById(R.id.voucher_feature_4);
+        more=view.findViewById(R.id.voucher_more);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.deals, container, false);
 
-        RecyclerView recyclerView=view.findViewById(R.id.voucher_recyclerView);
+        BindView(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getDealsData(recyclerView);
 
-        RelativeLayout memberShip=view.findViewById(R.id.voucher_feature_1);
-        RelativeLayout exchangePoint=view.findViewById(R.id.voucher_feature_2);
-        RelativeLayout pointHistory=view.findViewById(R.id.voucher_feature_3);
-        RelativeLayout yourRights=view.findViewById(R.id.voucher_feature_4);
-        TextView more=view.findViewById(R.id.voucher_more);
         memberShip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

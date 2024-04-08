@@ -28,6 +28,7 @@ import java.util.List;
 
 public class MembershipFragment extends Fragment {
     private String tabTitle;
+    RecyclerView recyclerView;
     private MembershipAdapter membershipAdapter;
     private List<Membership> membershipList;
     public static MembershipFragment newInstance(String tabTitle) {
@@ -40,6 +41,9 @@ public class MembershipFragment extends Fragment {
     public MembershipFragment(){
 
     }
+    private void BindView(View view){
+        recyclerView=view.findViewById(R.id.membership_recyclerView);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class MembershipFragment extends Fragment {
         Bundle bundle = getArguments();
         String tabTitle = bundle.getString("tabTitle");
 
-        RecyclerView recyclerView=view.findViewById(R.id.membership_recyclerView);
+        BindView(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getMembershipData(recyclerView, tabTitle);

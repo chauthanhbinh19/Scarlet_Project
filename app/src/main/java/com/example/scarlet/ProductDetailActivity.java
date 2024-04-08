@@ -30,6 +30,19 @@ import java.util.List;
 
 public class ProductDetailActivity extends AppCompatActivity {
     public boolean isLoved=false;
+    RelativeLayout back_button;
+    ImageButton heart;
+    TextView productNameView, productPriceView, categoryNameView;
+    ImageView productImageView, categoryIconView;
+    private void BindView(){
+        back_button=findViewById(R.id.back_btn);
+        heart=findViewById(R.id.heart);
+        productNameView=findViewById(R.id.product_details_name);
+        productPriceView=findViewById(R.id.product_details_price);
+        categoryNameView=findViewById(R.id.product_details_category_name);
+        productImageView=findViewById(R.id.product_details_image);
+        categoryIconView=findViewById(R.id.product_details_category_icon);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +51,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         String productKey=getIntent().getStringExtra("productKey");
         getProductDetails(productKey);
 
-        RelativeLayout back_button=findViewById(R.id.back_btn);
-        ImageButton heart=findViewById(R.id.heart);
+        BindView();
         Button add=(Button) findViewById(R.id.add);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,17 +154,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                     int productImage=snapshot.child("img").getValue(int.class);
                     String categoryId=snapshot.child("categoryId").getValue(String.class);
 
-                    TextView productNameView=findViewById(R.id.product_details_name);
-                    TextView productPriceView=findViewById(R.id.product_details_price);
-                    TextView categoryNameView=findViewById(R.id.product_details_category_name);
-                    ImageView productImageView=findViewById(R.id.product_details_image);
-
                     myRef2.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot categorySnapshot) {
                             if(categorySnapshot.exists()){
                                 int categoryIcon=categorySnapshot.child("img").getValue(int.class);
-                                ImageView categoryIconView=findViewById(R.id.product_details_category_icon);
                                 categoryIconView.setImageResource(categoryIcon);
                             }
                         }

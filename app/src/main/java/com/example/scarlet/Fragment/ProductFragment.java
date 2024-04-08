@@ -37,12 +37,21 @@ public class ProductFragment extends Fragment {
     private ProductAdapter productAdapter;
     private List<Category> categoryList;
     private List<Product> productList;
+    RelativeLayout search;
+    TextView category_text;
+    RecyclerView categoryRecyclerView, productRecyclerView;
+    private void BindView(View view){
+        search=view.findViewById(R.id.search_bar);
+        categoryRecyclerView= view.findViewById(R.id.category_recyclerView);
+        productRecyclerView= view.findViewById(R.id.product_recyclerView_1);
+        category_text=view.findViewById(R.id.category_text);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.product, container, false);
 
-        RelativeLayout search=view.findViewById(R.id.search_bar);
+        BindView(view);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,10 +64,9 @@ public class ProductFragment extends Fragment {
         return view;
     }
     private void getCategoryData(View view){
-        RecyclerView recyclerView= view.findViewById(R.id.category_recyclerView);
         categoryList=new ArrayList<>();
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(10,5));
+        categoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        categoryRecyclerView.addItemDecoration(new GridLayoutDecoration(10,5));
         Query query = FirebaseDatabase.getInstance().getReference("category");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,7 +81,7 @@ public class ProductFragment extends Fragment {
                 }
                 if(categoryList.size()>0){
                     categoryAdapter=new CategoryAdapter(categoryList);
-                    recyclerView.setAdapter(categoryAdapter);
+                    categoryRecyclerView.setAdapter(categoryAdapter);
                 }
             }
             @Override
@@ -87,10 +95,9 @@ public class ProductFragment extends Fragment {
         DatabaseReference productRef = firebaseDatabase.getReference("product");
         DatabaseReference categoryRef = firebaseDatabase.getReference("category");
 
-        RecyclerView recyclerView= view.findViewById(R.id.product_recyclerView_1);
         productList=new ArrayList<>();
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(5,30));
+        productRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        productRecyclerView.addItemDecoration(new GridLayoutDecoration(5,30));
 
         Bundle args=getArguments();
         if(args !=null){
@@ -112,7 +119,6 @@ public class ProductFragment extends Fragment {
                                     if (categorySnapshot.exists()) {
                                         int icon = categorySnapshot.child("img").getValue(int.class);
                                         String categoryText=categorySnapshot.child("name_category").getValue(String.class);
-                                        TextView category_text=view.findViewById(R.id.category_text);
                                         category_text.setText(categoryText);
                                         Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                         if(categoryKey.equals(categoryId)){
@@ -121,7 +127,7 @@ public class ProductFragment extends Fragment {
                                     }
                                     if(productList.size()>0){
                                         productAdapter=new ProductAdapter(productList);
-                                        recyclerView.setAdapter(productAdapter);
+                                        productRecyclerView.setAdapter(productAdapter);
                                     }
                                 }
 

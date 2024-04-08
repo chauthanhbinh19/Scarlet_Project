@@ -32,18 +32,24 @@ import java.util.List;
 public class SearchProductActivity extends AppCompatActivity {
     private ProductSearchAdapter productAdapter;
     private List<Product> productList;
+    RecyclerView recyclerView;
+    Button back_btn;
+    EditText search;
+    private void BindView(){
+        recyclerView=findViewById(R.id.product_recyclerView);
+        back_btn=(Button) findViewById(R.id.cancled_btn);
+        search=(EditText) findViewById(R.id.search);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search);
 
-        RecyclerView recyclerView=findViewById(R.id.product_recyclerView);
+        BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 
         getProductData(recyclerView);
-        Button back_btn=(Button) findViewById(R.id.cancled_btn);
-        EditText search=(EditText) findViewById(R.id.search);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

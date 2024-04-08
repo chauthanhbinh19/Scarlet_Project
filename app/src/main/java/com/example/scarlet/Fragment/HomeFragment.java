@@ -38,14 +38,24 @@ public class HomeFragment extends Fragment {
     private ProductAdapter productAdapter;
     private List<Category> categoryList;
     private List<Product> productList;
+    RelativeLayout search;
+    RecyclerView categoryRecyclerView,trendRecyclerView, ProductRecyclerView;
+    TextView welcomeMessage;
+    private void BindView(View view){
+        search=view.findViewById(R.id.search_bar);
+        welcomeMessage=view.findViewById(R.id.welcome_message);
+        categoryRecyclerView= view.findViewById(R.id.category_recyclerView);
+        trendRecyclerView=view.findViewById(R.id.trend_recyclerView);
+        ProductRecyclerView=view.findViewById(R.id.product_recyclerView);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.home, container, false);
+        BindView(view);
         validateUser(view);
         getCategoryData(view);
         getTrendData(view);
-        RelativeLayout search=view.findViewById(R.id.search_bar);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +79,6 @@ public class HomeFragment extends Fragment {
                     if(snapshot.exists()){
                         String firstname=snapshot.child("first_name").getValue(String.class);
                         String lastname=snapshot.child("last_name").getValue(String.class);
-                        TextView welcomeMessage=view.findViewById(R.id.welcome_message);
                         welcomeMessage.setText("Hi "+ lastname+" "+ firstname);
                     }
                 }
@@ -82,10 +91,9 @@ public class HomeFragment extends Fragment {
         }
     }
     private void getCategoryData(View view){
-        RecyclerView recyclerView= view.findViewById(R.id.category_recyclerView);
         categoryList=new ArrayList<>();
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),5));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(15,0));
+        categoryRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),5));
+        categoryRecyclerView.addItemDecoration(new GridLayoutDecoration(15,0));
         Query query = FirebaseDatabase.getInstance().getReference("category");
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,7 +108,7 @@ public class HomeFragment extends Fragment {
                 }
                 if(categoryList.size()>0){
                     categoryAdapter=new CategoryAdapter(categoryList);
-                    recyclerView.setAdapter(categoryAdapter);
+                    categoryRecyclerView.setAdapter(categoryAdapter);
                 }
             }
             @Override
@@ -110,22 +118,20 @@ public class HomeFragment extends Fragment {
         });
     }
     private void getTrendData(View view){
-        RecyclerView recyclerView=view.findViewById(R.id.trend_recyclerView);
         productList=new ArrayList<>();
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
+        trendRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        trendRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
         productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.banana_chocolate));
         productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.banana_peanut));
 
         productAdapter=new ProductAdapter(productList);
-        recyclerView.setAdapter(productAdapter);
+        trendRecyclerView.setAdapter(productAdapter);
 
     }
     private void getProductData(View view){
-        RecyclerView recyclerView=view.findViewById(R.id.product_recyclerView);
         productList=new ArrayList<>();
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
+        ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference productRef = database.getReference("product");
@@ -151,7 +157,7 @@ public class HomeFragment extends Fragment {
                             }
                             if(productList.size()>0){
                                 productAdapter=new ProductAdapter(productList);
-                                recyclerView.setAdapter(productAdapter);
+                                ProductRecyclerView.setAdapter(productAdapter);
                             }
 
                         }

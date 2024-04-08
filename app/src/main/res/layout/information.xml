@@ -185,8 +185,9 @@
 		android:layout_height="wrap_content" >
 
 		<RelativeLayout android:id="@+id/content_container"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:paddingBottom="50dp"
 			android:background="@color/white">
 
 
@@ -194,8 +195,7 @@
 				android:layout_marginTop="10dp"
 				android:layout_marginStart="0dp"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-
+				android:layout_height="match_parent"
 				>
 
 				<TextView android:id="@+id/delivery_method"
@@ -223,6 +223,7 @@
 					<RadioButton android:id="@+id/delivery_radio_btn"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
+						android:checked="true"
 						/>
 
 					<RadioButton android:id="@+id/pickup_radio_btn"

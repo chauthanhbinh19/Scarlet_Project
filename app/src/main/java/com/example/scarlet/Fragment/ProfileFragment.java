@@ -28,6 +28,12 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileFragment extends Fragment {
 
     private boolean isEditing=false;
+    RelativeLayout back_btn;
+    Button edit_btn;
+    private void BindView(View view){
+        back_btn=view.findViewById(R.id.back_btn);
+        edit_btn=view.findViewById(R.id.edit_button);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,8 +41,7 @@ public class ProfileFragment extends Fragment {
         View view= inflater.inflate(R.layout.profile, container, false);
 
         getCustomerInfo(view);
-        RelativeLayout back_btn=view.findViewById(R.id.back_btn);
-        Button edit_btn=view.findViewById(R.id.edit_button);
+        BindView(view);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

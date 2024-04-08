@@ -128,4 +128,10 @@ public class Product {
         this.quantity=quantity;
         this.total=total;
     }
+    public Product(String name,double price,int quantity,double total){
+        this.name = name;
+        this.price = price;
+        this.quantity=quantity;
+        this.total=total;
+    }
 }

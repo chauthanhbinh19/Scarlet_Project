@@ -19,12 +19,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    RelativeLayout back_btn;
+    private void BindView(){
+        back_btn=(RelativeLayout) findViewById(R.id.back_btn);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_profile);
 
-        RelativeLayout back_btn=(RelativeLayout) findViewById(R.id.back_btn);
+        BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

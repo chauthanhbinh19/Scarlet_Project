@@ -25,20 +25,23 @@ public class SignUpActivity extends AppCompatActivity {
     public EditText username;
     public EditText password;
     public EditText confirmpassword;
+    Button signUp,signIn;
+    private void BindView(){
+        signUp=findViewById(R.id.sign_up_ek1);
+        signIn=findViewById(R.id.sign_in_btn);
+        username=findViewById(R.id.username_or_email);
+        password=findViewById(R.id.password);
+        confirmpassword=findViewById(R.id.confirm_password);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
-        
-        Button signUp=findViewById(R.id.sign_up_ek1);
-        Button signIn=findViewById(R.id.sign_in_btn);
+
+        BindView();
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username=findViewById(R.id.username_or_email);
-                password=findViewById(R.id.password);
-                confirmpassword=findViewById(R.id.confirm_password);
-
                 String usernameText=username.getText().toString();
                 String passwordText=password.getText().toString();
                 String confirmPasswordText=confirmpassword.getText().toString();

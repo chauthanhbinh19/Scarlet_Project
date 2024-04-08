@@ -294,6 +294,7 @@
 							android:paddingBottom="10dp"
 							android:paddingTop="10dp"
 							android:textSize="12sp"
+							android:theme="@style/MyButtonTheme"
 							android:text="15% \n 10000 đ"/>
 
 						<Button android:id="@+id/c2_btn"
@@ -304,6 +305,7 @@
 							android:paddingBottom="10dp"
 							android:paddingTop="10dp"
 							android:textSize="12sp"
+							android:theme="@style/MyButtonTheme"
 							android:text="18% \n 12000 đ"/>
 
 						<Button android:id="@+id/c3_btn"
@@ -314,6 +316,7 @@
 							android:paddingBottom="10dp"
 							android:paddingTop="10dp"
 							android:textSize="12sp"
+							android:theme="@style/MyButtonTheme"
 							android:text="20% \n 15000 đ"/>
 
 						<Button android:id="@+id/c4_btn"
@@ -324,6 +327,7 @@
 							android:paddingBottom="10dp"
 							android:paddingTop="10dp"
 							android:textSize="12sp"
+							android:theme="@style/MyButtonTheme"
 							android:text="None"/>
 					</RelativeLayout>
 
@@ -361,8 +365,66 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
 
+					<RelativeLayout android:id="@+id/cash_box"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<RadioButton android:id="@+id/radio_cash"
+							android:layout_centerVertical="true"
+							android:layout_marginLeft="10dp"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<ImageView android:id="@+id/icon_cash"
+							android:layout_width="50dp"
+							android:layout_height="40dp"
+							android:layout_marginLeft="10dp"
+							android:layout_centerVertical="true"
+							android:layout_toRightOf="@+id/radio_cash"
+							android:background="@drawable/dollars"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="10dp"
+							android:layout_centerVertical="true"
+							android:layout_toRightOf="@+id/icon_cash"
+							android:text="Payment in cash"
+							android:textColor="@color/black"
+							android:textSize="20sp"/>
+					</RelativeLayout>
+					<RelativeLayout android:id="@+id/zalo_box"
+						android:layout_marginTop="10dp"
+						android:layout_below="@+id/cash_box"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content">
+
+						<RadioButton android:id="@+id/radio_zaloPay"
+							android:layout_centerVertical="true"
+							android:layout_marginLeft="10dp"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"/>
+
+						<ImageView android:id="@+id/icon_zaloPay"
+							android:layout_width="60dp"
+							android:layout_height="40dp"
+							android:layout_marginLeft="10dp"
+							android:layout_centerVertical="true"
+							android:layout_toRightOf="@+id/radio_zaloPay"
+							android:background="@drawable/zalopay_icon"/>
+
+						<TextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="10dp"
+							android:layout_centerVertical="true"
+							android:layout_toRightOf="@+id/icon_zaloPay"
+							android:text="Pay with Zalo pay"
+							android:textColor="@color/black"
+							android:textSize="20sp"/>
+					</RelativeLayout>
 				</RelativeLayout>
-				<Button   android:id="@+id/continue_btn"
+				<Button   android:id="@+id/btnPay"
 					android:background="@drawable/rectangle_burgundy_radius"
 					android:layout_marginStart="70dp"
 					android:layout_marginTop="30dp"

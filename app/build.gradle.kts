@@ -64,6 +64,11 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("com.google.firebase:firebase-database:20.3.1")
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    implementation(fileTree(mapOf(
+        "dir" to "D:\\ScarletProject\\Scarlet\\app\\libs",
+        "include" to listOf("*.aar", "*.jar"),
+        "exclude" to listOf("*.jar")
+    )))
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -75,5 +80,6 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
-
+    implementation("com.squareup.okhttp3:okhttp:4.6.0")
+    implementation("commons-codec:commons-codec:1.14")
 }

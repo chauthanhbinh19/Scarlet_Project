@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -14,7 +17,7 @@
         tools:targetApi="31">
         <activity
             android:name=".SignInActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -26,43 +29,54 @@
         </activity>
         <activity
             android:name=".SignUpActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ForgotPasswordActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".EditProfileActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SearchProductActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ProductDetailActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".MemberShipActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ExchangePointActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".PointHistoryActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".YourRightsActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".VoucherActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".InformationActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DeliveryActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".PaymentActivity"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="app"
+                    android:scheme="demozpdk" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

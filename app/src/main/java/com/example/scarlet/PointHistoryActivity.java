@@ -30,13 +30,18 @@ public class PointHistoryActivity extends AppCompatActivity {
 
     private OfferAdapter offerAdapter;
     private List<Offer> offerList;
+    RelativeLayout back_btn;
+    RecyclerView recyclerView;
+    private void BindView(){
+        back_btn=findViewById(R.id.back_btn);
+        recyclerView=findViewById(R.id.exchange_point_history_recyclerView);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.point_history);
 
-        RelativeLayout back_btn=findViewById(R.id.back_btn);
-        RecyclerView recyclerView=findViewById(R.id.exchange_point_history_recyclerView);
+        BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(PointHistoryActivity.this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getPointHistoryData(recyclerView);

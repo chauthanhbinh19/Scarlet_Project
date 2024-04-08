@@ -1,11 +1,13 @@
 package com.example.scarlet.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.example.scarlet.Adapter.CartHolderView;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
+import com.example.scarlet.InformationActivity;
 import com.example.scarlet.Interface.GetStringCallback;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
@@ -40,20 +43,23 @@ public class CartFragment extends Fragment {
     private RecyclerView recyclerView;
     private View view;
     TextView totalView;
+    Button purchase;
     private double total=0;
     GetStringCallback getStringCallback;
+    private void BindView(View view){
+        recyclerView=view.findViewById(R.id.product_recyclerView);
+        purchase=view.findViewById(R.id.purchase);
+        totalView=view.findViewById(R.id.total);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view =inflater.inflate(R.layout.cart, container, false);
 
+        BindView(view);
         productList=new ArrayList<>();
-        recyclerView=view.findViewById(R.id.product_recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
-
-
-        totalView=view.findViewById(R.id.total);
 
         getStringCallback=new GetStringCallback() {
             @Override
@@ -71,6 +77,16 @@ public class CartFragment extends Fragment {
             }
         };
         validateUser(recyclerView,getStringCallback);
+
+        purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String total=totalView.getText().toString();
+                Intent intent=new Intent(getContext(), InformationActivity.class);
+                intent.putExtra("total",total);
+                startActivity(intent);
+            }
+        });
         return view;
     }
     private void validateUser(final RecyclerView recyclerView, GetStringCallback getStringCallback1){
@@ -163,7 +179,6 @@ public class CartFragment extends Fragment {
                         }
                     });
                 }
-                List<Product> cc=productList;
             }
 
             @Override

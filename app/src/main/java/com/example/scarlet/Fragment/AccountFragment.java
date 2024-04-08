@@ -27,6 +27,20 @@ import com.google.firebase.database.ValueEventListener;
 
 public class AccountFragment extends Fragment {
 
+    RelativeLayout profile_btn;
+    RelativeLayout setting_btn;
+    RelativeLayout policies_btn;
+    RelativeLayout app_version_btn;
+    Button create_account;
+    Button sign_out_button;
+    private void BindView(View view){
+        profile_btn=view.findViewById(R.id.profile_button);
+        setting_btn=view.findViewById(R.id.settings_button);
+        policies_btn=view.findViewById(R.id.policies_button);
+        app_version_btn=view.findViewById(R.id.app_version_button);
+        create_account=view.findViewById(R.id.create_account_btn);
+        sign_out_button=view.findViewById(R.id.sign_out_btn);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,13 +48,8 @@ public class AccountFragment extends Fragment {
         View view =inflater.inflate(R.layout.account, container, false);
 
         validateUser(view);
-        RelativeLayout profile_btn=view.findViewById(R.id.profile_button);
-        RelativeLayout setting_btn=view.findViewById(R.id.settings_button);
-        RelativeLayout policies_btn=view.findViewById(R.id.policies_button);
-        RelativeLayout app_version_btn=view.findViewById(R.id.app_version_button);
-        Button create_account=view.findViewById(R.id.create_account_btn);
-        Button sign_out_button=view.findViewById(R.id.sign_out_btn);
 
+        BindView(view);
         profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

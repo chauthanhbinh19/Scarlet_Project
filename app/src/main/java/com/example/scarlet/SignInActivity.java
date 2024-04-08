@@ -36,16 +36,20 @@ public class SignInActivity extends AppCompatActivity {
 
     public EditText username;
     public EditText password;
+    Button createAccount,forgotPassword,signin;
+    private void BindView(){
+        createAccount=(Button) findViewById(R.id._create_account_);
+        forgotPassword=(Button) findViewById(R.id.forgot_password_);
+        username =(EditText) findViewById(R.id.username_or_email);
+        password=(EditText) findViewById(R.id.password);
+        signin=(Button) findViewById(R.id.sign_in_button);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
 
-        Button createAccount=(Button) findViewById(R.id._create_account_);
-        Button forgotPassword=(Button) findViewById(R.id.forgot_password_);
-        username =(EditText) findViewById(R.id.username_or_email);
-        password=(EditText) findViewById(R.id.password);
-        Button signin=(Button) findViewById(R.id.sign_in_button);
+        BindView();
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -30,6 +30,7 @@ public class VoucherFragment extends Fragment {
     private String tabTitle;
     private DealAdapter dealAdapter;
     private List<Deal> dealList;
+    RecyclerView recyclerView;
     public static VoucherFragment newInstance(String tabTitle) {
         VoucherFragment fragment = new VoucherFragment();
         Bundle args = new Bundle();
@@ -40,6 +41,9 @@ public class VoucherFragment extends Fragment {
     public VoucherFragment(){
 
     }
+    private void BindView(View view){
+        recyclerView=view.findViewById(R.id.voucher_recyclerView);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class VoucherFragment extends Fragment {
         Bundle bundle = getArguments();
         String tabTitle = bundle.getString("tabTitle");
 
-        RecyclerView recyclerView=view.findViewById(R.id.voucher_recyclerView);
+        BindView(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getVoucherData(recyclerView, tabTitle);

@@ -23,16 +23,22 @@ import java.util.Map;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
 
+    EditText username,newPassword,confirmNewPassword;
+    ImageButton back_btn;
+    Button change_password;
+    private void BindView(){
+        username=findViewById(R.id.username);
+        newPassword=findViewById(R.id.new_password);
+        confirmNewPassword=findViewById(R.id.confirm_new_password);
+        back_btn=(ImageButton) findViewById(R.id.back_btn);
+        change_password=(Button) findViewById(R.id.change_passsword_button);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.forgot_password);
 
-        EditText username=findViewById(R.id.username);
-        EditText newPassword=findViewById(R.id.new_password);
-        EditText confirmNewPassword=findViewById(R.id.confirm_new_password);
-        ImageButton back_btn=(ImageButton) findViewById(R.id.back_btn);
-        Button change_password=(Button) findViewById(R.id.change_passsword_button);
+        BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

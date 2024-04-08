@@ -38,13 +38,17 @@ public class FavouriteFragment extends Fragment {
     private MeowBottomNavigation bottomNavigation;
     private ProductSearchAdapter productAdapter;
     private List<Product> productList;
+    RecyclerView recyclerView;
+    private void BindView(View view){
+        recyclerView=view.findViewById(R.id.product_recyclerView);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.favourite, container, false);
 
-        RecyclerView recyclerView=view.findViewById(R.id.product_recyclerView);
+        BindView(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 

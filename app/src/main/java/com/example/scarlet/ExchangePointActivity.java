@@ -30,13 +30,18 @@ public class ExchangePointActivity extends AppCompatActivity {
 
     private OfferAdapter offerAdapter;
     private List<Offer> offerList;
+    RelativeLayout back_btn;
+    RecyclerView recyclerView;
+    private void BindView(){
+        back_btn=findViewById(R.id.back_btn);
+        recyclerView=findViewById(R.id.exchange_point_recyclerView);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exchange_point);
 
-        RelativeLayout back_btn=findViewById(R.id.back_btn);
-        RecyclerView recyclerView=findViewById(R.id.exchange_point_recyclerView);
+        BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(ExchangePointActivity.this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getOfferData(recyclerView);
