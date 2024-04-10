@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Interface.GetStringCallback;
@@ -200,11 +201,11 @@ public class CartHolderView extends RecyclerView.ViewHolder {
         });
     }
     public void bindData(Product product, GetStringCallback getStringCallback1){
-        imageView.setImageResource(product.getImg());
+//        imageView.setImageResource(product.getImg());
         textView1.setText(product.getName());
         textView2.setText(String.valueOf(product.getTotal()));
         textView3.setText(String.valueOf(product.getQuantity()));
-        imageView2.setImageResource(product.getIcon());
+        Glide.with(context).load(product.getIcon()).into(imageView2);
         productKey=product.getKey();
         this.getStringCallback=getStringCallback1;
     }

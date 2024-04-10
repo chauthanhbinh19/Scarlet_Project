@@ -8,8 +8,8 @@ public class Product {
     private String categoryName;
     private double price;
     private int point;
-    private int img;
-    private int icon;
+    private String img;
+    private String icon;
     private int quantity;
     private double total;
 
@@ -69,18 +69,18 @@ public class Product {
         this.point = point;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -103,7 +103,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, String categoryId, String categoryName, double price, int point, int img) {
+    public Product(String name, String description, String categoryId, String categoryName, double price, int point, String img) {
         this.name = name;
         this.description = description;
         this.categoryId = categoryId;
@@ -112,14 +112,22 @@ public class Product {
         this.point = point;
         this.img = img;
     }
-    public Product(String name, double price, int img,int icon,String key) {
+    public Product(String name, double price, String img,String icon,String key) {
         this.name = name;
         this.price = price;
         this.img=img;
         this.icon=icon;
         this.key=key;
     }
-    public Product(String name, double price, int img,int icon,String key,int quantity, double total) {
+    public Product(String name, double price, String img,String icon,String key,int point) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.icon=icon;
+        this.key=key;
+        this.point=point;
+    }
+    public Product(String name, double price, String img,String icon,String key,int quantity, double total) {
         this.name = name;
         this.price = price;
         this.img=img;

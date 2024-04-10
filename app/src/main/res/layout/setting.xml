@@ -183,7 +183,7 @@
 				<ImageView android:id="@+id/padlock_1"
 					android:src="@drawable/padlock_1"
 					android:contentDescription="padlock_1"
-					 android:layout_marginStart="19dp"
+					android:layout_marginStart="19dp"
 					android:layout_marginTop="7dp"
 					android:layout_width="20dp"
 					android:layout_height="20dp"
@@ -192,9 +192,9 @@
 					/>
 
 				<ImageView android:id="@+id/right_arrow_12"
-					android:src="@drawable/right_arrow_12"
+					android:src="@drawable/right_arrow_3"
 					android:contentDescription="right_arrow_12"
-					 android:layout_marginStart="320dp"
+					android:layout_marginStart="320dp"
 					android:layout_marginTop="13dp"
 					android:layout_width="15dp"
 					android:layout_height="15dp"

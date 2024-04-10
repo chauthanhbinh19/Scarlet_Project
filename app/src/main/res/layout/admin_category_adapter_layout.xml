@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="160dp">
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:elevation="4dp"
+        android:outlineAmbientShadowColor="@color/burgundy"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rectangle_circle_white_2">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginLeft="-20dp"
+            android:background="@drawable/rectangle_lightpink_circle"
+            android:layout_alignParentBottom="true"
+            />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="-20dp"
+            android:layout_marginRight="-20dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/rectangle_lightpink_circle"
+            android:layout_alignParentBottom="true"
+            />
+
+        <ImageView android:id="@+id/btnDelete"
+            android:layout_marginTop="7dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="4dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/trash_bin"/>
+
+        <ImageView android:id="@+id/btnEdit"
+            android:layout_marginTop="7dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:elevation="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/edit"/>
+    </RelativeLayout>
+
+    <ImageView android:id="@+id/icon"
+        android:layout_marginTop="7dp"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:elevation="4dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rectangle_image_radius"
+        android:src="@drawable/bubble_tea"/>
+
+    <TextView android:id="@+id/name_category"
+        android:layout_marginTop="14dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/icon"
+        android:textSize="12sp"
+        android:elevation="10dp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/burgundy"
+        android:text="Drinks"/>
+</RelativeLayout>
+

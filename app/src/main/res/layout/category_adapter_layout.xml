@@ -15,15 +15,15 @@
 
     <ImageView android:id="@+id/icon"
         android:layout_marginTop="7dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:elevation="4dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_image_radius"
         android:src="@drawable/bubble_tea"/>
 
     <TextView android:id="@+id/name_category"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

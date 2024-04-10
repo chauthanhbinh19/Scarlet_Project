@@ -114,13 +114,13 @@ public class FavouriteFragment extends Fragment {
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
-                    int productImage = product.child("img").getValue(int.class);
+                    String productImage = product.child("img").getValue(String.class);
 
                     categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot categorySnapshot) {
                             if (categorySnapshot.exists()) {
-                                int icon = categorySnapshot.child("img").getValue(int.class);
+                                String icon = categorySnapshot.child("img").getValue(String.class);
                                 Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                 if(checkKeyInList(productKey,productKeyList)){
                                     productList.add(productWithIcon);

@@ -196,7 +196,7 @@
 						android:layout_height="25dp" />
 
 					<ImageView android:id="@+id/right_arrow_4"
-						android:src="@drawable/right_arrow_4"
+						android:src="@drawable/right_arrow_3"
 						android:contentDescription="right_arrow_4"
 						 android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
@@ -248,7 +248,7 @@
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
 						android:contentDescription="right_arrow_5"
-						android:src="@drawable/right_arrow_5" />
+						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
 
@@ -295,7 +295,7 @@
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
 						android:contentDescription="right_arrow_6"
-						android:src="@drawable/right_arrow_6" />
+						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
 
@@ -336,7 +336,7 @@
 						android:layout_height="25dp" />
 
 					<ImageView android:id="@+id/right_arrow_7"
-						android:src="@drawable/right_arrow_7"
+						android:src="@drawable/right_arrow_3"
 						android:contentDescription="right_arrow_7"
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
@@ -389,7 +389,7 @@
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
 						android:contentDescription="right_arrow_8"
-						android:src="@drawable/right_arrow_8" />
+						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
 
@@ -430,7 +430,7 @@
 						android:layout_height="25dp" />
 
 					<ImageView android:id="@+id/right_arrow_10"
-						android:src="@drawable/right_arrow_10"
+						android:src="@drawable/right_arrow_3"
 						android:contentDescription="right_arrow_10"
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"
@@ -476,7 +476,7 @@
 						android:layout_height="25dp" />
 
 					<ImageView android:id="@+id/right_arrow_11"
-						android:src="@drawable/right_arrow_11"
+						android:src="@drawable/right_arrow_3"
 						android:contentDescription="right_arrow_11"
 						android:layout_marginStart="295dp"
 						android:layout_marginTop="20dp"

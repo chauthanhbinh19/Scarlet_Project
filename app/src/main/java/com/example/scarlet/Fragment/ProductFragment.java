@@ -74,7 +74,7 @@ public class ProductFragment extends Fragment {
                 categoryList.clear();
                 for(DataSnapshot snap:snapshot.getChildren()){
                     String categoryName=snap.child("name_category").getValue(String.class);
-                    int categoryImage=snap.child("img").getValue(int.class);
+                    String categoryImage=snap.child("img").getValue(String.class);
                     String categoryKey=snap.getKey();
                     Category category=new Category(categoryName,categoryImage,categoryKey);
                     categoryList.add(category);
@@ -103,7 +103,7 @@ public class ProductFragment extends Fragment {
         if(args !=null){
             String categoryKey= args.getString("categoryKey");
             if(categoryKey!=null){
-                productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                productRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot productSnapshot) {
                         for (DataSnapshot product : productSnapshot.getChildren()) {
@@ -111,13 +111,13 @@ public class ProductFragment extends Fragment {
                             String categoryId = product.child("categoryId").getValue(String.class);
                             String productName = product.child("name").getValue(String.class);
                             double productPrice = product.child("price").getValue(double.class);
-                            int productImage = product.child("img").getValue(int.class);
+                            String productImage = product.child("img").getValue(String.class);
 
                             categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot categorySnapshot) {
                                     if (categorySnapshot.exists()) {
-                                        int icon = categorySnapshot.child("img").getValue(int.class);
+                                        String icon = categorySnapshot.child("img").getValue(String.class);
                                         String categoryText=categorySnapshot.child("name_category").getValue(String.class);
                                         category_text.setText(categoryText);
                                         Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);

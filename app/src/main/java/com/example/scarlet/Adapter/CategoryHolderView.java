@@ -1,5 +1,6 @@
 package com.example.scarlet.Adapter;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Fragment.ProductFragment;
 import com.example.scarlet.R;
@@ -19,11 +21,13 @@ public class CategoryHolderView extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView textView;
     String categoryKey;
+    Context context;
 
     public CategoryHolderView(View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.icon);
         textView = itemView.findViewById(R.id.name_category);
+        context=itemView.getContext();
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +47,8 @@ public class CategoryHolderView extends RecyclerView.ViewHolder {
         });
     }
     public void bindData(Category category){
-        imageView.setImageResource(category.getImg());
+//        imageView.setImageResource(category.getImg());
+        Glide.with(context).load(category.getImg()).into(imageView);
         textView.setText(category.getName_category());
         categoryKey=category.getKey();
     }

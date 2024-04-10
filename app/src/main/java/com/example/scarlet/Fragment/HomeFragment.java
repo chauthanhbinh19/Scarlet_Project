@@ -13,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.scarlet.Adapter.CategoryAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductAdapter;
+import com.example.scarlet.AdminMainActivity;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
@@ -55,7 +57,7 @@ public class HomeFragment extends Fragment {
         BindView(view);
         validateUser(view);
         getCategoryData(view);
-        getTrendData(view);
+//        getTrendData(view);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +103,7 @@ public class HomeFragment extends Fragment {
                 categoryList.clear();
                 for(DataSnapshot snap:snapshot.getChildren()){
                     String categoryName=snap.child("name_category").getValue(String.class);
-                    int categoryImage=snap.child("img").getValue(int.class);
+                    String categoryImage=snap.child("img").getValue(String.class);
                     String categoryKey=snap.getKey();
                     Category category=new Category(categoryName,categoryImage,categoryKey);
                     categoryList.add(category);
@@ -121,8 +123,8 @@ public class HomeFragment extends Fragment {
         productList=new ArrayList<>();
         trendRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         trendRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
-        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.banana_chocolate));
-        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.banana_peanut));
+//        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.banana_chocolate));
+//        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.banana_peanut));
 
         productAdapter=new ProductAdapter(productList);
         trendRecyclerView.setAdapter(productAdapter);
@@ -144,13 +146,13 @@ public class HomeFragment extends Fragment {
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
-                    int productImage = product.child("img").getValue(int.class);
+                    String productImage = product.child("img").getValue(String.class);
 
                     categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot categorySnapshot) {
                             if (categorySnapshot.exists()) {
-                                int icon = categorySnapshot.child("img").getValue(int.class);
+                                String icon = categorySnapshot.child("img").getValue(String.class);
                                 Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                 productList.add(productWithIcon);
 

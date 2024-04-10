@@ -64,6 +64,7 @@
 					android:layout_height="43dp"
 					android:text="Trends"
 					/>
+
 				<RelativeLayout
 					android:layout_marginLeft="20dp"
 					android:layout_marginRight="20dp"

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+
+    <RelativeLayout
+        android:background="@drawable/_bg_white_radius30"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp">
+
+        <TextView android:id="@+id/name"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add new category"
+            android:textColor="@color/burgundy"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
+
+        <EditText android:id="@+id/categoryName"
+            android:layout_below="@+id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Category name"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <ImageView android:id="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/picture"
+            android:layout_below="@+id/categoryName"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <Button android:id="@+id/btnSave"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_burgundy_radius"
+            android:textColor="@color/white"
+            android:layout_marginRight="120dp"
+            android:layout_below="@+id/btnImage"
+            android:textSize="18sp"
+            android:text="Save"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+

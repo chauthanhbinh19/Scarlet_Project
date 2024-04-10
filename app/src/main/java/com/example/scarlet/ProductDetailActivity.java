@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.Data.Favourite;
 import com.example.scarlet.Data.ProductQuantity;
 import com.google.firebase.database.DataSnapshot;
@@ -151,15 +152,16 @@ public class ProductDetailActivity extends AppCompatActivity {
                     String productName=snapshot.child("name").getValue(String.class);
                     Double productPrice=snapshot.child("price").getValue(Double.class);
                     String categoryName=snapshot.child("categoryName").getValue(String.class);
-                    int productImage=snapshot.child("img").getValue(int.class);
+                    String productImage=snapshot.child("img").getValue(String.class);
                     String categoryId=snapshot.child("categoryId").getValue(String.class);
 
                     myRef2.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot categorySnapshot) {
                             if(categorySnapshot.exists()){
-                                int categoryIcon=categorySnapshot.child("img").getValue(int.class);
-                                categoryIconView.setImageResource(categoryIcon);
+                                String categoryIcon=categorySnapshot.child("img").getValue(String.class);
+//                                categoryIconView.setImageResource(categoryIcon);
+                                Glide.with(ProductDetailActivity.this).load(categoryIcon).into(categoryIconView);
                             }
                         }
 
@@ -171,7 +173,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                     productNameView.setText(productName);
                     productPriceView.setText(String.valueOf(productPrice));
                     categoryNameView.setText(categoryName);
-                    productImageView.setImageResource(productImage);
+//                    productImageView.setImageResource(productImage);
+                    Glide.with(ProductDetailActivity.this).load(productImage).into(productImageView);
                 }
             }
 

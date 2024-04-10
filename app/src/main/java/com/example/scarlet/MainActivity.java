@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
         openHomeFragment();
         createBottomNavigation(savedInstanceState);
 //        CreateDataDefault text=new CreateDataDefault();
-//        text.createProductData();
 //        text.createCategoryData();
+//        text.createProductData();
+//        text.createMembershipData();
+//        text.createOfferData();
+//        text.createVoucherData();
     }
     private void createBottomNavigation(Bundle savedInstanceState){
         bottomNavigation=findViewById(R.id.bottomNavigation);

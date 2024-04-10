@@ -59,6 +59,7 @@ public class InformationActivity extends AppCompatActivity {
         if(intent!= null){
             String totalT=intent.getStringExtra("total");
             if(totalT!= null){
+//                double total1 = Double.parseDouble(total);
                 totalView.setText(totalT);
                 total=totalT;
             }
@@ -114,7 +115,8 @@ public class InformationActivity extends AppCompatActivity {
                     intent.putExtra("province",provinceText);
                     intent.putExtra("postalCode",postalCodeText);
                     intent.putExtra("additionalInfo",additionalInfoText);
-                    intent.putExtra("total",total);
+                    double total1 = Double.parseDouble(total);
+                    intent.putExtra("total",String.format("%.0f", total1));
                     startActivity(intent);
                 }
             }

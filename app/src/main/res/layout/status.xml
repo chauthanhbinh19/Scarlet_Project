@@ -126,7 +126,6 @@
 							android:layout_height="19.12dp" />
 
 						<ImageView android:id="@+id/vector_ek2"
-							android:src="@drawable/vector_ek2"
 							android:contentDescription="vector_ek2"
 							 android:layout_marginStart="0.11dp"
 							android:layout_marginTop="0.2dp"

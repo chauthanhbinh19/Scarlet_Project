@@ -1,9 +1,22 @@
 package com.example.scarlet.Data;
 
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import androidx.annotation.NonNull;
+
 import com.example.scarlet.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,180 +27,206 @@ public class CreateDataDefault {
         DatabaseReference myRef = database.getReference("category");
 
         List<Category> categoryList=new ArrayList<>();
-        categoryList.add(new Category("Drinks", R.drawable.bubble_tea));
-        categoryList.add(new Category("Buns",R.drawable.croissant));
-        categoryList.add(new Category("Toasts",R.drawable.toast));
-        categoryList.add(new Category("Sandwiches",R.drawable.sandwich));
-        categoryList.add(new Category("Dry cakes",R.drawable.cinnamon_roll));
-        categoryList.add(new Category("Cakes",R.drawable.cake));
-        categoryList.add(new Category("Cake slices",R.drawable.cake_slice));
-        categoryList.add(new Category("Pudding",R.drawable.pudding));
-        categoryList.add(new Category("Cookies",R.drawable.cookie));
+//        myRef.push().setValue(new Category("Drinks", R.drawable.bubble_tea));
+//        myRef.push().setValue(new Category("Buns",R.drawable.croissant));
+//        myRef.push().setValue(new Category("Toasts",R.drawable.toast));
+//        myRef.push().setValue(new Category("Sandwiches",R.drawable.sandwich));
+//        myRef.push().setValue(new Category("Dry cakes",R.drawable.cinnamon_roll));
+//        myRef.push().setValue(new Category("Cakes",R.drawable.cake));
+//        myRef.push().setValue(new Category("Cake slices",R.drawable.cake_slice));
+//        myRef.push().setValue(new Category("Pudding",R.drawable.pudding));
+//        myRef.push().setValue(new Category("Cookies",R.drawable.cookie));
 
-        myRef.setValue(categoryList);
     }
+
     public void createProductData(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference myRef=database.getReference("product");
+        DatabaseReference myRef1=database.getReference("category");
         List<Product> productList=new ArrayList<>();
-        //Drinks data
-        productList.add(new Product("Black coffee","","0","Drinks",28000,100,R.drawable.dsc02313_optimized));
-        productList.add(new Product("Lychee mojito","","0","Drinks",48000,100,R.drawable.dsc02977_optimized));
-        productList.add(new Product("Lychee tea","","0","Drinks",45000,100,R.drawable.dsc03081_optimized));
-        productList.add(new Product("Peach tea","","0","Drinks",48000,100,R.drawable.dsc03071_optimized));
-        productList.add(new Product("Strawberry mojito","","0","Drinks",48000,100,R.drawable.dsc03013_optimized));
-        productList.add(new Product("Thai lemon tea","","0","Drinks",28000,100,R.drawable.dsc03047_optimized));
-        productList.add(new Product("Thai milk tea","","0","Drinks",30000,100,R.drawable.dsc02860_optimized));
-        productList.add(new Product("Strawberry tea","","0","Drinks",45000,100,R.drawable.dsc05164_optimized));
-        productList.add(new Product("White coffee","","0","Drinks",30000,100,R.drawable.dsc02847_optimized));
-        //Buns
-        productList.add(new Product("Bacon cheese onion","","1","Buns",32000,100,R.drawable.bacon_cheese_onion));
-        productList.add(new Product("Banana chocolate","","1","Buns",24000,100,R.drawable.banana_chocolate));
-        productList.add(new Product("Banana peanut","","1","Buns",24000,100,R.drawable.banana_peanut));
-        productList.add(new Product("Big eye","","1","Buns",34000,100,R.drawable.big_eye));
-        productList.add(new Product("Blueberry custard","","1","Buns",20000,100,R.drawable.blueberry_custard));
-        productList.add(new Product("Brown Sugar Injeolmi Korissant","","1","Buns",29000,100,R.drawable.brown_sugar_injeolmi_korissant));
-        productList.add(new Product("Cheese Boat","","1","Buns",22000,100,R.drawable.cheese_boat));
-        productList.add(new Product("Cheese Croissant","","1","Buns",22000,100,R.drawable.cheese_croissant));
-        productList.add(new Product("Cheese Floss","","1","Buns",27000,100,R.drawable.cheese_floss));
-        productList.add(new Product("Cheese Lava Croissant","","1","Buns",18000,100,R.drawable.cheese_lava_croissant));
-        productList.add(new Product("Cheese Lava Croissant 3pcs","","1","Buns",46000,100,R.drawable.cheese_lava_croissant_3pcs));
-        productList.add(new Product("Cheese Lava Croissant 5pcs","","1","Buns",72000,100,R.drawable.cheese_lava_croissant_5pcs));
-        productList.add(new Product("Cheese Sausage","","1","Buns",30000,100,R.drawable.dsc03210));
-        productList.add(new Product("Chicken Parmesan","","1","Buns",34000,100,R.drawable.dsc03298_optimized));
-        productList.add(new Product("Chocolate Donut","","1","Buns",28000,100,R.drawable.dsc03270_optimized));
-        productList.add(new Product("Cinnamon Korissant","","1","Buns",22000,100,R.drawable.cinnamon_kroissant));
 
-        productList.add(new Product("Cocktail Bun 3pcs","","1","Buns",27000,100,R.drawable.dsc02677_optimized));
-        productList.add(new Product("Cocoa Teddy","","1","Buns",22000,100,R.drawable.dsc03556_optimized));
-        productList.add(new Product("Cranberry Cream Cheese","","1","Buns",24000,100,R.drawable.dsc03558_optimized));
-        productList.add(new Product("Cream Chez Garlic Bread","","1","Buns",36000,100,R.drawable.dsc03254_optimized));
-        productList.add(new Product("Donut Balls","","1","Buns",39000,100,R.drawable.dsc02692_optimized));
-        productList.add(new Product("Double Cheese","","1","Buns",24000,100,R.drawable.dsc03509_optimized));
-        productList.add(new Product("Durian Egg Tart","","1","Buns",20000,100,R.drawable.dsc03025_optimized));
-        productList.add(new Product("Egg Ppang","","1","Buns",39000,100,R.drawable.eggppang));
-        productList.add(new Product("Fire Floss","","1","Buns",34000,100,R.drawable.dsc03319_optimized));
-        productList.add(new Product("Floss","","1","Buns",34000,100,R.drawable.dsc03349_optimized));
-        productList.add(new Product("Floss 4ever","","1","Buns",32000,100,R.drawable.flos_4ver));
-        productList.add(new Product("Get Cheese","","1","Buns",22000,100,R.drawable.dsc03181_optimized));
-        productList.add(new Product("Golden Lava Bun","","1","Buns",22000,100,R.drawable.dsc03528_optimized));
-        productList.add(new Product("Golden Lava Croissant","","1","Buns",18000,100,R.drawable.dsc03399_optimized));
-        productList.add(new Product("Golden Lava Croissant 3pcs","","1","Buns",46000,100,R.drawable.dsc03460_optimized));
-        productList.add(new Product("Golden Lava Croissant 5pcs","","1","Buns",72000,100,R.drawable.dsc03454_optimized));
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot categorySnapshot:snapshot.getChildren()){
+                    String categoryKey= categorySnapshot.getKey();
+                    String categoryName=categorySnapshot.child("name_category").getValue(String.class);
 
-        productList.add(new Product("Golden Nacho Cheese","","1","Buns",45000,100,R.drawable.golden_nacho));
-        productList.add(new Product("Green Garlic","","1","Buns",22000,100,R.drawable.green_garlic));
-        productList.add(new Product("Ham Cheese","","1","Buns",29000,100,R.drawable.dsc03133_optimized));
-        productList.add(new Product("Ham Cheese","","1","Buns",29000,100,R.drawable.ham_cheese));
-        productList.add(new Product("Ham Roll","","1","Buns",22000,100,R.drawable.ham_roll));
-        productList.add(new Product("Kimcheese Korissant","","1","Buns",38000,100,R.drawable.kimcheese_croissant));
-        productList.add(new Product("Mushi Mushroom Chicken Dozo","","1","Buns",29000,100,R.drawable.dsc02935_optimized));
-        productList.add(new Product("Mushroom Cheese Sausage","","1","Buns",34000,100,R.drawable.mushroom_cheese_sausage));
-        productList.add(new Product("Phoenix","","1","Buns",24000,100,R.drawable.phoenix));
-        productList.add(new Product("Pillow Raisin","","1","Buns",24000,100,R.drawable.dsc03241_optimized));
-        productList.add(new Product("Pork Ribs","","1","Buns",28000,100,R.drawable.dsc03584_optimized));
-        productList.add(new Product("Rainbow Donut","","1","Buns",28000,100,R.drawable.dsc03292_optimized));
-        productList.add(new Product("Raisin Cream Cheese","","1","Buns",24000,100,R.drawable.dsc03558_optimized));
-        productList.add(new Product("Sausage Standard","","1","Buns",24000,100,R.drawable.dsc03199_optimized));
-        productList.add(new Product("Set Tart Cheese Mini 4pcs","","1","Buns",95000,100,R.drawable.dsc03507_optimized));
-        productList.add(new Product("Smart Aleck","","1","Buns",25000,100,R.drawable.dsc03188_optimized));
+//                    if(categoryName.equals("Drinks")){
+//                        //Drinks data
+//                        myRef.push().setValue(new Product("Black coffee","",categoryKey,"Drinks",28000,100,R.drawable.dsc02313_optimized));
+//                        myRef.push().setValue(new Product("Lychee mojito","",categoryKey,"Drinks",48000,100,R.drawable.dsc02977_optimized));
+//                        myRef.push().setValue(new Product("Lychee tea","",categoryKey,"Drinks",45000,100,R.drawable.dsc03081_optimized));
+//                        myRef.push().setValue(new Product("Peach tea","",categoryKey,"Drinks",48000,100,R.drawable.dsc03071_optimized));
+//                        myRef.push().setValue(new Product("Strawberry mojito","",categoryKey,"Drinks",48000,100,R.drawable.dsc03013_optimized));
+//                        myRef.push().setValue(new Product("Thai lemon tea","",categoryKey,"Drinks",28000,100,R.drawable.dsc03047_optimized));
+//                        myRef.push().setValue(new Product("Thai milk tea","",categoryKey,"Drinks",30000,100,R.drawable.dsc02860_optimized));
+//                        myRef.push().setValue(new Product("Strawberry tea","",categoryKey,"Drinks",45000,100,R.drawable.dsc05164_optimized));
+//                        myRef.push().setValue(new Product("White coffee","",categoryKey,"Drinks",30000,100,R.drawable.dsc02847_optimized));
+//                    }else if(categoryName.equals("Buns")){
+//                        //Buns
+//                        myRef.push().setValue(new Product("Bacon cheese onion","",categoryKey,"Buns",32000,100,R.drawable.bacon_cheese_onion));
+//                        myRef.push().setValue(new Product("Banana chocolate","",categoryKey,"Buns",24000,100,R.drawable.banana_chocolate));
+//                        myRef.push().setValue(new Product("Banana peanut","",categoryKey,"Buns",24000,100,R.drawable.banana_peanut));
+//                        myRef.push().setValue(new Product("Big eye","",categoryKey,"Buns",34000,100,R.drawable.big_eye));
+//                        myRef.push().setValue(new Product("Blueberry custard","",categoryKey,"Buns",20000,100,R.drawable.blueberry_custard));
+//                        myRef.push().setValue(new Product("Brown Sugar Injeolmi Korissant","",categoryKey,"Buns",29000,100,R.drawable.brown_sugar_injeolmi_korissant));
+//                        myRef.push().setValue(new Product("Cheese Boat","",categoryKey,"Buns",22000,100,R.drawable.cheese_boat));
+//                        myRef.push().setValue(new Product("Cheese Croissant","",categoryKey,"Buns",22000,100,R.drawable.cheese_croissant));
+//                        myRef.push().setValue(new Product("Cheese Floss","",categoryKey,"Buns",27000,100,R.drawable.cheese_floss));
+//                        myRef.push().setValue(new Product("Cheese Lava Croissant","",categoryKey,"Buns",18000,100,R.drawable.cheese_lava_croissant));
+//                        myRef.push().setValue(new Product("Cheese Lava Croissant 3pcs","",categoryKey,"Buns",46000,100,R.drawable.cheese_lava_croissant_3pcs));
+//                        myRef.push().setValue(new Product("Cheese Lava Croissant 5pcs","",categoryKey,"Buns",72000,100,R.drawable.cheese_lava_croissant_5pcs));
+//                        myRef.push().setValue(new Product("Cheese Sausage","",categoryKey,"Buns",30000,100,R.drawable.dsc03210));
+//                        myRef.push().setValue(new Product("Chicken Parmesan","",categoryKey,"Buns",34000,100,R.drawable.dsc03298_optimized));
+//                        myRef.push().setValue(new Product("Chocolate Donut","",categoryKey,"Buns",28000,100,R.drawable.dsc03270_optimized));
+//                        myRef.push().setValue(new Product("Cinnamon Korissant","",categoryKey,"Buns",22000,100,R.drawable.cinnamon_kroissant));
+//
+//                        myRef.push().setValue(new Product("Cocktail Bun 3pcs","",categoryKey,"Buns",27000,100,R.drawable.dsc02677_optimized));
+//                        myRef.push().setValue(new Product("Cocoa Teddy","",categoryKey,"Buns",22000,100,R.drawable.dsc03556_optimized));
+//                        myRef.push().setValue(new Product("Cranberry Cream Cheese","",categoryKey,"Buns",24000,100,R.drawable.dsc03558_optimized));
+//                        myRef.push().setValue(new Product("Cream Chez Garlic Bread","",categoryKey,"Buns",36000,100,R.drawable.dsc03254_optimized));
+//                        myRef.push().setValue(new Product("Donut Balls","",categoryKey,"Buns",39000,100,R.drawable.dsc02692_optimized));
+//                        myRef.push().setValue(new Product("Double Cheese","",categoryKey,"Buns",24000,100,R.drawable.dsc03509_optimized));
+//                        myRef.push().setValue(new Product("Durian Egg Tart","",categoryKey,"Buns",20000,100,R.drawable.dsc03025_optimized));
+//                        myRef.push().setValue(new Product("Egg Ppang","",categoryKey,"Buns",39000,100,R.drawable.eggppang));
+//                        myRef.push().setValue(new Product("Fire Floss","",categoryKey,"Buns",34000,100,R.drawable.dsc03319_optimized));
+//                        myRef.push().setValue(new Product("Floss","",categoryKey,"Buns",34000,100,R.drawable.dsc03349_optimized));
+//                        myRef.push().setValue(new Product("Floss 4ever","",categoryKey,"Buns",32000,100,R.drawable.flos_4ver));
+//                        myRef.push().setValue(new Product("Get Cheese","",categoryKey,"Buns",22000,100,R.drawable.dsc03181_optimized));
+//                        myRef.push().setValue(new Product("Golden Lava Bun","",categoryKey,"Buns",22000,100,R.drawable.dsc03528_optimized));
+//                        myRef.push().setValue(new Product("Golden Lava Croissant","",categoryKey,"Buns",18000,100,R.drawable.dsc03399_optimized));
+//                        myRef.push().setValue(new Product("Golden Lava Croissant 3pcs","",categoryKey,"Buns",46000,100,R.drawable.dsc03460_optimized));
+//                        myRef.push().setValue(new Product("Golden Lava Croissant 5pcs","",categoryKey,"Buns",72000,100,R.drawable.dsc03454_optimized));
+//
+//                        myRef.push().setValue(new Product("Golden Nacho Cheese","",categoryKey,"Buns",45000,100,R.drawable.golden_nacho));
+//                        myRef.push().setValue(new Product("Green Garlic","",categoryKey,"Buns",22000,100,R.drawable.green_garlic));
+//                        myRef.push().setValue(new Product("Ham Cheese","",categoryKey,"Buns",29000,100,R.drawable.dsc03133_optimized));
+//                        myRef.push().setValue(new Product("Ham Cheese","",categoryKey,"Buns",29000,100,R.drawable.ham_cheese));
+//                        myRef.push().setValue(new Product("Ham Roll","",categoryKey,"Buns",22000,100,R.drawable.ham_roll));
+//                        myRef.push().setValue(new Product("Kimcheese Korissant","",categoryKey,"Buns",38000,100,R.drawable.kimcheese_croissant));
+//                        myRef.push().setValue(new Product("Mushi Mushroom Chicken Dozo","",categoryKey,"Buns",29000,100,R.drawable.dsc02935_optimized));
+//                        myRef.push().setValue(new Product("Mushroom Cheese Sausage","",categoryKey,"Buns",34000,100,R.drawable.mushroom_cheese_sausage));
+//                        myRef.push().setValue(new Product("Phoenix","",categoryKey,"Buns",24000,100,R.drawable.phoenix));
+//                        myRef.push().setValue(new Product("Pillow Raisin","",categoryKey,"Buns",24000,100,R.drawable.dsc03241_optimized));
+//                        myRef.push().setValue(new Product("Pork Ribs","",categoryKey,"Buns",28000,100,R.drawable.dsc03584_optimized));
+//                        myRef.push().setValue(new Product("Rainbow Donut","",categoryKey,"Buns",28000,100,R.drawable.dsc03292_optimized));
+//                        myRef.push().setValue(new Product("Raisin Cream Cheese","",categoryKey,"Buns",24000,100,R.drawable.dsc03558_optimized));
+//                        myRef.push().setValue(new Product("Sausage Standard","",categoryKey,"Buns",24000,100,R.drawable.dsc03199_optimized));
+//                        myRef.push().setValue(new Product("Set Tart Cheese Mini 4pcs","",categoryKey,"Buns",95000,100,R.drawable.dsc03507_optimized));
+//                        myRef.push().setValue(new Product("Smart Aleck","",categoryKey,"Buns",25000,100,R.drawable.dsc03188_optimized));
+//
+//                        myRef.push().setValue(new Product("Spring In The City","",categoryKey,"Buns",39000,100,R.drawable.dsc03534_optimized));
+//                        myRef.push().setValue(new Product("Sprouted Rye","",categoryKey,"Buns",28000,100,R.drawable.dsc02959_optimized));
+//                        myRef.push().setValue(new Product("Sprouted Rye","",categoryKey,"Buns",28000,100,R.drawable.dsc02997_optimized));
+//                        myRef.push().setValue(new Product("Sprouted Rye","",categoryKey,"Buns",28000,100,R.drawable.dsc02991_optimized));
+//                        myRef.push().setValue(new Product("Sprouted Rye 3pcs","",categoryKey,"Buns",69000,100,R.drawable.dsc03006_optimized));
+//                        myRef.push().setValue(new Product("Sugar Donut","",categoryKey,"Buns",28000,100,R.drawable.dsc03593_optimized));
+//                        myRef.push().setValue(new Product("T-Cures of Golden Flowers","",categoryKey,"Buns",36000,100,R.drawable.dsc03347_optimized));
+//                        myRef.push().setValue(new Product("Tart Golden Cheese","",categoryKey,"Buns",26000,100,R.drawable.dsc03485_optimized));
+//                        myRef.push().setValue(new Product("Tart Orig Cheese","",categoryKey,"Buns",26000,100,R.drawable.dsc03490_optimized));
+//                        myRef.push().setValue(new Product("Tuna Crossant","",categoryKey,"Buns",30000,100,R.drawable.dsc04823_optimized));
+//                        myRef.push().setValue(new Product("Ya Ya Egg Tart","",categoryKey,"Buns",30000,100,R.drawable.dsc02790_optimized));
+//                    }else if(categoryName.equals("Toasts")){
+//                        //Toasts
+//                        myRef.push().setValue(new Product("Almond Coffee Milky Way","",categoryKey,"Toasts",108000,100,R.drawable.dsc04839_optimized));
+//                        myRef.push().setValue(new Product("Brioche","",categoryKey,"Toasts",90000,100,R.drawable.dsc02364_optimized));
+//                        myRef.push().setValue(new Product("California Toast","",categoryKey,"Toasts",49000,100,R.drawable.dsc02270_optimized));
+//                        myRef.push().setValue(new Product("Cranberry Cr Cheese 4pcs","",categoryKey,"Toasts",45000,100,R.drawable.dsc02369_optimized));
+//                        myRef.push().setValue(new Product("Cranberry Toast","",categoryKey,"Toasts",55000,100,R.drawable.dsc02351_optimized));
+//                        myRef.push().setValue(new Product("Dark Rye Toast","",categoryKey,"Toasts",49000,100,R.drawable.dsc02286_optimized));
+//                        myRef.push().setValue(new Product("Earthquake Toast","",categoryKey,"Toasts",49000,100,R.drawable.dsc02331_optimized));
+//                        myRef.push().setValue(new Product("Fresh Baguette","",categoryKey,"Toasts",45000,100,R.drawable.dsc02384_optimized));
+//                        myRef.push().setValue(new Product("Gourment Fruit Loaf","",categoryKey,"Toasts",105000,100,R.drawable.dsc02263_optimized));
+//                        myRef.push().setValue(new Product("Mount Greentea Toast","",categoryKey,"Toasts",55000,100,R.drawable.dsc02361_optimized));
+//                        myRef.push().setValue(new Product("Premium Toast","",categoryKey,"Toasts",55000,100,R.drawable.dsc02313_optimized_1));
+//                        myRef.push().setValue(new Product("Pumpkin Toast","",categoryKey,"Toasts",40000,100,R.drawable.dsc02342_optimized));
+//                        myRef.push().setValue(new Product("Standard Toast","",categoryKey,"Toasts",47000,100,R.drawable.dsc02294_optimized));
+//                        myRef.push().setValue(new Product("Wholemeal Toast","",categoryKey,"Toasts",40000,100,R.drawable.dsc02307_optimized));
+//                    }else if(categoryName.equals("Sandwiches")){
+//                        //Sandwich
+//                        myRef.push().setValue(new Product("Bacon&Egg Breakfast SW","",categoryKey,"Sandwiches",45000,100,R.drawable.dsc02900_optimized));
+//                        myRef.push().setValue(new Product("Baked Ham&Cheese SW","",categoryKey,"Sandwiches",45000,100,R.drawable.dsc02915_optimized));
+//                        myRef.push().setValue(new Product("Chicken SW","",categoryKey,"Sandwiches",45000,100,R.drawable.dsc03094_optimized));
+//                        myRef.push().setValue(new Product("Ham&Egg Breakfast SW","",categoryKey,"Sandwiches",45000,100,R.drawable.dsc02869_optimized));
+//                        myRef.push().setValue(new Product("Tuna SW","",categoryKey,"Sandwiches",45000,100,R.drawable.dsc03110_optimized));
+//                    }else if(categoryName.equals("Dry cakes")){
+//                        //Dry cakes
+//                        myRef.push().setValue(new Product("Banana Cake","",categoryKey,"Dry cakes",108000,100,R.drawable.dsc02662_optimized));
+//                        myRef.push().setValue(new Product("Combo Drycake 3pcs","",categoryKey,"Dry cakes",80000,100,R.drawable.dsc02769_optimized));
+//                        myRef.push().setValue(new Product("Combo Drycake 5pcs","",categoryKey,"Dry cakes",130000,100,R.drawable.dsc02774_optimized));
+//                        myRef.push().setValue(new Product("Crater Cheese Honey","",categoryKey,"Dry cakes",55000,100,R.drawable.dsc02694_optimized));
+//                        myRef.push().setValue(new Product("HOKKAIDO ROLL","",categoryKey,"Dry cakes",169000,100,R.drawable.hokkaido_roll_sp_roll));
+//                        myRef.push().setValue(new Product("HOKKAIDO SLICED","",categoryKey,"Dry cakes",69000,100,R.drawable.hokkaido_slice_sp));
+//                        myRef.push().setValue(new Product("Japan Light Cheese","",categoryKey,"Dry cakes",129000,100,R.drawable.dsc02649_optimized));
+//                        myRef.push().setValue(new Product("PANDAN CHIFFON","",categoryKey,"Dry cakes",115000,100,R.drawable.ca_2_cake));
+//                        myRef.push().setValue(new Product("Parmesan Cheese","",categoryKey,"Dry cakes",56000,100,R.drawable.dsc02412_optimized));
+//                        myRef.push().setValue(new Product("SR Chocolate Sliced","",categoryKey,"Dry cakes",30000,100,R.drawable.dsc02720_optimized));
+//                        myRef.push().setValue(new Product("SR Coffee Sliced","",categoryKey,"Dry cakes",30000,100,R.drawable.dsc05157_optimized));
+//                        myRef.push().setValue(new Product("SR Greentea Sliced","",categoryKey,"Dry cakes",30000,100,R.drawable.dsc02752_optimized));
+//                        myRef.push().setValue(new Product("SR Raisin Sliced","",categoryKey,"Dry cakes",30000,100,R.drawable.dsc02721_optimized));
+//                        myRef.push().setValue(new Product("SR Tiger Skin Sliced","",categoryKey,"Dry cakes",30000,100,R.drawable.dsc02705_optimized));
+//                    }else if(categoryName.equals("Cakes")){
+//                        //Cakes
+//                        myRef.push().setValue(new Product("Blueberry cake","",categoryKey,"Cakes",450000,100,R.drawable.dsc02564_optimized));
+//                        myRef.push().setValue(new Product("Mocha cake","",categoryKey,"Cakes",450000,100,R.drawable.dsc02514_optimized));
+//                        myRef.push().setValue(new Product("Mocha cake","",categoryKey,"Cakes",450000,100,R.drawable.dsc02512_optimized));
+//                        myRef.push().setValue(new Product("Mocha cake","",categoryKey,"Cakes",450000,100,R.drawable.dsc02540_optimized));
+//                        myRef.push().setValue(new Product("Black Forest C","",categoryKey,"Cakes",490000,100,R.drawable.dsc02466_optimized));
+//                        myRef.push().setValue(new Product("Black Forest R","",categoryKey,"Cakes",360000,100,R.drawable.dsc02472_optimized));
+//                        myRef.push().setValue(new Product("Fresh Cream","",categoryKey,"Cakes",450000,100,R.drawable.dsc02547_optimized));
+//                        myRef.push().setValue(new Product("Fresh Cream (SN00 H10)","",categoryKey,"Cakes",380000,100,R.drawable.dsc02588_optimized));
+//                        myRef.push().setValue(new Product("Fresh Cream (SN01)","",categoryKey,"Cakes",390000,100,R.drawable.dsc02574_optimized));
+//                        myRef.push().setValue(new Product("Hai! Cheese R","",categoryKey,"Cakes",360000,100,R.drawable.dsc02256_optimized));
+//                        myRef.push().setValue(new Product("Les Opera C","",categoryKey,"Cakes",550000,100,R.drawable.dsc05141_optimized));
+//                        myRef.push().setValue(new Product("Les Opera R","",categoryKey,"Cakes",390000,100,R.drawable.dsc05138_optimized));
+//                        myRef.push().setValue(new Product("Macha Macha","",categoryKey,"Cakes",490000,100,R.drawable.dsc05150_optimized));
+//                        myRef.push().setValue(new Product("MangoCoCo Cake","",categoryKey,"Cakes",420000,100,R.drawable.dsc02430_optimized));
+//                        myRef.push().setValue(new Product("Mocha Cheese","",categoryKey,"Cakes",490000,100,R.drawable.dsc02426_optimized));
+//                        myRef.push().setValue(new Product("Mocha Choco","",categoryKey,"Cakes",490000,100,R.drawable.dsc02354_optimized));
+//                        myRef.push().setValue(new Product("Party Pink","",categoryKey,"Cakes",550000,100,R.drawable.dsc02474_optimized));
+//                        myRef.push().setValue(new Product("Passion Cheese C","",categoryKey,"Cakes",490000,100,R.drawable.dsc02494_optimized));
+//                        myRef.push().setValue(new Product("Passion Cheese R","",categoryKey,"Cakes",360000,100,R.drawable.dsc02641_optimized));
+//                        myRef.push().setValue(new Product("Rainbow Bliss C","",categoryKey,"Cakes",550000,100,R.drawable.dsc02437_optimized));
+//                        myRef.push().setValue(new Product("Rainbow Bliss R","",categoryKey,"Cakes",390000,100,R.drawable.dsc02446_optimized));
+//                        myRef.push().setValue(new Product("Snowy Fruity (C10H10)","",categoryKey,"Cakes",295000,100,R.drawable.dsc02604_optimized));
+//                        myRef.push().setValue(new Product("Tiramisu C","",categoryKey,"Cakes",550000,100,R.drawable.dsc02452_optimized));
+//                        myRef.push().setValue(new Product("Tiramisu R","",categoryKey,"Cakes",390000,100,R.drawable.dsc02621_optimized));
+//                        myRef.push().setValue(new Product("Vanila Corn Cake (SN01)","",categoryKey,"Cakes",395000,100,R.drawable.dsc02344_optimized));
+//                    }else if(categoryName.equals("Cake slices")){
+//                        //Cake slices
+//                        myRef.push().setValue(new Product("Beary Berry","",categoryKey,"Cake slices",45000,100,R.drawable.dsc02299_optimized));
+//                        myRef.push().setValue(new Product("Beary Forest","",categoryKey,"Cake slices",45000,100,R.drawable.dsc02303_optimized));
+//                        myRef.push().setValue(new Product("Beary Matcha","",categoryKey,"Cake slices",45000,100,R.drawable.dsc02295_optimized));
+//                        myRef.push().setValue(new Product("Beary Vanilla","",categoryKey,"Cake slices",45000,100,R.drawable.dsc02284_optimized));
+//                        myRef.push().setValue(new Product("Chocolate Peanut Mousse","",categoryKey,"Cake slices",59000,100,R.drawable.dsc02389_optimized));
+//                        myRef.push().setValue(new Product("Hai! Cheese Sliced","",categoryKey,"Cake slices",59000,100,R.drawable.haicheesecup));
+//                        myRef.push().setValue(new Product("Les Opera Sliced","",categoryKey,"Cake slices",58000,100,R.drawable.dsc02343_optimized));
+//                        myRef.push().setValue(new Product("Oreo Chocolate Cheese","",categoryKey,"Cake slices",59000,100,R.drawable.dsc02388_optimized));
+//                        myRef.push().setValue(new Product("Passion Cheese Sliced","",categoryKey,"Cake slices",59000,100,R.drawable.passion_cheese_cup));
+//                        myRef.push().setValue(new Product("Rainbow Bliss Sliced","",categoryKey,"Cake slices",48000,100,R.drawable.dsc02333_optimized));
+//                        myRef.push().setValue(new Product("Strawberry Yoghurt Mousse","",categoryKey,"Cake slices",59000,100,R.drawable.dsc02397_optimized));
+//                        myRef.push().setValue(new Product("Tiramisu Cup","",categoryKey,"Cake slices",59000,100,R.drawable.dsc02401_optimized));
+//                    }else if(categoryName.equals("Pudding")){
+//                        //Pudding
+//                        myRef.push().setValue(new Product("Lychee Coconut Pudding","",categoryKey,"Pudding",48000,100,R.drawable.lychee_coconut_pudding));
+//                        myRef.push().setValue(new Product("PEACH PUDDING","",categoryKey,"Pudding",48000,100,R.drawable.peach_pudding));
+//                        myRef.push().setValue(new Product("STRAWBERRY PUDDING","",categoryKey,"Pudding",48000,100,R.drawable.strawberry_pudding));
+//                        myRef.push().setValue(new Product("Tiramisu Pudding","",categoryKey,"Pudding",48000,100,R.drawable.tiramisu_pudding));
+//                    }else if(categoryName.equals("Cookies")){
+//                        //Cookies
+//                        myRef.push().setValue(new Product("Almond Cookies","",categoryKey,"Cookies",129000,100,R.drawable.dsc03146_optimized));
+//                        myRef.push().setValue(new Product("Chocolate Cookies","",categoryKey,"Cookies",129000,100,R.drawable.dsc03142_optimized));
+//                    }
 
-        productList.add(new Product("Spring In The City","","1","Buns",39000,100,R.drawable.dsc03534_optimized));
-        productList.add(new Product("Sprouted Rye","","1","Buns",28000,100,R.drawable.dsc02959_optimized));
-        productList.add(new Product("Sprouted Rye","","1","Buns",28000,100,R.drawable.dsc02997_optimized));
-        productList.add(new Product("Sprouted Rye","","1","Buns",28000,100,R.drawable.dsc02991_optimized));
-        productList.add(new Product("Sprouted Rye 3pcs","","1","Buns",69000,100,R.drawable.dsc03006_optimized));
-        productList.add(new Product("Sugar Donut","","1","Buns",28000,100,R.drawable.dsc03593_optimized));
-        productList.add(new Product("T-Cures of Golden Flowers","","1","Buns",36000,100,R.drawable.dsc03347_optimized));
-        productList.add(new Product("Tart Golden Cheese","","1","Buns",26000,100,R.drawable.dsc03485_optimized));
-        productList.add(new Product("Tart Orig Cheese","","1","Buns",26000,100,R.drawable.dsc03490_optimized));
-        productList.add(new Product("Tuna Crossant","","1","Buns",30000,100,R.drawable.dsc04823_optimized));
-        productList.add(new Product("Ya Ya Egg Tart","","1","Buns",30000,100,R.drawable.dsc02790_optimized));
-        //Toasts
-        productList.add(new Product("Almond Coffee Milky Way","","2","Toasts",108000,100,R.drawable.dsc04839_optimized));
-        productList.add(new Product("Brioche","","2","Toasts",90000,100,R.drawable.dsc02364_optimized));
-        productList.add(new Product("California Toast","","2","Toasts",49000,100,R.drawable.dsc02270_optimized));
-        productList.add(new Product("Cranberry Cr Cheese 4pcs","","2","Toasts",45000,100,R.drawable.dsc02369_optimized));
-        productList.add(new Product("Cranberry Toast","","2","Toasts",55000,100,R.drawable.dsc02351_optimized));
-        productList.add(new Product("Dark Rye Toast","","2","Toasts",49000,100,R.drawable.dsc02286_optimized));
-        productList.add(new Product("Earthquake Toast","","2","Toasts",49000,100,R.drawable.dsc02331_optimized));
-        productList.add(new Product("Fresh Baguette","","2","Toasts",45000,100,R.drawable.dsc02384_optimized));
-        productList.add(new Product("Gourment Fruit Loaf","","2","Toasts",105000,100,R.drawable.dsc02263_optimized));
-        productList.add(new Product("Mount Greentea Toast","","2","Toasts",55000,100,R.drawable.dsc02361_optimized));
-        productList.add(new Product("Premium Toast","","2","Toasts",55000,100,R.drawable.dsc02313_optimized_1));
-        productList.add(new Product("Pumpkin Toast","","2","Toasts",40000,100,R.drawable.dsc02342_optimized));
-        productList.add(new Product("Standard Toast","","2","Toasts",47000,100,R.drawable.dsc02294_optimized));
-        productList.add(new Product("Wholemeal Toast","","2","Toasts",40000,100,R.drawable.dsc02307_optimized));
-        //Sandwich
-        productList.add(new Product("Bacon&Egg Breakfast SW","","3","Sandwiches",45000,100,R.drawable.dsc02900_optimized));
-        productList.add(new Product("Baked Ham&Cheese SW","","3","Sandwiches",45000,100,R.drawable.dsc02915_optimized));
-        productList.add(new Product("Chicken SW","","3","Sandwiches",45000,100,R.drawable.dsc03094_optimized));
-        productList.add(new Product("Ham&Egg Breakfast SW","","3","Sandwiches",45000,100,R.drawable.dsc02869_optimized));
-        productList.add(new Product("Tuna SW","","3","Sandwiches",45000,100,R.drawable.dsc03110_optimized));
-        //Dry cakes
-        productList.add(new Product("Banana Cake","","4","Dry cakes",108000,100,R.drawable.dsc02662_optimized));
-        productList.add(new Product("Combo Drycake 3pcs","","4","Dry cakes",80000,100,R.drawable.dsc02769_optimized));
-        productList.add(new Product("Combo Drycake 5pcs","","4","Dry cakes",130000,100,R.drawable.dsc02774_optimized));
-        productList.add(new Product("Crater Cheese Honey","","4","Dry cakes",55000,100,R.drawable.dsc02694_optimized));
-        productList.add(new Product("HOKKAIDO ROLL","","4","Dry cakes",169000,100,R.drawable.hokkaido_roll_sp_roll));
-        productList.add(new Product("HOKKAIDO SLICED","","4","Dry cakes",69000,100,R.drawable.hokkaido_slice_sp));
-        productList.add(new Product("Japan Light Cheese","","4","Dry cakes",129000,100,R.drawable.dsc02649_optimized));
-        productList.add(new Product("PANDAN CHIFFON","","4","Dry cakes",115000,100,R.drawable.ca_2_cake));
-        productList.add(new Product("Parmesan Cheese","","4","Dry cakes",56000,100,R.drawable.dsc02412_optimized));
-        productList.add(new Product("SR Chocolate Sliced","","4","Dry cakes",30000,100,R.drawable.dsc02720_optimized));
-        productList.add(new Product("SR Coffee Sliced","","4","Dry cakes",30000,100,R.drawable.dsc05157_optimized));
-        productList.add(new Product("SR Greentea Sliced","","4","Dry cakes",30000,100,R.drawable.dsc02752_optimized));
-        productList.add(new Product("SR Raisin Sliced","","4","Dry cakes",30000,100,R.drawable.dsc02721_optimized));
-        productList.add(new Product("SR Tiger Skin Sliced","","4","Dry cakes",30000,100,R.drawable.dsc02705_optimized));
-        //Cakes
-        productList.add(new Product("Blueberry cake","","5","Cakes",450000,100,R.drawable.dsc02564_optimized));
-        productList.add(new Product("Mocha cake","","5","Cakes",450000,100,R.drawable.dsc02514_optimized));
-        productList.add(new Product("Mocha cake","","5","Cakes",450000,100,R.drawable.dsc02512_optimized));
-        productList.add(new Product("Mocha cake","","5","Cakes",450000,100,R.drawable.dsc02540_optimized));
-        productList.add(new Product("Black Forest C","","5","Cakes",490000,100,R.drawable.dsc02466_optimized));
-        productList.add(new Product("Black Forest R","","5","Cakes",360000,100,R.drawable.dsc02472_optimized));
-        productList.add(new Product("Fresh Cream","","5","Cakes",450000,100,R.drawable.dsc02547_optimized));
-        productList.add(new Product("Fresh Cream (SN00 H10)","","5","Cakes",380000,100,R.drawable.dsc02588_optimized));
-        productList.add(new Product("Fresh Cream (SN01)","","5","Cakes",390000,100,R.drawable.dsc02574_optimized));
-        productList.add(new Product("Hai! Cheese R","","5","Cakes",360000,100,R.drawable.dsc02256_optimized));
-        productList.add(new Product("Les Opera C","","5","Cakes",550000,100,R.drawable.dsc05141_optimized));
-        productList.add(new Product("Les Opera R","","5","Cakes",390000,100,R.drawable.dsc05138_optimized));
-        productList.add(new Product("Macha Macha","","5","Cakes",490000,100,R.drawable.dsc05150_optimized));
-        productList.add(new Product("MangoCoCo Cake","","5","Cakes",420000,100,R.drawable.dsc02430_optimized));
-        productList.add(new Product("Mocha Cheese","","5","Cakes",490000,100,R.drawable.dsc02426_optimized));
-        productList.add(new Product("Mocha Choco","","5","Cakes",490000,100,R.drawable.dsc02354_optimized));
-        productList.add(new Product("Party Pink","","5","Cakes",550000,100,R.drawable.dsc02474_optimized));
-        productList.add(new Product("Passion Cheese C","","5","Cakes",490000,100,R.drawable.dsc02494_optimized));
-        productList.add(new Product("Passion Cheese R","","5","Cakes",360000,100,R.drawable.dsc02641_optimized));
-        productList.add(new Product("Rainbow Bliss C","","5","Cakes",550000,100,R.drawable.dsc02437_optimized));
-        productList.add(new Product("Rainbow Bliss R","","5","Cakes",390000,100,R.drawable.dsc02446_optimized));
-        productList.add(new Product("Snowy Fruity (C10H10)","","5","Cakes",295000,100,R.drawable.dsc02604_optimized));
-        productList.add(new Product("Tiramisu C","","5","Cakes",550000,100,R.drawable.dsc02452_optimized));
-        productList.add(new Product("Tiramisu R","","5","Cakes",390000,100,R.drawable.dsc02621_optimized));
-        productList.add(new Product("Vanila Corn Cake (SN01)","","5","Cakes",395000,100,R.drawable.dsc02344_optimized));
-        //Cake slices
-        productList.add(new Product("Beary Berry","","6","Cake slices",45000,100,R.drawable.dsc02299_optimized));
-        productList.add(new Product("Beary Forest","","6","Cake slices",45000,100,R.drawable.dsc02303_optimized));
-        productList.add(new Product("Beary Matcha","","6","Cake slices",45000,100,R.drawable.dsc02295_optimized));
-        productList.add(new Product("Beary Vanilla","","6","Cake slices",45000,100,R.drawable.dsc02284_optimized));
-        productList.add(new Product("Chocolate Peanut Mousse","","6","Cake slices",59000,100,R.drawable.dsc02389_optimized));
-        productList.add(new Product("Hai! Cheese Sliced","","6","Cake slices",59000,100,R.drawable.haicheesecup));
-        productList.add(new Product("Les Opera Sliced","","6","Cake slices",58000,100,R.drawable.dsc02343_optimized));
-        productList.add(new Product("Oreo Chocolate Cheese","","6","Cake slices",59000,100,R.drawable.dsc02388_optimized));
-        productList.add(new Product("Passion Cheese Sliced","","6","Cake slices",59000,100,R.drawable.passion_cheese_cup));
-        productList.add(new Product("Rainbow Bliss Sliced","","6","Cake slices",48000,100,R.drawable.dsc02333_optimized));
-        productList.add(new Product("Strawberry Yoghurt Mousse","","6","Cake slices",59000,100,R.drawable.dsc02397_optimized));
-        productList.add(new Product("Tiramisu Cup","","6","Cake slices",59000,100,R.drawable.dsc02401_optimized));
-        //Pudding
-        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.lychee_coconut_pudding));
-        productList.add(new Product("PEACH PUDDING","","7","Pudding",48000,100,R.drawable.peach_pudding));
-        productList.add(new Product("STRAWBERRY PUDDING","","7","Pudding",48000,100,R.drawable.strawberry_pudding));
-        productList.add(new Product("Tiramisu Pudding","","7","Pudding",48000,100,R.drawable.tiramisu_pudding));
-        //Cookies
-        productList.add(new Product("Almond Cookies","","8","Cookies",129000,100,R.drawable.dsc03146_optimized));
-        productList.add(new Product("Chocolate Cookies","","8","Cookies",129000,100,R.drawable.dsc03142_optimized));
+                }
+            }
 
-        myRef.setValue(productList);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
     public void createVoucherData()  {
         FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -199,58 +238,56 @@ public class CreateDataDefault {
         productIdList.add("0");
 
         Date date = new Date();
-        dealList.add(new Deal("Discount 10% for cake","A11A22A30",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A31",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A33",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A34",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A35",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A36",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A37",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A48",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A30",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A31",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A33",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A34",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A35",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A36",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A37",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A48",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
 
-        dealList.add(new Deal("Discount 10% for cake","A11A22A38",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A39",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A40",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A41",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A42",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A38",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A39",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A40",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A41",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A42",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
 
-        dealList.add(new Deal("Discount 10% for cake","A11A22A43",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A44",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A45",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A46",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        dealList.add(new Deal("Discount 10% for cake","A11A22A47",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A43",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A44",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A45",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A46",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A47",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
 
-        myRef.setValue(dealList);
     }
     public void createMembershipData(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference myRef=database.getReference("membership");
         List<Membership> membershipList=new ArrayList<>();
         List<String> newList=new ArrayList<>();
-        membershipList.add(new Membership("New",0,newList));
+        myRef.push().setValue(new Membership("New",0,newList));
         List<String>bronzeList=new ArrayList<>();
         bronzeList.add("Get 1 piece of birthday cake");
         bronzeList.add("Privileges to redeem incentives with accumulated points");
         bronzeList.add("Free 1 snack for orders over 100,000 VND");
-        membershipList.add(new Membership("Bronze",1,bronzeList));
+        myRef.push().setValue(new Membership("Bronze",1,bronzeList));
         List<String>silverList=new ArrayList<>();
         silverList.add("Get 1 piece of birthday cake");
         silverList.add("Privileges to redeem incentives with accumulated points");
         silverList.add("Buy 2 get 1 free");
-        membershipList.add(new Membership("Silver",2,silverList));
+        myRef.push().setValue(new Membership("Silver",2,silverList));
         List<String>goldList=new ArrayList<>();
         goldList.add("Get 1 piece of birthday cake");
         goldList.add("Privileges to redeem incentives with accumulated points");
         goldList.add("1 free coffee or tea");
-        membershipList.add(new Membership("Gold",3,goldList));
+        myRef.push().setValue(new Membership("Gold",3,goldList));
         List<String>diamondList=new ArrayList<>();
         diamondList.add("Get 1 piece of birthday cake");
         diamondList.add("Privileges to redeem incentives with accumulated points");
         diamondList.add("1 free drink of any kind");
         diamondList.add("Receive 1.5 accumulated points every day");
         diamondList.add("Opportunity to experience privileges for the first time");
-        membershipList.add(new Membership("Diamond",4,diamondList));
-        myRef.setValue(membershipList);
+        myRef.push().setValue(new Membership("Diamond",4,diamondList));
     }
     public void createOfferData(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -258,17 +295,16 @@ public class CreateDataDefault {
         List<Offer> offerList=new ArrayList<>();
         Date startDate=new Date();
         Date endDate=new Date();
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 18000VND",350,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 30000VND",400,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        offerList.add(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.setValue(offerList);
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 18000VND",350,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 30000VND",400,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
     }
     public void createOfferTransactionData(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();

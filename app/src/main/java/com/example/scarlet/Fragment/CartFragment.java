@@ -153,13 +153,13 @@ public class CartFragment extends Fragment {
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
-                    int productImage = product.child("img").getValue(int.class);
+                    String productImage = product.child("img").getValue(String.class);
 
                     categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot categorySnapshot) {
                             if (categorySnapshot.exists()) {
-                                int icon = categorySnapshot.child("img").getValue(int.class);
+                                String icon = categorySnapshot.child("img").getValue(String.class);
                                 if(checkKeyInList(productKey,productKeyList)){
                                     int quantity=getQuantity(productKey,productKeyList);
                                     total=total+productPrice*quantity;

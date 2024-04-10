@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.scarlet.Fragment.AdminHomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/admin_fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_category"
+        android:name="com.example.scarlet.Fragment.AdminCategoryFragment"
+        android:label="@string/menu_category"
+        tools:layout="@layout/admin_fragment_category" />
+
+    <fragment
+        android:id="@+id/nav_product"
+        android:name="com.example.scarlet.Fragment.AdminProductFragment"
+        android:label="@string/menu_product"
+        tools:layout="@layout/admin_fragment_product" />
+
+    <fragment
+        android:id="@+id/nav_order"
+        android:name="com.example.scarlet.Fragment.AdminOrderFragment"
+        android:label="@string/menu_order"
+        tools:layout="@layout/admin_fragment_order" />
+
+    <fragment
+        android:id="@+id/nav_customer"
+        android:name="com.example.scarlet.Fragment.AdminCustomerFragment"
+        android:label="@string/menu_order"
+        tools:layout="@layout/admin_fragment_customer" />
+
+    <fragment
+        android:id="@+id/nav_voucher"
+        android:name="com.example.scarlet.Fragment.AdminVoucherFragment"
+        android:label="@string/menu_voucher"
+        tools:layout="@layout/admin_fragment_voucher" />
+
+    <fragment
+        android:id="@+id/nav_offer"
+        android:name="com.example.scarlet.Fragment.AdminOfferFragment"
+        android:label="@string/menu_offer"
+        tools:layout="@layout/admin_fragment_offer" />
+</navigation>

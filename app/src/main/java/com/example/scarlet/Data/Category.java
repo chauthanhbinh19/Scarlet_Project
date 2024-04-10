@@ -3,7 +3,7 @@ package com.example.scarlet.Data;
 public class Category {
     private String key;
     private String name_category;
-    private int img;
+    private String img;
 
     public String getName_category() {
         return name_category;
@@ -13,11 +13,11 @@ public class Category {
         this.name_category = name_category;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
@@ -32,11 +32,11 @@ public class Category {
     public Category() {
     }
 
-    public Category(String name_category, int img) {
+    public Category(String name_category, String img) {
         this.name_category = name_category;
         this.img = img;
     }
-    public Category(String name_category,int img,String key){
+    public Category(String name_category,String img,String key){
         this.name_category=name_category;
         this.img=img;
         this.key=key;

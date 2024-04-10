@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.Data.Cart;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
@@ -146,10 +147,11 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
         });
     }
     public void bindData(Product product){
-        imageView.setImageResource(product.getImg());
+//        imageView.setImageResource(product.getImg());
+        Glide.with(context).load(product.getImg()).into(imageView);
         textView1.setText(product.getName());
         textView2.setText(String.valueOf(product.getPrice()));
-        imageView2.setImageResource(product.getIcon());
+        Glide.with(context).load(product.getIcon()).into(imageView2);
         productKey=product.getKey();
     }
 }
