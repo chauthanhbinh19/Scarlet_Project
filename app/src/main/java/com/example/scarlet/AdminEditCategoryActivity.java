@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,11 +45,13 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String categoryname,categorykey, oldCategoryImg;
     Uri uri;
+    TextView btnImageError;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         categoryName=findViewById(R.id.categoryName);
         btnImage=findViewById(R.id.btnImage);
         btnSave=findViewById(R.id.btnSave);
+        btnImageError=findViewById(R.id.btnImageError);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +82,14 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveData();
+                if(categoryName.getText().toString().isEmpty()){
+                    categoryName.setError("Category name can not be empty");
+                }else if(uri==null){
+                    btnImageError.setText("Image can not be empty");
+                    btnImageError.setVisibility(View.VISIBLE);
+                }else{
+                    saveData();
+                }
             }
         });
     }
@@ -92,14 +102,7 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
         Date now=new Date();
         String fileName= formatter.format(now);
 
-        StorageReference storageReference= FirebaseStorage.getInstance().getReferenceFromUrl(oldCategoryImg);
-        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-
-            }
-        });
-        if(uri==null){
+        if(uri==null && !oldCategoryImg.isEmpty()){
             Category category=new Category(categoryName.getText().toString(),oldCategoryImg);
 
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
@@ -109,6 +112,14 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         }else{
+            StorageReference storageReference= FirebaseStorage.getInstance().getReferenceFromUrl(oldCategoryImg);
+            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+
+                }
+            });
+
             StorageReference newStorageReference=FirebaseStorage.getInstance().getReference("category/"+fileName);
             newStorageReference.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -126,7 +137,7 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
                             }
-                            Toast.makeText(AdminEditCategoryActivity.this,"Upload successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminEditCategoryActivity.this,"Save successfully",Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -135,6 +146,7 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
                             }
+                            Toast.makeText(AdminEditCategoryActivity.this,"Save failed",Toast.LENGTH_SHORT).show();
                         }
                     });
         }

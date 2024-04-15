@@ -12,11 +12,17 @@ import androidx.fragment.app.Fragment;
 
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
+import com.example.scarlet.Data.User;
 import com.example.scarlet.R;
+import com.example.scarlet.SignUpActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +51,7 @@ public class AdminHomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getCategoryCheck();
+//                createAccount();
             }
         });
         return view;
@@ -289,6 +295,53 @@ public class AdminHomeFragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
 
+                    }
+                });
+    }
+    private void createAccount(){
+        uploadAccount("testing1@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345660",true,false);
+        uploadAccount("testing2@gmail.com","123456","VVVV","AAAA","Female","12/02/2003","0918345661",true,false);
+        uploadAccount("testing3@gmail.com","123456","VVVV","AAAA","Male","10/04/2003","0918345662",true,false);
+        uploadAccount("testing4@gmail.com","123456","VVVV","AAAA","Female","14/05/2003","0918345663",true,false);
+        uploadAccount("testing5@gmail.com","123456","VVVV","AAAA","Male","1/02/2003","0918345664",true,false);
+        uploadAccount("testing6@gmail.com","123456","VVVV","AAAA","Female","10/08/2003","0918345665",true,false);
+        uploadAccount("testing7@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345666",true,false);
+        uploadAccount("testing8@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345667",true,false);
+        uploadAccount("testing9@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345668",true,false);
+        uploadAccount("testing10@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345669",true,false);
+        uploadAccount("testing11@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345670",true,false);
+        uploadAccount("testing12@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345671",true,false);
+        uploadAccount("testing13@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345672",true,false);
+        uploadAccount("testing14@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345673",true,false);
+        uploadAccount("testing15@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345674",true,false);
+        uploadAccount("testing16@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345675",true,false);
+        uploadAccount("testing17@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345676",true,false);
+        uploadAccount("testing18@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345677",true,false);
+        uploadAccount("testing19@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345678",true,false);
+        uploadAccount("testing20@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345679",true,false);
+
+        uploadAccount("admin1@gmail.com","123456","Binh","Thanh","Male","10/02/2003","0918345677",false,true);
+        uploadAccount("admin2@gmail.com","123456","Ngan","Thao","Female","10/02/2003","0918345678",false,true);
+        uploadAccount("admin3@gmail.com","123456","Thanh","Quang","Male","10/02/2003","0918345679",false,true);
+    }
+    private void uploadAccount(String email, String password, String firstname, String lastname,String gender,String dateofbirth, String phone, boolean isCustomer, boolean isEmployee){
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isComplete()){
+                            FirebaseUser user=mAuth.getCurrentUser();
+                            String uid=user.getUid();
+
+                            DatabaseReference userRef=FirebaseDatabase.getInstance().getReference("user");
+                            DatabaseReference newUserRef=userRef.child(uid);
+
+                            User userAdd=new User(uid,firstname,lastname,gender,dateofbirth,phone,email,0,"-1","",isCustomer,isEmployee);
+                            userRef.push().setValue(userAdd);
+                        }else{
+
+                        }
                     }
                 });
     }

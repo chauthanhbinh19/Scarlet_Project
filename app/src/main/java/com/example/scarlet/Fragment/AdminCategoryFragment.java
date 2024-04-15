@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -90,6 +91,7 @@ public class AdminCategoryFragment extends Fragment {
         categoryName = dialogView.findViewById(R.id.categoryName);
         btnImage = dialogView.findViewById(R.id.btnImage);
         Button btnSave=dialogView.findViewById(R.id.btnSave);
+        TextView ImageError=dialogView.findViewById(R.id.btnImageError);
 
         builder.setView(dialogView);
 
@@ -104,7 +106,14 @@ public class AdminCategoryFragment extends Fragment {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadCategoryPicture();
+                if(categoryName.getText().toString().isEmpty()){
+                    categoryName.setError("Category name can not be empty");
+                }else if(uri==null){
+                    ImageError.setText("Image can not be empty");
+                    ImageError.setVisibility(View.VISIBLE);
+                }else{
+                    uploadCategoryPicture();
+                }
             }
         });
 
@@ -152,7 +161,7 @@ public class AdminCategoryFragment extends Fragment {
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
-                        Toast.makeText(getContext(),"Upload successfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Save successfully",Toast.LENGTH_SHORT).show();
                         getCategoryData();
                     }
                 })
@@ -162,6 +171,7 @@ public class AdminCategoryFragment extends Fragment {
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
+                        Toast.makeText(getContext(),"Save failed",Toast.LENGTH_SHORT).show();
                     }
                 });
     }

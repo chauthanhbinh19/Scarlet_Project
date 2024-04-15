@@ -309,7 +309,7 @@
 					android:layout_below="@+id/box_size"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="40dp">
+					android:layout_marginTop="20dp">
 
 					<ImageView
 						android:id="@+id/plus"
@@ -363,7 +363,7 @@
 				android:src="@drawable/heart" />
 
 			<Button android:id="@+id/add"
-				android:layout_marginTop="40dp"
+				android:layout_marginTop="20dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"

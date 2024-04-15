@@ -53,7 +53,7 @@ public class VoucherFragment extends Fragment {
 
         BindView(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
-        recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
+        recyclerView.addItemDecoration(new GridLayoutDecoration(0,5));
         getVoucherData(recyclerView, tabTitle);
 
         return view;
@@ -71,8 +71,17 @@ public class VoucherFragment extends Fragment {
                         int discount=snap.child("discount").getValue(int.class);
                         Date expiryDate=snap.child("expiryDate").getValue(Date.class);
                         String deliveryMethod=snap.child("deliveryMethod").getValue(String.class);
-                        int deliveryMethodIcon=snap.child("deliveryIcon").getValue(int.class);
-                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon);
+                        int deliveryMethodIcon=1;
+                        if(deliveryMethod.equals("delivery")){
+                            deliveryMethodIcon=R.drawable.delivery_bike;
+                        }else if(deliveryMethod.equals("instore")){
+                            deliveryMethodIcon=R.drawable.store;
+                        }else if(deliveryMethod.equals("pickup")){
+                            deliveryMethodIcon=R.drawable.food_delivery;
+                        }
+                        String description=snap.child("description").getValue(String.class);
+                        String key=snap.getKey();
+                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description,key);
                         if(deliveryMethod.equals(deliveryMethodClicked)){
                             dealList.add(deal);
                         }

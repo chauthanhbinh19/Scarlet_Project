@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Fragment.AdminOrderFragment">
 
     <RelativeLayout
@@ -12,12 +13,138 @@
 
         <RelativeLayout
             android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout android:id="@+id/search_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <EditText android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:hint="Search"
+                    android:paddingLeft="30dp"
+                    android:layout_weight="8"
+                    android:layout_margin="6dp"
+                    android:textColorHint="@color/burgundy"/>
+
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/search_bar"
+                    android:layout_weight="1"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <ImageButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/filter"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/toggleButtonGroup"
+                android:layout_below="@+id/search_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="horizontal">
+
+                <RelativeLayout android:id="@+id/btnAll"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_weight="1">
+                    <ImageView android:id="@+id/image1"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/menu_11"/>
+                    <TextView android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/image1"
+                        android:textSize="12sp"
+                        android:textColor="@color/burgundy"
+                        android:text="All"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/btnDelivery"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_weight="1">
+                    <ImageView android:id="@+id/image2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/delivery_bike"/>
+                    <TextView android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/image2"
+                        android:textSize="12sp"
+                        android:textColor="@color/burgundy"
+                        android:text="Delivery"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/btnInstore"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_weight="1">
+                    <ImageView android:id="@+id/image3"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/store"/>
+                    <TextView android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/image3"
+                        android:textSize="12sp"
+                        android:textColor="@color/burgundy"
+                        android:text="Instore"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/btnPickup"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_weight="1">
+                    <ImageView android:id="@+id/image4"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/food_delivery"/>
+                    <TextView android:id="@+id/text4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/image4"
+                        android:textSize="12sp"
+                        android:textColor="@color/burgundy"
+                        android:text="Pick up"/>
+                </RelativeLayout>
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
+                android:layout_below="@+id/toggleButtonGroup"
                 android:id="@+id/voucher_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -31,6 +158,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:backgroundTint="@color/burgundy"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/plus_11" />
+            android:src="@drawable/plus_11"
+             />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

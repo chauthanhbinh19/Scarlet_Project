@@ -106,11 +106,20 @@ public class DealsFragment extends Fragment {
                 if(snapshot.exists()){
                     for(DataSnapshot snap:snapshot.getChildren()){
                         String voucherName=snap.child("name").getValue(String.class);
+                        String key=snap.getKey();
                         int discount=snap.child("discount").getValue(int.class);
                         Date expiryDate=snap.child("expiryDate").getValue(Date.class);
                         String deliveryMethod=snap.child("deliveryMethod").getValue(String.class);
-                        int deliveryMethodIcon=snap.child("deliveryIcon").getValue(int.class);
-                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon);
+                        int deliveryMethodIcon=1;
+                        if(deliveryMethod.equals("delivery")){
+                            deliveryMethodIcon=R.drawable.delivery_bike;
+                        }else if(deliveryMethod.equals("instore")){
+                            deliveryMethodIcon=R.drawable.store;
+                        }else if(deliveryMethod.equals("pickup")){
+                            deliveryMethodIcon=R.drawable.food_delivery;
+                        }
+                        String description=snap.child("description").getValue(String.class);
+                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description,key);
                         if(dealList.size() >4){
                             break;
                         }

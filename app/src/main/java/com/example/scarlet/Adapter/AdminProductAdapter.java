@@ -13,18 +13,16 @@ import com.example.scarlet.R;
 import java.util.List;
 
 public class AdminProductAdapter extends RecyclerView.Adapter<AdminProductHolderView> {
-    private List<Product> productList;
+    public List<Product> productList;
     public AdminProductAdapter(List<Product> productList){
 
         this.productList=productList;
     }
-
-
     @NonNull
     @Override
     public AdminProductHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_product_adapter_layout, parent, false);
-        return new AdminProductHolderView(view);
+        return new AdminProductHolderView(view).linkAdapter(this);
     }
 
     @Override

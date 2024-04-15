@@ -3,6 +3,7 @@ package com.example.scarlet.Fragment;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,31 +33,43 @@ import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AdminProductFragment extends Fragment {
 
     RecyclerView productRecycleView;
     List<Product> productList;
     AdminProductAdapter adminProductAdapter;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     Spinner spinner;
     EditText productName, productPoint, productPrice, productDescription;
+    TextView btnImageError;
     ImageView btnImage;
     List<Category> categoryList;
     Uri uri;
+    ProgressDialog progressDialog;
+    String categoryId, categoryName;
     Button btnSave;
     private void BindView(View view){
         productRecycleView=view.findViewById(R.id.product_recyclerView);
-        spinner=view.findViewById(R.id.productCategory);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,19 +88,6 @@ public class AdminProductFragment extends Fragment {
                 showInsertPopup();
             }
         });
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                adapter.notifyDataSetChanged();
-//                Category selectedCategory = (Category) parent.getItemAtPosition(position);
-//                selectedImage = selectedCategory.getImg();
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // Không cần xử lý khi không có mục nào được chọn
-//            }
-//        });
         return view;
     }
     public void showInsertPopup() {
@@ -101,6 +102,8 @@ public class AdminProductFragment extends Fragment {
         productDescription=dialogView.findViewById(R.id.productDescription);
         btnImage = dialogView.findViewById(R.id.btnImage);
         Button btnSave=dialogView.findViewById(R.id.btnSave);
+        spinner=dialogView.findViewById(R.id.productCategory);
+        btnImageError=dialogView.findViewById(R.id.btnImageError);
 
         builder.setView(dialogView);
 
@@ -112,10 +115,34 @@ public class AdminProductFragment extends Fragment {
                 choosePicture();
             }
         });
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Category selectedCategory=(Category) parent.getItemAtPosition(position);
+                categoryId=selectedCategory.getKey();
+                categoryName=selectedCategory.getName_category();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(productName.getText().toString().isEmpty()){
+                    productName.setError("Product name can not be empty");
+                }else if(productPoint.getText().toString().isEmpty()){
+                    productPoint.setError("Product point can not be empty");
+                }else if(productPrice.getText().toString().isEmpty()){
+                    productPrice.setError("Product price can not be empty");
+                }else if(uri==null){
+                    btnImageError.setText("Image can not be empty");
+                    btnImageError.setVisibility(View.VISIBLE);
+                }else{
+                    saveProductData();
+                }
             }
         });
 
@@ -133,10 +160,12 @@ public class AdminProductFragment extends Fragment {
                     String productKey=product.getKey();
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
+                    String categoryName=product.child("categoryName").getValue(String.class);
+                    String productDescription=product.child("description").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
                     int productPoint=product.child("point").getValue(int.class);
                     String productImage = product.child("img").getValue(String.class);
-                    Product productWithIcon = new Product(productName, productPrice,productImage, "",productKey,productPoint);
+                    Product productWithIcon = new Product(productName,productDescription,categoryId,categoryName, productPrice,productPoint,productImage,productKey);
                     productList.add(productWithIcon);
                 }
                 if(productList.size()>0){
@@ -189,6 +218,51 @@ public class AdminProductFragment extends Fragment {
 
             }
         });
+    }
+    private void saveProductData(){
+        progressDialog=new ProgressDialog(getContext());
+        progressDialog.setTitle("Uploading file...");
+        progressDialog.show();
+
+        SimpleDateFormat formatter=new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss", Locale.US);
+        Date now=new Date();
+        String fileName= formatter.format(now);
+
+        storage= FirebaseStorage.getInstance();
+        storageReference=storage.getReference("product/"+fileName);
+
+        storageReference.putFile(uri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask=taskSnapshot.getStorage().getDownloadUrl();
+                        while(!uriTask.isComplete());
+                        Uri urlImage=uriTask.getResult();
+
+                        String pName=productName.getText().toString();
+                        String pDescription=productDescription.getText().toString();
+                        double pPrice=Double.parseDouble(productPrice.getText().toString());
+                        int pPoint=Integer.parseInt(productPoint.getText().toString());
+                        Product product=new Product(pName,pDescription,categoryId,categoryName,pPrice,pPoint,urlImage.toString());
+
+                        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                        DatabaseReference productRef= firebaseDatabase.getReference("product");
+                        productRef.push().setValue(product);
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(getContext(),"Save successfully",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        if(progressDialog.isShowing()){
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(getContext(),"Save failed",Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
     @Override
     public void onDestroyView() {

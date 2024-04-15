@@ -93,6 +93,8 @@ public class CartHolderView extends RecyclerView.ViewHolder {
 
                                     for(DataSnapshot snap1:productQuantityListSnapshot.getChildren()){
                                         if(snap1.child("productId").getValue(String.class).equals(productKey)){
+                                            double total=adapter.productList.get(getAdapterPosition()).getTotal();
+                                            getStringCallback.itemClick(total,1);
                                             adapter.productList.remove(getAdapterPosition());
                                             adapter.notifyDataSetChanged();
                                             snap1.getRef().removeValue();
@@ -206,6 +208,7 @@ public class CartHolderView extends RecyclerView.ViewHolder {
         textView2.setText(String.valueOf(product.getTotal()));
         textView3.setText(String.valueOf(product.getQuantity()));
         Glide.with(context).load(product.getIcon()).into(imageView2);
+        Glide.with(context).load(product.getImg()).into(imageView);
         productKey=product.getKey();
         this.getStringCallback=getStringCallback1;
     }

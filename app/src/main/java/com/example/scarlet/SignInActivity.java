@@ -19,6 +19,11 @@ import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Fragment.DealsFragment;
 import com.example.scarlet.Fragment.FavouriteFragment;
 import com.example.scarlet.Fragment.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -74,48 +79,54 @@ public class SignInActivity extends AppCompatActivity {
                 }else if(passwordText.isEmpty()){
                     password.setError("Password can not be empty");
                 }else{
-                    ValidateUser(usernameText,passwordText);
+                    validateUser(usernameText,passwordText);
                 }
             }
         });
 
     }
-    private void ValidateUser(String usernameInput, String passwordInput){
-        FirebaseDatabase database=FirebaseDatabase.getInstance();
-        Query query=database.getReference("user").orderByChild("username").equalTo(usernameInput);
+    private void validateUser(String email, String password){
+        FirebaseAuth mAuth=FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isComplete()){
+                            FirebaseUser user=mAuth.getCurrentUser();
+                            String uid=user.getUid();
+                            getUserData(uid);
+                        }else{
+                            Toast.makeText(SignInActivity.this, "Email or password is incorrect", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+    private void getUserData(String uid){
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("user");
+        Query query=usersRef.orderByChild("uid").equalTo(uid);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for (DataSnapshot userSnapshot : snapshot.getChildren()) {
-                        String customerPassword = userSnapshot.child("password").getValue(String.class);
-                        if (customerPassword.equals(passwordInput)) {
-                            String customerKey=userSnapshot.getKey();
-                            Toast.makeText(SignInActivity.this, "Sign in successfully", Toast.LENGTH_SHORT).show();
-
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    String userUid=snap.child("uid").getValue(String.class);
+                    if(userUid.equals(uid)){
+                        String userKey=snap.getKey();
                             SharedPreferences sharedPreferences=getSharedPreferences("MyPrefs",MODE_PRIVATE);
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putBoolean("isLoggedIn",true);
-                            editor.putString("customerKey",customerKey);
+                            editor.putString("customerKey",userKey);
                             editor.apply();
 
                             Intent intent=new Intent(SignInActivity.this,MainActivity.class);
                             startActivity(intent);
-                        } else {
-                            // Password does not match
-                            password.setError("Password is not correct");
-                        }
                     }
-                }else{
-                    Toast.makeText(SignInActivity.this,"Username does not exist",Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(SignInActivity.this, "Sign in failed: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
-
-
 }

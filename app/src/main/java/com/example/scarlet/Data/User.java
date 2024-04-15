@@ -1,16 +1,19 @@
 package com.example.scarlet.Data;
 
 public class User {
+    private String uid;
     private String first_name;
     private String last_name;
     private String gender;
     private String date_of_birth;
     private String phone_number;
     private String email;
-    private String username;
-    private String password;
+    private int point;
     private String membershipId;
-    private int avatar_img;
+    private String avatar_img;
+    private boolean isCustomer;
+    private boolean isEmployee;
+    private String key;
 
     public String getFirst_name() {
         return first_name;
@@ -26,6 +29,22 @@ public class User {
 
     public void setLast_name(String last_name) {
         this.last_name = last_name;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public void setGender(String gender) {
@@ -44,15 +63,7 @@ public class User {
         this.email = email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setAvatar_img(int avatar_img) {
+    public void setAvatar_img(String avatar_img) {
         this.avatar_img = avatar_img;
     }
 
@@ -64,22 +75,60 @@ public class User {
         this.membershipId = membershipId;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public boolean isCustomer() {
+        return isCustomer;
+    }
+
+    public void setCustomer(boolean customer) {
+        isCustomer = customer;
+    }
+
+    public boolean isEmployee() {
+        return isEmployee;
+    }
+
+    public void setEmployee(boolean employee) {
+        isEmployee = employee;
+    }
+
     public User(){
 
     }
 
-
-    public User(String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, String username, String password, int avatar_img) {
+    public User(String uid, String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, int point, String membershipId, String avatar_img, boolean isCustomer, boolean isEmployee) {
+        this.uid = uid;
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
         this.date_of_birth = date_of_birth;
         this.phone_number = phone_number;
         this.email = email;
-        this.username = username;
-        this.password = password;
+        this.point = point;
+        this.membershipId = membershipId;
         this.avatar_img = avatar_img;
-        this.membershipId="-1";
+        this.isCustomer=isCustomer;
+        this.isEmployee=isEmployee;
+    }
+    public User(String uid, String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, int point, String membershipId, String avatar_img,String key) {
+        this.uid = uid;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.gender = gender;
+        this.date_of_birth = date_of_birth;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.point = point;
+        this.membershipId = membershipId;
+        this.avatar_img = avatar_img;
+        this.key=key;
     }
 
     public String getGender() {
@@ -99,15 +148,7 @@ public class User {
         return email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public int getAvatar_img() {
+    public String getAvatar_img() {
         return avatar_img;
     }
 }

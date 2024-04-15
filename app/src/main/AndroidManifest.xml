@@ -21,11 +21,7 @@
             android:label="@string/title_activity_admin_main"
             android:theme="@style/Theme.Scarlet.NoActionBar">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".SignInActivity"
@@ -33,7 +29,11 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".SignUpActivity"
@@ -88,6 +88,15 @@
         </activity>
         <activity
             android:name=".AdminEditCategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminEditProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminEditCustomerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminEditVoucherActivity"
             android:exported="true" />
     </application>
 

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        >
+        <RelativeLayout android:id="@+id/back_btn"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+
+            <View   android:id="@+id/rectangle_3"
+                android:background="@drawable/btn_burgundy"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="45dp"
+                android:layout_height="40dp" />
+
+
+            <ImageView android:id="@+id/vector"
+                android:src="@drawable/vector"
+                android:contentDescription="vector"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+
+
+        </RelativeLayout>
+
+
+        <TextView android:id="@+id/profile_1"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="191dp"
+            android:layout_height="40dp"
+            android:text="Edit customer"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="@drawable/_bg_white_radius30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        android:layout_below="@id/top_bar">
+
+
+        <LinearLayout android:id="@+id/name_box"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText android:id="@+id/customerFirstName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_lightpink_radius"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="First name"
+                android:paddingLeft="30dp"
+                android:layout_marginRight="5dp"
+                android:textColorHint="@color/burgundy"
+                android:layout_height="50dp"/>
+
+            <EditText android:id="@+id/customerLastName"
+                android:layout_centerHorizontal="true"
+                android:layout_toRightOf="@id/customerFirstName"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_lightpink_radius"
+                android:layout_width="0dp"
+                android:hint="Last name"
+                android:layout_weight="1"
+                android:paddingLeft="30dp"
+                android:layout_marginLeft="5dp"
+                android:textColorHint="@color/burgundy"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+
+        <EditText android:id="@+id/customerDateofBirth"
+            android:layout_below="@+id/name_box"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Date of birth"
+            android:inputType="date"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <EditText android:id="@+id/customerGender"
+            android:layout_below="@+id/customerDateofBirth"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Gender"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <EditText android:id="@+id/customerPhone"
+            android:layout_below="@+id/customerGender"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Phone number"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <ImageView android:id="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/picture"
+            android:layout_below="@+id/customerPhone"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <TextView android:id="@+id/btnImageError"
+            android:layout_below="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="30dp"
+            android:visibility="gone"
+            android:textColor="@color/red"
+            android:layout_height="wrap_content"/>
+
+        <Button android:id="@+id/btnSave"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_burgundy_radius"
+            android:textColor="@color/white"
+            android:layout_marginRight="120dp"
+            android:layout_below="@+id/btnImageError"
+            android:textSize="18sp"
+            android:text="Save"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.example.scarlet.Adapter.CategoryAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductAdapter;
+import com.example.scarlet.Adapter.TrendAdapter;
 import com.example.scarlet.AdminMainActivity;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
@@ -34,10 +36,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class HomeFragment extends Fragment {
     private CategoryAdapter categoryAdapter;
     private ProductAdapter productAdapter;
+    private TrendAdapter trendAdapter;
     private List<Category> categoryList;
     private List<Product> productList;
     RelativeLayout search;
@@ -57,7 +61,7 @@ public class HomeFragment extends Fragment {
         BindView(view);
         validateUser(view);
         getCategoryData(view);
-//        getTrendData(view);
+        getTrendData(view);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -121,14 +125,40 @@ public class HomeFragment extends Fragment {
     }
     private void getTrendData(View view){
         productList=new ArrayList<>();
-        trendRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        trendRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
-//        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",48000,100,R.drawable.banana_chocolate));
-//        productList.add(new Product("Lychee Coconut Pudding","","7","Pudding",148000,100,R.drawable.banana_peanut));
+        trendRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference= firebaseDatabase.getReference("product");
 
-        productAdapter=new ProductAdapter(productList);
-        trendRecyclerView.setAdapter(productAdapter);
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap:snapshot.getChildren()){
+                    String productKey=snap.getKey();
+                    String categoryId = snap.child("categoryId").getValue(String.class);
+                    String productName = snap.child("name").getValue(String.class);
+                    double productPrice = snap.child("price").getValue(double.class);
+                    String productImage = snap.child("img").getValue(String.class);
+                    Product product = new Product(productName, productPrice,productImage, "",productKey);
+                    productList.add(product);
+                }
 
+                List<Product> randomProducts=new ArrayList<>();
+                Random random = new Random();
+                int totalProducts=productList.size();
+                int numProductsToGet=10;
+                for (int i = 0; i < numProductsToGet; i++) {
+                    int randomIndex = random.nextInt(totalProducts);
+                    Product randomProduct = productList.get(randomIndex);
+                    randomProducts.add(randomProduct);
+                }
+                trendAdapter=new TrendAdapter(randomProducts);
+                trendRecyclerView.setAdapter(trendAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
     private void getProductData(View view){
         productList=new ArrayList<>();

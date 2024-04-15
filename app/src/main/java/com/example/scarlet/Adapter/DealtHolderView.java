@@ -14,6 +14,8 @@ import com.example.scarlet.Data.Product;
 import com.example.scarlet.ProductDetailActivity;
 import com.example.scarlet.R;
 
+import java.text.SimpleDateFormat;
+
 public class DealtHolderView extends RecyclerView.ViewHolder {
     ImageView icon;
     TextView discount,voucherName,expiryDate,deliveryMethod;
@@ -31,7 +33,9 @@ public class DealtHolderView extends RecyclerView.ViewHolder {
         icon.setImageResource(deal.getDeliveryIcon());
         discount.setText(String.valueOf(deal.getDiscount())+"%");
         voucherName.setText(deal.getName());
-        expiryDate.setText(deal.getExpiryDate().toString());
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedExpiryDate = format.format(deal.getExpiryDate());
+        expiryDate.setText(formattedExpiryDate);
         deliveryMethod.setText(deal.getDeliveryMethod());
     }
 }

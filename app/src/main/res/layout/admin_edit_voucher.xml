@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        >
+        <RelativeLayout android:id="@+id/back_btn"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+
+            <View   android:id="@+id/rectangle_3"
+                android:background="@drawable/btn_burgundy"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="45dp"
+                android:layout_height="40dp" />
+
+
+            <ImageView android:id="@+id/vector"
+                android:src="@drawable/vector"
+                android:contentDescription="vector"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+
+
+        </RelativeLayout>
+
+
+        <TextView android:id="@+id/profile_1"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="20dp"
+            android:layout_width="191dp"
+            android:layout_height="40dp"
+            android:text="Edit voucher"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:background="@drawable/_bg_white_radius30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        android:layout_below="@id/top_bar">
+
+
+        <EditText android:id="@+id/voucherName"
+            android:layout_below="@+id/name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Voucher name"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <EditText android:id="@+id/deliveryMethod"
+            android:layout_below="@+id/voucherName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Delivery method"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <EditText android:id="@+id/voucherDiscount"
+            android:layout_below="@+id/deliveryMethod"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Discount %"
+            android:paddingLeft="30dp"
+            android:inputType="number"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <EditText android:id="@+id/voucherDescription"
+            android:layout_below="@+id/voucherDiscount"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:hint="Voucher description"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/voucherExpiryDate"
+            android:layout_below="@+id/voucherDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:text="dd-MM-yyyy"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <ImageButton android:id="@+id/calendar"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/voucherDescription"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/calendar" />
+
+        <RadioGroup
+            android:id="@+id/product"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton android:id="@+id/radioAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="All product"/>
+            <RadioButton android:id="@+id/radioProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Choose product"/>
+        </RadioGroup>
+        <ScrollView android:id="@+id/scrollProduct"
+            android:layout_below="@+id/product"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="200dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/product_recyclerView"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+        <Button android:id="@+id/btnSave"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_burgundy_radius"
+            android:textColor="@color/white"
+            android:layout_marginRight="120dp"
+            android:layout_below="@+id/scrollProduct"
+            android:textSize="18sp"
+            android:text="Save"/>
+    </RelativeLayout>
+
+</RelativeLayout>
+

@@ -4,12 +4,13 @@
     android:padding="2dp"
     android:background="@color/transparent"
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:background="@drawable/_bg_white_radius30"
+        android:paddingBottom="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="300dp">
+        android:layout_height="wrap_content">
 
         <TextView android:id="@+id/name"
             android:layout_marginTop="10dp"
@@ -42,6 +43,17 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"/>
 
+        <TextView android:id="@+id/btnImageError"
+            android:layout_below="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="30dp"
+            android:visibility="gone"
+            android:textColor="@color/red"
+            android:layout_height="wrap_content"/>
+
         <Button android:id="@+id/btnSave"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
@@ -50,7 +62,7 @@
             android:background="@drawable/rectangle_burgundy_radius"
             android:textColor="@color/white"
             android:layout_marginRight="120dp"
-            android:layout_below="@+id/btnImage"
+            android:layout_below="@+id/btnImageError"
             android:textSize="18sp"
             android:text="Save"/>
     </RelativeLayout>

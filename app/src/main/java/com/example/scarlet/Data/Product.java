@@ -112,6 +112,16 @@ public class Product {
         this.point = point;
         this.img = img;
     }
+    public Product(String name, String description, String categoryId, String categoryName, double price, int point, String img,String key) {
+        this.name = name;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.price = price;
+        this.point = point;
+        this.img = img;
+        this.key=key;
+    }
     public Product(String name, double price, String img,String icon,String key) {
         this.name = name;
         this.price = price;
@@ -141,5 +151,10 @@ public class Product {
         this.price = price;
         this.quantity=quantity;
         this.total=total;
+    }
+
+    public Product(String key, String name) {
+        this.key = key;
+        this.name = name;
     }
 }

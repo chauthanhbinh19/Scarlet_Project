@@ -234,30 +234,29 @@ public class CreateDataDefault {
         List<Deal> dealList=new ArrayList<>();
 
         List<String> productIdList=new ArrayList<>();
-        List<String> categoryIdList=new ArrayList<>();
         productIdList.add("0");
 
         Date date = new Date();
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A30",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A31",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A33",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A34",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A35",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A36",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A37",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A48",productIdList,categoryIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A30",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A31",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A33",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A34",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A35",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A36",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A37",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A48",productIdList,10,date,"discount 10% for black coffee","delivery",R.drawable.delivery_bike));
 
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A38",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A39",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A40",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A41",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A42",productIdList,categoryIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A38",productIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A39",productIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A40",productIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A41",productIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A42",productIdList,10,date,"discount 10% for black coffee","instore",R.drawable.store));
 
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A43",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A44",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A45",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A46",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
-        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A47",productIdList,categoryIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A43",productIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A44",productIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A45",productIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A46",productIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
+        myRef.push().setValue(new Deal("Discount 10% for cake","A11A22A47",productIdList,10,date,"discount 10% for black coffee","pickup",R.drawable.food_delivery));
 
     }
     public void createMembershipData(){

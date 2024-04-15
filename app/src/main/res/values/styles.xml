@@ -8,6 +8,12 @@
     <style name="MyButtonTheme" parent="Widget.AppCompat.Button">
         <item name="android:textAllCaps">false</item>
     </style>
+    <style name="MyTextTheme" parent="Widget.AppCompat.TextView">
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:background">@color/burgundy</item>
+    </style>
     <style name="roundedImageView">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10%</item>

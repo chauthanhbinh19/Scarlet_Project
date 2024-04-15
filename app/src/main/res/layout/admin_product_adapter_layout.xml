@@ -5,46 +5,51 @@
     android:layout_marginBottom="4dp"
     android:padding="2dp"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="120dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:elevation="4dp"
-        android:layout_margin="4dp"
-        android:outlineAmbientShadowColor="@color/burgundy"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_circle_white_2">
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rectangle_circle_white_2"
+        android:elevation="4dp"
+        android:outlineAmbientShadowColor="@color/burgundy">
 
         <ImageView
             android:layout_width="44dp"
-            android:layout_height="150dp"
+            android:layout_height="140dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/rectangle_circle_burgundy_2"/>
+            android:background="@drawable/rectangle_circle_burgundy_2" />
 
-        <ImageView android:id="@+id/btnEdit"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
+        <ImageView
+            android:id="@+id/btnEdit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/editing"/>
-
-        <ImageView android:id="@+id/btnDelete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
+            android:background="@drawable/editing" />
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/bin_2"/>
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/bin_2" />
     </RelativeLayout>
 
     <ImageView android:id="@+id/icon"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="20dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:elevation="4dp"
         android:layout_centerVertical="true"
         android:background="@drawable/rectangle_lightpink_radius"
@@ -66,6 +71,16 @@
         android:textColor="@color/burgundy"
         android:text="Drinks"/>
 
+    <ImageView android:id="@+id/search_product"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_toRightOf="@+id/name_product"
+        android:elevation="10dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/search_1"/>
+
     <TextView android:id="@+id/price_product"
         android:layout_marginTop="4dp"
         android:layout_marginLeft="24dp"
@@ -74,11 +89,24 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/name_product"
         android:layout_toRightOf="@+id/icon"
+        android:textSize="14sp"
+        android:elevation="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:text="20000"/>
+
+    <TextView android:id="@+id/unit_product"
+        android:layout_marginTop="4dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/name_product"
+        android:layout_toRightOf="@+id/price_product"
         android:textSize="16sp"
         android:elevation="10dp"
         android:gravity="center_horizontal"
         android:textColor="@color/black"
-        android:text="20000đ"/>
+        android:text="đ"/>
 
     <TextView android:id="@+id/point_product"
         android:layout_marginTop="4dp"
@@ -88,24 +116,10 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/price_product"
         android:layout_toRightOf="@+id/icon"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:elevation="10dp"
         android:gravity="center_horizontal"
         android:textColor="@color/yellow"
         android:text="Point: 100"/>
-
-    <TextView android:id="@+id/detail_product"
-        android:layout_marginTop="4dp"
-        android:layout_marginLeft="24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/point_product"
-        android:layout_toRightOf="@+id/icon"
-        android:textSize="16sp"
-        android:elevation="10dp"
-        android:gravity="center_horizontal"
-        android:textColor="@color/lightbrown"
-        android:text="Details"/>
 </RelativeLayout>
 
