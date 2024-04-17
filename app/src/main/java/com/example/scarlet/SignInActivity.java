@@ -115,10 +115,20 @@ public class SignInActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putBoolean("isLoggedIn",true);
                             editor.putString("customerKey",userKey);
+                            editor.putString("userType","employee");
                             editor.apply();
 
-                            Intent intent=new Intent(SignInActivity.this,MainActivity.class);
-                            startActivity(intent);
+                            Boolean isEmployee=snap.child("employee").getValue(boolean.class);
+                            Boolean isCustomer=snap.child("customer").getValue(boolean.class);
+                            if(isEmployee){
+                                Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
+                                startActivity(intent);
+                            }
+                            if(isCustomer){
+                                Intent intent=new Intent(SignInActivity.this,MainActivity.class);
+                                startActivity(intent);
+                            }
+
                     }
                 }
             }

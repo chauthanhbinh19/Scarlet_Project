@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="4dp"
+    android:padding="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="110dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/rectangle_circle_white_2"
+        android:elevation="4dp"
+        android:outlineAmbientShadowColor="@color/burgundy">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="140dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/rectangle_circle_burgundy_2" />
+
+        <ImageView
+            android:id="@+id/btnMore"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/more" />
+
+    </RelativeLayout>
+
+    <ImageView android:id="@+id/icon"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:elevation="4dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/cake_11"/>
+
+    <TextView android:id="@+id/orderName"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="24dp"
+        android:layout_width="wrap_content"
+        android:maxWidth="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@+id/icon"
+        android:textSize="14sp"
+        android:elevation="10dp"
+        android:textStyle="bold"
+        android:singleLine="true"
+        android:gravity="center_horizontal"
+        android:textColor="@color/burgundy"
+        android:text="Order-bcbcbccbcnk"/>
+
+    <ImageView android:id="@+id/searchOrder"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_toRightOf="@+id/orderName"
+        android:elevation="10dp"
+        android:gravity="center_horizontal"
+        android:background="@drawable/search_1"/>
+
+    <TextView android:id="@+id/orderDate"
+        android:layout_below="@+id/orderName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="24dp"
+        android:textColor="@color/black"
+        android:elevation="10dp"
+        android:text="Order date:"/>
+
+    <TextView android:id="@+id/orderStatus"
+        android:layout_below="@+id/orderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="24dp"
+        android:textColor="@color/white"
+        android:elevation="10dp"
+        android:background="@drawable/rectangle_yellow_radius"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="Pending"/>
+
+</RelativeLayout>
+

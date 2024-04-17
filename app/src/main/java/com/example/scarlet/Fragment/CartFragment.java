@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,10 +47,13 @@ public class CartFragment extends Fragment {
     Button purchase;
     private double total=0;
     GetStringCallback getStringCallback;
+    RelativeLayout signinNotification,item_product;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.product_recyclerView);
         purchase=view.findViewById(R.id.purchase);
         totalView=view.findViewById(R.id.total);
+        signinNotification=view.findViewById(R.id.signInNotification);
+        item_product=view.findViewById(R.id.item_product);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,6 +61,7 @@ public class CartFragment extends Fragment {
         view =inflater.inflate(R.layout.cart, container, false);
 
         BindView(view);
+        checkSignInStatus();
         productList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
@@ -88,6 +93,18 @@ public class CartFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void checkSignInStatus(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+        if(!isLoggedIn && userKey.isEmpty()){
+            signinNotification.setVisibility(View.VISIBLE);
+            item_product.setVisibility(View.GONE);
+        }else{
+            signinNotification.setVisibility(View.GONE);
+            item_product.setVisibility(View.VISIBLE);
+        }
     }
     private void validateUser(final RecyclerView recyclerView, GetStringCallback getStringCallback1){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

@@ -23,9 +23,13 @@
     <color name="dc8383">#dc8383</color>
     <color name="lightRed">#FECBC1</color>
     <color name="white1">#E9E9E9</color>
-    <color name="yellow">#D7E91D</color>
-
-
+    <color name="yellow">#C4BE00</color>
+    <color name="yellow1">#9C9819</color>
+    <color name="green1">#37FF00</color>
+    <color name="lightgreen2">#00ADA2</color>
+    <color name="bg_yellow">#B4CD02</color>
+    <color name="bg_green">#46A92B</color>
+    <color name="bg_gray">#565656</color>
 
 
     <color name="_bg__customer_color">#FFFFFF</color>

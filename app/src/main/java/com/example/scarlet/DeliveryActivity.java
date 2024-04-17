@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class DeliveryActivity extends AppCompatActivity {
 
-    TextView address, additionalInfo;
+    TextView address, additionalInfo, deliveryPrice;
     TextView totalView;
     RelativeLayout back_btn;
     Button continue_btn;
@@ -24,6 +24,7 @@ public class DeliveryActivity extends AppCompatActivity {
         additionalInfo=findViewById(R.id.delivery_additional_content);
         totalView=findViewById(R.id.total);
         continue_btn=findViewById(R.id.continue_btn);
+        deliveryPrice=findViewById(R.id.deliveryPrice);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,11 @@ public class DeliveryActivity extends AppCompatActivity {
             address.setText(text);
             additionalInfo.setText(additionalInfo1);
             totalView.setText(total);
+        }
+        if(deliveryStatus.equals("delivery")){
+            deliveryPrice.setText("10000");
+        }else if(deliveryStatus.equals("pickup")){
+            deliveryPrice.setText("0");
         }
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

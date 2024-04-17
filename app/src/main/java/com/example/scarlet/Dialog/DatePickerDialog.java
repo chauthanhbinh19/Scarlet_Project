@@ -31,7 +31,7 @@ public class DatePickerDialog extends DialogFragment implements android.app.Date
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String d=String.valueOf(dayOfMonth+1);
+        String d=String.valueOf(dayOfMonth);
         String m=String.valueOf(month+1);
         if(dayOfMonth>0 && dayOfMonth <10){
             d="0"+d;

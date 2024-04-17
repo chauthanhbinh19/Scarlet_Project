@@ -245,4 +245,7 @@
     <string name="menu_customer">Customer</string>
     <string name="menu_voucher">Voucher</string>
     <string name="menu_offer">Offer</string>
+    <string name="menu_statistics">Revenue statistics</string>
+    <string name="menu_signout">Sign out</string>
+
 </resources>

@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -101,6 +102,7 @@ public class AdminProductFragment extends Fragment {
         productPrice=dialogView.findViewById(R.id.productPrice);
         productDescription=dialogView.findViewById(R.id.productDescription);
         btnImage = dialogView.findViewById(R.id.btnImage);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
         Button btnSave=dialogView.findViewById(R.id.btnSave);
         spinner=dialogView.findViewById(R.id.productCategory);
         btnImageError=dialogView.findViewById(R.id.btnImageError);
@@ -113,6 +115,12 @@ public class AdminProductFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 choosePicture();
+            }
+        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

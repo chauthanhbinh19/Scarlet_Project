@@ -13,13 +13,123 @@
 
         <RelativeLayout
             android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout android:id="@+id/search_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <EditText android:id="@+id/search_bar"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:hint="Search"
+                    android:paddingLeft="30dp"
+                    android:layout_weight="8"
+                    android:layout_margin="6dp"
+                    android:textColorHint="@color/burgundy"/>
+
+                <RelativeLayout
+                    android:layout_toRightOf="@+id/search_bar"
+                    android:layout_weight="1"
+                    android:layout_margin="6dp"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp">
+
+                    <ImageButton
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/filter"/>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout android:id="@+id/box"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/search_box"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout android:id="@+id/pending"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_burgundy_radius"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/box"/>
+
+                    <TextView android:id="@+id/textpending"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pending"
+                        android:layout_marginLeft="42dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/white"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/done"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:padding="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/check"/>
+
+                    <TextView android:id="@+id/textdone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Done"
+                        android:layout_marginLeft="42dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/burgundy"/>
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rectangle_lightpink_radius"
+                    android:padding="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/cancel"/>
+
+                    <TextView android:id="@+id/textcancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cancelled"
+                        android:layout_marginLeft="42dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/burgundy"/>
+                </RelativeLayout>
+            </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/order_recyclerView"
+                android:layout_below="@+id/box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </RelativeLayout>

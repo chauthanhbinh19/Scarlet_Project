@@ -11,12 +11,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
+import com.example.scarlet.AdminMainActivity;
 import com.example.scarlet.R;
 import com.example.scarlet.SignInActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -30,7 +33,7 @@ public class AccountFragment extends Fragment {
     RelativeLayout profile_btn;
     RelativeLayout setting_btn;
     RelativeLayout policies_btn;
-    RelativeLayout app_version_btn;
+    RelativeLayout app_version_btn, order_activities_btn, dashboard_button;
     Button create_account;
     Button sign_out_button;
     private void BindView(View view){
@@ -39,7 +42,9 @@ public class AccountFragment extends Fragment {
         policies_btn=view.findViewById(R.id.policies_button);
         app_version_btn=view.findViewById(R.id.app_version_button);
         create_account=view.findViewById(R.id.create_account_btn);
+        order_activities_btn=view.findViewById(R.id.order_activities_button);
         sign_out_button=view.findViewById(R.id.sign_out_btn);
+        dashboard_button=view.findViewById(R.id.dashboard_button);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,6 +55,7 @@ public class AccountFragment extends Fragment {
         validateUser(view);
 
         BindView(view);
+        checkSignInStautus();
         profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,6 +70,12 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        order_activities_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openOrderActivitiesFragment();
+            }
+        });
         policies_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +98,13 @@ public class AccountFragment extends Fragment {
 
             }
         });
+        dashboard_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), AdminMainActivity.class);
+                startActivity(intent);
+            }
+        });
         sign_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,10 +114,28 @@ public class AccountFragment extends Fragment {
                 editor.remove("customerKey");
                 editor.apply();
 
+                create_account.setVisibility(View.VISIBLE);
+                Toast.makeText(getContext(),"Sign out successfully", Toast.LENGTH_SHORT).show();
             }
         });
 
         return view;
+    }
+    private void checkSignInStautus(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+        String userType=sharedPreferences.getString("userType","");
+        if(!isLoggedIn && userKey.isEmpty()){
+            create_account.setVisibility(View.VISIBLE);
+        }else{
+            create_account.setVisibility(View.GONE);
+        }
+        if(userType.equals("employee")){
+            dashboard_button.setVisibility(View.VISIBLE);
+        }else if(userType.equals("customer")){
+            dashboard_button.setVisibility(View.GONE);
+        }
     }
     private void openProfileFragment(){
         ProfileFragment profileFragment=new ProfileFragment();
@@ -132,6 +169,14 @@ public class AccountFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
+    private void openOrderActivitiesFragment(){
+        OrderActivitiesFragment orderActivitiesFragment=new OrderActivitiesFragment();
+        FragmentManager fragmentManager=getParentFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,orderActivitiesFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
     private void validateUser(View view){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
@@ -145,13 +190,13 @@ public class AccountFragment extends Fragment {
                     if(snapshot.exists()){
                         String firstname=snapshot.child("first_name").getValue(String.class);
                         String lastname=snapshot.child("last_name").getValue(String.class);
-                        int customerAvatar=snapshot.child("avatar_img").getValue(int.class);
+                        String customerAvatar=snapshot.child("avatar_img").getValue(String.class);
 
                         TextView customerNameView=view.findViewById(R.id.user_name);
 
-                        if(customerAvatar != 0){
+                        if(!customerAvatar.isEmpty()){
                             ImageView customerAvatarView=view.findViewById(R.id.user_avatar);
-                            customerAvatarView.setImageResource(customerAvatar);
+                            Glide.with(getContext()).load(customerAvatar).into(customerAvatarView);
                         }
                         customerNameView.setText(lastname+ " "+ firstname);
                     }

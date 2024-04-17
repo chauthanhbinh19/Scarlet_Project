@@ -45,14 +45,20 @@
 
 			<Button android:id="@+id/create_account_btn"
 				android:textStyle="bold"
-				android:textSize="13sp"
-				android:textColor="@color/teal_200"
-				android:layout_marginLeft="260dp"
+				android:textSize="16sp"
+				android:textColor="@color/burgundy"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="20dp"
 				android:layout_marginTop="58dp"
-				android:layout_width="140dp"
-				android:layout_height="48dp"
-				android:text="Create account"
-				android:background="@color/transparent"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingRight="10dp"
+				android:paddingLeft="10dp"
+				android:visibility="gone"
+				android:text="Sign in"
+				style="@style/MyButtonTheme"
+				android:elevation="4dp"
+				android:background="@drawable/rectangle_circle_white"
 				/>
 
 			<com.google.android.material.imageview.ShapeableImageView android:id="@+id/user_avatar"
@@ -89,29 +95,6 @@
 					android:layout_height="48.8dp"
 					android:text="@string/account_ek1_string"
 					 />
-
-				<TextView android:id="@+id/order"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/black"
-					android:layout_marginLeft="36dp"
-					android:layout_marginTop="187dp"
-					android:layout_width="115.8dp"
-					android:layout_height="43.8dp"
-					android:text="@string/order_string"
-					 />
-
-				<TextView android:id="@+id/general_information"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/black"
-					android:layout_marginLeft="38dp"
-					android:layout_marginTop="285dp"
-					android:layout_width="237.8dp"
-					android:layout_height="43.8dp"
-					android:text="@string/general_information_string"
-					 />
-
 
 				<RelativeLayout android:id="@+id/profile_button"
 					android:layout_marginTop="61dp"
@@ -159,9 +142,9 @@
 
 				</RelativeLayout>
 
-
 				<RelativeLayout android:id="@+id/settings_button"
-					android:layout_marginTop="128dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/profile_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -205,9 +188,66 @@
 
 				</RelativeLayout>
 
+				<RelativeLayout android:id="@+id/dashboard_button"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/settings_button"
+					android:layout_centerHorizontal="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:visibility="gone"
+					>
+
+					<View
+						android:background="@drawable/rectangle_lightpink_radius"
+						android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_centerHorizontal="true"
+						android:layout_width="340dp"
+						android:layout_height="50dp" />
+
+					<TextView
+						android:textSize="14sp"
+						android:textColor="@color/black"
+						android:layout_marginLeft="52dp"
+						android:layout_marginTop="11dp"
+						android:layout_width="180.55dp"
+						android:layout_height="31.4dp"
+						android:text="Dashboard"
+						android:gravity="center_vertical"
+						android:layout_centerVertical="true"
+						/>
+
+					<ImageView
+						android:src="@drawable/dashboard"
+						android:layout_marginStart="17dp"
+						android:layout_marginTop="10dp"
+						android:layout_width="25dp"
+						android:layout_height="25dp" />
+
+					<ImageView
+						android:src="@drawable/right_arrow_3"
+						android:layout_marginStart="295dp"
+						android:layout_marginTop="20dp"
+						android:layout_width="15dp"
+						android:layout_height="15dp" />
+
+				</RelativeLayout>
+
+				<TextView android:id="@+id/order"
+					android:textStyle="bold"
+					android:textSize="18sp"
+					android:layout_below="@id/dashboard_button"
+					android:textColor="@color/black"
+					android:layout_marginLeft="36dp"
+					android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/order_string"
+					/>
 
 				<RelativeLayout android:id="@+id/order_activities_button"
-					android:layout_marginTop="226dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/order"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -252,9 +292,21 @@
 
 				</RelativeLayout>
 
+				<TextView android:id="@+id/general_information"
+					android:textStyle="bold"
+					android:textSize="18sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="38dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/order_activities_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/general_information_string"
+					/>
 
 				<RelativeLayout android:id="@+id/policies_button"
-					android:layout_marginTop="323dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/general_information"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -299,9 +351,9 @@
 
 				</RelativeLayout>
 
-
 				<RelativeLayout android:id="@+id/loyalty_program_button"
-					android:layout_marginTop="384dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/policies_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -345,9 +397,9 @@
 
 				</RelativeLayout>
 
-
 				<RelativeLayout android:id="@+id/app_version_button"
-					android:layout_marginTop="442dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/loyalty_program_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -393,9 +445,21 @@
 
 				</RelativeLayout>
 
+				<TextView android:id="@+id/help_center"
+					android:textStyle="bold"
+					android:textSize="18sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="36dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/app_version_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/help_center_string"
+					/>
 
 				<RelativeLayout android:id="@+id/faqs_button"
-					android:layout_marginTop="540dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@id/help_center"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -439,9 +503,9 @@
 
 				</RelativeLayout>
 
-
 				<RelativeLayout android:id="@+id/feedback___support_button"
-					android:layout_marginTop="598dp"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/faqs_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -485,21 +549,11 @@
 
 				</RelativeLayout>
 
-				<TextView android:id="@+id/help_center"
-					android:textStyle="bold"
-					android:textSize="18sp"
-					android:textColor="@color/black"
-					android:layout_marginLeft="36dp"
-					android:layout_marginTop="502dp"
-					android:layout_width="237.8dp"
-					android:layout_height="43.8dp"
-					android:text="@string/help_center_string"
-					 />
-
 				<Button android:id="@+id/sign_out_btn"
 					android:background="@drawable/rectangle_burgundy_radius"
-					android:layout_marginTop="669dp"
+					android:layout_marginTop="10dp"
 					android:textStyle="bold"
+					android:layout_below="@+id/feedback___support_button"
 					android:layout_width="291dp"
 					android:layout_height="48dp"
 					android:layout_centerHorizontal="true"

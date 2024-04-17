@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -142,6 +143,7 @@ public class AdminVoucherFragment extends Fragment {
         calendar=dialogView.findViewById(R.id.calendar);
         RadioButton radioProduct=dialogView.findViewById(R.id.radioProduct);
         RadioButton radioAll=dialogView.findViewById(R.id.radioAll);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
         ScrollView scrollView=dialogView.findViewById(R.id.scrollProduct);
 
         productRecycleView.setLayoutManager(new GridLayoutManager(getContext(),1));
@@ -162,6 +164,12 @@ public class AdminVoucherFragment extends Fragment {
                 }
             }
         };
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         getProductData(getKeyCallback,productRecycleView);
         radioProduct.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -382,6 +390,7 @@ public class AdminVoucherFragment extends Fragment {
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
+            Toast.makeText(getContext(),"Insert successfully", Toast.LENGTH_SHORT).show();
         } catch (ParseException e) {
             e.printStackTrace(); // Handle parsing exception
         }

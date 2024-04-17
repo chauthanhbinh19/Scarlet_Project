@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/nav_customer"
         android:name="com.example.scarlet.Fragment.AdminCustomerFragment"
-        android:label="@string/menu_order"
+        android:label="@string/menu_customer"
         tools:layout="@layout/admin_fragment_customer" />
 
     <fragment
@@ -46,4 +46,10 @@
         android:name="com.example.scarlet.Fragment.AdminOfferFragment"
         android:label="@string/menu_offer"
         tools:layout="@layout/admin_fragment_offer" />
+
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.example.scarlet.Fragment.AdminStatisticFragment"
+        android:label="@string/menu_statistics"
+        tools:layout="@layout/admin_fragment_statistics" />
 </navigation>

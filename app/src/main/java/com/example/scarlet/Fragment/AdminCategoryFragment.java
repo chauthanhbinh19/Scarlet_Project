@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -91,6 +92,7 @@ public class AdminCategoryFragment extends Fragment {
         categoryName = dialogView.findViewById(R.id.categoryName);
         btnImage = dialogView.findViewById(R.id.btnImage);
         Button btnSave=dialogView.findViewById(R.id.btnSave);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
         TextView ImageError=dialogView.findViewById(R.id.btnImageError);
 
         builder.setView(dialogView);
@@ -101,6 +103,12 @@ public class AdminCategoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 choosePicture();
+            }
+        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
         btnSave.setOnClickListener(new View.OnClickListener() {

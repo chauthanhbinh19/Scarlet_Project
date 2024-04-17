@@ -9,6 +9,7 @@ public class Offer {
     private int image;
     private Date startDate;
     private Date endDate;
+    private String key;
 
     public String getName() {
         return name;
@@ -58,6 +59,14 @@ public class Offer {
         this.endDate = endDate;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public Offer() {
     }
 
@@ -75,5 +84,15 @@ public class Offer {
         this.description = description;
         this.point = point;
         this.image = image;
+    }
+
+    public Offer(String name, String description, int point, int image, Date startDate, Date endDate, String key) {
+        this.name = name;
+        this.description = description;
+        this.point = point;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.key = key;
     }
 }

@@ -213,6 +213,7 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
+            Toast.makeText(AdminEditVoucherActivity.this,"Save successfully", Toast.LENGTH_SHORT).show();
         } catch (ParseException e) {
             e.printStackTrace(); // Handle parsing exception
         }

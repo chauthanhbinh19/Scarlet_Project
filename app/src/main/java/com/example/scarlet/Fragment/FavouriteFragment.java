@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,8 +40,11 @@ public class FavouriteFragment extends Fragment {
     private ProductSearchAdapter productAdapter;
     private List<Product> productList;
     RecyclerView recyclerView;
+    RelativeLayout signinNotification,recycleBox;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.product_recyclerView);
+        signinNotification=view.findViewById(R.id.signInNotification);
+        recycleBox=view.findViewById(R.id.recycleBox);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,11 +53,24 @@ public class FavouriteFragment extends Fragment {
         View view=inflater.inflate(R.layout.favourite, container, false);
 
         BindView(view);
+        checkSignInStatus();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 
         validateUser(view,recyclerView);
         return view;
+    }
+    private void checkSignInStatus(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+        if(!isLoggedIn && userKey.isEmpty()){
+            signinNotification.setVisibility(View.VISIBLE);
+            recycleBox.setVisibility(View.GONE);
+        }else{
+            signinNotification.setVisibility(View.GONE);
+            recycleBox.setVisibility(View.VISIBLE);
+        }
     }
     private void validateUser(View view, RecyclerView recyclerView){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

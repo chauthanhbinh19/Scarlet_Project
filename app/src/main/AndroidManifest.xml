@@ -63,6 +63,9 @@
             android:name=".YourRightsActivity"
             android:exported="true" />
         <activity
+            android:name=".OrderNotificationActivity"
+            android:exported="true" />
+        <activity
             android:name=".VoucherActivity"
             android:exported="true" />
         <activity
@@ -97,6 +100,9 @@
             android:exported="true" />
         <activity
             android:name=".AdminEditVoucherActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdminEditOfferActivity"
             android:exported="true" />
     </application>
 

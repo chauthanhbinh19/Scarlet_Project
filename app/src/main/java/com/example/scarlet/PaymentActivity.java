@@ -16,7 +16,9 @@ import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,17 +51,26 @@ public class PaymentActivity extends AppCompatActivity {
 
     EditText txtAmount;
     RelativeLayout back_btn;
-    Button pay;
+    Button pay, c1Btn, c2Btn, c3Btn, c4Btn;
     TextView totalView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef, cartRef,productRef, orderRef, addressRef;
     double total;
     Address address;
     String deliveryStatus;
+    RadioButton radioZaloPay, radioCash;
+    int defaultStatus=4;
+    int tip=0;
     private void BindView() {
         totalView=findViewById(R.id.total);
         back_btn=findViewById(R.id.back_btn);
         pay=findViewById(R.id.btnPay);
+        radioZaloPay=findViewById(R.id.radio_zaloPay);
+        radioCash=findViewById(R.id.radio_cash);
+        c1Btn=findViewById(R.id.c1_btn);
+        c2Btn=findViewById(R.id.c2_btn);
+        c3Btn=findViewById(R.id.c3_btn);
+        c4Btn=findViewById(R.id.c4_btn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +88,118 @@ public class PaymentActivity extends AppCompatActivity {
             deliveryStatus=intent.getStringExtra("deliveryStatus");
             totalView.setText(totalT);
         }
+        int price=Integer.parseInt(totalView.getText().toString());
+        int tip1=15*price/100;
+        c1Btn.setText("15% \n " + String.valueOf(tip1) +"đ");
+        int tip2=18*price/100;
+        c2Btn.setText("18% \n " + String.valueOf(tip2) +"đ");
+        int tip3=20*price/100;
+        c3Btn.setText("20% \n " + String.valueOf(tip3) +"đ");
+        getStatus();
+        radioCash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    radioZaloPay.setChecked(false);
+                }
+            }
+        });
+        radioZaloPay.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    radioCash.setChecked(false);
+                }
+            }
+        });
+        c1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=1;
+                int price=Integer.parseInt(totalView.getText().toString());
+                tip=15*price/100;
+                getStatus();
+            }
+        });
+        c2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=2;
+                int price=Integer.parseInt(totalView.getText().toString());
+                tip=18*price/100;
+                getStatus();
+            }
+        });
+        c3Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=3;
+                int price=Integer.parseInt(totalView.getText().toString());
+                tip=20*price/100;
+                getStatus();
+            }
+        });
+        c4Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=4;
+                getStatus();
+            }
+        });
         pay.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                requestZaloPay();
+                if(radioCash.isChecked()){
+                    Payment payment=new Payment();
+                    payment.setType("Cash");
+                    getCartData(payment);
+                }else if(radioZaloPay.isChecked()){
+                    requestZaloPay();
+                }
             }
         });
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+    private void getStatus(){
+        switch (defaultStatus){
+            case 1:
+                c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_burgundy));
+                c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                break;
+            case 2:
+                c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
+                c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_burgundy));
+                c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                break;
+            case 3:
+                c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
+                c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_burgundy));
+                c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                break;
+            case 4:
+                c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
+                c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_burgundy));
+                break;
+            default:
+                c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
+                c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
+                c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_burgundy));
+                break;
+        }
     }
     private void requestZaloPay(){
         CreateOrder orderApi = new CreateOrder();
@@ -179,6 +293,7 @@ public class PaymentActivity extends AppCompatActivity {
                                     ProductQuantity productQuantity=snapshot1.getValue(ProductQuantity.class);
                                     productQuantityList.add(productQuantity);
                                 }
+                                cartSnap.child("productQuantityList").getRef().removeValue();
                             }
                         }
                         getProductData(productQuantityList, userKey, payment);
@@ -248,10 +363,12 @@ public class PaymentActivity extends AppCompatActivity {
                                 String additionalText=snap.child("additional").getValue(String.class);
 
                                 address=new Address(customerId,streetText,wardText,districtText,provinceText,postalCodeText,"","",additionalText);
-                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,total,0,deliveryStatus,0,productList);
+                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,total,tip,deliveryStatus,0,productList);
                                 String key=orderRef.push().getKey();
                                 orderRef.child(key).setValue(order);
-//                                requestZaloPay();
+
+                                Intent intent=new Intent(PaymentActivity.this, OrderNotificationActivity.class);
+                                startActivity(intent);
                             }
                         }
                     }

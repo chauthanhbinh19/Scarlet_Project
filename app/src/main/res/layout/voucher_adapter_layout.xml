@@ -6,7 +6,7 @@
         >
 
         <View   android:id="@+id/rectangle_9"
-            android:background="@drawable/rectangle_circle_white_30"
+            android:background="@drawable/rectangle_circle_white_2"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_width="match_parent"

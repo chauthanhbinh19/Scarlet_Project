@@ -107,6 +107,7 @@ public class AdminCustomerFragment extends Fragment {
         customerPassword=dialogView.findViewById(R.id.customerPassword);
         btnImage = dialogView.findViewById(R.id.btnImage);
         Button btnSave=dialogView.findViewById(R.id.btnSave);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
         btnImageError=dialogView.findViewById(R.id.btnImageError);
         calendar=dialogView.findViewById(R.id.calendar);
 
@@ -118,6 +119,12 @@ public class AdminCustomerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showDatePickerDialog(dialogView);
+            }
+        });
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
         btnImage.setOnClickListener(new View.OnClickListener() {

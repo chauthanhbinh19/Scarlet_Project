@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.scarlet.Data.Cart;
 import com.example.scarlet.Data.Favourite;
 import com.example.scarlet.Data.ProductQuantity;
 import com.google.firebase.database.DataSnapshot;
@@ -126,11 +127,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
                 if(isFavourite){
                     deleteFavourite(productKey);
-                    Toast.makeText(ProductDetailActivity.this,"delete",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ProductDetailActivity.this,"delete",Toast.LENGTH_SHORT).show();
                     heart.setImageResource(R.drawable.heart);
                 }else{
                     insertToFavourite(productKey);
-                    Toast.makeText(ProductDetailActivity.this,"insert",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(ProductDetailActivity.this,"insert",Toast.LENGTH_SHORT).show();
                     heart.setImageResource(R.drawable.heart__1__1);
                 }
             }
@@ -242,40 +243,58 @@ public class ProductDetailActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     List<ProductQuantity> productIdList=new ArrayList<>();
-                    boolean found=false;
-                    for(DataSnapshot snap: snapshot.getChildren()){
-                        if(snap.child("customerId").getValue(String.class).equals(userKey)){
-                            if(snap.child("productQuantityList").exists()){
-                                DataSnapshot productIdObject=snap.child("productQuantityList");
-                                if(productIdObject.getValue() instanceof List){
-                                    List<ProductQuantity> tempProductIdList = new ArrayList<>();
-                                    int quantity=1;
-                                    for(DataSnapshot productSnap: productIdObject.getChildren()){
-                                        ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
-                                        tempProductIdList.add(productQuantity);
-                                    }
-                                    productIdList=tempProductIdList;
-                                    for(ProductQuantity pd:productIdList){
-                                        if(pd.getProductId().equals(productKey)){
-                                            quantity=pd.getQuantity()+1;
-                                            pd.setQuantity(quantity);
-                                            found=true;
-                                            break;
+                    if (snapshot.exists()) {
+                        boolean found=false;
+                        boolean founUser=false;
+                        for(DataSnapshot snap: snapshot.getChildren()){
+                            if(snap.child("customerId").getValue(String.class).equals(userKey)){
+                                founUser=true;
+                                if(snap.child("productQuantityList").exists()){
+                                    DataSnapshot productIdObject=snap.child("productQuantityList");
+                                    if(productIdObject.getValue() instanceof List){
+                                        List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                        int quantity=1;
+                                        for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                            ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                            tempProductIdList.add(productQuantity);
                                         }
-                                    }
-                                    if(!found){
-                                        productIdList.add(new ProductQuantity(productKey,quantity));
-                                    }
+                                        productIdList=tempProductIdList;
+                                        for(ProductQuantity pd:productIdList){
+                                            if(pd.getProductId().equals(productKey)){
+                                                quantity=pd.getQuantity()+1;
+                                                pd.setQuantity(quantity);
+                                                found=true;
+                                                break;
+                                            }
+                                        }
+                                        if(!found){
+                                            productIdList.add(new ProductQuantity(productKey,quantity));
+                                        }
 
+                                        myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
+                                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                                        break;
+                                    }
+                                } else{
+                                    productIdList.add(new ProductQuantity(productKey,1));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
+                                    Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                     break;
                                 }
-                            }else{
-                                productIdList.add(new ProductQuantity(productKey,1));
-                                myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
-                                break;
                             }
                         }
+                        if(!founUser){
+                            productIdList.add(new ProductQuantity(productKey, 1));
+                            Cart cart=new Cart(userKey,productIdList);
+                            myRef.push().setValue(cart);
+                            Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        productIdList.add(new ProductQuantity(productKey, 1));
+                        Cart cart=new Cart(userKey,productIdList);
+                        myRef.push().setValue(cart);
+                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                        return;
                     }
 
                 }

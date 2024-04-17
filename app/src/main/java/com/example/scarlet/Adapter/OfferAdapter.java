@@ -13,7 +13,7 @@ import com.example.scarlet.R;
 import java.util.List;
 
 public class OfferAdapter extends RecyclerView.Adapter<OfferHolderView> {
-    private List<Offer> offerList;
+    public List<Offer> offerList;
 
     public OfferAdapter(List<Offer> offerList) {
 

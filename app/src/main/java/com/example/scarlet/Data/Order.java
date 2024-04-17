@@ -14,6 +14,7 @@ public class Order {
     private String deliveryStatus;
     private double deliveryFee;
     private List<Product> productList;
+    private String key;
 
     public String getUserId() {
         return userId;
@@ -95,6 +96,14 @@ public class Order {
         this.deliveryFee = deliveryFee;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     public Order() {
     }
 
@@ -109,5 +118,19 @@ public class Order {
         this.deliveryStatus = deliveryStatus;
         this.deliveryFee = deliveryFee;
         this.productList = productList;
+    }
+
+    public Order(String orderStatus, Date orderDate, double total, List<Product> productList, String key) {
+        this.orderStatus = orderStatus;
+        this.orderDate = orderDate;
+        this.total = total;
+        this.productList = productList;
+        this.key = key;
+    }
+
+    public Order(String orderStatus, Date orderDate, String key) {
+        this.orderStatus = orderStatus;
+        this.orderDate = orderDate;
+        this.key = key;
     }
 }
