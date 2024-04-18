@@ -5,11 +5,11 @@
     android:layout_marginBottom="4dp"
     android:padding="2dp"
     android:layout_width="match_parent"
-    android:layout_height="110dp">
+    android:layout_height="120dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
@@ -20,7 +20,7 @@
         android:outlineAmbientShadowColor="@color/burgundy">
 
         <ImageView
-            android:layout_width="44dp"
+            android:layout_width="40dp"
             android:layout_height="140dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/rectangle_circle_burgundy_2" />
@@ -39,15 +39,15 @@
     <ImageView android:id="@+id/icon"
         android:layout_marginTop="7dp"
         android:layout_marginLeft="20dp"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:elevation="4dp"
         android:layout_centerVertical="true"
         android:src="@drawable/cake_11"/>
 
     <TextView android:id="@+id/orderName"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
         android:maxWidth="150dp"
         android:layout_height="wrap_content"
@@ -66,6 +66,7 @@
         android:layout_marginLeft="10dp"
         android:layout_width="15dp"
         android:layout_height="15dp"
+        android:textSize="14sp"
         android:layout_toRightOf="@+id/orderName"
         android:elevation="10dp"
         android:gravity="center_horizontal"
@@ -77,24 +78,50 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/icon"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/black"
+        android:textSize="12sp"
         android:elevation="10dp"
         android:text="Order date:"/>
 
-    <TextView android:id="@+id/orderStatus"
+    <TextView android:id="@+id/orderTotal"
         android:layout_below="@+id/orderDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/icon"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:elevation="10dp"
+        android:textSize="12sp"
+        android:text="Total:"/>
+
+    <TextView android:id="@+id/unit"
+        android:layout_below="@+id/orderDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/orderTotal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="2dp"
+        android:textColor="@color/black"
+        android:elevation="10dp"
+        android:textSize="12sp"
+        android:text="đ"/>
+
+    <TextView android:id="@+id/orderStatus"
+        android:layout_below="@+id/orderTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/icon"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/white"
         android:elevation="10dp"
         android:background="@drawable/rectangle_yellow_radius"
         android:paddingBottom="2dp"
         android:paddingTop="2dp"
         android:paddingLeft="5dp"
+        android:textSize="12sp"
         android:paddingRight="5dp"
         android:text="Pending"/>
 

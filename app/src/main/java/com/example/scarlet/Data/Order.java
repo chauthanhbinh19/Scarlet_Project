@@ -128,9 +128,10 @@ public class Order {
         this.key = key;
     }
 
-    public Order(String orderStatus, Date orderDate, String key) {
+    public Order(String orderStatus, Date orderDate, double total, String key) {
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;
+        this.total = total;
         this.key = key;
     }
 }

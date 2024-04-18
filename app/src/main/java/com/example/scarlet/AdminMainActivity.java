@@ -1,5 +1,6 @@
 package com.example.scarlet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,7 +47,7 @@ public class AdminMainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_category, R.id.nav_product,R.id.nav_order,R.id.nav_customer,R.id.nav_voucher,R.id.nav_offer
-                ,R.id.nav_statistics, R.id.nav_signout)
+                ,R.id.nav_statistics,R.id.nav_chart,R.id.nav_back, R.id.nav_signout)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -61,6 +62,9 @@ public class AdminMainActivity extends AppCompatActivity {
                     Toast.makeText(AdminMainActivity.this,"Sign out",Toast.LENGTH_SHORT).show();
                     drawer.closeDrawer(GravityCompat.START);
                     return true;
+                }else if(id==R.id.nav_back){
+                    Intent intent=new Intent(AdminMainActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }else{
                     navigateToDestination(id);
                 }

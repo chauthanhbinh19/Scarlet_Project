@@ -23,7 +23,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView
     @Override
     public AdminOrderHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_order_adapter_layout, parent, false);
-        return new AdminOrderHolderView(view);
+        return new AdminOrderHolderView(view).linkAdapter(this);
     }
 
     @Override

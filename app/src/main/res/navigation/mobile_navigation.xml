@@ -52,4 +52,10 @@
         android:name="com.example.scarlet.Fragment.AdminStatisticFragment"
         android:label="@string/menu_statistics"
         tools:layout="@layout/admin_fragment_statistics" />
+
+    <fragment
+        android:id="@+id/nav_chart"
+        android:name="com.example.scarlet.Fragment.AdminChartFragment"
+        android:label="@string/menu_chart"
+        tools:layout="@layout/admin_fragment_chart" />
 </navigation>

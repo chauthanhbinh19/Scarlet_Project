@@ -120,7 +120,8 @@ public class AdminOrderFragment extends Fragment {
                     if(status.equals(orderStatus)){
                         String key=snap.getKey();
                         Date orderdate=snap.child("orderDate").getValue(Date.class);
-                        Order order=new Order(orderStatus,orderdate,key);
+                        double total=snap.child("total").getValue(double.class);
+                        Order order=new Order(orderStatus,orderdate,total,key);
                         orderList.add(order);
                     }
                 }
