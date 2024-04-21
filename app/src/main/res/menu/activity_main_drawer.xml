@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/group1"
+        android:checkableBehavior="single">
         <item android:id="@+id/nav_home"
             android:icon="@drawable/home_ek1"
             android:title="@string/menu_home"/>
@@ -25,6 +27,9 @@
         <item android:id="@+id/nav_offer"
             android:icon="@drawable/coupon_1"
             android:title="@string/menu_offer"/>
+    </group>
+    <group android:id="@+id/group2"
+        android:checkableBehavior="single">
         <item android:id="@+id/nav_statistics"
             android:icon="@drawable/increase"
             android:title="@string/menu_statistics"/>
@@ -32,10 +37,13 @@
             android:icon="@drawable/statistics"
             android:title="@string/menu_chart"/>
     </group>
-    <item android:id="@+id/nav_back"
-        android:icon="@drawable/building"
-        android:title="@string/menu_back"/>
-    <item android:id="@+id/nav_signout"
-        android:icon="@drawable/logout"
-        android:title="@string/menu_signout"/>
+    <group android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item android:id="@+id/nav_back"
+            android:icon="@drawable/building"
+            android:title="@string/menu_back"/>
+        <item android:id="@+id/nav_signout"
+            android:icon="@drawable/logout"
+            android:title="@string/menu_signout"/>
+    </group>
 </menu>

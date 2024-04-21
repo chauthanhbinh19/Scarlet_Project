@@ -1,5 +1,8 @@
 package com.example.scarlet.Fragment;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,6 +18,20 @@ import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.User;
 import com.example.scarlet.R;
 import com.example.scarlet.SignUpActivity;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,12 +49,21 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.TreeMap;
 import java.util.UUID;
 
 public class AdminHomeFragment extends Fragment {
 
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    LineChart lineChart;
+    ArrayList<Entry> lineEntries;
     Uri uri;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,10 +77,112 @@ public class AdminHomeFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                createAccount();
             }
         });
+        getChartData(view, 2023);
         return view;
+    }
+    private void getChartData(View view,int yearString){
+        lineChart=view.findViewById(R.id.lineChart);
+        lineEntries=new ArrayList<>();
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference categoryRef=firebaseDatabase.getReference("category");
+        DatabaseReference myRef= firebaseDatabase.getReference("order");
+        List<String> categoryNameList=new ArrayList<>();
+        categoryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    String name=snap.child("name_category").getValue(String.class);
+                    categoryNameList.add(name);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                HashMap<String, Float> cakeTypeCompare = new HashMap<>();
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    Date orderDate=snap.child("orderDate").getValue(Date.class);
+                    Calendar calendar=Calendar.getInstance();
+                    calendar.setTime(orderDate);
+                    int year=calendar.get(Calendar.YEAR);
+                    List<String>a=categoryNameList;
+                    if(year==yearString){
+                        for(DataSnapshot productSnap:snap.child("productList").getChildren()){
+                            String categoryName=productSnap.child("categoryName").getValue(String.class);
+                            int productQuantity=productSnap.child("quantity").getValue(int.class);
+                            cakeTypeCompare.put(categoryName, cakeTypeCompare.getOrDefault(categoryName, Float.valueOf(0)) + productQuantity);
+                        }
+                    }
+                }
+                HashMap<String, Float> newCakeTypeCompare = new HashMap<>();
+                TreeMap<String, Float> sortedCakeCompare = new TreeMap<>(cakeTypeCompare);
+                for(String name:categoryNameList){
+                    boolean found=false;
+                    for(String sortedname: sortedCakeCompare.keySet()){
+                        if(name.equals(sortedname)){
+                            found=true;
+                            Float value=sortedCakeCompare.get(sortedname);
+                            newCakeTypeCompare.put(sortedname,value);
+                            break;
+                        }
+                    }
+                    if(!found){
+                        newCakeTypeCompare.put(name,Float.valueOf(0));
+                    }
+                }
+                Collections.sort(categoryNameList);
+                TreeMap<String, Float> sortedNewCakeCompare = new TreeMap<>(newCakeTypeCompare);
+                HashMap<Float,Float> intCakeCompare=new HashMap<>();
+                int count =0;
+                for(String key:sortedNewCakeCompare.keySet()){
+                    Float value=sortedNewCakeCompare.get(key);
+                    intCakeCompare.put(Float.valueOf(count),value);
+                    count++;
+                }
+                for (Float key : intCakeCompare.keySet()) {
+                    Float value = intCakeCompare.get(key);
+                    lineEntries.add(new BarEntry(key, value));
+                }
+                LineDataSet dataSet = new LineDataSet(lineEntries, "Category");
+                LineData lineData = new LineData(dataSet);
+                dataSet.setColor(Color.RED);
+
+                int[] colors = {Color.parseColor("#FF4081"), Color.parseColor("#00000000")};
+                GradientDrawable gradient = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, colors);
+                dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+                dataSet.setDrawFilled(true);
+                dataSet.setFillDrawable(gradient);
+
+                lineChart.setData(lineData);
+                lineChart.getDescription().setEnabled(false);
+
+                XAxis xAxis = lineChart.getXAxis();
+                xAxis.setValueFormatter(new IndexAxisValueFormatter(categoryNameList));
+                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                xAxis.setGranularity(1f);
+                xAxis.setLabelCount(categoryNameList.size());
+                xAxis.setDrawLabels(true);
+                xAxis.setTextSize(6f);
+                xAxis.setDrawGridLines(false);
+
+                YAxis yAxis=lineChart.getAxisRight();
+                yAxis.setEnabled(false);
+
+                lineChart.invalidate();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
     private void createCategoryData(){
         uploadCategoryPicture(R.drawable.bubble_tea,"Drinks");

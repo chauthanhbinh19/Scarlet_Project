@@ -39,8 +39,10 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
@@ -322,9 +324,10 @@ public class PaymentActivity extends AppCompatActivity {
                     if(checkKeyInList(productKey,productKeyList)){
                         String productName=productSnap.child("name").getValue(String.class);
                         double productPrice=productSnap.child("price").getValue(double.class);
-                        int productQuantity=productSnap.child("quantity").getValue(int.class);
+                        int productQuantity=getQuantity(productKey,productKeyList);
+                        String categoryName=productSnap.child("categoryName").getValue(String.class);
                         double productTotal=productPrice*productQuantity;
-                        Product product=new Product(productName,productPrice,productQuantity,productTotal);
+                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName);
                         productList.add(product);
                     }
                 }
@@ -347,7 +350,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String orderStatus="pending";
-                Date orderDate=new Date();
+                Date orderDate=randomDate();
                 total=Double.parseDouble(totalView.getText().toString());
                 addressRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -385,6 +388,35 @@ public class PaymentActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private Date randomDate(){
+        Random random = new Random();
+        int month = random.nextInt(12) + 1;
+
+        int startYear = 2023;
+        int endYear = 2024;
+        int year = random.nextInt(endYear - startYear + 1) + startYear;
+        if(year==2024 && month >4){
+            while(month>4){
+                month = random.nextInt(12) + 1;
+            }
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month - 1); // Trừ đi 1 vì tháng bắt đầu từ 0
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        Date randomDate=calendar.getTime();
+        return randomDate;
+    }
+    public int getQuantity(ProductQuantity key, List<ProductQuantity> keyList){
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return item.getQuantity();
+            }
+        }
+        return 1;
     }
     public boolean checkKeyInList(ProductQuantity key, List<ProductQuantity> keyList) {
         for (ProductQuantity item : keyList) {

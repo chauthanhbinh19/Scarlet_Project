@@ -96,13 +96,14 @@
         android:text="20000"/>
 
     <TextView android:id="@+id/unit_product"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/name_product"
         android:layout_toRightOf="@+id/price_product"
         android:textSize="16sp"
+        android:layout_marginLeft="2dp"
         android:elevation="10dp"
         android:gravity="center_horizontal"
         android:textColor="@color/black"

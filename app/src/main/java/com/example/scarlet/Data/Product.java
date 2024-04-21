@@ -146,11 +146,12 @@ public class Product {
         this.quantity=quantity;
         this.total=total;
     }
-    public Product(String name,double price,int quantity,double total){
+    public Product(String name,double price,int quantity,double total, String categoryName){
         this.name = name;
         this.price = price;
         this.quantity=quantity;
         this.total=total;
+        this.categoryName=categoryName;
     }
 
     public Product(String key, String name) {

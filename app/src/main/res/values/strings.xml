@@ -247,6 +247,9 @@
     <string name="menu_offer">Offer</string>
     <string name="menu_statistics">Revenue statistics</string>
     <string name="menu_chart">Chart</string>
+    <string name="menu_bar_chart">Bar chart</string>
+    <string name="menu_line_chart">Line chart</string>
+    <string name="menu_pie_chart">Pie chart</string>
     <string name="menu_back">Back to app</string>
     <string name="menu_signout">Sign out</string>
 
