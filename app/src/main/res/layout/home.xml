@@ -84,7 +84,7 @@
 				android:layout_width="match_parent"
 				android:layout_marginLeft="20dp"
 				android:layout_marginRight="20dp"
-				android:layout_height="210dp"
+				android:layout_height="200dp"
 				android:src="@drawable/slider_img2"
 				android:background="@color/burgundy"
 				android:scaleType="centerCrop"

@@ -87,7 +87,7 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
     public void bindData(Offer offer){
         imageView.setImageResource(offer.getImage());
         textView1.setText(offer.getName());
-        textView2.setText(String.valueOf(offer.getPoint()));
+        textView2.setText("Point: "+String.valueOf(offer.getPoint()));
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String formattedStartDate = format.format(offer.getStartDate());
         textView3.setText("Day starts: "+formattedStartDate);

@@ -12,6 +12,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="lightpink_2">#F4D6D6</color>
     <color name="white2">#F3F3F3</color>
+    <color name="ic_launcher_background">#a03232</color>
     <color name="red">#E91D1D</color>
 
     <color name="_bg___loading_color">#FAF0F0</color>
