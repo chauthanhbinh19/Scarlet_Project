@@ -198,10 +198,15 @@
 			android:paddingBottom="50dp"
 			android:background="@color/white">
 
+			<ScrollView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent">
 
 			<RelativeLayout android:id="@+id/frame_7"
 				android:layout_marginTop="10dp"
 				android:layout_marginStart="0dp"
+				android:paddingBottom="100dp"
+				android:layout_marginBottom="100dp"
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				>
@@ -390,7 +395,7 @@
 					android:theme="@style/MyButtonTheme"
 					android:text="Continue to delivery"/>
 			</RelativeLayout>
-
+			</ScrollView>
 
 		</RelativeLayout>
 

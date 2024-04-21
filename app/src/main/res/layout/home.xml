@@ -280,8 +280,8 @@
 		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/welcome_message"
-			android:layout_marginStart="30dp"
+			android:layout_toLeftOf="@id/notification"
+			android:layout_marginRight="10dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
@@ -312,11 +312,11 @@
 				android:textColor="@color/burgundy"
 				/>
 		</RelativeLayout>
-		<RelativeLayout
+		<RelativeLayout android:id="@+id/notification"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/welcome_message"
-			android:layout_marginStart="120dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="20dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
@@ -361,7 +361,7 @@
 				android:src="@drawable/search"
 				android:contentDescription="search_icon"
 				android:layout_centerVertical="true"
-				android:layout_marginStart="20dp"
+				android:layout_marginStart="25dp"
 				android:layout_marginTop="20dp"
 				android:layout_width="25dp"
 				android:layout_height="25dp" />

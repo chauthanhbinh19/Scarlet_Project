@@ -197,10 +197,13 @@
 			android:layout_height="wrap_content"
 			android:background="@color/white">
 
-
+			<ScrollView
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent">
 			<RelativeLayout android:id="@+id/frame_7"
 				android:layout_marginTop="10dp"
 				android:layout_marginStart="0dp"
+				android:paddingBottom="200dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 
@@ -449,7 +452,7 @@
 					android:theme="@style/MyButtonTheme"
 					android:text="Continue to payment"/>
 			</RelativeLayout>
-
+			</ScrollView>
 
 		</RelativeLayout>
 
