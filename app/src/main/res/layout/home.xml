@@ -25,8 +25,8 @@
 					android:textColor="@color/black"
 					android:paddingLeft="28dp"
 					android:layout_marginTop="10dp"
-					android:layout_width="match_parent"
-					android:layout_height="43dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="@string/menu_string"
 					/>
 				<RelativeLayout
@@ -106,7 +106,7 @@
 					android:layout_marginLeft="28dp"
 					android:layout_marginTop="10dp"
 					android:layout_width="92dp"
-					android:layout_height="43dp"
+					android:layout_height="wrap_content"
 					android:text="Deals"
 					/>
 				<HorizontalScrollView

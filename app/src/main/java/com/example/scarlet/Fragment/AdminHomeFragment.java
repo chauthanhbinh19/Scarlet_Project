@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -49,12 +50,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
@@ -65,20 +68,38 @@ public class AdminHomeFragment extends Fragment {
     LineChart lineChart;
     ArrayList<Entry> lineEntries;
     Uri uri;
+    TextView categoryNumber1, categoryNumber2, categoryNumber3, categoryNumber4,
+            categoryName1, categoryName2, categoryName3, categoryName4,
+            categoryPercentage1, categoryPercentage2, categoryPercentage3, categoryPercentage4;
+    private void BindView(View view){
+        categoryNumber1=view.findViewById(R.id.categoryNumber1);
+        categoryNumber2=view.findViewById(R.id.categoryNumber2);
+        categoryNumber3=view.findViewById(R.id.categoryNumber3);
+        categoryNumber4=view.findViewById(R.id.categoryNumber4);
+        categoryName1=view.findViewById(R.id.categoryName1);
+        categoryName2=view.findViewById(R.id.categoryName2);
+        categoryName3=view.findViewById(R.id.categoryName3);
+        categoryName4=view.findViewById(R.id.categoryName4);
+        categoryPercentage1=view.findViewById(R.id.categoryPercentage1);
+        categoryPercentage2=view.findViewById(R.id.categoryPercentage2);
+        categoryPercentage3=view.findViewById(R.id.categoryPercentage3);
+        categoryPercentage4=view.findViewById(R.id.categoryPercentage4);
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View view =inflater.inflate(R.layout.admin_fragment_home, container, false);
 
+        BindView(view);
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference("product");
 
-        FloatingActionButton fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+//        FloatingActionButton fab = view.findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//            }
+//        });
         getChartData(view, 2023);
         return view;
     }
@@ -141,9 +162,11 @@ public class AdminHomeFragment extends Fragment {
                 TreeMap<String, Float> sortedNewCakeCompare = new TreeMap<>(newCakeTypeCompare);
                 HashMap<Float,Float> intCakeCompare=new HashMap<>();
                 int count =0;
+                float total=0f;
                 for(String key:sortedNewCakeCompare.keySet()){
                     Float value=sortedNewCakeCompare.get(key);
                     intCakeCompare.put(Float.valueOf(count),value);
+                    total=total+value;
                     count++;
                 }
                 for (Float key : intCakeCompare.keySet()) {
@@ -176,6 +199,38 @@ public class AdminHomeFragment extends Fragment {
                 yAxis.setEnabled(false);
 
                 lineChart.invalidate();
+
+                List<Map.Entry<String, Float>> list = new ArrayList<>(sortedNewCakeCompare.entrySet());
+                list.sort((entry1, entry2) -> entry2.getValue().compareTo(entry1.getValue()));
+                List<Map.Entry<String, Float>> highestEntries = list.subList(0, Math.min(4, list.size()));
+                for (int i = 0; i < highestEntries.size(); i++) {
+                    Map.Entry<String, Float> entry = highestEntries.get(i);
+                    DecimalFormat df = new DecimalFormat("#.#");
+                    float percent=entry.getValue()/total*100;
+                    String formattedPercent = df.format(percent);
+                    switch (i) {
+                        case 0:
+                            categoryNumber1.setText(String.valueOf(entry.getValue().intValue()));
+                            categoryName1.setText(entry.getKey());
+                            categoryPercentage1.setText(formattedPercent+"%");
+                            break;
+                        case 1:
+                            categoryNumber2.setText(String.valueOf(entry.getValue().intValue()));
+                            categoryName2.setText(entry.getKey());
+                            categoryPercentage2.setText(formattedPercent+"%");
+                            break;
+                        case 2:
+                            categoryNumber3.setText(String.valueOf(entry.getValue().intValue()));
+                            categoryName3.setText(entry.getKey());
+                            categoryPercentage3.setText(formattedPercent+"%");
+                            break;
+                        case 3:
+                            categoryNumber4.setText(String.valueOf(entry.getValue().intValue()));
+                            categoryName4.setText(entry.getKey());
+                            categoryPercentage4.setText(formattedPercent+"%");
+                            break;
+                    }
+                }
             }
 
             @Override

@@ -121,17 +121,17 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Category"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryNumber1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryName1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
@@ -141,14 +141,14 @@
                                 android:layout_marginTop="70dp"
                                 android:text="Drinks"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryPercentage1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/lightbrown"
+                                android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="17%"/>
                         </RelativeLayout>
@@ -173,17 +173,17 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Category"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryNumber2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryName2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
@@ -193,14 +193,14 @@
                                 android:layout_marginTop="70dp"
                                 android:text="Drinks"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryPercentage2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/lightbrown"
+                                android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="17%"/>
                         </RelativeLayout>
@@ -232,17 +232,17 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Category"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryNumber3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryName3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
@@ -252,14 +252,14 @@
                                 android:layout_marginTop="70dp"
                                 android:text="Drinks"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryPercentage3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/lightbrown"
+                                android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="17%"/>
                         </RelativeLayout>
@@ -284,17 +284,17 @@
                                 android:layout_marginTop="10dp"
                                 android:text="Category"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryNumber4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
-                                android:layout_marginLeft="20dp"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryName4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
@@ -304,14 +304,14 @@
                                 android:layout_marginTop="70dp"
                                 android:text="Drinks"/>
 
-                            <TextView
+                            <TextView android:id="@+id/categoryPercentage4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/lightbrown"
+                                android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:textSize="30sp"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="20dp"
+                                android:layout_marginRight="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="17%"/>
                         </RelativeLayout>
@@ -320,15 +320,15 @@
             </RelativeLayout>
         </ScrollView>
     </RelativeLayout>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="@dimen/fab_margin"
-            android:backgroundTint="@color/burgundy"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/plus_11" />
+<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--            android:id="@+id/fab"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginEnd="@dimen/fab_margin"-->
+<!--            android:backgroundTint="@color/burgundy"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:src="@drawable/plus_11" />-->
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

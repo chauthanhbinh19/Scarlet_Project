@@ -34,8 +34,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     public boolean isLoved=false;
     RelativeLayout back_button;
     ImageButton heart;
-    TextView productNameView, productPriceView, categoryNameView;
-    ImageView productImageView, categoryIconView;
+    TextView productNameView, productPriceView, categoryNameView, quantity;
+    ImageView productImageView, categoryIconView, plus, minus;
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
         heart=findViewById(R.id.heart);
@@ -44,6 +44,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         categoryNameView=findViewById(R.id.product_details_category_name);
         productImageView=findViewById(R.id.product_details_image);
         categoryIconView=findViewById(R.id.product_details_category_icon);
+        plus=findViewById(R.id.plus);
+        minus=findViewById(R.id.minus);
+        quantity=findViewById(R.id.quantity);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,24 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addToCart(productKey);
+            }
+        });
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int qt=Integer.parseInt(quantity.getText().toString());
+                qt=qt+1;
+                quantity.setText(String.valueOf(qt));
+            }
+        });
+        minus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int qt=Integer.parseInt(quantity.getText().toString());
+                if(qt>1){
+                    qt=qt-1;
+                    quantity.setText(String.valueOf(qt));
+                }
             }
         });
     }
@@ -276,7 +297,8 @@ public class ProductDetailActivity extends AppCompatActivity {
                                         break;
                                     }
                                 } else{
-                                    productIdList.add(new ProductQuantity(productKey,1));
+                                    int qt=Integer.parseInt(quantity.getText().toString());
+                                    productIdList.add(new ProductQuantity(productKey,qt));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
                                     Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                     break;
@@ -284,13 +306,15 @@ public class ProductDetailActivity extends AppCompatActivity {
                             }
                         }
                         if(!founUser){
-                            productIdList.add(new ProductQuantity(productKey, 1));
+                            int qt=Integer.parseInt(quantity.getText().toString());
+                            productIdList.add(new ProductQuantity(productKey, qt));
                             Cart cart=new Cart(userKey,productIdList);
                             myRef.push().setValue(cart);
                             Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                         }
                     }else{
-                        productIdList.add(new ProductQuantity(productKey, 1));
+                        int qt=Integer.parseInt(quantity.getText().toString());
+                        productIdList.add(new ProductQuantity(productKey, qt));
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
                         Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
