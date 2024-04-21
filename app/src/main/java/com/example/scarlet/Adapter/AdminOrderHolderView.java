@@ -67,6 +67,9 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
             orderStatus.setBackground(context.getDrawable(R.drawable.rectangle_gray_radius));
         }
         orderTotal.setText("Total: "+String.valueOf(order.getTotal()));
+        if(!order.getOrderStatus().equals("pending")){
+            btnMore.setVisibility(View.GONE);
+        }
         key=order.getKey();
     }
     private void showPopupMenu() {

@@ -200,7 +200,8 @@ public class AdminChartFragment extends Fragment {
                     Calendar calendar=Calendar.getInstance();
                     calendar.setTime(orderDate);
                     int year=calendar.get(Calendar.YEAR);
-                    if(year==yearString){
+                    String orderStatus=snap.child("orderStatus").getValue(String.class);
+                    if(year==yearString && orderStatus.equals("done")){
                         float orderTotal=snap.child("total").getValue(float.class);
                         float tip=snap.child("tip").getValue(float.class);
                         float deliveryFee=snap.child("deliveryFee").getValue(float.class);
