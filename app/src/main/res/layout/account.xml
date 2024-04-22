@@ -448,6 +448,7 @@
 				<TextView android:id="@+id/help_center"
 					android:textStyle="bold"
 					android:textSize="18sp"
+					android:visibility="gone"
 					android:textColor="@color/black"
 					android:layout_marginLeft="36dp"
 					android:layout_marginTop="10dp"
@@ -459,6 +460,7 @@
 
 				<RelativeLayout android:id="@+id/faqs_button"
 					android:layout_marginTop="10dp"
+					android:visibility="gone"
 					android:layout_below="@id/help_center"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
@@ -505,6 +507,7 @@
 
 				<RelativeLayout android:id="@+id/feedback___support_button"
 					android:layout_marginTop="10dp"
+					android:visibility="gone"
 					android:layout_below="@+id/faqs_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"

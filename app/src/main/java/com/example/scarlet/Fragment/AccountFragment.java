@@ -20,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.scarlet.AdminMainActivity;
+import com.example.scarlet.LoyaltyActivity;
+import com.example.scarlet.PoliciesActivity;
 import com.example.scarlet.R;
 import com.example.scarlet.SignInActivity;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +35,7 @@ public class AccountFragment extends Fragment {
     RelativeLayout profile_btn;
     RelativeLayout setting_btn;
     RelativeLayout policies_btn;
-    RelativeLayout app_version_btn, order_activities_btn, dashboard_button;
+    RelativeLayout app_version_btn, order_activities_btn, dashboard_button, loyalty_btn;
     Button create_account;
     Button sign_out_button;
     private void BindView(View view){
@@ -42,6 +44,7 @@ public class AccountFragment extends Fragment {
         policies_btn=view.findViewById(R.id.policies_button);
         app_version_btn=view.findViewById(R.id.app_version_button);
         create_account=view.findViewById(R.id.create_account_btn);
+        loyalty_btn=view.findViewById(R.id.loyalty_program_button);
         order_activities_btn=view.findViewById(R.id.order_activities_button);
         sign_out_button=view.findViewById(R.id.sign_out_btn);
         dashboard_button=view.findViewById(R.id.dashboard_button);
@@ -79,7 +82,7 @@ public class AccountFragment extends Fragment {
         policies_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openPoliciesFragment();
+                openPoliciesActivity();
             }
         });
 
@@ -90,6 +93,12 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        loyalty_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLoyaltyActivity();
+            }
+        });
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,6 +146,10 @@ public class AccountFragment extends Fragment {
             dashboard_button.setVisibility(View.GONE);
         }
     }
+    private void openLoyaltyActivity(){
+        Intent intent=new Intent(getContext(), LoyaltyActivity.class);
+        startActivity(intent);
+    }
     private void openProfileFragment(){
         ProfileFragment profileFragment=new ProfileFragment();
         FragmentManager fragmentManager=getParentFragmentManager();
@@ -153,13 +166,9 @@ public class AccountFragment extends Fragment {
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
-    private void openPoliciesFragment(){
-        PoliciesFragment policiesFragment=new PoliciesFragment();
-        FragmentManager fragmentManager=getParentFragmentManager();
-        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout,policiesFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+    private void openPoliciesActivity(){
+        Intent intent=new Intent(getContext(), PoliciesActivity.class);
+        startActivity(intent);
     }
     private void openAppVersionFragment(){
         AppVersionFragment appVersionFragment=new AppVersionFragment();

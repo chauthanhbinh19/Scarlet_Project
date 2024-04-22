@@ -75,6 +75,12 @@
             android:name=".DeliveryActivity"
             android:exported="true" />
         <activity
+            android:name=".PoliciesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoyaltyActivity"
+            android:exported="true" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:launchMode="singleTask">
