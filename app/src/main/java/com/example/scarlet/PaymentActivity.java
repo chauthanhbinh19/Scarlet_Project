@@ -350,7 +350,8 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String orderStatus="pending";
-                Date orderDate=randomDate();
+                Date orderDate=new Date();
+//                Date orderDate=randomDate();
                 total=Double.parseDouble(totalView.getText().toString());
                 addressRef.addValueEventListener(new ValueEventListener() {
                     @Override

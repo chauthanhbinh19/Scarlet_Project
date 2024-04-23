@@ -62,7 +62,7 @@
 				/>
 
 			<com.google.android.material.imageview.ShapeableImageView android:id="@+id/user_avatar"
-				android:src="@drawable/avatar_1"
+				android:src="@drawable/fox"
 				 android:layout_marginStart="22dp"
 				android:layout_marginTop="68dp"
 				android:scaleType="centerCrop"
@@ -126,7 +126,6 @@
 
 					<ImageView android:id="@+id/edit_1"
 						android:src="@drawable/edit_1"
-						android:contentDescription="edit_1"
 						 android:layout_marginStart="17dp"
 						android:layout_marginTop="11dp"
 						android:layout_width="25dp"
@@ -134,8 +133,7 @@
 
 					<ImageView android:id="@+id/right_arrow_3"
 						android:src="@drawable/right_arrow_3"
-						android:contentDescription="right_arrow_3"
-						 android:layout_marginStart="295dp"
+						android:layout_marginStart="295dp"
 						android:layout_marginTop="17dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />

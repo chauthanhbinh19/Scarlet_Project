@@ -199,6 +199,7 @@
 					android:textColor="@color/_bg__frame_3_ek1_color"
 					android:layout_width="161dp"
 					android:layout_height="43dp"
+					android:visibility="gone"
 					android:layout_below="@+id/product_details_category"
 					android:text="@string/size_string"
 					/>
@@ -206,6 +207,7 @@
 				<RelativeLayout android:id="@+id/box_size"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:visibility="gone"
 					android:layout_below="@+id/size">
 
 					<RelativeLayout
