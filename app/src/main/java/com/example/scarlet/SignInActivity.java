@@ -20,6 +20,7 @@ import com.example.scarlet.Fragment.DealsFragment;
 import com.example.scarlet.Fragment.FavouriteFragment;
 import com.example.scarlet.Fragment.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,10 +94,12 @@ public class SignInActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isComplete()){
                             FirebaseUser user=mAuth.getCurrentUser();
-                            String uid=user.getUid();
-                            getUserData(uid);
-                        }else{
-                            Toast.makeText(SignInActivity.this, "Email or password is incorrect", Toast.LENGTH_SHORT).show();
+                            if(user!=null){
+                                String uid=user.getUid();
+                                getUserData(uid);
+                            }else{
+                                Toast.makeText(SignInActivity.this, "Email or password is incorrect", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 });
@@ -115,20 +118,20 @@ public class SignInActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor=sharedPreferences.edit();
                             editor.putBoolean("isLoggedIn",true);
                             editor.putString("customerKey",userKey);
-                            editor.putString("userType","employee");
-                            editor.apply();
 
                             Boolean isEmployee=snap.child("employee").getValue(boolean.class);
                             Boolean isCustomer=snap.child("customer").getValue(boolean.class);
                             if(isEmployee){
+                                editor.putString("userType","employee");
                                 Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
                                 startActivity(intent);
                             }
                             if(isCustomer){
+                                editor.putString("userType","customer");
                                 Intent intent=new Intent(SignInActivity.this,MainActivity.class);
                                 startActivity(intent);
                             }
-
+                            editor.apply();
                     }
                 }
             }

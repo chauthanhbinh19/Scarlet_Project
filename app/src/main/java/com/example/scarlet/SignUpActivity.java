@@ -63,12 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 }else if (!passwordText.equals(confirmPasswordText)) {
                     confirmpassword.setError("The password and confirmpassword is different");
                 } else {
-                    if (android.util.Patterns.EMAIL_ADDRESS.matcher(usernameText).matches()) {
-                        // Đây là một địa chỉ email hợp lệ
-                        saveEmailAccountData(usernameText,passwordText);
-                    } else {
-                        username.setError("Email is not correct");
-                    }
+                    saveEmailAccountData(usernameText,passwordText);
                 }
 
             }

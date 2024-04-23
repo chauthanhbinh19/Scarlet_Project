@@ -25,6 +25,7 @@ import com.example.scarlet.LoyaltyActivity;
 import com.example.scarlet.PoliciesActivity;
 import com.example.scarlet.R;
 import com.example.scarlet.SignInActivity;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -130,9 +131,15 @@ public class AccountFragment extends Fragment {
                 SharedPreferences.Editor editor=sharedPreferences.edit();
                 editor.putBoolean("isLoggedIn",false);
                 editor.remove("customerKey");
+                editor.remove("userType");
                 editor.apply();
 
+                TextView customerNameView=view.findViewById(R.id.user_name);
+                customerNameView.setText("");
                 create_account.setVisibility(View.VISIBLE);
+                dashboard_button.setVisibility(View.GONE);
+                FirebaseAuth mAuth=FirebaseAuth.getInstance();
+                mAuth.signOut();
                 Toast.makeText(getContext(),"Sign out successfully", Toast.LENGTH_SHORT).show();
             }
         });

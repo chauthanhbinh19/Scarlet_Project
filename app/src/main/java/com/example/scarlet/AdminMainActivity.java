@@ -1,6 +1,8 @@
 package com.example.scarlet;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ import com.example.scarlet.Data.CreateDataDefault;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class AdminMainActivity extends AppCompatActivity {
@@ -59,8 +62,18 @@ public class AdminMainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id=item.getItemId();
                 if(id==R.id.nav_signout){
+                    SharedPreferences sharedPreferences=getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putBoolean("isLoggedIn",false);
+                    editor.remove("customerKey");
+                    editor.remove("userType");
+                    editor.apply();
+                    FirebaseAuth auth=FirebaseAuth.getInstance();
+                    auth.signOut();
                     Toast.makeText(AdminMainActivity.this,"Sign out",Toast.LENGTH_SHORT).show();
                     drawer.closeDrawer(GravityCompat.START);
+                    Intent intent=new Intent(AdminMainActivity.this, MainActivity.class);
+                    startActivity(intent);
                     return true;
                 }else if(id==R.id.nav_back){
                     Intent intent=new Intent(AdminMainActivity.this, MainActivity.class);
