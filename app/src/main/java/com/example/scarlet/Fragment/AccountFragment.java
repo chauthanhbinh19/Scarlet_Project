@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.scarlet.AdminMainActivity;
+import com.example.scarlet.FeedbackActivity;
 import com.example.scarlet.LoyaltyActivity;
 import com.example.scarlet.PoliciesActivity;
 import com.example.scarlet.R;
@@ -34,7 +35,7 @@ public class AccountFragment extends Fragment {
 
     RelativeLayout profile_btn;
     RelativeLayout setting_btn;
-    RelativeLayout policies_btn;
+    RelativeLayout policies_btn, feedback_btn;
     RelativeLayout app_version_btn, order_activities_btn, dashboard_button, loyalty_btn;
     Button create_account;
     Button sign_out_button;
@@ -48,6 +49,7 @@ public class AccountFragment extends Fragment {
         order_activities_btn=view.findViewById(R.id.order_activities_button);
         sign_out_button=view.findViewById(R.id.sign_out_btn);
         dashboard_button=view.findViewById(R.id.dashboard_button);
+        feedback_btn=view.findViewById(R.id.feedback___support_button);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,6 +101,13 @@ public class AccountFragment extends Fragment {
                 openLoyaltyActivity();
             }
         });
+
+        feedback_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFeedbackActivity();
+            }
+        });
         create_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +154,10 @@ public class AccountFragment extends Fragment {
         }else if(userType.equals("customer")){
             dashboard_button.setVisibility(View.GONE);
         }
+    }
+    private void openFeedbackActivity(){
+        Intent intent=new Intent(getContext(), FeedbackActivity.class);
+        startActivity(intent);
     }
     private void openLoyaltyActivity(){
         Intent intent=new Intent(getContext(), LoyaltyActivity.class);

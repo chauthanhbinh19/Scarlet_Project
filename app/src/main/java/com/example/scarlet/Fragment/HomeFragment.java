@@ -147,8 +147,8 @@ public class HomeFragment extends Fragment {
                 int totalProducts=productList.size();
                 int numProductsToGet=10;
                 for (int i = 0; i < numProductsToGet; i++) {
-                    int randomIndex = random.nextInt(totalProducts);
-                    Product randomProduct = productList.get(randomIndex);
+//                    int randomIndex = random.nextInt(totalProducts);
+                    Product randomProduct = productList.get(i);
                     randomProducts.add(randomProduct);
                 }
                 trendAdapter=new TrendAdapter(randomProducts);
