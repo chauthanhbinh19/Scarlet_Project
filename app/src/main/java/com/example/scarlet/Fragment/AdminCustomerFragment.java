@@ -7,6 +7,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,12 +69,13 @@ public class AdminCustomerFragment extends Fragment {
     private StorageReference storageReference;
     Uri uri;
     ImageView btnImage;
-    EditText customerFirstName, customerLastName, customerGender, customerPhone, customerEmail, customerPassword;
+    EditText customerFirstName, customerLastName, customerGender, customerPhone, customerEmail, customerPassword, search_bar;
     TextView btnImageError, customerDateofBirth;
     ProgressDialog progressDialog;
     ImageButton calendar;
     private void BindView(View view){
         customerRecycleView=view.findViewById(R.id.customer_recyclerView);
+        search_bar=view.findViewById(R.id.search_bar);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -89,6 +92,27 @@ public class AdminCustomerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showInsertPopup();
+            }
+        });
+        search_bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String keyword=s.toString().trim();
+                if(keyword==null || keyword.isEmpty()){
+                    getCustomerData();
+                }else{
+                    searchCustomerData(keyword);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
         return view;
@@ -195,6 +219,7 @@ public class AdminCustomerFragment extends Fragment {
         productRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot productSnapshot) {
+                userList.clear();
                 for (DataSnapshot user : productSnapshot.getChildren()) {
                     String userKey=user.getKey();
                     String uid = user.child("uid").getValue(String.class);
@@ -220,6 +245,57 @@ public class AdminCustomerFragment extends Fragment {
                 // Xử lý lỗi nếu có
             }
         });
+    }
+    private void searchCustomerData(String keyword){
+        userList=new ArrayList<>();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference productRef = database.getReference("user");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot productSnapshot) {
+                userList.clear();
+                for (DataSnapshot user : productSnapshot.getChildren()) {
+                    String userKey=user.getKey();
+                    String uid = user.child("uid").getValue(String.class);
+                    String firstname = user.child("first_name").getValue(String.class);
+                    String lastname=user.child("last_name").getValue(String.class);
+                    String dateofbirth=user.child("date_of_birth").getValue(String.class);
+                    String phone = user.child("phone_number").getValue(String.class);
+                    String email=user.child("email").getValue(String.class);
+                    int point=user.child("point").getValue(int.class);
+                    String gender=user.child("gender").getValue(String.class);
+                    String img=user.child("avatar_img").getValue(String.class);
+                    User user1 = new User(uid,firstname,lastname,gender,dateofbirth, phone,email,point,"",img,userKey);
+                    userList.add(user1);
+                }
+                userList=filterCustomer(userList,keyword);
+                if(userList.size()>0){
+                    adminCustomerAdapter=new AdminCustomerAdapter(userList);
+                    customerRecycleView.setAdapter(adminCustomerAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+            }
+        });
+    }
+    private List<User> filterCustomer(List<User> customerList,String keyword){
+        List<User> result=new ArrayList<>();
+        for(User user : customerList){
+            if(user.getFirst_name().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(user);
+            }else if(user.getLast_name().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(user);
+            }else if(user.getEmail().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(user);
+            }else if(user.getPhone_number().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(user);
+            }
+        }
+        return result;
     }
     private void saveCustomerData(String email,String password, String firstname, String lastname,String gender,String dateofbirth, String phone, boolean isCustomer, boolean isEmployee){
         progressDialog=new ProgressDialog(getContext());

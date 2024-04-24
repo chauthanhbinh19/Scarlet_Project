@@ -7,6 +7,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +70,11 @@ public class AdminProductFragment extends Fragment {
     Uri uri;
     ProgressDialog progressDialog;
     String categoryId, categoryName;
+    EditText search_bar;
     Button btnSave;
     private void BindView(View view){
         productRecycleView=view.findViewById(R.id.product_recyclerView);
+        search_bar=view.findViewById(R.id.search_bar);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -87,6 +91,27 @@ public class AdminProductFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showInsertPopup();
+            }
+        });
+        search_bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String keyword=s.toString().trim();
+                if(keyword==null || keyword.isEmpty()){
+                    getProductData();
+                }else{
+                    searchProductData(keyword);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
         return view;
@@ -164,6 +189,7 @@ public class AdminProductFragment extends Fragment {
         productRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot productSnapshot) {
+                productList.clear();
                 for (DataSnapshot product : productSnapshot.getChildren()) {
                     String productKey=product.getKey();
                     String categoryId = product.child("categoryId").getValue(String.class);
@@ -187,6 +213,49 @@ public class AdminProductFragment extends Fragment {
                 // Xử lý lỗi nếu có
             }
         });
+    }
+    private void searchProductData(String keyword){
+        productList=new ArrayList<>();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference productRef = database.getReference("product");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot productSnapshot) {
+                productList.clear();
+                for (DataSnapshot product : productSnapshot.getChildren()) {
+                    String productKey=product.getKey();
+                    String categoryId = product.child("categoryId").getValue(String.class);
+                    String productName = product.child("name").getValue(String.class);
+                    String categoryName=product.child("categoryName").getValue(String.class);
+                    String productDescription=product.child("description").getValue(String.class);
+                    double productPrice = product.child("price").getValue(double.class);
+                    int productPoint=product.child("point").getValue(int.class);
+                    String productImage = product.child("img").getValue(String.class);
+                    Product productWithIcon = new Product(productName,productDescription,categoryId,categoryName, productPrice,productPoint,productImage,productKey);
+                    productList.add(productWithIcon);
+                }
+                productList=filterProduct(productList,keyword);
+                if(productList.size()>0){
+                    adminProductAdapter=new AdminProductAdapter(productList);
+                    productRecycleView.setAdapter(adminProductAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+            }
+        });
+    }
+    private List<Product> filterProduct(List<Product> productList,String keyword){
+        List<Product> result=new ArrayList<>();
+        for(Product product : productList){
+            if(product.getName().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(product);
+            }
+        }
+        return result;
     }
     private void choosePicture(){
         Intent intent=new Intent();

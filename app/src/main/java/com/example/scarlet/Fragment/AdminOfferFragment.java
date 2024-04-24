@@ -3,6 +3,8 @@ package com.example.scarlet.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ import com.example.scarlet.Adapter.AdminOfferAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Offer;
+import com.example.scarlet.Data.User;
 import com.example.scarlet.Dialog.DatePickerDialog;
 import com.example.scarlet.R;
 import com.google.android.material.button.MaterialButton;
@@ -48,12 +51,13 @@ public class AdminOfferFragment extends Fragment {
     RecyclerView offerRecycleView;
     List<Offer> offerList;
     AdminOfferAdapter adminOfferAdapter;
-    EditText offerName,offerDescription,offerPoint;
+    EditText offerName,offerDescription,offerPoint, search_bar;
     TextView offerStartDate,offerEndDate;
     ImageButton calendarStart,calendarEnd;
     ProgressDialog progressDialog;
     private void BindView(View view){
         offerRecycleView=view.findViewById(R.id.offer_recyclerView);
+        search_bar=view.findViewById(R.id.search_bar);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +75,27 @@ public class AdminOfferFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showInsertPopup();
+            }
+        });
+        search_bar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String keyword=s.toString().trim();
+                if(keyword==null || keyword.isEmpty()){
+                    getOfferData();
+                }else{
+                    searchOfferData(keyword);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
         return view;
@@ -144,6 +169,7 @@ public class AdminOfferFragment extends Fragment {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                offerList.clear();
                 for(DataSnapshot snap:snapshot.getChildren()){
                     String key=snap.getKey();
                     Date startDate=snap.child("startDate").getValue(Date.class);
@@ -163,6 +189,50 @@ public class AdminOfferFragment extends Fragment {
 
             }
         });
+    }
+    private void searchOfferData(String keyword){
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef= firebaseDatabase.getReference("offer");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                offerList.clear();
+                for(DataSnapshot snap:snapshot.getChildren()){
+                    String key=snap.getKey();
+                    Date startDate=snap.child("startDate").getValue(Date.class);
+                    Date endDate=snap.child("endDate").getValue(Date.class);
+                    String name=snap.child("name").getValue(String.class);
+                    String description=snap.child("description").getValue(String.class);
+                    int point=snap.child("point").getValue(int.class);
+                    Offer offer=new Offer(name,description,point,R.drawable.discount_offer,startDate,endDate,key);
+                    offerList.add(offer);
+                }
+                offerList=filterOffer(offerList,keyword);
+                adminOfferAdapter=new AdminOfferAdapter(offerList);
+                offerRecycleView.setAdapter(adminOfferAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private List<Offer> filterOffer(List<Offer> offerList, String keyword){
+        List<Offer> result=new ArrayList<>();
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        for(Offer offer : offerList){
+            if(offer.getName().toLowerCase().contains(keyword.toLowerCase())){
+                result.add(offer);
+            }else if(String.valueOf(offer.getPoint()).toLowerCase().contains(keyword.toLowerCase())){
+                result.add(offer);
+            }else if(format.format(offer.getStartDate()).toLowerCase().contains(keyword.toLowerCase())){
+                result.add(offer);
+            }else if(format.format(offer.getEndDate()).toLowerCase().contains(keyword.toLowerCase())){
+                result.add(offer);
+            }
+        }
+        return result;
     }
     private void saveOfferData(){
         progressDialog=new ProgressDialog(getContext());
