@@ -205,9 +205,10 @@ public class PaymentActivity extends AppCompatActivity {
     }
     private void requestZaloPay(){
         CreateOrder orderApi = new CreateOrder();
-
+        total=Double.parseDouble(totalView.getText().toString());
+        total=total+tip;
         try {
-            JSONObject data = orderApi.createOrder(totalView.getText().toString());
+            JSONObject data = orderApi.createOrder(String.format("%.0f", total));
             String code = data.getString("return_code");
             Toast.makeText(getApplicationContext(), "return_code: " + code, Toast.LENGTH_LONG).show();
 
@@ -353,6 +354,7 @@ public class PaymentActivity extends AppCompatActivity {
                 Date orderDate=new Date();
 //                Date orderDate=randomDate();
                 total=Double.parseDouble(totalView.getText().toString());
+                total=total+tip;
                 addressRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

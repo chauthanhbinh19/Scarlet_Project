@@ -12,13 +12,14 @@
 		android:paddingTop="5dp"
 		android:background="@color/white">
 		<TextView
-			android:layout_width="wrap_content"
+			android:layout_width="160dp"
 			android:layout_height="wrap_content"
-			android:id="@+id/hi_mess"
+			android:id="@+id/welcome_message"
 			android:layout_marginTop="20dp"
 			android:layout_marginStart="80dp"
-			android:textSize="22sp"
-			android:text="Hi, Xxxx!"
+			android:textSize="18sp"
+			android:text="Hi, User!"
+			android:singleLine="true"
 			android:layout_centerVertical="true"/>
 
 		<ImageView
@@ -31,21 +32,21 @@
 		<RelativeLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/hi_mess"
-			android:layout_marginStart="100dp"
+			android:layout_toLeftOf="@id/notification"
+			android:layout_marginRight="10dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
 				android:layout_width="70dp"
-				android:layout_height="40dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
 				android:background="@drawable/rectangle_circle_white"
 				/>
 
 			<ImageView
-				android:layout_width="25dp"
-				android:layout_height="25dp"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
 				android:layout_centerVertical="true"
 				android:layout_marginLeft="10dp"
 				android:src="@drawable/coupon"
@@ -63,24 +64,24 @@
 				android:textColor="@color/burgundy"
 				/>
 		</RelativeLayout>
-		<RelativeLayout
+		<RelativeLayout android:id="@+id/notification"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_toRightOf="@id/hi_mess"
-			android:layout_marginStart="190dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="20dp"
 			android:layout_marginTop="7dp">
 
 			<ImageView
-				android:layout_width="40dp"
-				android:layout_height="40dp"
+				android:layout_width="35dp"
+				android:layout_height="35dp"
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
 				android:background="@drawable/rectangle_circle_white"
 				/>
 
 			<ImageView
-				android:layout_width="25dp"
-				android:layout_height="25dp"
+				android:layout_width="20dp"
+				android:layout_height="20dp"
 				android:layout_centerVertical="true"
 				android:layout_centerHorizontal="true"
 				android:src="@drawable/notification"
