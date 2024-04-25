@@ -317,17 +317,17 @@
 						android:id="@+id/plus"
 						android:layout_width="30dp"
 						android:layout_height="30dp"
-						android:layout_alignParentRight="true"
-						android:layout_marginRight="128dp"
+						android:layout_marginLeft="20dp"
 						android:layout_marginTop="6dp"
+						android:layout_toRightOf="@+id/quantity"
 						android:src="@drawable/plus_1" />
 
 					<ImageView
 						android:id="@+id/minus"
 						android:layout_width="30dp"
 						android:layout_height="30dp"
-						android:layout_alignParentLeft="true"
-						android:layout_marginLeft="130dp"
+						android:layout_marginRight="20dp"
+						android:layout_toLeftOf="@+id/quantity"
 						android:layout_marginTop="6dp"
 						android:src="@drawable/minus_1" />
 
