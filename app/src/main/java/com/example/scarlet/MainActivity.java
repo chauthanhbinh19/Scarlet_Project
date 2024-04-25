@@ -1,10 +1,12 @@
 package com.example.scarlet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Window;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.scarlet.Data.CreateDataDefault;
@@ -24,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         openHomeFragment();
         createBottomNavigation(savedInstanceState);

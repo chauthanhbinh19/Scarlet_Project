@@ -2,9 +2,11 @@ package com.example.scarlet;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 
 public class LoyaltyActivity extends AppCompatActivity {
@@ -17,6 +19,9 @@ public class LoyaltyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.loyalty);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {

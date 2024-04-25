@@ -19,7 +19,7 @@
 			android:layout_height="101dp"
 			android:layout_marginStart="0dp"
 			android:layout_marginTop="0dp"
-			android:background="@drawable/_bg__white" />
+			android:background="@drawable/rectangle_burgundy" />
 
 
 		<RelativeLayout android:id="@+id/____icon__alternate_map_marker_"
@@ -41,7 +41,7 @@
 		<TextView android:id="@+id/uit"
 			android:textStyle="bold"
 			android:textSize="18sp"
-			android:textColor="@color/_bg__frame_3_ek1_color"
+			android:textColor="@color/white"
 			android:layout_marginTop="27dp"
 			android:layout_centerHorizontal="true"
 			android:gravity="center_horizontal"
@@ -102,50 +102,123 @@
 				<com.google.android.material.imageview.ShapeableImageView
 					android:id="@+id/_bg_product_details_white"
 					android:layout_width="match_parent"
-					android:layout_height="310dp"
+					android:layout_height="270dp"
 					android:layout_marginTop="0dp"
 					android:scaleType="centerCrop"
-					android:background="@drawable/rectangle_gradient"
-					android:src="@drawable/a_2"/>
+					android:background="@drawable/rectangle_burgundy_bottom_right_radius"
+					/>
+
+				<RelativeLayout
+					android:layout_alignParentBottom="true"
+					android:layout_width="160dp"
+					android:layout_height="180dp"
+					android:background="@drawable/rectangle_white_top_right_radius">
+					<ImageView
+						android:layout_width="70dp"
+						android:layout_height="70dp"
+						android:layout_centerHorizontal="true"
+						android:layout_marginTop="20dp"
+						android:elevation="10dp"
+						android:background="@drawable/rectangle_lightpink_radius"/>
+
+					<ImageButton
+						android:id="@+id/heart"
+						android:layout_width="40dp"
+						android:layout_height="40dp"
+						android:layout_centerHorizontal="true"
+						android:layout_marginTop="35dp"
+						android:elevation="11dp"
+						android:background="@color/transparent"
+						android:src="@drawable/heart" />
+
+					<TextView
+						android:id="@+id/_price"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerHorizontal="true"
+						android:text="Price"
+						android:layout_marginTop="30dp"
+						android:layout_below="@+id/heart"
+						android:textColor="@color/_bg__frame_3_ek1_color"
+						android:textSize="18sp"
+						android:textStyle="bold" />
+
+					<TextView
+						android:id="@+id/product_details_price"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_centerHorizontal="true"
+						android:text="0"
+						android:layout_below="@+id/_price"
+						android:textColor="@color/burgundy"
+						android:textSize="18sp"
+						android:layout_marginTop="10dp"
+						android:textStyle="bold" />
+				</RelativeLayout>
+
+				<RelativeLayout
+					android:layout_marginTop="1dp"
+					android:layout_width="150dp"
+					android:layout_height="89dp"
+					android:background="@drawable/rectangle_white"/>
+				<RelativeLayout
+					android:layout_width="160dp"
+					android:layout_height="91dp"
+					android:background="@drawable/rectangle_burgundy_bottom_left_radius"/>
+
+				<RelativeLayout
+					android:layout_alignParentBottom="true"
+					android:layout_width="100dp"
+					android:layout_height="110dp"
+					android:layout_marginLeft="160dp"
+					android:background="@drawable/rectangle_white"/>
+
+				<RelativeLayout
+					android:layout_width="150dp"
+					android:layout_height="110dp"
+					android:layout_marginTop="160dp"
+					android:layout_marginLeft="160dp"
+					android:background="@drawable/rectangle_burgundy_bottom_left_radius"/>
 
 				<ImageView
 					android:id="@+id/product_details_image"
 					android:layout_width="220dp"
 					android:layout_height="220dp"
 					android:layout_marginTop="40dp"
-					android:layout_centerHorizontal="true"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="10dp"
 					android:src="@drawable/dsc02313_optimized" />
 
+				<TextView android:id="@+id/product_details_name"
+					android:textStyle="bold"
+					android:textSize="23sp"
+					android:layout_marginTop="10dp"
+					android:layout_marginLeft="30dp"
+					android:textColor="@color/white"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/black_coffee_string"
+					android:singleLine="true"
+					/>
 
 			</RelativeLayout>
 
 			<RelativeLayout android:id="@+id/product_details_content"
-				android:layout_marginTop="-40dp"
+				android:layout_marginTop="0dp"
 				android:layout_below="@+id/box_prodcut"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:paddingLeft="20dp"
 				android:paddingRight="20dp"
-				android:paddingTop="40dp"
+				android:paddingTop="20dp"
 				android:background="@drawable/rectangle_circle_white_30">
 
-				<TextView android:id="@+id/product_details_name"
-					android:textStyle="bold"
-					android:textSize="20sp"
-					android:textColor="@color/rectangle_2_color"
-					android:layout_width="wrap_content"
-					android:layout_height="43dp"
-					android:text="@string/black_coffee_string"
-					android:singleLine="true"
-					/>
-
 				<TextView
-					android:id="@+id/product_details_price"
+					android:id="@+id/description"
 					android:layout_width="wrap_content"
-					android:layout_height="40dp"
-					android:layout_alignParentRight="true"
-					android:text="@string/_20_000__string"
-					android:textColor="@color/_bg__frame_3_ek1_color"
+					android:layout_height="wrap_content"
+					android:text="Description"
+					android:textColor="@color/black"
 					android:textSize="18sp"
 					android:textStyle="bold" />
 
@@ -153,7 +226,7 @@
 					android:id="@+id/product_details_description"
 					android:layout_width="wrap_content"
 					android:layout_height="54dp"
-					android:layout_below="@+id/product_details_name"
+					android:layout_below="@+id/description"
 					android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"
 					android:textColor="@color/ellipse_11_color"
 					android:textSize="14sp"
@@ -338,26 +411,6 @@
 						android:textStyle="bold" />
 				</RelativeLayout>
 			</RelativeLayout>
-
-			<ImageView
-				android:layout_width="60dp"
-				android:layout_height="60dp"
-				android:layout_alignParentRight="true"
-				android:layout_marginRight="20dp"
-				android:layout_marginTop="230dp"
-				android:elevation="10dp"
-				android:background="@drawable/rectangle_circle_white_500"/>
-
-			<ImageButton
-				android:id="@+id/heart"
-				android:layout_width="30dp"
-				android:layout_height="30dp"
-				android:layout_alignParentRight="true"
-				android:layout_marginRight="35dp"
-				android:layout_marginTop="247dp"
-				android:elevation="11dp"
-				android:background="@color/transparent"
-				android:src="@drawable/heart" />
 
 			<Button android:id="@+id/add"
 				android:layout_marginTop="20dp"

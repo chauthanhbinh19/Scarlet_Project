@@ -2,10 +2,12 @@ package com.example.scarlet;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.scarlet.Adapter.DealAdapter;
@@ -37,6 +39,9 @@ public class MemberShipActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.member_ship);
+
+        Window window = getWindow();
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
