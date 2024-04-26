@@ -41,26 +41,12 @@
 
 		</RelativeLayout>
 
-
 		<RelativeLayout android:id="@+id/group_54"
 			android:layout_marginTop="120dp"
 			android:layout_marginStart="138dp"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			>
-
-
-
-			<TextView android:id="@+id/point__120"
-				android:textStyle="bold"
-				android:textSize="12sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="27dp"
-				android:layout_marginTop="45dp"
-				android:layout_width="86.2dp"
-				android:layout_height="28.2dp"
-				android:text="@string/point__120_string"
-				/>
 
 			<TextView android:id="@+id/abca"
 				android:textStyle="bold"
@@ -84,14 +70,6 @@
 				android:clickable="false"
 				android:text="@string/member_string"
 				/>
-
-			<ImageView android:id="@+id/vip_1"
-				android:src="@drawable/vip_1"
-				android:contentDescription="vip_1"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="45dp"
-				android:layout_width="20dp"
-				android:layout_height="20dp" />
 
 		</RelativeLayout>
 
@@ -129,8 +107,9 @@
 						android:textColor="@color/_bg__group_1_ek1_color"
 						android:layout_marginLeft="21dp"
 						android:layout_marginTop="10dp"
-						android:layout_width="236.6dp"
-						android:layout_height="42.6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="10dp"
 						android:text="@string/general_information_string"
 						/>
 
@@ -148,8 +127,9 @@
 
 					<TextView
 						android:id="@+id/mobile_number"
-						android:layout_width="236.6dp"
-						android:layout_height="42.6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="10dp"
 						android:layout_marginLeft="21dp"
 						android:layout_marginTop="10dp"
 						android:layout_below="@+id/birthday_box"
@@ -160,110 +140,91 @@
 
 					<TextView
 						android:id="@+id/email"
-						android:layout_width="236.6dp"
-						android:layout_height="42.6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="10dp"
 						android:layout_marginLeft="21dp"
 						android:layout_marginTop="10dp"
-						android:layout_below="@+id/flag"
+						android:layout_below="@+id/phone_box"
 						android:text="@string/email_string"
 						android:textColor="@color/_bg__group_1_ek1_color"
-						android:textSize="16sp"
+						android:textSize="18sp"
 						android:textStyle="bold" />
 
 					<TextView
 						android:id="@+id/linked_accounts"
-						android:layout_width="236.6dp"
-						android:layout_height="42.6dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginBottom="10dp"
 						android:layout_marginLeft="21dp"
 						android:layout_marginTop="10dp"
 						android:layout_below="@+id/email_box"
 						android:text="@string/linked_accounts_string"
 						android:textColor="@color/_bg__group_1_ek1_color"
-						android:textSize="16sp"
+						android:textSize="18sp"
 						android:textStyle="bold" />
 
 
-					<RelativeLayout android:id="@+id/first_name_box"
-						android:layout_marginStart="27dp"
-						android:layout_width="wrap_content"
+					<LinearLayout android:id="@+id/name_box"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_below="@+id/general_information"
-						>
+						android:orientation="horizontal">
 
-
-
-						<View   android:id="@+id/rectangle_44"
+						<RelativeLayout android:id="@+id/first_name_box"
+							android:layout_marginStart="27dp"
+							android:layout_width="0dp"
+							android:layout_weight="1"
+							android:layout_height="wrap_content"
 							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="135dp"
-							android:layout_height="48dp" />
+							>
 
-						<EditText android:id="@+id/first_name"
-							android:textSize="14sp"
-							android:textColor="@color/black"
-							android:layout_marginLeft="24dp"
-							android:layout_width="104.4dp"
-							android:layout_height="48dp"
-							android:layout_centerVertical="true"
-							android:background="@color/lightpink"
-							android:hint="First name"
-							/>
+							<EditText android:id="@+id/first_name"
+								android:textSize="14sp"
+								android:textColor="@color/black"
+								android:layout_marginLeft="24dp"
+								android:layout_width="104.4dp"
+								android:layout_height="48dp"
+								android:layout_centerVertical="true"
+								android:background="@color/lightpink"
+								android:hint="First name"
+								/>
 
-					</RelativeLayout>
+						</RelativeLayout>
 
-
-					<RelativeLayout android:id="@+id/flag"
-						android:layout_marginStart="27dp"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/mobile_number"
-						>
-
-
-						<View   android:id="@+id/rectangle_44_ek1"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="91dp"
-							android:layout_height="48dp" />
-
-						<TextView android:id="@+id/__84"
-							android:textSize="14sp"
-							android:textColor="@color/black"
-							android:layout_centerVertical="true"
-							android:layout_marginLeft="45dp"
-							android:layout_width="46.4dp"
-							android:layout_height="27.4dp"
-							android:text="@string/__84_string"
-							/>
-
-						<ImageView android:id="@+id/vietnam_1"
-							android:src="@drawable/vietnam_1"
-							android:layout_centerVertical="true"
+						<RelativeLayout android:id="@+id/last_name_box"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1.5"
 							android:layout_marginStart="10dp"
-							android:layout_marginTop="5dp"
-							android:layout_width="30dp"
-							android:layout_height="30dp" />
+							android:layout_marginEnd="27dp"
+							android:background="@drawable/rectangle_lightpink"
+							>
 
-					</RelativeLayout>
+							<EditText android:id="@+id/last_name"
+								android:textSize="14sp"
+								android:textColor="@color/black"
+								android:layout_marginLeft="12dp"
+								android:layout_width="104.4dp"
+								android:layout_height="48dp"
+								android:layout_centerVertical="true"
+								android:background="@color/lightpink"
+								android:enabled="false"
+								android:hint="Last name"
+								/>
 
+						</RelativeLayout>
+					</LinearLayout>
 
 					<RelativeLayout android:id="@+id/gender_box"
 						android:layout_marginStart="27dp"
-						android:layout_width="wrap_content"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginTop="10dp"
-						android:layout_below="@+id/first_name_box"
+						android:layout_marginEnd="27dp"
+						android:background="@drawable/rectangle_lightpink"
+						android:layout_below="@+id/name_box"
 						>
-
-
-						<View   android:id="@+id/rectangle_44_ek2"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="350dp"
-							android:layout_height="48dp" />
 
 						<EditText android:id="@+id/gender"
 							android:textSize="14sp"
@@ -279,23 +240,15 @@
 
 					</RelativeLayout>
 
-
 					<RelativeLayout android:id="@+id/birthday_box"
 						android:layout_marginTop="10dp"
 						android:layout_marginStart="27dp"
-						android:layout_width="wrap_content"
+						android:layout_marginEnd="27dp"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:background="@drawable/rectangle_lightpink"
 						android:layout_below="@+id/gender_box"
 						>
-
-
-
-						<View   android:id="@+id/rectangle_44_ek3"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="350dp"
-							android:layout_height="48dp" />
 
 						<EditText android:id="@+id/birthday"
 							android:textSize="14sp"
@@ -311,22 +264,14 @@
 
 					</RelativeLayout>
 
-
 					<RelativeLayout android:id="@+id/email_box"
 						android:layout_below="@+id/email"
 						android:layout_marginStart="27dp"
-						android:layout_width="wrap_content"
+						android:layout_marginEnd="27dp"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:background="@drawable/rectangle_lightpink"
 						>
-
-
-
-						<View   android:id="@+id/rectangle_44_ek4"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="350dp"
-							android:layout_height="48dp" />
 
 						<EditText android:id="@+id/email_input"
 							android:textSize="14sp"
@@ -342,58 +287,21 @@
 
 					</RelativeLayout>
 
-
-					<RelativeLayout android:id="@+id/last_name_box"
-						android:layout_marginStart="185dp"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:layout_below="@+id/general_information"
-						>
-
-
-						<View   android:id="@+id/rectangle_45"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="190dp"
-							android:layout_height="48dp" />
-
-						<EditText android:id="@+id/last_name"
-							android:textSize="14sp"
-							android:textColor="@color/black"
-							android:layout_marginLeft="12dp"
-							android:layout_width="104.4dp"
-							android:layout_height="48dp"
-							android:layout_centerVertical="true"
-							android:background="@color/lightpink"
-							android:enabled="false"
-							android:hint="Last name"
-							/>
-
-					</RelativeLayout>
-
-
 					<RelativeLayout android:id="@+id/phone_box"
 						android:layout_below="@+id/mobile_number"
-						android:layout_marginStart="129dp"
-						android:layout_width="wrap_content"
+						android:layout_marginStart="27dp"
+						android:layout_marginEnd="27dp"
+						android:background="@drawable/rectangle_lightpink"
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						>
 
-
-
-						<View   android:id="@+id/rectangle_45_ek1"
-							android:background="@drawable/rectangle_lightpink"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="245dp"
-							android:layout_height="48dp" />
 
 						<EditText android:id="@+id/phone"
 							android:textSize="14sp"
 							android:textColor="@color/black"
 							android:layout_marginLeft="17dp"
-							android:layout_width="142.15dp"
+							android:layout_width="wrap_content"
 							android:layout_height="48dp"
 							android:layout_centerVertical="true"
 							android:background="@color/lightpink"
@@ -403,9 +311,9 @@
 
 						<ImageView android:id="@+id/insurance_1"
 							android:src="@drawable/insurance_1"
-							android:contentDescription="insurance_1"
-							android:layout_marginStart="200dp"
-							android:layout_marginTop="10dp"
+							android:layout_alignParentRight="true"
+							android:layout_marginRight="10dp"
+							android:layout_marginTop="14dp"
 							android:layout_width="20dp"
 							android:layout_height="20dp" />
 
@@ -419,19 +327,13 @@
 						<RelativeLayout android:id="@+id/google_box"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
+							android:background="@drawable/rectangle_lightpink"
 							android:layout_marginBottom="5dp">
-
-							<View   android:id="@+id/rectangle_google"
-								android:background="@drawable/rectangle_lightpink"
-								android:layout_marginStart="0dp"
-								android:layout_width="412dp"
-								android:layout_height="46dp" />
 
 							<ImageView android:id="@+id/icons8_google_240_1"
 								android:src="@drawable/icons8_google_240_1"
-								android:contentDescription="icons8_google_240_1"
 								android:layout_marginStart="12dp"
-								android:layout_marginTop="10dp"
+								android:layout_centerVertical="true"
 								android:layout_width="30dp"
 								android:layout_height="30dp" />
 
@@ -440,36 +342,24 @@
 								android:layout_width="236.6dp"
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="53dp"
-								android:layout_marginTop="10dp"
+								android:layout_centerVertical="true"
 								android:text="@string/google_string"
 								android:textColor="@color/burgundy"
 								android:textSize="16sp" />
 
-							<View   android:id="@+id/ellipse_25"
-								android:background="@drawable/ellipse_lightgray_small"
-								android:layout_alignParentRight="true"
-								android:layout_marginRight="20dp"
-								android:layout_marginTop="10dp"
-								android:layout_width="20dp"
-								android:layout_height="20dp" />
 						</RelativeLayout>
 
 						<RelativeLayout android:id="@+id/facebook_box"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
+							android:background="@drawable/rectangle_lightpink"
 							android:layout_below="@+id/google_box"
 							>
-
-							<View   android:id="@+id/rectangle_facebook"
-								android:background="@drawable/rectangle_lightpink"
-								android:layout_marginStart="0dp"
-								android:layout_width="412dp"
-								android:layout_height="46dp" />
 
 							<ImageView android:id="@+id/icons8_facebook_240_1"
 								android:src="@drawable/icons8_facebook_240_1"
 								android:layout_marginStart="12dp"
-								android:layout_marginTop="10dp"
+								android:layout_centerVertical="true"
 								android:layout_width="30dp"
 								android:layout_height="30dp" />
 
@@ -480,17 +370,10 @@
 								android:layout_height="wrap_content"
 								android:layout_marginLeft="53dp"
 								android:text="@string/facebook_string"
-								android:layout_marginTop="10dp"
+								android:layout_centerVertical="true"
 								android:textColor="@color/burgundy"
 								android:textSize="16sp" />
 
-							<View   android:id="@+id/ellipse_26"
-								android:background="@drawable/ellipse_lightgray_small"
-								android:layout_alignParentRight="true"
-								android:layout_marginRight="20dp"
-								android:layout_marginTop="10dp"
-								android:layout_width="20dp"
-								android:layout_height="20dp" />
 						</RelativeLayout>
 
 					</RelativeLayout>

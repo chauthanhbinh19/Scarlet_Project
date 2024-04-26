@@ -4,20 +4,14 @@
 	android:layout_height="match_parent"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 	<RelativeLayout android:id="@+id/settings"
+		android:background="@color/white"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container"
-			android:layout_width="wrap_content"
+			android:layout_width="match_parent"
+			android:background="@color/white"
 			android:layout_height="wrap_content" >
-
-			<View
-				android:id="@+id/_bg__setting"
-				android:layout_width="412dp"
-				android:layout_height="800dp"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:background="@drawable/_bg__setting_shape" />
 
 
 			<RelativeLayout android:id="@+id/group_1"
@@ -85,8 +79,6 @@
 
 			</RelativeLayout>
 
-
-
 			<TextView android:id="@+id/setup_account"
 				android:textStyle="bold"
 				android:textSize="16sp"
@@ -94,7 +86,7 @@
 				android:layout_marginLeft="24dp"
 				android:layout_marginTop="120dp"
 				android:layout_width="157.6dp"
-				android:layout_height="42.6dp"
+				android:layout_height="wrap_content"
 				android:text="@string/setup_account_string"
 				 />
 
@@ -105,28 +97,19 @@
 				android:layout_marginLeft="24dp"
 				android:layout_marginTop="221dp"
 				android:layout_width="157.6dp"
-				android:layout_height="42.6dp"
+				android:layout_height="wrap_content"
 				android:text="@string/security_string"
 				 />
 
 
 			<RelativeLayout android:id="@+id/group_35"
-				android:layout_marginTop="171dp"
-				android:layout_marginStart="17dp"
-				android:layout_width="wrap_content"
+				android:layout_marginTop="160dp"
+				android:layout_marginStart="20dp"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:layout_marginEnd="20dp"
+				android:background="@drawable/rectangle_lightpink"
 				>
-
-
-
-
-				<View
-					android:id="@+id/rectangle_48"
-					android:layout_width="350dp"
-					android:layout_height="40dp"
-					android:layout_marginStart="10dp"
-					android:layout_marginTop="0dp"
-					android:background="@drawable/rectangle_lightpink" />
 
 				<TextView android:id="@+id/delete_account"
 					android:textSize="16sp"
@@ -152,21 +135,16 @@
 
 			</RelativeLayout>
 
-
 			<RelativeLayout android:id="@+id/group_36"
-				android:layout_marginTop="269dp"
-				android:layout_marginStart="17dp"
-				android:layout_width="wrap_content"
+				android:layout_marginTop="50dp"
+				android:layout_marginStart="20dp"
+				android:layout_marginEnd="20dp"
+				android:layout_below="@+id/group_35"
+				android:background="@drawable/rectangle_lightpink"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				>
 
-
-				<View   android:id="@+id/rectangle_48_ek1"
-					android:background="@drawable/rectangle_lightpink"
-					 android:layout_marginStart="10dp"
-					android:layout_marginTop="0dp"
-					android:layout_width="350dp"
-					android:layout_height="40dp" />
 
 				<TextView android:id="@+id/change_passsword"
 					android:textSize="16sp"
