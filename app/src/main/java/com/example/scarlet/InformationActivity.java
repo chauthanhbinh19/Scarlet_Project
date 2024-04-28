@@ -15,8 +15,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.scarlet.Adapter.ProductHorizontalAdapter;
 import com.example.scarlet.Data.Address;
+import com.example.scarlet.Data.Payment;
+import com.example.scarlet.Data.Product;
+import com.example.scarlet.Data.ProductQuantity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,12 +38,17 @@ public class InformationActivity extends AppCompatActivity {
 
     EditText street,ward,province,district,postalCode, additionalInfo;
     TextView totalView;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference cartRef, productRef;
     Button continue_btn;
     RadioButton delivery_radio_btn,pickup_radio_btn;
     List<Address> addressList;
+    List<Product> productList;
     String deliveryStatus="delivery";
     String total;
     RelativeLayout back_btn;
+    RecyclerView productRecycleView;
+    ProductHorizontalAdapter adapter;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         continue_btn=findViewById(R.id.continue_btn);
@@ -49,6 +61,7 @@ public class InformationActivity extends AppCompatActivity {
         delivery_radio_btn=findViewById(R.id.delivery_radio_btn);
         pickup_radio_btn=findViewById(R.id.pickup_radio_btn);
         totalView=findViewById(R.id.total);
+        productRecycleView=findViewById(R.id.totalProductRecycleView);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +82,9 @@ public class InformationActivity extends AppCompatActivity {
                 total=totalT;
             }
         }
+
+        productRecycleView.setLayoutManager(new LinearLayoutManager(InformationActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        getCartData();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,6 +142,82 @@ public class InformationActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void getCartData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+
+        if(isLoggedIn && !userKey.isEmpty()){
+            firebaseDatabase= FirebaseDatabase.getInstance();
+            cartRef=firebaseDatabase.getReference("cart");
+
+            cartRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    List<ProductQuantity> productQuantityList=new ArrayList<>();
+                    if(snapshot.exists()){
+                        for(DataSnapshot cartSnap: snapshot.getChildren()){
+                            String customerId=cartSnap.child("customerId").getValue(String.class);
+                            if(customerId.equals(userKey)){
+                                DataSnapshot productQuantityListSnapshot =cartSnap.child("productQuantityList");
+
+                                for(DataSnapshot snapshot1:productQuantityListSnapshot.getChildren()){
+                                    ProductQuantity productQuantity=snapshot1.getValue(ProductQuantity.class);
+                                    productQuantityList.add(productQuantity);
+                                }
+                            }
+                        }
+                        getProductData(productQuantityList, userKey);
+                    }else{
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void getProductData(List<ProductQuantity> productKeyList, String userKey){
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        productRef = firebaseDatabase.getReference("product");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Product> productList=new ArrayList<>();
+                for(DataSnapshot productSnap: snapshot.getChildren()){
+                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
+                    if(checkKeyInList(productKey,productKeyList)){
+                        String productName=productSnap.child("name").getValue(String.class);
+                        double productPrice=productSnap.child("price").getValue(double.class);
+//                        int productQuantity=getQuantity(productKey,productKeyList);
+                        String productImg=productSnap.child("img").getValue(String.class);
+//                        double productTotal=productPrice*productQuantity;
+                        Product product=new Product(productName,productPrice, productImg);
+                        productList.add(product);
+                    }
+                }
+                adapter=new ProductHorizontalAdapter(productList);
+                productRecycleView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public boolean checkKeyInList(ProductQuantity key, List<ProductQuantity> keyList) {
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return true;
+            }
+        }
+        return false;
     }
     private void getAddressData(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

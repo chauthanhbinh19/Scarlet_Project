@@ -217,7 +217,7 @@
 					android:textColor="@color/black"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="5dp"
-					android:layout_width="193dp"
+					android:layout_width="wrap_content"
 					android:layout_height="33dp"
 					android:text="@string/delivery_method_string"
 					/>
@@ -284,14 +284,39 @@
 						android:textStyle="bold" />
 				</RelativeLayout>
 
+				<TextView android:id="@+id/total_product"
+					android:textStyle="bold"
+					android:textSize="20sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="23dp"
+					android:layout_marginTop="5dp"
+					android:layout_below="@+id/delivery_box"
+					android:layout_width="wrap_content"
+					android:layout_height="33dp"
+					android:text="Total items"
+					/>
+
+				<HorizontalScrollView android:id="@+id/scrollBox"
+					android:layout_below="@+id/total_product"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/totalProductRecycleView"
+						android:layout_marginRight="20dp"
+						android:layout_marginLeft="20dp"
+						android:paddingRight="20dp"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"/>
+				</HorizontalScrollView>
+
 				<TextView android:id="@+id/delivery_address"
 					android:textStyle="bold"
 					android:textSize="20sp"
-					android:layout_below="@+id/delivery_box"
+					android:layout_below="@+id/scrollBox"
 					android:textColor="@color/black"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="25dp"
-					android:layout_width="193dp"
+					android:layout_width="wrap_content"
 					android:layout_height="33dp"
 					android:text="Delivery address"
 					/>

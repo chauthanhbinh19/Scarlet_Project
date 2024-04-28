@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -25,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scarlet.Adapter.ProductHorizontalAdapter;
 import com.example.scarlet.Data.Address;
 import com.example.scarlet.Data.CreateOrder;
 import com.example.scarlet.Data.Order;
@@ -65,6 +68,8 @@ public class PaymentActivity extends AppCompatActivity {
     RadioButton radioZaloPay, radioCash;
     int defaultStatus=4;
     int tip=0;
+    RecyclerView productRecycleView;
+    ProductHorizontalAdapter adapter;
     private void BindView() {
         totalView=findViewById(R.id.total);
         back_btn=findViewById(R.id.back_btn);
@@ -75,6 +80,7 @@ public class PaymentActivity extends AppCompatActivity {
         c2Btn=findViewById(R.id.c2_btn);
         c3Btn=findViewById(R.id.c3_btn);
         c4Btn=findViewById(R.id.c4_btn);
+        productRecycleView=findViewById(R.id.totalProductRecycleView);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,8 @@ public class PaymentActivity extends AppCompatActivity {
             deliveryStatus=intent.getStringExtra("deliveryStatus");
             totalView.setText(totalT);
         }
+        productRecycleView.setLayoutManager(new LinearLayoutManager(PaymentActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        getCartData();
         int price=Integer.parseInt(totalView.getText().toString());
         int tip1=15*price/100;
         c1Btn.setText("15% \n " + String.valueOf(tip1) +"đ");
@@ -171,6 +179,74 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+    }
+    private void getCartData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+
+        if(isLoggedIn && !userKey.isEmpty()){
+            firebaseDatabase= FirebaseDatabase.getInstance();
+            cartRef=firebaseDatabase.getReference("cart");
+
+            cartRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    List<ProductQuantity> productQuantityList=new ArrayList<>();
+                    if(snapshot.exists()){
+                        for(DataSnapshot cartSnap: snapshot.getChildren()){
+                            String customerId=cartSnap.child("customerId").getValue(String.class);
+                            if(customerId.equals(userKey)){
+                                DataSnapshot productQuantityListSnapshot =cartSnap.child("productQuantityList");
+
+                                for(DataSnapshot snapshot1:productQuantityListSnapshot.getChildren()){
+                                    ProductQuantity productQuantity=snapshot1.getValue(ProductQuantity.class);
+                                    productQuantityList.add(productQuantity);
+                                }
+                            }
+                        }
+                        getProductData(productQuantityList, userKey);
+                    }else{
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void getProductData(List<ProductQuantity> productKeyList, String userKey){
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        productRef = firebaseDatabase.getReference("product");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                List<Product> productList=new ArrayList<>();
+                for(DataSnapshot productSnap: snapshot.getChildren()){
+                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
+                    if(checkKeyInList(productKey,productKeyList)){
+                        String productName=productSnap.child("name").getValue(String.class);
+                        double productPrice=productSnap.child("price").getValue(double.class);
+//                        int productQuantity=getQuantity(productKey,productKeyList);
+                        String productImg=productSnap.child("img").getValue(String.class);
+//                        double productTotal=productPrice*productQuantity;
+                        Product product=new Product(productName,productPrice, productImg);
+                        productList.add(product);
+                    }
+                }
+                adapter=new ProductHorizontalAdapter(productList);
+                productRecycleView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
