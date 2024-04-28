@@ -290,7 +290,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="Voucher"
-			android:textSize="20sp"
+			android:textSize="16sp"
 			android:layout_marginLeft="30dp"
 			android:textStyle="bold"/>
 
@@ -300,7 +300,7 @@
 			android:text="More >"
 			android:layout_alignParentRight="true"
 			android:textColor="@color/burgundy"
-			android:textSize="20sp"
+			android:textSize="18sp"
 			android:background="@color/transparent"
 			android:layout_marginRight="30dp"
 			android:textStyle="bold"/>
@@ -309,7 +309,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@color/white2"
-			android:layout_marginBottom="500dp"
+			android:layout_marginBottom="480dp"
 			android:layout_marginTop="10dp">
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/voucher_recyclerView"

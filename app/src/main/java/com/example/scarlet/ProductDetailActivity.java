@@ -118,7 +118,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         if(snap.child("productId").getValue(String.class).equals(producKey)){
                             isLoved=true;
                             found=true;
-                            heart.setImageResource(R.drawable.heart__1__1);
+                            heart.setBackgroundResource(R.drawable.heart__1__1);
                             break;
                         }
                     }
@@ -155,11 +155,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if(isFavourite){
                     deleteFavourite(productKey);
 //                    Toast.makeText(ProductDetailActivity.this,"delete",Toast.LENGTH_SHORT).show();
-                    heart.setImageResource(R.drawable.heart);
+                    heart.setBackgroundResource(R.drawable.heart);
                 }else{
                     insertToFavourite(productKey);
 //                    Toast.makeText(ProductDetailActivity.this,"insert",Toast.LENGTH_SHORT).show();
-                    heart.setImageResource(R.drawable.heart__1__1);
+                    heart.setBackgroundResource(R.drawable.heart__1__1);
                 }
             }
 
