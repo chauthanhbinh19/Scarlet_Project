@@ -24,7 +24,7 @@
 
         <TextView android:id="@+id/product_name"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:elevation="10dp"
             android:textColor="@color/black"
             android:layout_marginTop="5dp"
@@ -39,7 +39,7 @@
 
         <TextView android:id="@+id/product_price"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:elevation="10dp"
             android:textColor="@color/burgundy"
             android:layout_centerHorizontal="true"

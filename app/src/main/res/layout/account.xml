@@ -87,12 +87,12 @@
 
 				<TextView android:id="@+id/account_ek1"
 					android:textStyle="bold"
-					android:textSize="18sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="38dp"
 					android:layout_marginTop="23dp"
 					android:layout_width="115.8dp"
-					android:layout_height="48.8dp"
+					android:layout_height="wrap_content"
 					android:text="@string/account_ek1_string"
 					 />
 
@@ -233,7 +233,7 @@
 
 				<TextView android:id="@+id/order"
 					android:textStyle="bold"
-					android:textSize="18sp"
+					android:textSize="16sp"
 					android:layout_below="@id/dashboard_button"
 					android:textColor="@color/black"
 					android:layout_marginLeft="36dp"
@@ -292,7 +292,7 @@
 
 				<TextView android:id="@+id/general_information"
 					android:textStyle="bold"
-					android:textSize="18sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="38dp"
 					android:layout_marginTop="10dp"
@@ -445,7 +445,7 @@
 
 				<TextView android:id="@+id/help_center"
 					android:textStyle="bold"
-					android:textSize="18sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="36dp"
 					android:layout_marginTop="10dp"

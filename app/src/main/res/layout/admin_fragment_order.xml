@@ -52,7 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/search_box"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -75,6 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Pending"
+                        android:textSize="12sp"
                         android:layout_marginLeft="42dp"
                         android:layout_centerVertical="true"
                         android:textColor="@color/white"/>
@@ -85,7 +88,6 @@
                     android:background="@drawable/rectangle_lightpink_radius"
                     android:padding="5dp"
                     android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:layout_weight="1">
 
                     <ImageView
@@ -99,6 +101,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Done"
+                        android:textSize="12sp"
                         android:layout_marginLeft="42dp"
                         android:layout_centerVertical="true"
                         android:textColor="@color/burgundy"/>
@@ -108,7 +111,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/rectangle_lightpink_radius"
                     android:padding="5dp"
-                    android:layout_marginLeft="5dp"
                     android:layout_weight="1">
 
                     <ImageView
@@ -122,6 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cancelled"
+                        android:textSize="12sp"
                         android:layout_marginLeft="42dp"
                         android:layout_centerVertical="true"
                         android:textColor="@color/burgundy"/>

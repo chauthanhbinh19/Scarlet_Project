@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/avatarBox"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:text="Overall product"/>
@@ -85,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lineChart"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:text="Cake trends"/>
@@ -126,7 +126,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
@@ -138,7 +138,7 @@
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="70dp"
+                                android:layout_marginTop="60dp"
                                 android:text="Drinks"/>
 
                             <TextView android:id="@+id/categoryPercentage1"
@@ -178,7 +178,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
@@ -190,7 +190,7 @@
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="70dp"
+                                android:layout_marginTop="60dp"
                                 android:text="Drinks"/>
 
                             <TextView android:id="@+id/categoryPercentage2"
@@ -237,7 +237,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
@@ -249,7 +249,7 @@
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="70dp"
+                                android:layout_marginTop="60dp"
                                 android:text="Drinks"/>
 
                             <TextView android:id="@+id/categoryPercentage3"
@@ -289,7 +289,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="30dp"
                                 android:text="10"/>
@@ -301,7 +301,7 @@
                                 android:textStyle="bold"
                                 android:textSize="16sp"
                                 android:layout_marginLeft="10dp"
-                                android:layout_marginTop="70dp"
+                                android:layout_marginTop="60dp"
                                 android:text="Drinks"/>
 
                             <TextView android:id="@+id/categoryPercentage4"

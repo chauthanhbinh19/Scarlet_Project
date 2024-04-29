@@ -84,6 +84,9 @@
             android:name=".FeedbackActivity"
             android:exported="true" />
         <activity
+            android:name=".OrderDetailsActivity"
+            android:exported="true" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:launchMode="singleTask">
