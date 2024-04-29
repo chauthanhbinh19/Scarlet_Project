@@ -69,9 +69,6 @@
             android:name=".VoucherActivity"
             android:exported="true" />
         <activity
-            android:name=".InformationActivity"
-            android:exported="true" />
-        <activity
             android:name=".DeliveryActivity"
             android:exported="true" />
         <activity

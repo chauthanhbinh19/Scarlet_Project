@@ -76,24 +76,13 @@
 			android:text="@string/cart_ek1_string"
 			/>
 
-		<TextView android:id="@+id/information_ek1"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:textSize="13sp"
-			android:textColor="@color/lightbrown"
-			android:layout_toRightOf="@+id/right_arrow_1"
-			android:layout_marginTop="10dp"
-			android:layout_width="wrap_content"
-			android:layout_height="31.3dp"
-			android:text="Information"
-			/>
 
 		<TextView android:id="@+id/delivery_ek1"
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="center"
 			android:textSize="13sp"
 			android:textColor="@color/lightbrown"
-			android:layout_toRightOf="@+id/right_arrow_2"
+			android:layout_toRightOf="@+id/right_arrow_1"
 			android:layout_marginTop="10dp"
 			android:layout_width="wrap_content"
 			android:layout_height="31.3dp"
@@ -122,15 +111,6 @@
 			android:layout_width="15dp"
 			android:layout_height="15dp" />
 
-		<ImageView android:id="@+id/right_arrow_2"
-			android:src="@drawable/right_arrow_2"
-			android:contentDescription="right_arrow_2"
-			android:layout_toRightOf="@+id/information_ek1"
-			android:layout_marginTop="18dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:layout_width="15dp"
-			android:layout_height="15dp" />
 
 		<ImageView android:id="@+id/right_arrow_3"
 			android:src="@drawable/right_arrow_2"

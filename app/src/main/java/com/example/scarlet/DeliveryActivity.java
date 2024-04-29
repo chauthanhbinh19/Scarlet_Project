@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Adapter.ProductHorizontalAdapter;
+import com.example.scarlet.Data.Address;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
 import com.google.firebase.database.DataSnapshot;
@@ -32,22 +34,31 @@ import java.util.List;
 
 public class DeliveryActivity extends AppCompatActivity {
 
-    TextView address, additionalInfo, deliveryPrice;
+    EditText street,ward,province,district,postalCode, additionalInfo;
     TextView totalView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference cartRef, productRef;
-    RelativeLayout back_btn;
     Button continue_btn;
-    String total,deliveryStatus;
+    RadioButton delivery_radio_btn,pickup_radio_btn;
+    List<Address> addressList;
+    List<Product> productList;
+    String deliveryStatus="delivery";
+    String total;
+    RelativeLayout back_btn;
     RecyclerView productRecycleView;
     ProductHorizontalAdapter adapter;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
-        address=findViewById(R.id.delivery_address_content);
-        additionalInfo=findViewById(R.id.delivery_additional_content);
-        totalView=findViewById(R.id.total);
         continue_btn=findViewById(R.id.continue_btn);
-        deliveryPrice=findViewById(R.id.deliveryPrice);
+        street=findViewById(R.id.street);
+        ward=findViewById(R.id.ward);
+        district=findViewById(R.id.district);
+        province=findViewById(R.id.province);
+        postalCode=findViewById(R.id.postalCode);
+        additionalInfo=findViewById(R.id.addtionalInfo);
+        delivery_radio_btn=findViewById(R.id.delivery_radio_btn);
+        pickup_radio_btn=findViewById(R.id.pickup_radio_btn);
+        totalView=findViewById(R.id.total);
         productRecycleView=findViewById(R.id.totalProductRecycleView);
     }
     @Override
@@ -59,42 +70,74 @@ public class DeliveryActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
+        getAddressData();
         Intent intent=getIntent();
         if(intent!= null){
-            deliveryStatus=intent.getStringExtra("deliveryStatus");
-            String street=intent.getStringExtra("street");
-            String ward=intent.getStringExtra("ward");
-            String district=intent.getStringExtra("district");
-            String province=intent.getStringExtra("province");
-            String postalCode=intent.getStringExtra("postalCode");
-            String additionalInfo1=intent.getStringExtra("additionalInfo");
-            total=intent.getStringExtra("total");
-
-            String text=street+", "+ward+", "+district+", "+province;
-            address.setText(text);
-            additionalInfo.setText(additionalInfo1);
-            totalView.setText(total);
+            String totalT=intent.getStringExtra("total");
+            if(totalT!= null){
+//                double total1 = Double.parseDouble(total);
+                totalView.setText(totalT);
+                total=totalT;
+            }
         }
+
         productRecycleView.setLayoutManager(new LinearLayoutManager(DeliveryActivity.this,LinearLayoutManager.HORIZONTAL,false));
         getCartData();
-        if(deliveryStatus.equals("delivery")){
-            deliveryPrice.setText("10000");
-        }else if(deliveryStatus.equals("pickup")){
-            deliveryPrice.setText("0");
-        }
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        pickup_radio_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(delivery_radio_btn.isChecked()){
+                    delivery_radio_btn.setChecked(false);
+                }
+                deliveryStatus="delivery";
+            }
+        });
+        delivery_radio_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(pickup_radio_btn.isChecked()){
+                    pickup_radio_btn.setChecked(false);
+                }
+                deliveryStatus="pickup";
+            }
+        });
         continue_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1=new Intent(DeliveryActivity.this, PaymentActivity.class);
-                intent1.putExtra("total",total);
-                intent1.putExtra("deliveryStatus",deliveryStatus);
-                startActivity(intent1);
+                if(street.getText().toString().isEmpty()){
+                    street.setError("Street can not be empty");
+                }else if(ward.getText().toString().isEmpty()){
+                    ward.setError("Ward can not be empty");
+                }else if(district.getText().toString().isEmpty()){
+                    district.setError("District can not be empty");
+                }else if(province.getText().toString().isEmpty()){
+                    province.setError("Province can not be empty");
+                }else{
+                    String streetText=street.getText().toString();
+                    String wardText=ward.getText().toString();
+                    String districtText=district.getText().toString();
+                    String provinceText=province.getText().toString();
+                    String postalCodeText=postalCode.getText().toString();
+                    String additionalInfoText=additionalInfo.getText().toString();
+                    setAddressData(streetText,wardText,districtText,provinceText,postalCodeText,additionalInfoText);
+                    Intent intent=new Intent(DeliveryActivity.this, PaymentActivity.class);
+                    intent.putExtra("deliveryStatus",deliveryStatus);
+                    intent.putExtra("street",streetText);
+                    intent.putExtra("ward",wardText);
+                    intent.putExtra("district",districtText);
+                    intent.putExtra("province",provinceText);
+                    intent.putExtra("postalCode",postalCodeText);
+                    intent.putExtra("additionalInfo",additionalInfoText);
+                    double total1 = Double.parseDouble(total);
+                    intent.putExtra("total",String.format("%.0f", total1));
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -174,4 +217,84 @@ public class DeliveryActivity extends AppCompatActivity {
         }
         return false;
     }
+    private void getAddressData(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+
+        if(isLoggedIn && !userKey.isEmpty()){
+            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("address");
+            addressList=new ArrayList<>();
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        for(DataSnapshot snap:snapshot.getChildren()){
+                            String customerId=snap.child("customerId").getValue(String.class);
+                            if(customerId.equals(userKey)){
+                                String streetText=snap.child("street").getValue(String.class);
+                                String wardText=snap.child("ward").getValue(String.class);
+                                String districtText=snap.child("district").getValue(String.class);
+                                String provinceText=snap.child("province").getValue(String.class);
+                                String postalCodeText=snap.child("postalCode").getValue(String.class);
+                                String additionalText=snap.child("additional").getValue(String.class);
+
+                                street.setText(streetText);
+                                ward.setText(wardText);
+                                district.setText(districtText);
+                                province.setText(provinceText);
+                                postalCode.setText(postalCodeText);
+                                additionalInfo.setText(additionalText);
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void setAddressData(String street, String ward, String district,String province, String postalCode, String additionalInfo){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+
+        if(isLoggedIn && !userKey.isEmpty()){
+            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("address");
+            addressList=new ArrayList<>();
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    boolean found=false;
+                    if(snapshot.exists()){
+                        for(DataSnapshot snap:snapshot.getChildren()){
+                            String customerId=snap.child("customerId").getValue(String.class);
+                            if(customerId.equals(userKey)){
+                                found=true;
+                            }
+                        }
+                        if(!found){
+                            Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
+                            String key=myRef.push().getKey();
+                            myRef.child(key).setValue(address);
+                        }
+                    }else{
+                        Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
+                        myRef.push().setValue(address);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+
 }

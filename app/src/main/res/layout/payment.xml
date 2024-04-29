@@ -45,7 +45,7 @@
 		<RelativeLayout android:id="@+id/total_box"
 			android:layout_marginTop="20dp"
 			android:paddingTop="5dp"
-			android:paddingBottom="5dp"
+			android:paddingBottom="0dp"
 			android:paddingLeft="20dp"
 			android:paddingRight="20dp"
 			android:layout_below="@+id/back_btn"
@@ -109,11 +109,11 @@
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total_box"
 			android:layout_width="wrap_content"
-			android:layout_height="31.4dp"
+			android:layout_height="wrap_content"
 			android:text="@string/cart_ek1_string"
 			/>
 
-		<TextView android:id="@+id/information_ek1"
+		<TextView android:id="@+id/delivery_ek1"
 			android:layout_gravity="center_horizontal|center"
 			android:gravity="center"
 			android:textSize="13sp"
@@ -122,20 +122,7 @@
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total_box"
 			android:layout_width="wrap_content"
-			android:layout_height="31.3dp"
-			android:text="Information"
-			/>
-
-		<TextView android:id="@+id/delivery_ek1"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:textSize="13sp"
-			android:textColor="@color/burgundy"
-			android:layout_toRightOf="@+id/right_arrow_2"
-			android:layout_marginTop="10dp"
-			android:layout_below="@+id/total_box"
-			android:layout_width="wrap_content"
-			android:layout_height="31.3dp"
+			android:layout_height="wrap_content"
 			android:text="@string/delivery_ek1_string"
 			/>
 
@@ -149,7 +136,7 @@
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total_box"
 			android:layout_width="wrap_content"
-			android:layout_height="31.4dp"
+			android:layout_height="wrap_content"
 			android:text="@string/payment_string"
 			/>
 
@@ -157,21 +144,10 @@
 			android:src="@drawable/right_arrow_1"
 			android:contentDescription="right_arrow_1"
 			android:layout_toRightOf="@+id/cart_ek1"
-			android:layout_marginTop="18dp"
+			android:layout_marginTop="12dp"
 			android:layout_below="@+id/total_box"
 			android:layout_marginLeft="5dp"
 			android:layout_marginRight="5dp"
-			android:layout_width="15dp"
-			android:layout_height="15dp" />
-
-		<ImageView android:id="@+id/right_arrow_2"
-			android:src="@drawable/right_arrow_2"
-			android:contentDescription="right_arrow_2"
-			android:layout_toRightOf="@+id/information_ek1"
-			android:layout_marginTop="18dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:layout_below="@+id/total_box"
 			android:layout_width="15dp"
 			android:layout_height="15dp" />
 
@@ -179,7 +155,7 @@
 			android:src="@drawable/right_arrow_2"
 			android:contentDescription="right_arrow_2"
 			android:layout_toRightOf="@+id/delivery_ek1"
-			android:layout_marginTop="18dp"
+			android:layout_marginTop="12dp"
 			android:layout_marginLeft="5dp"
 			android:layout_marginRight="5dp"
 			android:layout_below="@+id/total_box"
@@ -211,12 +187,12 @@
 
 				<TextView android:id="@+id/total_product"
 					android:textStyle="bold"
-					android:textSize="20sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="5dp"
 					android:layout_width="wrap_content"
-					android:layout_height="33dp"
+					android:layout_height="wrap_content"
 					android:text="Total items"
 					/>
 
@@ -235,13 +211,13 @@
 
 				<TextView android:id="@+id/delivery_address_text"
 					android:textStyle="bold"
-					android:textSize="20sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_below="@+id/scrollBox"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="5dp"
-					android:layout_width="193dp"
-					android:layout_height="33dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="@string/delivery_method_string"
 					/>
 
@@ -290,13 +266,13 @@
 
 				<TextView android:id="@+id/delivery_fee_text"
 					android:textStyle="bold"
-					android:textSize="20sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_below="@id/delivery_box"
 					android:layout_marginLeft="23dp"
-					android:layout_marginTop="25dp"
-					android:layout_width="193dp"
-					android:layout_height="33dp"
+					android:layout_marginTop="15dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="Add tip"
 					/>
 				<RelativeLayout android:id="@+id/tip_box"
@@ -307,6 +283,7 @@
 					android:paddingTop="10dp"
 					android:paddingLeft="10dp"
 					android:paddingBottom="10dp"
+					android:layout_marginTop="5dp"
 					android:background="@drawable/rectangle_white_stroke"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content">
@@ -380,19 +357,20 @@
 
 				<TextView android:id="@+id/payment_method_text"
 					android:textStyle="bold"
-					android:textSize="20sp"
+					android:textSize="16sp"
 					android:textColor="@color/black"
 					android:layout_below="@id/tip_box"
 					android:layout_marginLeft="23dp"
-					android:layout_marginTop="25dp"
-					android:layout_width="193dp"
-					android:layout_height="33dp"
+					android:layout_marginTop="15dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="Payment"
 					/>
 
 				<RelativeLayout android:id="@+id/payment_box"
 					android:layout_marginLeft="20dp"
 					android:layout_marginRight="20dp"
+					android:layout_marginTop="5dp"
 					android:paddingRight="10dp"
 					android:paddingTop="10dp"
 					android:paddingLeft="10dp"

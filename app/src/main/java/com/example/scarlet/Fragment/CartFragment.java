@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,11 +17,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Adapter.CartAdapter;
-import com.example.scarlet.Adapter.CartHolderView;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
-import com.example.scarlet.InformationActivity;
+import com.example.scarlet.DeliveryActivity;
 import com.example.scarlet.Interface.GetStringCallback;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
@@ -87,7 +85,7 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 String total=totalView.getText().toString();
-                Intent intent=new Intent(getContext(), InformationActivity.class);
+                Intent intent=new Intent(getContext(), DeliveryActivity.class);
                 intent.putExtra("total",total);
                 startActivity(intent);
             }
