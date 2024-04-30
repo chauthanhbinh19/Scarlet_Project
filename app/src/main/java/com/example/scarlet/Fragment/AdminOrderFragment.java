@@ -1,9 +1,13 @@
 package com.example.scarlet.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,6 +39,10 @@ public class AdminOrderFragment extends Fragment {
     AdminOrderAdapter adminOrderAdapter;
     List<Order> orderList;
     RecyclerView orderRecycleview;
+    EditText search_bar;
+    RelativeLayout sortIcon;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         pending=view.findViewById(R.id.pending);
         done=view.findViewById(R.id.done);
@@ -43,6 +51,8 @@ public class AdminOrderFragment extends Fragment {
         textdone=view.findViewById(R.id.textdone);
         textcancel=view.findViewById(R.id.textcancel);
         orderRecycleview=view.findViewById(R.id.order_recyclerView);
+        search_bar=view.findViewById(R.id.search_bar);
+        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,6 +64,7 @@ public class AdminOrderFragment extends Fragment {
         orderRecycleview.setLayoutManager(new GridLayoutManager(getContext(),1));
         orderRecycleview.addItemDecoration(new GridLayoutDecoration(0,5));
         getOrderData("pending");
+        getAnimation();
         pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +90,45 @@ public class AdminOrderFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(){
+        Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
+        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
+        Animation pendingAnim= AnimationUtils.loadAnimation(pending.getContext(), android.R.anim.slide_in_left);
+        Animation doneAnim= AnimationUtils.loadAnimation(done.getContext(), android.R.anim.slide_in_left);
+        Animation cancelAnim= AnimationUtils.loadAnimation(cancel.getContext(), android.R.anim.slide_in_left);
+        Animation recycleViewAnim= AnimationUtils.loadAnimation(orderRecycleview.getContext(), android.R.anim.fade_in);
+        search_bar.startAnimation(searchAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sortIcon.startAnimation(sortIconAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pending.startAnimation(pendingAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                done.startAnimation(doneAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cancel.startAnimation(cancelAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                orderRecycleview.startAnimation(recycleViewAnim);
+            }
+        },delay*3);
     }
     private void checkStatus(){
         switch (defaultStatus){

@@ -3,6 +3,8 @@ package com.example.scarlet.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,7 +32,9 @@ public class AdminCustomerAdapter extends RecyclerView.Adapter<AdminCustomerHold
 
     @Override
     public void onBindViewHolder(@NonNull AdminCustomerHolderView holder, int position) {
+        Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(userList.get(position));
+        holder.itemView.startAnimation(animation);
     }
 
     @Override

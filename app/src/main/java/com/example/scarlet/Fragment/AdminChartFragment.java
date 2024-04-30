@@ -5,9 +5,12 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -68,6 +71,8 @@ public class AdminChartFragment extends Fragment {
             "July", "August", "September", "October", "November", "December"};
     String[] monthLabels1 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Step", "Oct", "Nov", "Dec"};
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         bar=view.findViewById(R.id.barchartBox);
         line=view.findViewById(R.id.linechartBox);
@@ -86,6 +91,7 @@ public class AdminChartFragment extends Fragment {
 
         BindView(view);
         getDefaultStatus();
+        getAnimation();
         bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +117,24 @@ public class AdminChartFragment extends Fragment {
 
 
         return view;
+    }
+    private void getAnimation(){
+        Animation barAnim= AnimationUtils.loadAnimation(bar.getContext(), android.R.anim.slide_in_left);
+        Animation lineAnim= AnimationUtils.loadAnimation(line.getContext(), android.R.anim.slide_in_left);
+        Animation pieAnim= AnimationUtils.loadAnimation(pie.getContext(), android.R.anim.slide_in_left);
+        bar.startAnimation(barAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                line.startAnimation(lineAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pie.startAnimation(pieAnim);
+            }
+        },delay*0);
     }
     private void getDefaultStatus(){
         switch (defaultStauts){

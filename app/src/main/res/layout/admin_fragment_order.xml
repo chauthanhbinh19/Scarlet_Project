@@ -32,7 +32,7 @@
                     android:layout_margin="6dp"
                     android:textColorHint="@color/burgundy"/>
 
-                <RelativeLayout
+                <RelativeLayout android:id="@+id/sortIcon"
                     android:layout_toRightOf="@+id/search_bar"
                     android:layout_weight="1"
                     android:layout_margin="6dp"

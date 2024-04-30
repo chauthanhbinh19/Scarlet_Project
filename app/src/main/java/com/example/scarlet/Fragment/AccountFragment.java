@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -40,6 +43,9 @@ public class AccountFragment extends Fragment {
     RelativeLayout app_version_btn, order_activities_btn, dashboard_button, loyalty_btn;
     Button create_account;
     Button sign_out_button;
+    TextView accountText, orderText, generalText, helpText;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         profile_btn=view.findViewById(R.id.profile_button);
         setting_btn=view.findViewById(R.id.settings_button);
@@ -51,6 +57,10 @@ public class AccountFragment extends Fragment {
         sign_out_button=view.findViewById(R.id.sign_out_btn);
         dashboard_button=view.findViewById(R.id.dashboard_button);
         feedback_btn=view.findViewById(R.id.feedback___support_button);
+        accountText=view.findViewById(R.id.account_ek1);
+        orderText=view.findViewById(R.id.order);
+        generalText=view.findViewById(R.id.general_information);
+        helpText=view.findViewById(R.id.help_center);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,6 +72,7 @@ public class AccountFragment extends Fragment {
 
         BindView(view);
         checkSignInStautus();
+        getAnimation(view);
         profile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,6 +156,96 @@ public class AccountFragment extends Fragment {
         });
 
         return view;
+    }
+    private void getAnimation(View view){
+//        Animation viewAnim= AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
+//        view.startAnimation(viewAnim);
+        Animation profileAnim=AnimationUtils.loadAnimation(profile_btn.getContext(), android.R.anim.slide_in_left);
+        Animation settingAnim=AnimationUtils.loadAnimation(setting_btn.getContext(), android.R.anim.slide_in_left);
+        Animation dashAnim=AnimationUtils.loadAnimation(dashboard_button.getContext(), android.R.anim.slide_in_left);
+        Animation orderAnim=AnimationUtils.loadAnimation(order_activities_btn.getContext(), android.R.anim.slide_in_left);
+        Animation policesAnim=AnimationUtils.loadAnimation(policies_btn.getContext(), android.R.anim.slide_in_left);
+        Animation loyalAnim=AnimationUtils.loadAnimation(loyalty_btn.getContext(), android.R.anim.slide_in_left);
+        Animation appVersionAnim=AnimationUtils.loadAnimation(app_version_btn.getContext(), android.R.anim.slide_in_left);
+        Animation feedbackAnim=AnimationUtils.loadAnimation(feedback_btn.getContext(), android.R.anim.slide_in_left);
+        Animation accountTextAnim=AnimationUtils.loadAnimation(accountText.getContext(), android.R.anim.slide_in_left);
+        Animation orderTextAnim=AnimationUtils.loadAnimation(orderText.getContext(), android.R.anim.slide_in_left);
+        Animation generalTextAnim=AnimationUtils.loadAnimation(generalText.getContext(), android.R.anim.slide_in_left);
+        Animation helpTextAnim=AnimationUtils.loadAnimation(helpText.getContext(), android.R.anim.slide_in_left);
+        Animation signoutAnim=AnimationUtils.loadAnimation(sign_out_button.getContext(), android.R.anim.slide_in_left);
+        accountText.startAnimation(accountTextAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                profile_btn.startAnimation(profileAnim);
+            }
+        },delay);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setting_btn.startAnimation(settingAnim);
+            }
+        },delay*2);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dashboard_button.startAnimation(dashAnim);
+            }
+        },delay*3);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                orderText.startAnimation(orderTextAnim);
+            }
+        },delay*4);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                order_activities_btn.startAnimation(orderAnim);
+            }
+        },delay*5);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                generalText.startAnimation(generalTextAnim);
+            }
+        },delay*6);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                policies_btn.startAnimation(policesAnim);
+            }
+        },delay*7);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loyalty_btn.startAnimation(loyalAnim);
+            }
+        },delay*8);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                app_version_btn.startAnimation(appVersionAnim);
+            }
+        },delay*9);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                helpText.startAnimation(helpTextAnim);
+            }
+        },delay*10);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                feedback_btn.startAnimation(feedbackAnim);
+            }
+        },delay*11);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sign_out_button.startAnimation(signoutAnim);
+            }
+        },delay*12);
     }
     private void checkSignInStautus(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

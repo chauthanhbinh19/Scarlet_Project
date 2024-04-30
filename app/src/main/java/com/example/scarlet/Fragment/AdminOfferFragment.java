@@ -3,15 +3,19 @@ package com.example.scarlet.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,9 +59,13 @@ public class AdminOfferFragment extends Fragment {
     TextView offerStartDate,offerEndDate;
     ImageButton calendarStart,calendarEnd;
     ProgressDialog progressDialog;
+    RelativeLayout sortIcon;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         offerRecycleView=view.findViewById(R.id.offer_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
+        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,6 +78,7 @@ public class AdminOfferFragment extends Fragment {
         offerRecycleView.addItemDecoration(new GridLayoutDecoration(5,0));
 
         getOfferData();
+        getAnimation();
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +108,24 @@ public class AdminOfferFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(){
+        Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
+        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
+        Animation recycleViewAnim= AnimationUtils.loadAnimation(offerRecycleView.getContext(), android.R.anim.fade_in);
+        search_bar.startAnimation(searchAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sortIcon.startAnimation(sortIconAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                offerRecycleView.startAnimation(recycleViewAnim);
+            }
+        },delay*3);
     }
     public void showInsertPopup() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

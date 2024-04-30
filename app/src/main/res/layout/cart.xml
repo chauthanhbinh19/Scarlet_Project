@@ -15,7 +15,7 @@
 		<TextView
 			android:layout_width="160dp"
 			android:layout_height="wrap_content"
-			android:id="@+id/favourite_text"
+			android:id="@+id/cart_text"
 			android:layout_marginTop="20dp"
 			android:layout_marginStart="80dp"
 			android:textSize="20sp"

@@ -3,9 +3,12 @@ package com.example.scarlet.Fragment;
 import android.adservices.measurement.MeasurementManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -41,6 +44,9 @@ public class DealsFragment extends Fragment {
     RecyclerView recyclerView;
     RelativeLayout memberShip,exchangePoint,pointHistory,yourRights;
     TextView more;
+    TextView deal_text;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.voucher_recyclerView);
         memberShip=view.findViewById(R.id.voucher_feature_1);
@@ -48,6 +54,7 @@ public class DealsFragment extends Fragment {
         pointHistory=view.findViewById(R.id.voucher_feature_3);
         yourRights=view.findViewById(R.id.voucher_feature_4);
         more=view.findViewById(R.id.voucher_more);
+        deal_text=view.findViewById(R.id.deal_text);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +65,7 @@ public class DealsFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
         getDealsData(recyclerView);
+        getAnimation(view);
 
         memberShip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +103,10 @@ public class DealsFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(View view){
+        Animation dealTextAnim= AnimationUtils.loadAnimation(deal_text.getContext(), android.R.anim.fade_in);
+        deal_text.startAnimation(dealTextAnim);
     }
     private void getDealsData(RecyclerView recyclerView){
         dealList=new ArrayList<>();

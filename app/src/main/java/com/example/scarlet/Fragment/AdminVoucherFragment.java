@@ -3,11 +3,14 @@ package com.example.scarlet.Fragment;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -71,6 +74,9 @@ public class AdminVoucherFragment extends Fragment {
     GetKeyCallback getKeyCallback;
     List<String> keyList;
     ProgressDialog progressDialog;
+    RelativeLayout sortIcon;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         btnAll=view.findViewById(R.id.btnAll);
         btnDelivery=view.findViewById(R.id.btnDelivery);
@@ -86,6 +92,7 @@ public class AdminVoucherFragment extends Fragment {
         textPickup=view.findViewById(R.id.text4);
         recyclerView=view.findViewById(R.id.voucher_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
+        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -96,6 +103,7 @@ public class AdminVoucherFragment extends Fragment {
         toggleButtonEvent("");
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,5));
+        getAnimation();
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,6 +163,52 @@ public class AdminVoucherFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(){
+        Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
+        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
+        Animation allAnim= AnimationUtils.loadAnimation(btnAll.getContext(), android.R.anim.slide_in_left);
+        Animation deliveryAnim= AnimationUtils.loadAnimation(btnDelivery.getContext(), android.R.anim.slide_in_left);
+        Animation instoreAnim= AnimationUtils.loadAnimation(btnInstore.getContext(), android.R.anim.slide_in_left);
+        Animation pickupAnim= AnimationUtils.loadAnimation(btnPickup.getContext(), android.R.anim.slide_in_left);
+        Animation recycleViewAnim= AnimationUtils.loadAnimation(recyclerView.getContext(), android.R.anim.fade_in);
+        search_bar.startAnimation(searchAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                sortIcon.startAnimation(sortIconAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnAll.startAnimation(allAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnDelivery.startAnimation(deliveryAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnInstore.startAnimation(instoreAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnPickup.startAnimation(pickupAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.startAnimation(recycleViewAnim);
+            }
+        },delay*3);
     }
     public void showInsertPopup() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

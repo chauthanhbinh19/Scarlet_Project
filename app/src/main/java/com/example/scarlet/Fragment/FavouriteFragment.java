@@ -3,10 +3,13 @@ package com.example.scarlet.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,10 +44,14 @@ public class FavouriteFragment extends Fragment {
     private List<Product> productList;
     RecyclerView recyclerView;
     RelativeLayout signinNotification,recycleBox;
+    TextView favourite_text;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.product_recyclerView);
         signinNotification=view.findViewById(R.id.signInNotification);
         recycleBox=view.findViewById(R.id.recycleBox);
+        favourite_text=view.findViewById(R.id.favourite_text);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,11 +61,16 @@ public class FavouriteFragment extends Fragment {
 
         BindView(view);
         checkSignInStatus();
+        getAnimation(view);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 
         validateUser(view,recyclerView);
         return view;
+    }
+    private void getAnimation(View view){
+        Animation favouriteTextAnim= AnimationUtils.loadAnimation(favourite_text.getContext(), android.R.anim.fade_in);
+        favourite_text.startAnimation(favouriteTextAnim);
     }
     private void checkSignInStatus(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

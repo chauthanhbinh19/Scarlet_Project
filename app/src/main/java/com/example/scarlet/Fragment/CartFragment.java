@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -41,17 +44,20 @@ public class CartFragment extends Fragment {
     private CartAdapter productAdapter;
     private RecyclerView recyclerView;
     private View view;
-    TextView totalView;
+    TextView totalView, cart_text;
     Button purchase;
     private double total=0;
     GetStringCallback getStringCallback;
     RelativeLayout signinNotification,item_product;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.product_recyclerView);
         purchase=view.findViewById(R.id.purchase);
         totalView=view.findViewById(R.id.total);
         signinNotification=view.findViewById(R.id.signInNotification);
         item_product=view.findViewById(R.id.item_product);
+        cart_text=view.findViewById(R.id.cart_text);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,6 +66,7 @@ public class CartFragment extends Fragment {
 
         BindView(view);
         checkSignInStatus();
+        getAnimation(view);
         productList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
@@ -91,6 +98,10 @@ public class CartFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(View view){
+        Animation cartTextAnim= AnimationUtils.loadAnimation(cart_text.getContext(), android.R.anim.fade_in);
+        cart_text.startAnimation(cartTextAnim);
     }
     private void checkSignInStatus(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
