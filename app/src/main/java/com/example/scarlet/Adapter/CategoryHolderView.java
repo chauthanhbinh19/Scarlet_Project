@@ -39,6 +39,7 @@ public class CategoryHolderView extends RecyclerView.ViewHolder {
 
                     FragmentManager fragmentManager = ((AppCompatActivity)itemView.getContext()).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
                     fragmentTransaction.replace(R.id.frame_layout, productFragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();

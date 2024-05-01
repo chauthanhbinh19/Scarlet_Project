@@ -77,6 +77,7 @@ public class ProductFragment extends Fragment {
         HomeFragment homeFragment=new HomeFragment();
         FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         fragmentTransaction.replace(R.id.frame_layout,homeFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

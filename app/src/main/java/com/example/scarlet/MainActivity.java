@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         HomeFragment HomeFragment=new HomeFragment();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.frame_layout,HomeFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         FavouriteFragment favouriteFragment=new FavouriteFragment();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.frame_layout,favouriteFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         CartFragment cartFragment=new CartFragment();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.frame_layout,cartFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -104,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         DealsFragment dealsFragment=new DealsFragment();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.frame_layout,dealsFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         AccountFragment accountFragment=new AccountFragment();
         FragmentManager fragmentManager=getSupportFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
         fragmentTransaction.replace(R.id.frame_layout,accountFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
