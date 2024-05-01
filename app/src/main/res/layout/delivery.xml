@@ -16,6 +16,7 @@
 		<RelativeLayout android:id="@+id/back_btn"
 			android:layout_marginTop="22dp"
 			android:layout_marginStart="25dp"
+			android:layout_centerVertical="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			>
@@ -24,8 +25,8 @@
 				android:background="@drawable/btn_burgundy"
 				android:layout_marginStart="0dp"
 				android:layout_marginTop="0dp"
-				android:layout_width="45dp"
-				android:layout_height="40dp" />
+				android:layout_width="40dp"
+				android:layout_height="35dp" />
 
 
 			<ImageView android:id="@+id/vector"
@@ -41,13 +42,27 @@
 
 		</RelativeLayout>
 
+		<TextView android:id="@+id/information"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="center"
+			android:layout_centerHorizontal="true"
+			android:textSize="20sp"
+			android:textColor="@color/black"
+			android:layout_centerVertical="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Delivery"
+			/>
+
+	</RelativeLayout>
 		<RelativeLayout android:id="@+id/total_box"
-			android:layout_marginTop="20dp"
+			android:layout_marginTop="5dp"
 			android:paddingTop="5dp"
 			android:paddingBottom="0dp"
 			android:paddingLeft="20dp"
 			android:paddingRight="20dp"
-			android:layout_below="@+id/back_btn"
+			android:layout_below="@+id/top_bar"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 
@@ -75,94 +90,76 @@
 				android:textSize="16sp"
 				android:textColor="@color/burgundy"
 				android:textStyle="bold"/>
-			<ImageView
+			<ImageView android:id="@+id/line"
 				android:layout_width="match_parent"
 				android:layout_height="1dp"
-				android:layout_marginTop="15dp"
+				android:layout_marginTop="10dp"
 				android:layout_below="@+id/total"
 				android:background="@color/burgundy"/>
+
+			<TextView android:id="@+id/cart_ek1"
+				android:layout_gravity="center_horizontal|center"
+				android:layout_below="@+id/line"
+				android:gravity="center"
+				android:textSize="14sp"
+				android:textColor="@color/burgundy"
+				android:layout_marginLeft="0dp"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/cart_ek1_string"
+				/>
+
+			<TextView android:id="@+id/delivery_ek1"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:layout_below="@+id/line"
+				android:textSize="13sp"
+				android:textStyle="bold"
+				android:textColor="@color/burgundy"
+				android:layout_toRightOf="@+id/right_arrow_1"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/delivery_ek1_string"
+				/>
+
+			<TextView android:id="@+id/payment"
+				android:textStyle="bold"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:layout_below="@+id/line"
+				android:textSize="14sp"
+				android:textColor="@color/lightbrown"
+				android:layout_toRightOf="@+id/right_arrow_3"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/payment_string"
+				/>
+
+			<ImageView android:id="@+id/right_arrow_1"
+				android:src="@drawable/right_arrow_1"
+				android:layout_below="@+id/line"
+				android:layout_toRightOf="@+id/cart_ek1"
+				android:layout_marginTop="12dp"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_width="15dp"
+				android:layout_height="15dp" />
+
+			<ImageView android:id="@+id/right_arrow_3"
+				android:src="@drawable/right_arrow_2"
+				android:layout_below="@+id/line"
+				android:layout_toRightOf="@+id/delivery_ek1"
+				android:layout_marginTop="12dp"
+				android:layout_marginLeft="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_width="15dp"
+				android:layout_height="15dp" />
 		</RelativeLayout>
-
-		<TextView android:id="@+id/information"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:layout_centerHorizontal="true"
-			android:textSize="20sp"
-			android:textColor="@color/black"
-			android:layout_marginLeft="124dp"
-			android:layout_marginTop="28dp"
-			android:layout_width="113dp"
-			android:layout_height="33dp"
-			android:text="Information"
-			/>
-
-		<TextView android:id="@+id/cart_ek1"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:textSize="14sp"
-			android:textColor="@color/burgundy"
-			android:layout_marginLeft="20dp"
-			android:layout_marginTop="10dp"
-			android:layout_below="@+id/total_box"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/cart_ek1_string"
-			/>
-
-		<TextView android:id="@+id/delivery_ek1"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:textSize="13sp"
-			android:textStyle="bold"
-			android:textColor="@color/burgundy"
-			android:layout_toRightOf="@+id/right_arrow_1"
-			android:layout_marginTop="10dp"
-			android:layout_below="@+id/total_box"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/delivery_ek1_string"
-			/>
-
-		<TextView android:id="@+id/payment"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:textSize="14sp"
-			android:textColor="@color/lightbrown"
-			android:layout_toRightOf="@+id/right_arrow_3"
-			android:layout_marginTop="10dp"
-			android:layout_below="@+id/total_box"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/payment_string"
-			/>
-
-		<ImageView android:id="@+id/right_arrow_1"
-			android:src="@drawable/right_arrow_1"
-			android:contentDescription="right_arrow_1"
-			android:layout_toRightOf="@+id/cart_ek1"
-			android:layout_marginTop="12dp"
-			android:layout_below="@+id/total_box"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:layout_width="15dp"
-			android:layout_height="15dp" />
-
-		<ImageView android:id="@+id/right_arrow_3"
-			android:src="@drawable/right_arrow_2"
-			android:contentDescription="right_arrow_2"
-			android:layout_toRightOf="@+id/delivery_ek1"
-			android:layout_marginTop="12dp"
-			android:layout_marginLeft="5dp"
-			android:layout_marginRight="5dp"
-			android:layout_below="@+id/total_box"
-			android:layout_width="15dp"
-			android:layout_height="15dp" />
-
-	</RelativeLayout>
 	<RelativeLayout android:id="@+id/delivery"
-		android:layout_below="@+id/top_bar"
+		android:layout_below="@+id/total_box"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" >
 

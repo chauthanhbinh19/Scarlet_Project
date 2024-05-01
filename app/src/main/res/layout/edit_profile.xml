@@ -11,47 +11,59 @@
 			android:layout_width="match_parent"
 			android:layout_height="match_parent" >
 
-			<TextView android:id="@+id/edit_title"
-						android:textStyle="bold"
-						android:layout_gravity="center_horizontal|center"
-						android:gravity="center"
-						android:textSize="20sp"
-						android:textColor="@color/black"
+			<RelativeLayout android:id="@+id/top_bar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				android:paddingBottom="10dp"
+				android:background="@color/white"
+				>
+				<RelativeLayout android:id="@+id/back_btn"
+					android:layout_marginTop="22dp"
+					android:layout_marginStart="25dp"
+					android:layout_centerVertical="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					>
+
+
+					<View   android:id="@+id/rectangle_3"
+						android:background="@drawable/btn_burgundy"
+						android:layout_marginStart="0dp"
+						android:layout_marginTop="0dp"
+						android:layout_width="40dp"
+						android:layout_height="35dp" />
+
+
+					<ImageView android:id="@+id/vector"
+						android:src="@drawable/vector"
+						android:contentDescription="vector"
 						android:layout_centerHorizontal="true"
-						android:layout_marginTop="32dp"
-						android:layout_width="239dp"
-						android:layout_height="33dp"
-						android:text="Edit profile"
-						 />
-
-
-			<RelativeLayout android:id="@+id/back_btn"
-						android:layout_marginTop="22dp"
-						android:layout_marginStart="25dp"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						>
-
-
-						<View   android:id="@+id/rectangle_3"
-							android:background="@drawable/btn_burgundy"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="45dp"
-							android:layout_height="40dp" />
-
-
-						<ImageView android:id="@+id/vector"
-							android:src="@drawable/vector"
-							android:contentDescription="vector"
-							android:layout_centerHorizontal="true"
-							android:layout_centerVertical="true"
-							android:layout_width="15dp"
-							android:layout_height="15dp" />
+						android:layout_centerVertical="true"
+						android:layout_width="15dp"
+						android:layout_height="15dp" />
 
 
 
-					</RelativeLayout>
+				</RelativeLayout>
+
+
+				<TextView android:id="@+id/profile_1"
+					android:textStyle="bold"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					android:textSize="20sp"
+					android:textColor="@color/black"
+					android:layout_centerVertical="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Edit profile"
+					/>
+
+			</RelativeLayout>
 			<TextView android:id="@+id/general_information"
 				android:textStyle="bold"
 				android:textSize="18sp"
@@ -61,7 +73,7 @@
 				android:layout_marginBottom="10dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/edit_title"
+				android:layout_below="@id/top_bar"
 				android:text="@string/general_information_string"
 				/>
 

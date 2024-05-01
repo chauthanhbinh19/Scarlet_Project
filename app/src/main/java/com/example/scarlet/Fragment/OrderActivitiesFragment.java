@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -37,11 +40,13 @@ public class OrderActivitiesFragment extends Fragment {
     List<Order> orderList;
     OrderAdapter orderAdapter;
     int defaultStatus=1;
+    TextView order_activities_text;
     private void BindView(View view){
         btnHistory=view.findViewById(R.id.btnHistory);
         btnOngoing=view.findViewById(R.id.btnOngoing);
         back_btn=view.findViewById(R.id.back_btn);
         orderRecycleView=view.findViewById(R.id.order_activities_recyclerView);
+        order_activities_text=view.findViewById(R.id.order_activities_text);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +56,7 @@ public class OrderActivitiesFragment extends Fragment {
 
         BindView(view);
         getStatus();
+        getAnimation();
         orderRecycleView.setLayoutManager(new GridLayoutManager(getContext(),1));
         orderRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
         getOrderData("pending");
@@ -77,6 +83,10 @@ public class OrderActivitiesFragment extends Fragment {
             }
         });
         return view;
+    }
+    private void getAnimation(){
+        Animation order_activities_textAnim= AnimationUtils.loadAnimation(order_activities_text.getContext(), android.R.anim.fade_in);
+        order_activities_text.startAnimation(order_activities_textAnim);
     }
     private void getStatus(){
         switch (defaultStatus){

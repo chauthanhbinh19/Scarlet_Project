@@ -25,7 +25,7 @@
 				>
 
 
-				<TextView
+				<TextView android:id="@+id/logo"
 					android:layout_width="300dp"
 					android:layout_height="230dp"
 					android:background="@drawable/scartet_1"

@@ -15,6 +15,7 @@
 		<RelativeLayout android:id="@+id/back_btn"
 			android:layout_marginTop="22dp"
 			android:layout_marginStart="25dp"
+			android:layout_centerVertical="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			>
@@ -24,8 +25,8 @@
 				android:background="@drawable/btn_burgundy"
 				android:layout_marginStart="0dp"
 				android:layout_marginTop="0dp"
-				android:layout_width="45dp"
-				android:layout_height="40dp" />
+				android:layout_width="40dp"
+				android:layout_height="35dp" />
 
 
 			<ImageView android:id="@+id/vector"
@@ -47,10 +48,9 @@
 			android:layout_centerHorizontal="true"
 			android:textSize="20sp"
 			android:textColor="@color/black"
-			android:layout_marginLeft="110dp"
-			android:layout_marginTop="20dp"
-			android:layout_width="191dp"
-			android:layout_height="40dp"
+			android:layout_centerVertical="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
 			android:text="Order details"
 			/>
 

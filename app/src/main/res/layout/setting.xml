@@ -14,68 +14,57 @@
 			android:layout_height="wrap_content" >
 
 
-			<RelativeLayout android:id="@+id/group_1"
-				android:layout_width="wrap_content"
+			<RelativeLayout android:id="@+id/top_bar"
+				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintLeft_toLeftOf="parent"
+				app:layout_constraintRight_toRightOf="parent"
+				android:paddingBottom="10dp"
+				android:background="@color/white"
 				>
-
-
-				<RelativeLayout android:id="@+id/frame_2"
+				<RelativeLayout android:id="@+id/back_btn"
+					android:layout_marginTop="22dp"
+					android:layout_marginStart="25dp"
+					android:layout_centerVertical="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					>
 
-					<View
-						android:id="@+id/_bg__frame_2_ek1"
-						android:layout_width="410dp"
-						android:layout_height="99dp"
+
+					<View   android:id="@+id/rectangle_3"
+						android:background="@drawable/btn_burgundy"
 						android:layout_marginStart="0dp"
 						android:layout_marginTop="0dp"
-						android:background="@drawable/_bg__white" />
+						android:layout_width="40dp"
+						android:layout_height="35dp" />
 
-					<TextView android:id="@+id/settings_1"
-						android:textStyle="bold"
-						android:layout_gravity="center_horizontal|center"
-						android:gravity="center"
+
+					<ImageView android:id="@+id/vector"
+						android:src="@drawable/vector"
+						android:contentDescription="vector"
 						android:layout_centerHorizontal="true"
-						android:textSize="20sp"
-						android:textColor="@color/black"
-						android:layout_marginLeft="100dp"
-						android:layout_marginTop="30dp"
-						android:layout_width="191dp"
-						android:layout_height="33dp"
-						android:text="@string/settings_string"
-						 />
-
-					<RelativeLayout android:id="@+id/back_btn"
-						android:layout_marginTop="22dp"
-						android:layout_marginStart="25dp"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						>
+						android:layout_centerVertical="true"
+						android:layout_width="15dp"
+						android:layout_height="15dp" />
 
 
-						<View   android:id="@+id/rectangle_3"
-							android:background="@drawable/btn_burgundy"
-							android:layout_marginStart="0dp"
-							android:layout_marginTop="0dp"
-							android:layout_width="45dp"
-							android:layout_height="40dp" />
-
-
-						<ImageView android:id="@+id/vector"
-							android:src="@drawable/vector"
-							android:contentDescription="vector"
-							android:layout_centerHorizontal="true"
-							android:layout_centerVertical="true"
-							android:layout_width="15dp"
-							android:layout_height="15dp" />
-
-
-
-					</RelativeLayout>
 
 				</RelativeLayout>
+
+
+				<TextView android:id="@+id/settings_1"
+					android:textStyle="bold"
+					android:layout_gravity="center_horizontal|center"
+					android:gravity="center"
+					android:layout_centerHorizontal="true"
+					android:textSize="20sp"
+					android:textColor="@color/black"
+					android:layout_centerVertical="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/settings_string"
+					/>
 
 			</RelativeLayout>
 
@@ -84,8 +73,8 @@
 				android:textSize="16sp"
 				android:textColor="@color/_bg__group_1_ek1_color"
 				android:layout_marginLeft="24dp"
-				android:layout_marginTop="120dp"
-				android:layout_width="157.6dp"
+				android:layout_marginTop="80dp"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/setup_account_string"
 				 />
@@ -95,19 +84,21 @@
 				android:textSize="16sp"
 				android:textColor="@color/black"
 				android:layout_marginLeft="24dp"
-				android:layout_marginTop="221dp"
-				android:layout_width="157.6dp"
+				android:layout_marginTop="10dp"
+				android:layout_below="@+id/delete"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/security_string"
 				 />
 
 
-			<RelativeLayout android:id="@+id/group_35"
-				android:layout_marginTop="160dp"
+			<RelativeLayout android:id="@+id/delete"
+				android:layout_marginTop="10dp"
 				android:layout_marginStart="20dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginEnd="20dp"
+				android:layout_below="@+id/setup_account"
 				android:background="@drawable/rectangle_lightpink"
 				>
 
@@ -116,7 +107,7 @@
 					android:textColor="@color/burgundy"
 					android:layout_marginLeft="48dp"
 					android:layout_marginTop="2dp"
-					android:layout_width="226.6dp"
+					android:layout_width="wrap_content"
 					android:layout_height="42.6dp"
 					android:text="@string/delete_account_string"
 					android:layout_centerVertical="true"
@@ -135,11 +126,11 @@
 
 			</RelativeLayout>
 
-			<RelativeLayout android:id="@+id/group_36"
-				android:layout_marginTop="50dp"
-				android:layout_marginStart="20dp"
+			<RelativeLayout android:id="@+id/change"
+				android:layout_marginTop="10dp"
+				android:layout_marginStart="10dp"
 				android:layout_marginEnd="20dp"
-				android:layout_below="@+id/group_35"
+				android:layout_below="@+id/security"
 				android:background="@drawable/rectangle_lightpink"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

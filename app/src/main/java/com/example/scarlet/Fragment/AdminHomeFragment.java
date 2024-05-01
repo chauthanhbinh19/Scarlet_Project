@@ -5,9 +5,13 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -68,9 +72,13 @@ public class AdminHomeFragment extends Fragment {
     LineChart lineChart;
     ArrayList<Entry> lineEntries;
     Uri uri;
+    RelativeLayout avatarBox, box1, box2, box3, box4;
     TextView categoryNumber1, categoryNumber2, categoryNumber3, categoryNumber4,
             categoryName1, categoryName2, categoryName3, categoryName4,
-            categoryPercentage1, categoryPercentage2, categoryPercentage3, categoryPercentage4;
+            categoryPercentage1, categoryPercentage2, categoryPercentage3, categoryPercentage4,
+            chartTitle, topTitle;
+    final Handler handler = new Handler();
+    int delay=100;
     private void BindView(View view){
         categoryNumber1=view.findViewById(R.id.categoryNumber1);
         categoryNumber2=view.findViewById(R.id.categoryNumber2);
@@ -84,6 +92,14 @@ public class AdminHomeFragment extends Fragment {
         categoryPercentage2=view.findViewById(R.id.categoryPercentage2);
         categoryPercentage3=view.findViewById(R.id.categoryPercentage3);
         categoryPercentage4=view.findViewById(R.id.categoryPercentage4);
+        lineChart=view.findViewById(R.id.lineChart);
+        avatarBox=view.findViewById(R.id.avatarBox);
+        chartTitle=view.findViewById(R.id.chartTitle);
+        topTitle=view.findViewById(R.id.topTitle);
+        box1=view.findViewById(R.id.box1);
+        box2=view.findViewById(R.id.box2);
+        box3=view.findViewById(R.id.box3);
+        box4=view.findViewById(R.id.box4);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -101,10 +117,68 @@ public class AdminHomeFragment extends Fragment {
 //            }
 //        });
         getChartData(view, 2023);
+        getAnimation();
         return view;
     }
+    private void getAnimation(){
+        Animation avatarBoxAnim= AnimationUtils.loadAnimation(avatarBox.getContext(), android.R.anim.slide_in_left);
+        Animation chartAnim= AnimationUtils.loadAnimation(chartTitle.getContext(), android.R.anim.slide_in_left);
+        Animation lineChartAnim= AnimationUtils.loadAnimation(lineChart.getContext(), android.R.anim.slide_in_left);
+        Animation topTitleAnim= AnimationUtils.loadAnimation(topTitle.getContext(), android.R.anim.slide_in_left);
+        Animation box1Anim= AnimationUtils.loadAnimation(box1.getContext(), android.R.anim.slide_in_left);
+        Animation box2Anim= AnimationUtils.loadAnimation(box2.getContext(), android.R.anim.slide_in_left);
+        Animation box3Anim= AnimationUtils.loadAnimation(box3.getContext(), android.R.anim.slide_in_left);
+        Animation box4Anim= AnimationUtils.loadAnimation(box4.getContext(), android.R.anim.slide_in_left);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                avatarBox.startAnimation(avatarBoxAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                chartTitle.startAnimation(chartAnim);
+            }
+        },delay*1);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                lineChart.startAnimation(lineChartAnim);
+            }
+        },delay*2);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                topTitle.startAnimation(topTitleAnim);
+            }
+        },delay*3);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                box1.startAnimation(box1Anim);
+            }
+        },delay*4);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                box2.startAnimation(box2Anim);
+            }
+        },delay*5);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                box3.startAnimation(box3Anim);
+            }
+        },delay*6);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                box4.startAnimation(box4Anim);
+            }
+        },delay*7);
+    }
     private void getChartData(View view,int yearString){
-        lineChart=view.findViewById(R.id.lineChart);
         lineEntries=new ArrayList<>();
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         DatabaseReference categoryRef=firebaseDatabase.getReference("category");

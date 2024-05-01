@@ -3,108 +3,75 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<RelativeLayout android:id="@+id/hi_bar"
+	<RelativeLayout android:id="@+id/top_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
-		android:paddingTop="5dp"
-		android:background="@color/white">
-		<TextView
-			android:layout_width="160dp"
+		app:layout_constraintRight_toRightOf="parent"
+		android:paddingBottom="10dp"
+		android:background="@color/white"
+		>
+		<RelativeLayout android:id="@+id/back_btn"
+			android:layout_marginTop="22dp"
+			android:layout_marginStart="25dp"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:id="@+id/welcome_message"
+			>
+
+
+			<View   android:id="@+id/rectangle_3"
+				android:background="@drawable/btn_burgundy"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:layout_width="40dp"
+				android:layout_height="35dp" />
+
+
+			<ImageView android:id="@+id/vector1"
+				android:src="@drawable/vector"
+				android:contentDescription="vector"
+				android:layout_centerHorizontal="true"
+				android:layout_centerVertical="true"
+				android:layout_width="15dp"
+				android:layout_height="15dp" />
+
+
+
+		</RelativeLayout>
+
+
+		<TextView android:id="@+id/category_text"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="center"
+			android:layout_centerHorizontal="true"
+			android:textSize="20sp"
+			android:textColor="@color/black"
+			android:layout_marginLeft="110dp"
 			android:layout_marginTop="20dp"
-			android:layout_marginStart="80dp"
-			android:textSize="18sp"
-			android:text="Hi, User!"
-			android:singleLine="true"
-			android:layout_centerVertical="true"/>
-
-		<ImageView
-			android:layout_width="35dp"
-			android:layout_height="35dp"
-			android:src="@drawable/rollcake"
-			android:layout_marginStart="20dp"
-			android:layout_centerVertical="true"
+			android:layout_width="191dp"
+			android:layout_height="40dp"
+			android:text=""
 			/>
-		<RelativeLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toLeftOf="@id/notification"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="7dp">
-
-			<ImageView
-				android:layout_width="70dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:background="@drawable/rectangle_circle_white"
-				/>
-
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:layout_centerVertical="true"
-				android:layout_marginLeft="10dp"
-				android:src="@drawable/coupon"
-				/>
-
-			<TextView
-				android:layout_width="25dp"
-				android:layout_height="25dp"
-				android:layout_centerVertical="true"
-				android:layout_marginLeft="40dp"
-				android:gravity="center_horizontal"
-				android:text="1"
-				android:textStyle="bold"
-				android:textSize="18sp"
-				android:textColor="@color/burgundy"
-				/>
-		</RelativeLayout>
-		<RelativeLayout android:id="@+id/notification"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"
-			android:layout_marginRight="20dp"
-			android:layout_marginTop="7dp">
-
-			<ImageView
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:background="@drawable/rectangle_circle_white"
-				/>
-
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:src="@drawable/notification"
-				/>
-		</RelativeLayout>
 
 	</RelativeLayout>
 	<RelativeLayout android:id="@+id/search_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		app:layout_constraintTop_toBottomOf="@+id/hi_bar"
+		app:layout_constraintTop_toBottomOf="@+id/top_bar"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
 		android:gravity="center_horizontal"
-		android:paddingTop="10dp"
-		android:paddingBottom="10dp"
+		android:paddingTop="5dp"
+		android:paddingBottom="5dp"
 		android:background="@color/white"
 		>
 		<View
 			android:id="@+id/rectangle_1"
 			android:layout_width="370dp"
 			android:layout_height="50dp"
-			android:background="@drawable/rectangle_lightpink" />
+			android:background="@drawable/rectangle_lightpink_radius" />
 
 		<ImageView android:id="@+id/vector"
 			android:src="@drawable/search"
@@ -147,24 +114,15 @@
 				android:layout_height="wrap_content"
 				android:layout_marginLeft="20dp"
 				android:layout_marginRight="20dp"
-				android:layout_marginBottom="0dp"
+				android:layout_marginBottom="5dp"
 				android:orientation="horizontal"/>
-		<TextView
-			android:layout_below="@id/category_recyclerView"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/category_text"
-			android:textStyle="bold"
-			android:textSize="20dp"
-			android:layout_marginBottom="5dp"
-			android:layout_marginLeft="20dp"
-			android:text="Drinks"/>
+
 		<ScrollView
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:paddingBottom="50dp"
 			android:layout_marginBottom="130dp"
-			android:layout_below="@id/category_text">
+			android:layout_below="@id/category_recyclerView">
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/product_recyclerView_1"
 				android:layout_width="wrap_content"

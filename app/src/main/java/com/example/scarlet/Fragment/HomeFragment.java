@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,13 +49,17 @@ public class HomeFragment extends Fragment {
     private List<Product> productList;
     RelativeLayout search;
     RecyclerView categoryRecyclerView,trendRecyclerView, ProductRecyclerView;
-    TextView welcomeMessage;
+    TextView welcomeMessage, menu, trends;
+    final Handler handler = new Handler();
+    int delay=150;
     private void BindView(View view){
         search=view.findViewById(R.id.search_bar);
         welcomeMessage=view.findViewById(R.id.welcome_message);
         categoryRecyclerView= view.findViewById(R.id.category_recyclerView);
         trendRecyclerView=view.findViewById(R.id.trend_recyclerView);
         ProductRecyclerView=view.findViewById(R.id.product_recyclerView);
+        menu=view.findViewById(R.id.menu);
+        trends=view.findViewById(R.id.trends);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,6 +69,7 @@ public class HomeFragment extends Fragment {
         validateUser(view);
         getCategoryData(view);
         getTrendData(view);
+        getAnimation();
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +79,36 @@ public class HomeFragment extends Fragment {
         });
 //        getProductData(view);
         return view;
+    }
+    private void getAnimation(){
+        Animation menuAnim= AnimationUtils.loadAnimation(menu.getContext(),android.R.anim.fade_in);
+        Animation trendsAnim= AnimationUtils.loadAnimation(trends.getContext(),android.R.anim.fade_in);
+        Animation categoryRecyclerViewAnim= AnimationUtils.loadAnimation(categoryRecyclerView.getContext(),android.R.anim.slide_in_left);
+        Animation trendRecyclerViewAnim= AnimationUtils.loadAnimation(trendRecyclerView.getContext(),android.R.anim.slide_in_left);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                menu.startAnimation(menuAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                categoryRecyclerView.startAnimation(categoryRecyclerViewAnim);
+            }
+        },delay*1);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                trends.startAnimation(trendsAnim);
+            }
+        },delay*2);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                trendRecyclerView.startAnimation(trendRecyclerViewAnim);
+            }
+        },delay*3);
     }
     private void validateUser(View view){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

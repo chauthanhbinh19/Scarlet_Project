@@ -4,39 +4,19 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<RelativeLayout android:id="@+id/frame_3"
-		android:layout_marginStart="0dp"
+	<RelativeLayout android:id="@+id/top_bar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:paddingBottom="10dp"
+		android:background="@color/white"
 		>
-
-		<View
-			android:id="@+id/_bg__frame_3_ek1"
-			android:layout_width="412dp"
-			android:layout_height="101dp"
-			android:layout_marginStart="0dp"
-			android:layout_marginTop="0dp"
-			android:background="@drawable/_bg__white" />
-
-		<TextView android:id="@+id/uit"
-			android:textStyle="bold"
-			android:textSize="18sp"
-			android:textColor="@color/_bg__frame_3_ek1_color"
-			android:layout_marginTop="27dp"
-			android:layout_centerHorizontal="true"
-			android:gravity="center_horizontal"
-			android:layout_width="121.8dp"
-			android:layout_height="32.8dp"
-			android:text="@string/product_detail"
-			/>
-
-
 		<RelativeLayout android:id="@+id/back_btn"
 			android:layout_marginTop="22dp"
 			android:layout_marginStart="25dp"
+			android:layout_centerVertical="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			>
@@ -46,12 +26,13 @@
 				android:background="@drawable/btn_burgundy"
 				android:layout_marginStart="0dp"
 				android:layout_marginTop="0dp"
-				android:layout_width="45dp"
-				android:layout_height="40dp" />
+				android:layout_width="40dp"
+				android:layout_height="35dp" />
 
 
-			<ImageView android:id="@+id/vector1"
+			<ImageView android:id="@+id/vector"
 				android:src="@drawable/vector"
+				android:contentDescription="vector"
 				android:layout_centerHorizontal="true"
 				android:layout_centerVertical="true"
 				android:layout_width="15dp"
@@ -61,16 +42,31 @@
 
 		</RelativeLayout>
 
+
+		<TextView android:id="@+id/profile_1"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="center"
+			android:layout_centerHorizontal="true"
+			android:textSize="20sp"
+			android:layout_centerVertical="true"
+			android:textColor="@color/black"
+			android:layout_marginTop="26dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/product_detail"
+			/>
+
 	</RelativeLayout>
 	<ScrollView android:id="@+id/product_details"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@color/white"
-		android:layout_marginTop="-20dp"
+		android:layout_marginTop="0dp"
 		android:paddingBottom="50dp"
 		app:layout_constraintRight_toRightOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/frame_3"
+		app:layout_constraintTop_toBottomOf="@+id/top_bar"
 		>
 
 		<RelativeLayout android:id="@+id/content_container"

@@ -44,7 +44,7 @@ public class CartFragment extends Fragment {
     private CartAdapter productAdapter;
     private RecyclerView recyclerView;
     private View view;
-    TextView totalView, cart_text;
+    TextView totalView, cart_text, totalText;
     Button purchase;
     private double total=0;
     GetStringCallback getStringCallback;
@@ -58,6 +58,7 @@ public class CartFragment extends Fragment {
         signinNotification=view.findViewById(R.id.signInNotification);
         item_product=view.findViewById(R.id.item_product);
         cart_text=view.findViewById(R.id.cart_text);
+        totalText=view.findViewById(R.id.totalText);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -101,7 +102,28 @@ public class CartFragment extends Fragment {
     }
     private void getAnimation(View view){
         Animation cartTextAnim= AnimationUtils.loadAnimation(cart_text.getContext(), android.R.anim.fade_in);
+        Animation totalTextAnim= AnimationUtils.loadAnimation(totalText.getContext(), android.R.anim.slide_in_left);
+        Animation totalAnim= AnimationUtils.loadAnimation(totalView.getContext(), android.R.anim.slide_in_left);
+        Animation purchaseAnim= AnimationUtils.loadAnimation(purchase.getContext(), android.R.anim.slide_in_left);
         cart_text.startAnimation(cartTextAnim);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                totalText.startAnimation(totalTextAnim);
+            }
+        },delay);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                totalView.startAnimation(totalAnim);
+            }
+        },delay);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                purchase.startAnimation(purchaseAnim);
+            }
+        },delay);
     }
     private void checkSignInStatus(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

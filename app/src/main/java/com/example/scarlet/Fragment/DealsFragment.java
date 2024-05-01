@@ -42,11 +42,11 @@ public class DealsFragment extends Fragment {
     private DealAdapter dealAdapter;
     private List<Deal> dealList;
     RecyclerView recyclerView;
-    RelativeLayout memberShip,exchangePoint,pointHistory,yourRights;
+    RelativeLayout memberShip,exchangePoint,pointHistory,yourRights, voucher_box;
     TextView more;
     TextView deal_text;
     final Handler handler = new Handler();
-    int delay=150;
+    int delay=100;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.voucher_recyclerView);
         memberShip=view.findViewById(R.id.voucher_feature_1);
@@ -55,6 +55,7 @@ public class DealsFragment extends Fragment {
         yourRights=view.findViewById(R.id.voucher_feature_4);
         more=view.findViewById(R.id.voucher_more);
         deal_text=view.findViewById(R.id.deal_text);
+        voucher_box=view.findViewById(R.id.voucher_box);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,7 +107,47 @@ public class DealsFragment extends Fragment {
     }
     private void getAnimation(View view){
         Animation dealTextAnim= AnimationUtils.loadAnimation(deal_text.getContext(), android.R.anim.fade_in);
-        deal_text.startAnimation(dealTextAnim);
+        Animation voucherBoxAnim=AnimationUtils.loadAnimation(voucher_box.getContext(), android.R.anim.slide_in_left);
+        Animation memberShipAnim=AnimationUtils.loadAnimation(memberShip.getContext(), android.R.anim.slide_in_left);
+        Animation exchangePointAnim=AnimationUtils.loadAnimation(exchangePoint.getContext(), android.R.anim.slide_in_left);
+        Animation pointHistoryAnim=AnimationUtils.loadAnimation(pointHistory.getContext(), android.R.anim.slide_in_left);
+        Animation yourRightsAnim=AnimationUtils.loadAnimation(yourRights.getContext(), android.R.anim.slide_in_left);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                voucher_box.startAnimation(voucherBoxAnim);
+            }
+        },delay*0);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                memberShip.startAnimation(memberShipAnim);
+            }
+        },delay);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                exchangePoint.startAnimation(exchangePointAnim);
+            }
+        },delay*2);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                pointHistory.startAnimation(pointHistoryAnim);
+            }
+        },delay*3);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                yourRights.startAnimation(yourRightsAnim);
+            }
+        },delay*4);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                deal_text.startAnimation(dealTextAnim);
+            }
+        },delay*2);
     }
     private void getDealsData(RecyclerView recyclerView){
         dealList=new ArrayList<>();

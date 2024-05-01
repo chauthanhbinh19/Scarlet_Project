@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +39,7 @@ public class ProductFragment extends Fragment {
     private ProductAdapter productAdapter;
     private List<Category> categoryList;
     private List<Product> productList;
+    RelativeLayout back_btn;
     RelativeLayout search;
     TextView category_text;
     RecyclerView categoryRecyclerView, productRecyclerView;
@@ -45,6 +48,7 @@ public class ProductFragment extends Fragment {
         categoryRecyclerView= view.findViewById(R.id.category_recyclerView);
         productRecyclerView= view.findViewById(R.id.product_recyclerView_1);
         category_text=view.findViewById(R.id.category_text);
+        back_btn=view.findViewById(R.id.back_btn);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,7 +65,21 @@ public class ProductFragment extends Fragment {
         });
         getCategoryData(view);
         getProductData(view);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHomeFragment();
+            }
+        });
         return view;
+    }
+    private void openHomeFragment(){
+        HomeFragment homeFragment=new HomeFragment();
+        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame_layout,homeFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
     private void getCategoryData(View view){
         categoryList=new ArrayList<>();
