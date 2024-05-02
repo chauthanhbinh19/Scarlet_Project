@@ -19,6 +19,8 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.scarlet.EditProfileActivity;
 import com.example.scarlet.R;
@@ -65,7 +67,14 @@ public class ProfileFragment extends Fragment {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getParentFragmentManager().popBackStack();
+//                getParentFragmentManager().popBackStack();
+                AccountFragment accountFragment=new AccountFragment();
+                FragmentManager fragmentManager=getParentFragmentManager();
+                FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right);
+                fragmentTransaction.replace(R.id.frame_layout,accountFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
             }
         });
         edit_btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +82,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), EditProfileActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         return view;

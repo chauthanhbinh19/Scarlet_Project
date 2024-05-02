@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -76,10 +77,12 @@ public class AdminMainActivity extends AppCompatActivity {
                     drawer.closeDrawer(GravityCompat.START);
                     Intent intent=new Intent(AdminMainActivity.this, MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                     return true;
                 }else if(id==R.id.nav_back){
                     Intent intent=new Intent(AdminMainActivity.this, MainActivity.class);
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }else{
                     navigateToDestination(id);
                 }
@@ -90,8 +93,12 @@ public class AdminMainActivity extends AppCompatActivity {
 
     }
     private void navigateToDestination(int id) {
+        NavOptions navOptions=new NavOptions.Builder()
+                .setEnterAnim(R.anim.slide_in_right)
+                .setExitAnim(R.anim.slide_out_left)
+                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        navController.navigate(id);
+        navController.navigate(id, null,navOptions);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -179,6 +179,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
     }
@@ -456,6 +457,7 @@ public class PaymentActivity extends AppCompatActivity {
 
                                 Intent intent=new Intent(PaymentActivity.this, OrderNotificationActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                             }
                         }
                     }

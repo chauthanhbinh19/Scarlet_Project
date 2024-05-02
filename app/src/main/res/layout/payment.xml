@@ -240,7 +240,7 @@
 						android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"
 						android:layout_marginTop="4dp"
 						android:textColor="@color/black"
-						android:textSize="16sp" />
+						android:textSize="14sp" />
 
 					<Button
 						android:layout_width="wrap_content"
@@ -254,11 +254,64 @@
 						android:background="@color/transparent"/>
 				</RelativeLayout>
 
+				<TextView android:id="@+id/voucher_text"
+					android:textStyle="bold"
+					android:textSize="16sp"
+					android:textColor="@color/black"
+					android:layout_below="@+id/delivery_box"
+					android:layout_marginLeft="23dp"
+					android:layout_marginTop="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Voucher"
+					/>
+
+				<RelativeLayout android:id="@+id/voucher_box"
+					android:layout_below="@+id/voucher_text"
+					android:layout_marginRight="20dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginBottom="5dp"
+					android:layout_marginTop="5dp"
+					android:padding="10dp"
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+
+					<TextView android:id="@+id/voucher_title"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:text="Choose your voucher"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/black"
+						android:textSize="16sp" />
+
+					<TextView android:id="@+id/voucher_des"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_below="@+id/voucher_title"
+						android:text="You can only select 1 voucher for 1 order"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/black"
+						android:textSize="14sp" />
+
+					<Button
+						android:layout_width="wrap_content"
+						android:layout_height="30dp"
+						android:text="Get voucher"
+						android:textColor="@color/burgundy"
+						android:textSize="14sp"
+						android:theme="@style/MyButtonTheme"
+						android:layout_marginTop="0dp"
+						android:layout_alignParentRight="true"
+						android:background="@color/transparent"/>
+				</RelativeLayout>
+
 				<TextView android:id="@+id/delivery_fee_text"
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_below="@id/delivery_box"
+					android:layout_below="@id/voucher_box"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="15dp"
 					android:layout_width="wrap_content"

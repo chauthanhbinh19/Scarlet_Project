@@ -266,15 +266,18 @@ public class AccountFragment extends Fragment {
     private void openFeedbackActivity(){
         Intent intent=new Intent(getContext(), FeedbackActivity.class);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     private void openLoyaltyActivity(){
         Intent intent=new Intent(getContext(), LoyaltyActivity.class);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     private void openProfileFragment(){
         ProfileFragment profileFragment=new ProfileFragment();
         FragmentManager fragmentManager=getParentFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         fragmentTransaction.replace(R.id.frame_layout,profileFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -283,6 +286,7 @@ public class AccountFragment extends Fragment {
         SettingFragment settingFragment=new SettingFragment();
         FragmentManager fragmentManager=getParentFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         fragmentTransaction.replace(R.id.frame_layout,settingFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -290,11 +294,13 @@ public class AccountFragment extends Fragment {
     private void openPoliciesActivity(){
         Intent intent=new Intent(getContext(), PoliciesActivity.class);
         startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
     private void openAppVersionFragment(){
         AppVersionFragment appVersionFragment=new AppVersionFragment();
         FragmentManager fragmentManager=getParentFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         fragmentTransaction.replace(R.id.frame_layout,appVersionFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
@@ -303,6 +309,7 @@ public class AccountFragment extends Fragment {
         OrderActivitiesFragment orderActivitiesFragment=new OrderActivitiesFragment();
         FragmentManager fragmentManager=getParentFragmentManager();
         FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
         fragmentTransaction.replace(R.id.frame_layout,orderActivitiesFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();

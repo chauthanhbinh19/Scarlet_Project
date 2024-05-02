@@ -73,6 +73,7 @@ public class DealsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), MemberShipActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         exchangePoint.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +81,7 @@ public class DealsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), ExchangePointActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         pointHistory.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +89,7 @@ public class DealsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), PointHistoryActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         yourRights.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +97,7 @@ public class DealsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), YourRightsActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         more.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +105,7 @@ public class DealsFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), VoucherActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         return view;

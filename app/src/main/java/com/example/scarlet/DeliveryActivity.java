@@ -87,6 +87,7 @@ public class DeliveryActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         pickup_radio_btn.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +138,7 @@ public class DeliveryActivity extends AppCompatActivity {
                     double total1 = Double.parseDouble(total);
                     intent.putExtra("total",String.format("%.0f", total1));
                     startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
             }
         });

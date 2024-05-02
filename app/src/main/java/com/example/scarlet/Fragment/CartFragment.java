@@ -96,6 +96,7 @@ public class CartFragment extends Fragment {
                 Intent intent=new Intent(getContext(), DeliveryActivity.class);
                 intent.putExtra("total",total);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         return view;
