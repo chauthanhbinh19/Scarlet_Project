@@ -128,28 +128,32 @@
                android:layout_weight="1"
                android:text="Choose product"/>
        </RadioGroup>
-        <ScrollView android:id="@+id/scrollProduct"
+        <RelativeLayout android:id="@+id/productBox"
             android:layout_below="@+id/product"
-            android:layout_centerHorizontal="true"
-            android:layout_marginRight="80dp"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="200dp">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/product_recyclerView"
-                android:padding="10dp"
+            android:layout_height="wrap_content">
+            <ScrollView android:id="@+id/scrollProduct"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="80dp"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </ScrollView>
+                android:layout_height="200dp">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/product_recyclerView"
+                    android:padding="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </ScrollView>
+        </RelativeLayout>
         <Button android:id="@+id/btnSave"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rectangle_burgundy_radius"
             android:textColor="@color/white"
             android:layout_marginRight="120dp"
-            android:layout_below="@+id/scrollProduct"
+            android:layout_below="@+id/productBox"
             android:textSize="18sp"
             android:text="Save"/>
     </RelativeLayout>

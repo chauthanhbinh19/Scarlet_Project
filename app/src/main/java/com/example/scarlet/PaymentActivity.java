@@ -1,5 +1,9 @@
 package com.example.scarlet;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,7 +62,7 @@ public class PaymentActivity extends AppCompatActivity {
 
     EditText txtAmount;
     RelativeLayout back_btn;
-    Button pay, c1Btn, c2Btn, c3Btn, c4Btn;
+    Button pay, c1Btn, c2Btn, c3Btn, c4Btn, voucherBtn;
     TextView totalView;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference myRef, cartRef,productRef, orderRef, addressRef;
@@ -81,6 +85,7 @@ public class PaymentActivity extends AppCompatActivity {
         c3Btn=findViewById(R.id.c3_btn);
         c4Btn=findViewById(R.id.c4_btn);
         productRecycleView=findViewById(R.id.totalProductRecycleView);
+        voucherBtn=findViewById(R.id.voucherBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +116,16 @@ public class PaymentActivity extends AppCompatActivity {
         int tip3=20*price/100;
         c3Btn.setText("20% \n " + String.valueOf(tip3) +"đ");
         getStatus();
+        voucherBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(PaymentActivity.this, SelectVoucherActivity.class);
+                intent1.putExtra("deliveryStatus",deliveryStatus);
+//                startActivity(intent1);
+                catcherForResult.launch(intent1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
         radioCash.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -183,6 +198,22 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
+    ActivityResultLauncher<Intent> catcherForResult=
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            if(result.getResultCode()==SelectVoucherActivity.RESULT_OK){
+                                Intent catcher=result.getData();
+                                if(catcher!=null){
+                                    List<String> voucherList=catcher.getExtras().getStringArrayList("voucherList");
+                                    if(voucherList!=null && voucherList.size()>0){
+                                        List<String> a=voucherList;
+                                    }
+                                }
+                            }
+                        }
+                    });
     private void getCartData(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);

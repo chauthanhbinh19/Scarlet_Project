@@ -184,6 +184,7 @@
 			android:layout_height="wrap_content"
 			android:text="Checkout"
 			android:layout_centerHorizontal="true"
+			android:theme="@style/MyButtonTheme"
 			android:layout_marginTop="10dp"
 			android:layout_below="@+id/total"
 			android:background="@drawable/rectangle_burgundy_radius"

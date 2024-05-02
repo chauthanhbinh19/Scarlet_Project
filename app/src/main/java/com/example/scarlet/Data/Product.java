@@ -12,6 +12,7 @@ public class Product {
     private String icon;
     private int quantity;
     private double total;
+    private boolean isChecked;
 
     public String getKey() {
         return key;
@@ -100,6 +101,14 @@ public class Product {
         this.total = total;
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
     public Product() {
     }
 
@@ -157,6 +166,7 @@ public class Product {
     public Product(String key, String name) {
         this.key = key;
         this.name = name;
+        this.isChecked=false;
     }
     public Product(String name, double price, String img) {
         this.name = name;

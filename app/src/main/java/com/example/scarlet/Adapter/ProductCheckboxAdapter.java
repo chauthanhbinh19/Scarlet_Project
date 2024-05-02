@@ -12,13 +12,13 @@ import com.example.scarlet.Interface.GetKeyCallback;
 import com.example.scarlet.Interface.GetStringCallback;
 import com.example.scarlet.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCheckboxAdapter extends RecyclerView.Adapter<ProductCheckboxHolderView> {
     List<Product> productList;
     public GetKeyCallback getKeyCallback;
     public ProductCheckboxAdapter(List<Product> productList, GetKeyCallback getKeyCallback){
-
         this.productList=productList;
         this.getKeyCallback=getKeyCallback;
     }
@@ -26,12 +26,14 @@ public class ProductCheckboxAdapter extends RecyclerView.Adapter<ProductCheckbox
     @Override
     public ProductCheckboxHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_checkbox_adapter_layout, parent, false);
-        return new ProductCheckboxHolderView(view);
+        return new ProductCheckboxHolderView(view).linkAdapter(this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductCheckboxHolderView holder, int position) {
-        holder.bindData(productList.get(position),getKeyCallback);
+        if(productList != null && productList.size()>0){
+            holder.bindData(productList.get(position),getKeyCallback);
+        }
     }
 
     @Override

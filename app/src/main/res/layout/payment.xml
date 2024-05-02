@@ -295,14 +295,14 @@
 						android:textColor="@color/black"
 						android:textSize="14sp" />
 
-					<Button
+					<Button android:id="@+id/voucherBtn"
 						android:layout_width="wrap_content"
 						android:layout_height="30dp"
 						android:text="Get voucher"
 						android:textColor="@color/burgundy"
 						android:textSize="14sp"
 						android:theme="@style/MyButtonTheme"
-						android:layout_marginTop="0dp"
+						android:layout_marginTop="2dp"
 						android:layout_alignParentRight="true"
 						android:background="@color/transparent"/>
 				</RelativeLayout>

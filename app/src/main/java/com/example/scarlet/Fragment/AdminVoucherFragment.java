@@ -580,6 +580,7 @@ public class AdminVoucherFragment extends Fragment {
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
             }
+            keyList.clear();
             Toast.makeText(getContext(),"Insert successfully", Toast.LENGTH_SHORT).show();
         } catch (ParseException e) {
             e.printStackTrace(); // Handle parsing exception

@@ -1,0 +1,96 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<RelativeLayout android:id="@+id/top_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:paddingBottom="10dp"
+		android:background="@color/white"
+		>
+		<RelativeLayout android:id="@+id/back_btn"
+			android:layout_marginTop="22dp"
+			android:layout_marginStart="25dp"
+			android:layout_centerVertical="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			>
+
+
+			<View   android:id="@+id/rectangle_3"
+				android:background="@drawable/btn_burgundy"
+				android:layout_marginStart="0dp"
+				android:layout_marginTop="0dp"
+				android:layout_width="40dp"
+				android:layout_height="35dp" />
+
+
+			<ImageView android:id="@+id/vector"
+				android:src="@drawable/vector"
+				android:contentDescription="vector"
+				android:layout_centerHorizontal="true"
+				android:layout_centerVertical="true"
+				android:layout_width="15dp"
+				android:layout_height="15dp" />
+
+
+
+		</RelativeLayout>
+
+
+		<TextView android:id="@+id/profile_1"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="center"
+			android:layout_centerHorizontal="true"
+			android:textSize="20sp"
+			android:textColor="@color/black"
+			android:layout_centerVertical="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Choose discount"
+			/>
+
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/box"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/top_bar"
+		android:layout_below="@+id/top_bar">
+		<ScrollView android:id="@+id/scrollView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:background="@color/white2"
+			android:paddingRight="10dp"
+			android:paddingLeft="10dp"
+			android:layout_marginBottom="260dp"
+			android:layout_marginTop="10dp">
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/voucher_recyclerView"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				/>
+		</ScrollView>
+	</RelativeLayout>
+	<Button   android:id="@+id/chooseBtn"
+		android:background="@drawable/rectangle_burgundy_radius"
+		android:layout_width="300dp"
+		android:layout_height="48dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:textSize="18sp"
+		android:layout_marginBottom="75dp"
+		android:textColor="@color/white"
+		android:theme="@style/MyButtonTheme"
+		android:text="Choose"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

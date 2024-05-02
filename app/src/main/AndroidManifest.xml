@@ -84,6 +84,9 @@
             android:name=".OrderDetailsActivity"
             android:exported="true" />
         <activity
+            android:name=".SelectVoucherActivity"
+            android:exported="true" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:launchMode="singleTask">
