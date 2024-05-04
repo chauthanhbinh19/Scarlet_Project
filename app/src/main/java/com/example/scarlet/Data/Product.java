@@ -13,6 +13,7 @@ public class Product {
     private int quantity;
     private double total;
     private boolean isChecked;
+    private int discount;
 
     public String getKey() {
         return key;
@@ -109,6 +110,14 @@ public class Product {
         isChecked = checked;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     public Product() {
     }
 
@@ -155,12 +164,13 @@ public class Product {
         this.quantity=quantity;
         this.total=total;
     }
-    public Product(String name,double price,int quantity,double total, String categoryName){
+    public Product(String name,double price,int quantity,double total, String categoryName, int discount){
         this.name = name;
         this.price = price;
         this.quantity=quantity;
         this.total=total;
         this.categoryName=categoryName;
+        this.discount=discount;
     }
 
     public Product(String key, String name) {
@@ -172,5 +182,11 @@ public class Product {
         this.name = name;
         this.price = price;
         this.img=img;
+    }
+
+    public Product(String key, String name, double price) {
+        this.key = key;
+        this.name = name;
+        this.price = price;
     }
 }

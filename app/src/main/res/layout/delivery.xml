@@ -373,9 +373,9 @@
 
 				<Button   android:id="@+id/continue_btn"
 					android:background="@drawable/rectangle_burgundy_radius"
-					android:layout_marginStart="70dp"
+					android:layout_marginLeft="80dp"
 					android:layout_marginTop="30dp"
-					android:layout_width="300dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_below="@+id/addtionalInfo"
 					android:textStyle="bold"

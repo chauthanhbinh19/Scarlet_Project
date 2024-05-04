@@ -205,7 +205,7 @@
 					android:textColor="@color/black"
 					android:layout_below="@+id/scrollBox"
 					android:layout_marginLeft="23dp"
-					android:layout_marginTop="5dp"
+					android:layout_marginTop="10dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/delivery_method_string"
@@ -293,6 +293,16 @@
 						android:text="You can only select 1 voucher for 1 order"
 						android:layout_marginTop="4dp"
 						android:textColor="@color/black"
+						android:textSize="14sp" />
+
+					<TextView android:id="@+id/voucher_name"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:layout_below="@+id/voucher_des"
+						android:text=""
+						android:visibility="gone"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/blue"
 						android:textSize="14sp" />
 
 					<Button android:id="@+id/voucherBtn"
@@ -484,9 +494,9 @@
 				</RelativeLayout>
 				<Button   android:id="@+id/btnPay"
 					android:background="@drawable/rectangle_burgundy_radius"
-					android:layout_marginStart="70dp"
+					android:layout_marginLeft="80dp"
 					android:layout_marginTop="30dp"
-					android:layout_width="300dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_below="@+id/payment_box"
 					android:textStyle="bold"

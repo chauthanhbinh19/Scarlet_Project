@@ -3,6 +3,7 @@ package com.example.scarlet.Data;
 public class ProductQuantity {
     private String  productId;
     private int quantity;
+    private int discount;
 
     public String getProductId() {
         return productId;
@@ -20,11 +21,25 @@ public class ProductQuantity {
         this.quantity = quantity;
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     public ProductQuantity() {
     }
 
     public ProductQuantity(String productId, int quantity) {
         this.productId = productId;
         this.quantity = quantity;
+    }
+
+    public ProductQuantity(String productId, int quantity, int discount) {
+        this.productId = productId;
+        this.quantity = quantity;
+        this.discount = discount;
     }
 }

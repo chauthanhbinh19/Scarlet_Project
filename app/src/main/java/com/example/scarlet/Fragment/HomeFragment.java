@@ -27,6 +27,7 @@ import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Adapter.TrendAdapter;
 import com.example.scarlet.AdminMainActivity;
 import com.example.scarlet.Data.Category;
+import com.example.scarlet.Data.DealTransaction;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 import com.example.scarlet.SearchProductActivity;
@@ -109,6 +110,12 @@ public class HomeFragment extends Fragment {
                 trendRecyclerView.startAnimation(trendRecyclerViewAnim);
             }
         },delay*3);
+    }
+    private void generateVoucherTransaction(){
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=firebaseDatabase.getReference("deal_transaction");
+        DealTransaction dealTransaction=new DealTransaction("A11A22A30","","");
+        myRef.push().setValue(dealTransaction);
     }
     private void validateUser(View view){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

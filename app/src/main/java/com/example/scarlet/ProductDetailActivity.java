@@ -295,7 +295,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                             }
                                         }
                                         if(!found){
-                                            productIdList.add(new ProductQuantity(productKey,quantity));
+                                            productIdList.add(new ProductQuantity(productKey,quantity,0));
                                         }
 
                                         myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
@@ -304,7 +304,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     }
                                 } else{
                                     int qt=Integer.parseInt(quantity.getText().toString());
-                                    productIdList.add(new ProductQuantity(productKey,qt));
+                                    productIdList.add(new ProductQuantity(productKey,qt,0));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
                                     Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                     break;
@@ -313,14 +313,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                         }
                         if(!founUser){
                             int qt=Integer.parseInt(quantity.getText().toString());
-                            productIdList.add(new ProductQuantity(productKey, qt));
+                            productIdList.add(new ProductQuantity(productKey, qt,0));
                             Cart cart=new Cart(userKey,productIdList);
                             myRef.push().setValue(cart);
                             Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                         }
                     }else{
                         int qt=Integer.parseInt(quantity.getText().toString());
-                        productIdList.add(new ProductQuantity(productKey, qt));
+                        productIdList.add(new ProductQuantity(productKey, qt,0));
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
                         Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();

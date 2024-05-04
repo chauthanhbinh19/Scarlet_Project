@@ -73,7 +73,7 @@
 
 			<RelativeLayout android:id="@+id/frame_8"
 				android:layout_marginTop="193dp"
-				android:layout_marginStart="1dp"
+				android:layout_marginStart="0dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				>
@@ -550,16 +550,16 @@
 
 				<Button android:id="@+id/sign_out_btn"
 					android:background="@drawable/rectangle_burgundy_radius"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="20dp"
 					android:textStyle="bold"
 					android:layout_below="@+id/feedback___support_button"
-					android:layout_width="291dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_centerHorizontal="true"
 					android:gravity="center"
-					android:textSize="16sp"
+					android:textSize="18sp"
 					android:textColor="@color/white"
-					android:layout_marginLeft="82dp"
+					android:layout_marginLeft="80dp"
 					android:text="@string/sign_out_string"/>
 
 			</RelativeLayout>

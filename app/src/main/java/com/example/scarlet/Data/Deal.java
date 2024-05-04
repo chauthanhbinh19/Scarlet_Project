@@ -110,6 +110,16 @@ public class Deal {
         this.key=key;
         this.description=description;
     }
+    public Deal(String name, int discount, Date expiryDate, String deliveryMethod, int deliveryIcon,String description,String key, String code) {
+        this.name = name;
+        this.discount = discount;
+        this.expiryDate = expiryDate;
+        this.deliveryMethod = deliveryMethod;
+        this.deliveryIcon = deliveryIcon;
+        this.key=key;
+        this.description=description;
+        this.code=code;
+    }
 
     public Deal(String name, String code, List<String> productId, int discount, Date expiryDate, String description, String deliveryMethod) {
         this.name = name;

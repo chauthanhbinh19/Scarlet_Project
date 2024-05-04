@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Data.Deal;
 import com.example.scarlet.Interface.GetKeyCallback;
+import com.example.scarlet.Interface.GetThreeElementsCallback;
 import com.example.scarlet.R;
 
 import java.text.SimpleDateFormat;
@@ -18,9 +19,9 @@ import java.text.SimpleDateFormat;
 public class DealtHolderViewSecond extends RecyclerView.ViewHolder {
     ImageView icon;
     TextView discount,voucherName,expiryDate,deliveryMethod;
-    GetKeyCallback getKeyCallback;
+    GetThreeElementsCallback getThreeElementsCallback;
     CheckBox checkbox;
-    String key;
+    String key, name, code;
 
     public DealtHolderViewSecond(@NonNull View itemView) {
         super(itemView);
@@ -35,15 +36,15 @@ public class DealtHolderViewSecond extends RecyclerView.ViewHolder {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    getKeyCallback.itemClick(key,1);
+                    getThreeElementsCallback.itemClick(key,name,code,1);
                 }else{
-                    getKeyCallback.itemClick(key,0);
+                    getThreeElementsCallback.itemClick(key,name,code,0);
                 }
             }
         });
 
     }
-    public void bindData(Deal deal,GetKeyCallback getKeyCallback1){
+    public void bindData(Deal deal,GetThreeElementsCallback getThreeElementsCallback1){
         icon.setImageResource(deal.getDeliveryIcon());
         discount.setText(String.valueOf(deal.getDiscount())+"%");
         voucherName.setText(deal.getName());
@@ -51,7 +52,9 @@ public class DealtHolderViewSecond extends RecyclerView.ViewHolder {
         String formattedExpiryDate = format.format(deal.getExpiryDate());
         expiryDate.setText(formattedExpiryDate);
         deliveryMethod.setText(deal.getDeliveryMethod());
-        getKeyCallback=getKeyCallback1;
+        getThreeElementsCallback=getThreeElementsCallback1;
         key=deal.getKey();
+        name=deal.getName();
+        code=deal.getCode();
     }
 }

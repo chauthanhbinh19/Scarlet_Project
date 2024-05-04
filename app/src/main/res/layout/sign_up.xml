@@ -35,9 +35,9 @@
 				android:textSize="40sp"
 				android:textColor="@color/sign_in_color"
 				android:layout_centerHorizontal="true"
-				android:layout_marginTop="630dp"
-				android:layout_width="100dp"
-				android:layout_height="98dp"
+				android:layout_marginTop="650dp"
+				android:layout_width="60dp"
+				android:layout_height="60dp"
 				android:text="@string/or_string"
 				/>
 
@@ -130,32 +130,34 @@
 			<Button
 				android:id="@+id/sign_up_ek1"
 				android:layout_width="match_parent"
-				android:layout_height="50dp"
+				android:layout_height="48dp"
 				android:layout_gravity="center_horizontal|center"
 				android:layout_centerHorizontal="true"
 				android:layout_marginTop="560dp"
 				android:background="@drawable/rectangle_burgundy_radius"
 				android:gravity="center"
 				android:text="Sign Up"
+				style="@style/MyButtonTheme"
 				android:layout_marginLeft="130dp"
 				android:textColor="@color/white"
-				android:textSize="24sp"
+				android:textSize="18sp"
 				android:textStyle="bold"
 				/>
 
 			<ImageView android:id="@+id/icons8_facebook_240_1"
 				android:src="@drawable/icons8_facebook_240_1"
 				android:contentDescription="icons8_facebook_240_1"
-				android:layout_marginStart="230dp"
+				android:layout_marginLeft="0dp"
+				android:layout_toRightOf="@+id/or"
 				android:layout_marginTop="710dp"
-				android:layout_width="50dp"
-				android:layout_height="50dp" />
+				android:layout_width="40dp"
+				android:layout_height="40dp" />
 
 			<ImageView
 				android:id="@+id/icons8_google_240_1"
-				android:layout_width="50dp"
-				android:layout_height="50dp"
-				android:layout_marginStart="140dp"
+				android:layout_width="40dp"
+				android:layout_toLeftOf="@+id/or"
+				android:layout_height="40dp"
 				android:layout_marginTop="710dp"
 				android:contentDescription="icons8_google_240_1"
 				android:src="@drawable/icons8_google_240_1" />
