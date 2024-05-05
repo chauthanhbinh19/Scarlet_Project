@@ -135,6 +135,7 @@
             android:layout_width="match_parent"
             app:tabIndicatorColor="@color/burgundy"
             app:tabSelectedTextColor="@color/burgundy"
+            app:tabIndicatorAnimationMode="elastic"
             android:background="@color/white"
             android:layout_height="wrap_content"/>
 

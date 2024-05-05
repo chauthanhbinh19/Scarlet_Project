@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.example.scarlet.Adapter.ProductHorizontalAdapter;
 import com.example.scarlet.Data.Address;
 import com.example.scarlet.Data.CreateOrder;
+import com.example.scarlet.Data.DealTransaction;
 import com.example.scarlet.Data.Order;
 import com.example.scarlet.Data.Payment;
 import com.example.scarlet.Data.Product;
@@ -522,6 +523,7 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 double subTotal=0;
+                int totalPoint=0;
                 List<Product> productList=new ArrayList<>();
                 for(DataSnapshot productSnap: snapshot.getChildren()){
                     ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
@@ -530,6 +532,8 @@ public class PaymentActivity extends AppCompatActivity {
                         double productPrice=productSnap.child("price").getValue(double.class);
                         int productQuantity=getQuantity(productKey,productKeyList);
                         int discount=getDiscount(productKey,productKeyList);
+                        int point=productSnap.child("point").getValue(int.class);
+                        totalPoint=totalPoint+point*productQuantity;
                         String categoryName=productSnap.child("categoryName").getValue(String.class);
                         double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
                         subTotal=subTotal+productTotal;
@@ -539,7 +543,7 @@ public class PaymentActivity extends AppCompatActivity {
                 }
                 subTotal=subTotal+tip;
                 saveOrder(productList,userKey, payment,subTotal);
-
+                savePoint(totalPoint);
             }
 
             @Override
@@ -577,7 +581,12 @@ public class PaymentActivity extends AppCompatActivity {
                                 Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,0,productList);
                                 String key=orderRef.push().getKey();
                                 orderRef.child(key).setValue(order);
-
+                                if(!voucherKey.equals("0")){
+                                    FirebaseDatabase firebaseDb=FirebaseDatabase.getInstance();
+                                    DatabaseReference Dr=firebaseDb.getReference("deal_transaction");
+                                    DealTransaction dealTransaction=new DealTransaction(voucherCode,userKey,key);
+                                    Dr.push().setValue(dealTransaction);
+                                }
                                 Intent intent=new Intent(PaymentActivity.this, OrderNotificationActivity.class);
                                 startActivity(intent);
                                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -758,6 +767,32 @@ public class PaymentActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    private void savePoint(int newPoint){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        String userKey=sharedPreferences.getString("customerKey","");
+
+        if(isLoggedIn && !userKey.isEmpty()){
+            firebaseDatabase=FirebaseDatabase.getInstance();
+            myRef=firebaseDatabase.getReference("user");
+            myRef.child(userKey).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        int oldPoint=snapshot.child("point").getValue(int.class);
+                        int totalPoint=newPoint+oldPoint;
+                        myRef.child(userKey).child("point").setValue(totalPoint);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
     }
     @Override
     protected void onNewIntent(Intent intent) {

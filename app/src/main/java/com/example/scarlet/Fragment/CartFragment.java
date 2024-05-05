@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -92,11 +93,8 @@ public class CartFragment extends Fragment {
         purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String total=totalView.getText().toString();
-                Intent intent=new Intent(getContext(), DeliveryActivity.class);
-                intent.putExtra("total",total);
-                startActivity(intent);
-                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                checkCartData();
+
             }
         });
         return view;
@@ -252,5 +250,62 @@ public class CartFragment extends Fragment {
         }
         return 1;
     }
+    private void checkCartData(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        final String userKey=sharedPreferences.getString("customerKey","");
+        if(isLoggedIn && !userKey.isEmpty()){
+            firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        changeActivity(userKey,recyclerView);
+                    }
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void changeActivity(String userKey,  RecyclerView recyclerView){
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        query=firebaseDatabase.getReference("cart").orderByChild("customerId").equalTo(userKey);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                        if(productIdObject.exists()){
+                            if(productIdObject.getValue() instanceof List){
+                                List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                    ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                    tempProductIdList.add(productQuantity);
+                                }
+                                String total=totalView.getText().toString();
+                                Intent intent=new Intent(getContext(), DeliveryActivity.class);
+                                intent.putExtra("total",total);
+                                startActivity(intent);
+                                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            }
+                        }else{
+                            Toast.makeText(getContext(),"Your cart is empty",Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 }

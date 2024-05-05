@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
+    android:layout_height="wrap_content">
+
+        <ImageView android:id="@+id/telephoneIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/telephone"/>
+        <TextView
+            android:id="@+id/Phone"
+            android:layout_toRightOf="@+id/telephoneIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/gray1"
+            android:text="Phone" />
+        <TextView
+            android:id="@+id/PhoneText"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:text="0910910921" />
+        <ImageView android:id="@+id/emailIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Phone"
+            android:background="@drawable/mail"/>
+        <TextView
+            android:id="@+id/Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/emailIcon"
+            android:textColor="@color/gray1"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Phone"
+            android:text="Email" />
+        <TextView
+            android:id="@+id/EmailText"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Phone"
+            android:text="scarlet@gmh.com.vn" />
+        <ImageView android:id="@+id/currencyIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Email"
+            android:background="@drawable/coin"/>
+        <TextView
+            android:id="@+id/Currency"
+            android:layout_toRightOf="@+id/currencyIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/gray1"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Email"
+            android:text="Currency" />
+        <TextView
+            android:id="@+id/CurrencyText"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/Email"
+            android:text="Vietnamese" />
+</RelativeLayout>

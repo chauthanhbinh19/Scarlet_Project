@@ -93,7 +93,18 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textColor="@color/white"
-				android:text="100 point"/>
+				android:text="0"/>
+
+			<TextView android:id="@+id/voucher_point_text"
+				android:layout_toRightOf="@+id/voucher_point"
+				android:textSize="20sp"
+				android:textStyle="bold"
+				android:elevation="4dp"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/white"
+				android:text=" point"/>
 
 			<Button
 				android:layout_width="wrap_content"

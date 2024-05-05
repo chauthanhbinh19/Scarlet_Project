@@ -31,7 +31,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 public class SelectVoucherActivity extends AppCompatActivity {
@@ -84,7 +86,9 @@ public class SelectVoucherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent1=new Intent();
-                intent1.putExtra("voucherList","0");
+                intent1.putExtra("voucherKey","0");
+                intent1.putExtra("voucherName",voucherName);
+                intent1.putExtra("voucherCode",voucherCode);
                 setResult(SelectVoucherActivity.RESULT_OK,intent1);
                 SelectVoucherActivity.super.onBackPressed();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
@@ -111,11 +115,14 @@ public class SelectVoucherActivity extends AppCompatActivity {
         String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference myRef1= firebaseDatabase.getReference("deal");
-            DatabaseReference myRef2=firebaseDatabase.getReference("deal_transaction");
+            Query myRef1=firebaseDatabase.getReference("deal");
+            Query myRef2=firebaseDatabase.getReference("deal_transaction");
+            Set<String> dealKeySet = new HashSet<>();
+            Set<String> dealKeyHistory = new HashSet<>();
             myRef1.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    dealList.clear();
                     if(snapshot.exists()){
                         for (DataSnapshot snap: snapshot.getChildren()){
                             String voucherName=snap.child("name").getValue(String.class);
@@ -143,15 +150,31 @@ public class SelectVoucherActivity extends AppCompatActivity {
                                             for(DataSnapshot snap1: snapshot1.getChildren()){
                                                 String customerId=snap1.child("customerId").getValue(String.class);
                                                 if(customerId.equals(userKey)){
-                                                    String code=snap1.child("code").getValue(String.class);
-                                                    if(!codeSelect.equals(code)){
-                                                        dealList.add(deal);
-                                                    }
                                                     customerFound=true;
+                                                    String code=snap1.child("code").getValue(String.class);
+                                                    dealKeyHistory.add(code);
+                                                }
+                                            }
+                                            for(DataSnapshot snap1: snapshot1.getChildren()){
+                                                String customerId=snap1.child("customerId").getValue(String.class);
+                                                if(customerId.equals(userKey)){
+                                                    customerFound=true;
+                                                    String code=snap1.child("code").getValue(String.class);
+                                                    if(!dealKeySet.contains(codeSelect)){
+                                                        if(!codeSelect.equals(code)){
+                                                            if(!dealKeyHistory.contains(code) || !dealKeyHistory.contains(codeSelect)){
+                                                                dealList.add(deal);
+                                                                dealKeySet.add(codeSelect);
+                                                            }
+                                                        }else if(codeSelect.equals(code)){
+                                                            break;
+                                                        }
+                                                    }
                                                 }
                                             }
                                             if(!customerFound){
                                                 dealList.add(deal);
+                                                dealKeySet.add(codeSelect);
                                             }
                                             if(dealList.size()>0){
                                                 dealAdapter=new DealSecondAdapter(dealList,getThreeElementsCallback);

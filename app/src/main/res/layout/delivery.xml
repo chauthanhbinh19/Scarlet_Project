@@ -166,7 +166,6 @@
 		<RelativeLayout android:id="@+id/content_container"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent"
-			android:paddingBottom="50dp"
 			android:background="@color/white">
 			<RelativeLayout android:id="@+id/frame_7"
 				android:layout_marginTop="10dp"

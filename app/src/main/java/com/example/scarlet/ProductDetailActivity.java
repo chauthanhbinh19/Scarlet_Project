@@ -1,6 +1,7 @@
 package com.example.scarlet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -17,11 +18,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.scarlet.Adapter.ProductDetailViewPageAdapter;
+import com.example.scarlet.Adapter.VoucherViewPageAdapter;
 import com.example.scarlet.Data.Cart;
 import com.example.scarlet.Data.Favourite;
 import com.example.scarlet.Data.ProductQuantity;
+import com.example.scarlet.Fragment.VoucherFragment;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,32 +44,41 @@ public class ProductDetailActivity extends AppCompatActivity {
     public boolean isLoved=false;
     RelativeLayout back_button;
     ImageButton heart;
-    TextView productNameView, productPriceView, categoryNameView, quantity;
-    ImageView productImageView, categoryIconView, plus, minus;
+    TextView productNameView, productPriceView;
+    ImageView productImageView;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    String productKey;
+    ImageView categoryIconView, plus, minus;
+    TextView  categoryNameView, quantity;
+
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
         heart=findViewById(R.id.heart);
         productNameView=findViewById(R.id.product_details_name);
         productPriceView=findViewById(R.id.product_details_price);
-        categoryNameView=findViewById(R.id.product_details_category_name);
         productImageView=findViewById(R.id.product_details_image);
+        tabLayout=findViewById(R.id.tab_layout);
+        viewPager = findViewById(R.id.view_pager);
         categoryIconView=findViewById(R.id.product_details_category_icon);
         plus=findViewById(R.id.plus);
         minus=findViewById(R.id.minus);
+        categoryNameView=findViewById(R.id.product_details_category_name);
         quantity=findViewById(R.id.quantity);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.product_details);
+        setContentView(R.layout.product_details2);
 
-        String productKey=getIntent().getStringExtra("productKey");
+        productKey=getIntent().getStringExtra("productKey");
         getProductDetails(productKey);
 
         Window window = getWindow();
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
+        setupTabLayout();
         Button add=(Button) findViewById(R.id.add);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +117,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void setupTabLayout() {
+        ProductDetailViewPageAdapter adapter = new ProductDetailViewPageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
     private void validateFavouriteProduct(String producKey,ImageView heart){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -179,7 +200,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                 if(snapshot.exists()){
                     String productName=snapshot.child("name").getValue(String.class);
                     Double productPrice=snapshot.child("price").getValue(Double.class);
-                    String categoryName=snapshot.child("categoryName").getValue(String.class);
                     String productImage=snapshot.child("img").getValue(String.class);
                     String categoryId=snapshot.child("categoryId").getValue(String.class);
 
@@ -200,7 +220,6 @@ public class ProductDetailActivity extends AppCompatActivity {
                     });
                     productNameView.setText(productName);
                     productPriceView.setText(String.valueOf(productPrice));
-                    categoryNameView.setText(categoryName);
 //                    productImageView.setImageResource(productImage);
                     Glide.with(ProductDetailActivity.this).load(productImage).into(productImageView);
                 }
@@ -260,7 +279,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         });
     }
     private void addToCart(String productKey){
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences =getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
@@ -280,7 +299,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     DataSnapshot productIdObject=snap.child("productQuantityList");
                                     if(productIdObject.getValue() instanceof List){
                                         List<ProductQuantity> tempProductIdList = new ArrayList<>();
-                                        int quantity=1;
+                                        int qt=Integer.parseInt(quantity.getText().toString());
                                         for(DataSnapshot productSnap: productIdObject.getChildren()){
                                             ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
                                             tempProductIdList.add(productQuantity);
@@ -288,14 +307,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                                         productIdList=tempProductIdList;
                                         for(ProductQuantity pd:productIdList){
                                             if(pd.getProductId().equals(productKey)){
-                                                quantity=pd.getQuantity()+1;
-                                                pd.setQuantity(quantity);
+                                                qt=pd.getQuantity()+1;
+                                                pd.setQuantity(qt);
                                                 found=true;
                                                 break;
                                             }
                                         }
                                         if(!found){
-                                            productIdList.add(new ProductQuantity(productKey,quantity,0));
+                                            productIdList.add(new ProductQuantity(productKey,qt,0));
                                         }
 
                                         myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);

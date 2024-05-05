@@ -73,6 +73,7 @@
             android:layout_width="match_parent"
             app:tabIndicatorColor="@color/burgundy"
             app:tabSelectedTextColor="@color/burgundy"
+            app:tabIndicatorAnimationMode="elastic"
             android:layout_height="wrap_content"/>
 
         <androidx.viewpager.widget.ViewPager
