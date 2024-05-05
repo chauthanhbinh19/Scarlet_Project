@@ -1,12 +1,10 @@
 package com.example.scarlet;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -18,17 +16,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.scarlet.Adapter.ProductDetailViewPageAdapter;
-import com.example.scarlet.Adapter.VoucherViewPageAdapter;
+import com.example.scarlet.Adapter.GridLayoutDecoration;
+import com.example.scarlet.Adapter.ProductSearchAdapter;
+import com.example.scarlet.Adapter.ReviewAdapter;
 import com.example.scarlet.Data.Cart;
 import com.example.scarlet.Data.Favourite;
+import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
-import com.example.scarlet.Fragment.VoucherFragment;
-import com.google.android.material.tabs.TabLayout;
+import com.example.scarlet.Data.Review;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,20 +37,27 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 
 public class ProductDetailActivity extends AppCompatActivity {
     public boolean isLoved=false;
-    RelativeLayout back_button;
+    RelativeLayout back_button, reviewTabBox, recommendTabBox,informationTabBox,
+            recommendBtn, reviewBtn, informationBtn;
     ImageButton heart;
-    TextView productNameView, productPriceView;
-    ImageView productImageView;
-    TabLayout tabLayout;
-    ViewPager viewPager;
+    ReviewAdapter adapter;
+    ProductSearchAdapter productAdapter;
+    List<Review> reviewList;
+    List<Product> productList;
+    TextView productNameView, productPriceView, text1, text2, text3;
+    ImageView productImageView, line1, line2, line3;
     String productKey;
+    RecyclerView reviewRecycleView, productRecycleView;
     ImageView categoryIconView, plus, minus;
     TextView  categoryNameView, quantity;
+    int defaultStatus=1;
 
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
@@ -58,13 +65,25 @@ public class ProductDetailActivity extends AppCompatActivity {
         productNameView=findViewById(R.id.product_details_name);
         productPriceView=findViewById(R.id.product_details_price);
         productImageView=findViewById(R.id.product_details_image);
-        tabLayout=findViewById(R.id.tab_layout);
-        viewPager = findViewById(R.id.view_pager);
         categoryIconView=findViewById(R.id.product_details_category_icon);
         plus=findViewById(R.id.plus);
         minus=findViewById(R.id.minus);
         categoryNameView=findViewById(R.id.product_details_category_name);
         quantity=findViewById(R.id.quantity);
+        reviewRecycleView=findViewById(R.id.review_recyclerView);
+        productRecycleView=findViewById(R.id.product_recyclerView);
+        reviewTabBox=findViewById(R.id.reviewTabBox);
+        recommendTabBox=findViewById(R.id.recommendTabBox);
+        informationTabBox=findViewById(R.id.informationTabBox);
+        recommendBtn=findViewById(R.id.recommendBtn);
+        reviewBtn=findViewById(R.id.reviewBtn);
+        informationBtn=findViewById(R.id.informationBtn);
+        text1=findViewById(R.id.text1);
+        text2=findViewById(R.id.text2);
+        text3=findViewById(R.id.text3);
+        line1=findViewById(R.id.line1);
+        line2=findViewById(R.id.line2);
+        line3=findViewById(R.id.line3);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +97,21 @@ public class ProductDetailActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
-        setupTabLayout();
         Button add=(Button) findViewById(R.id.add);
+        productRecycleView.setLayoutManager(new GridLayoutManager(this,1));
+        productRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
+        reviewRecycleView.setLayoutManager(new GridLayoutManager(this,1));
+        reviewRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
+        checkTabStatus();
+        validateFavouriteProduct(productKey,heart);
+        getProductData();
+        getReview();
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        validateFavouriteProduct(productKey,heart);
         heart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,11 +142,64 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
             }
         });
+        recommendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=1;
+                checkTabStatus();
+            }
+        });
+        reviewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=2;
+                checkTabStatus();
+            }
+        });
+        informationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=3;
+                checkTabStatus();
+            }
+        });
     }
-    private void setupTabLayout() {
-        ProductDetailViewPageAdapter adapter = new ProductDetailViewPageAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+    private void checkTabStatus(){
+        switch (defaultStatus){
+            case 1:
+                text1.setTextColor(getColor(R.color.black));
+                text2.setTextColor(getColor(R.color.gray1));
+                text3.setTextColor(getColor(R.color.gray1));
+                line1.setBackgroundColor(getColor(R.color.burgundy));
+                line2.setBackgroundColor(getColor(R.color.white));
+                line3.setBackgroundColor(getColor(R.color.white));
+                recommendTabBox.setVisibility(View.VISIBLE);
+                reviewTabBox.setVisibility(View.GONE);
+                informationTabBox.setVisibility(View.GONE);
+                break;
+            case 2:
+                text1.setTextColor(getColor(R.color.gray1));
+                text2.setTextColor(getColor(R.color.black));
+                text3.setTextColor(getColor(R.color.gray1));
+                line1.setBackgroundColor(getColor(R.color.white));
+                line2.setBackgroundColor(getColor(R.color.burgundy));
+                line3.setBackgroundColor(getColor(R.color.white));
+                recommendTabBox.setVisibility(View.GONE);
+                reviewTabBox.setVisibility(View.VISIBLE);
+                informationTabBox.setVisibility(View.GONE);
+                break;
+            case 3:
+                text1.setTextColor(getColor(R.color.gray1));
+                text2.setTextColor(getColor(R.color.gray1));
+                text3.setTextColor(getColor(R.color.black));
+                line1.setBackgroundColor(getColor(R.color.white));
+                line2.setBackgroundColor(getColor(R.color.white));
+                line3.setBackgroundColor(getColor(R.color.burgundy));
+                recommendTabBox.setVisibility(View.GONE);
+                reviewTabBox.setVisibility(View.GONE);
+                informationTabBox.setVisibility(View.VISIBLE);
+                break;
+        }
     }
     private void validateFavouriteProduct(String producKey,ImageView heart){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -139,7 +217,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         if(snap.child("productId").getValue(String.class).equals(producKey)){
                             isLoved=true;
                             found=true;
-                            heart.setBackgroundResource(R.drawable.heart__1__1);
+                            heart.setBackgroundResource(R.drawable.heart_3);
                             break;
                         }
                     }
@@ -180,7 +258,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }else{
                     insertToFavourite(productKey);
 //                    Toast.makeText(ProductDetailActivity.this,"insert",Toast.LENGTH_SHORT).show();
-                    heart.setBackgroundResource(R.drawable.heart__1__1);
+                    heart.setBackgroundResource(R.drawable.heart_3);
                 }
             }
 
@@ -355,4 +433,101 @@ public class ProductDetailActivity extends AppCompatActivity {
             });
         }
     }
+    private void getReview(){
+        reviewList=new ArrayList<>();
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        Query myRef=firebaseDatabase.getReference("review");
+        DatabaseReference userRef=firebaseDatabase.getReference("user");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap:snapshot.getChildren()){
+                    String productId=snap.child("productId").getValue(String.class);
+                    if(productId.equals(productKey)){
+                        String customerId=snap.child("customerId").getValue(String.class);
+                        int rating=snap.child("rating").getValue(int.class);
+                        String comment=snap.child("comment").getValue(String.class);
+                        Date date=snap.child("date").getValue(Date.class);
+                        userRef.child(customerId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                                if(snapshot1.exists()){
+                                    String first_name=snapshot1.child("first_name").getValue(String.class);
+                                    String last_name=snapshot1.child("last_name").getValue(String.class);
+                                    String image=snapshot1.child("avatar_img").getValue(String.class);
+                                    Review review=new Review(customerId,productKey,rating,comment,date,last_name+" "+first_name,image);
+                                    reviewList.add(review);
+
+                                    if(reviewList.size()>0){
+                                        List<Review> limitedReviewList = reviewList.subList(0, Math.min(reviewList.size(), 5));
+                                        adapter=new ReviewAdapter(limitedReviewList);
+                                        reviewRecycleView.setAdapter(adapter);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void getProductData(){
+        productList=new ArrayList<>();
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference productRef = database.getReference("product");
+        DatabaseReference categoryRef = database.getReference("category");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot productSnapshot) {
+                productList.clear();
+                for (DataSnapshot product : productSnapshot.getChildren()) {
+                    String productKey=product.getKey();
+                    String categoryId = product.child("categoryId").getValue(String.class);
+                    String productName = product.child("name").getValue(String.class);
+                    double productPrice = product.child("price").getValue(double.class);
+                    String productImage = product.child("img").getValue(String.class);
+
+                    categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot categorySnapshot) {
+                            if (categorySnapshot.exists()) {
+                                String icon = categorySnapshot.child("img").getValue(String.class);
+                                Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
+                                productList.add(productWithIcon);
+
+                            }
+                            Collections.shuffle(productList);
+                            if(productList.size()>0){
+                                List<Product> limitedProductList = productList.subList(0, Math.min(productList.size(), 5));
+                                productAdapter=new ProductSearchAdapter(limitedProductList);
+                                productRecycleView.setAdapter(productAdapter);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Xử lý lỗi nếu có
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+            }
+        });
+    }
+
 }

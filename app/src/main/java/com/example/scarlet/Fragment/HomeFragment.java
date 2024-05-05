@@ -31,6 +31,7 @@ import com.example.scarlet.Data.DealTransaction;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 import com.example.scarlet.SearchProductActivity;
+import com.example.scarlet.TestActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
     private TrendAdapter trendAdapter;
     private List<Category> categoryList;
     private List<Product> productList;
-    RelativeLayout search;
+    RelativeLayout search, notification;
     RecyclerView categoryRecyclerView,trendRecyclerView, ProductRecyclerView;
     TextView welcomeMessage, menu, trends;
     final Handler handler = new Handler();
@@ -61,6 +62,7 @@ public class HomeFragment extends Fragment {
         ProductRecyclerView=view.findViewById(R.id.product_recyclerView);
         menu=view.findViewById(R.id.menu);
         trends=view.findViewById(R.id.trends);
+        notification=view.findViewById(R.id.notification);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

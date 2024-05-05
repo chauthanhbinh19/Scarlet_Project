@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 //        text.createMembershipData();
 //        text.createOfferData();
 //        text.createVoucherData();
+//        text.createAccount();
+//        text.createReview();
     }
     private void createBottomNavigation(Bundle savedInstanceState){
         bottomNavigation=findViewById(R.id.bottomNavigation);

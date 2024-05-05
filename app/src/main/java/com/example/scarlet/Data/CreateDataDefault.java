@@ -7,6 +7,11 @@ import android.graphics.BitmapFactory;
 import androidx.annotation.NonNull;
 
 import com.example.scarlet.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +25,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class CreateDataDefault {
     public void createCategoryData(){
@@ -325,5 +331,153 @@ public class CreateDataDefault {
         productQuantityList.add(new ProductQuantity("1",1));
         cartList.add(new Cart("-NtPjHAcxZSIj1aKHS3B",productQuantityList));
         myRef.setValue(cartList);
+    }
+    public void createAccount(){
+        uploadAccount("testing21@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345680",true,false);
+        uploadAccount("testing22@gmail.com","123456","VVVV","AAAA","Female","12/02/2003","0918345681",true,false);
+        uploadAccount("testing23@gmail.com","123456","VVVV","AAAA","Male","10/04/2003","0918345682",true,false);
+        uploadAccount("testing24@gmail.com","123456","VVVV","AAAA","Female","14/05/2003","0918345683",true,false);
+        uploadAccount("testing25@gmail.com","123456","VVVV","AAAA","Male","1/02/2003","0918345684",true,false);
+        uploadAccount("testing26@gmail.com","123456","VVVV","AAAA","Female","10/08/2003","0918345685",true,false);
+        uploadAccount("testing27@gmail.com","123456","VVVV","AAAA","Male","30/11/2001","0918345686",true,false);
+        uploadAccount("testing28@gmail.com","123456","VVVV","AAAA","Female","10/12/2002","0918345687",true,false);
+        uploadAccount("testing29@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345688",true,false);
+        uploadAccount("testing30@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345689",true,false);
+        uploadAccount("testing31@gmail.com","123456","VVVV","AAAA","Male","12/01/2002","0918345690",true,false);
+        uploadAccount("testing32@gmail.com","123456","VVVV","AAAA","Female","10/02/2003","0918345691",true,false);
+        uploadAccount("testing33@gmail.com","123456","VVVV","AAAA","Male","06/03/2001","0918345692",true,false);
+        uploadAccount("testing34@gmail.com","123456","VVVV","AAAA","Female","14/02/2004","0918345693",true,false);
+        uploadAccount("testing35@gmail.com","123456","VVVV","AAAA","Male","22/02/2004","0918345694",true,false);
+        uploadAccount("testing36@gmail.com","123456","VVVV","AAAA","Female","10/02/2002","0918345695",true,false);
+        uploadAccount("testing37@gmail.com","123456","VVVV","AAAA","Male","23/07/2004","0918345696",true,false);
+        uploadAccount("testing38@gmail.com","123456","VVVV","AAAA","Female","10/05/2000","0918345697",true,false);
+        uploadAccount("testing39@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345698",true,false);
+        uploadAccount("testing40@gmail.com","123456","VVVV","AAAA","Female","10/04/2001","0918345699",true,false);
+        uploadAccount("testing41@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345700",true,false);
+        uploadAccount("testing42@gmail.com","123456","VVVV","AAAA","Female","16/02/2004","0918345701",true,false);
+        uploadAccount("testing43@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345702",true,false);
+        uploadAccount("testing44@gmail.com","123456","VVVV","AAAA","Female","20/09/2003","0918345703",true,false);
+        uploadAccount("testing45@gmail.com","123456","VVVV","AAAA","Male","10/02/2003","0918345704",true,false);
+        uploadAccount("testing46@gmail.com","123456","VVVV","AAAA","Female","10/07/2003","0918345705",true,false);
+        uploadAccount("testing47@gmail.com","123456","VVVV","AAAA","Male","10/02/2002","0918345706",true,false);
+        uploadAccount("testing48@gmail.com","123456","VVVV","AAAA","Female","05/06/2004","0918345707",true,false);
+        uploadAccount("testing49@gmail.com","123456","VVVV","AAAA","Male","10/02/2001","0918345708",true,false);
+        uploadAccount("testing50@gmail.com","123456","VVVV","AAAA","Female","10/02/2000","0918345709",true,false);
+
+    }
+    public void uploadAccount(String email, String password, String firstname, String lastname,String gender,String dateofbirth, String phone, boolean isCustomer, boolean isEmployee){
+        FirebaseAuth mAuth= FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email,password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isComplete()){
+                            FirebaseUser user=mAuth.getCurrentUser();
+                            String uid=user.getUid();
+
+                            String[] images={"https://firebasestorage.googleapis.com/v0/b/scarletandroidproject.appspot.com/o/user%2Fsea_lion.png?alt=media&token=3c7690e0-6ab8-4b29-a193-f43697622128",
+                            "https://firebasestorage.googleapis.com/v0/b/scarletandroidproject.appspot.com/o/user%2Frabbit.png?alt=media&token=41e6e5eb-a7cb-4734-81a6-291448500740",
+                            "https://firebasestorage.googleapis.com/v0/b/scarletandroidproject.appspot.com/o/user%2Ffox.png?alt=media&token=531b7773-1fb4-43ce-86c3-ea3021d6e151",
+                            "https://firebasestorage.googleapis.com/v0/b/scarletandroidproject.appspot.com/o/user%2Fdog.png?alt=media&token=d66b78b8-8ec8-4dbe-8cb3-fc7c3664cb5a",
+                            "https://firebasestorage.googleapis.com/v0/b/scarletandroidproject.appspot.com/o/user%2Fcat.png?alt=media&token=54b31803-7130-49a3-8988-b36bdd5f8155"};
+
+                            Random random = new Random();
+                            int randomIndex = random.nextInt(images.length);
+
+                            String randomString = images[randomIndex];
+
+                            DatabaseReference userRef=FirebaseDatabase.getInstance().getReference("user");
+                            DatabaseReference newUserRef=userRef.child(uid);
+
+                            User userAdd=new User(uid,firstname,lastname,gender,dateofbirth,phone,email,0,"-1",randomString,isCustomer,isEmployee);
+                            userRef.push().setValue(userAdd);
+                        }else{
+
+                        }
+                    }
+                });
+    }
+    public void createReview(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference userRef=database.getReference("user");
+        DatabaseReference productRef=database.getReference("product");
+        DatabaseReference reviewRef=database.getReference("review");
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot userSnap: snapshot.getChildren()){
+                    String userKey=userSnap.getKey();
+                    productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            for(DataSnapshot productSnap: snapshot1.getChildren()){
+                                String productKey= productSnap.getKey();
+                                Random random = new Random();
+                                int randomIndex = random.nextInt(3)+3;
+                                if(randomIndex==3){
+                                    String[] cmt3={"The pastries were average, and the service was just okay. I'm not sure if I'd come back.",
+                                            "The cakes were a bit bland, and the frosting was too sugary. The staff was friendly, though.",
+                                            "The selection of desserts was limited, and the prices were high. The atmosphere was nice, though.",
+                                            "This bakery is a decent option if you're in a pinch, but there are better bakeries nearby.",
+                                            "The cupcakes were a bit dry, and the cookies were a bit too crumbly. The coffee was okay.",
+                                            "The bread was fresh, but the pastries were a bit stale. The staff was helpful, though.",
+                                            "This bakery is a good place to grab a quick bite to eat, but it's not a place I'd go for a dessert craving.",
+                                            "The staff was friendly, but the wait time was a bit long. The desserts were just okay.",
+                                            "I'm not sure if I'd recommend this bakery to a friend, but I didn't have a terrible experience either.",
+                                            "This bakery is a bit underwhelming, but it's not the worst I've ever been to."};
+                                    int randomComment = random.nextInt(cmt3.length);
+
+                                    String randomString = cmt3[randomIndex];
+                                    Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
+                                    reviewRef.push().setValue(review);
+                                }else if(randomIndex==4){
+                                    String[] cmt4={"A good bakery with tasty treats and friendly service. I'd definitely come back for more.",
+                                            "The pastries were decent, but I've had better. The atmosphere was nice, though.",
+                                            "The cakes were a bit dry, but the frosting was delicious. The staff was very helpful.",
+                                            "The selection of desserts was impressive, but the prices were a bit high.",
+                                            "This bakery is a good option if you're in the area, but it's not the best I've ever been to.",
+                                            "The cupcakes were a bit too sweet for my taste, but the cookies were good.",
+                                            "The bread was fresh, but the pastries were a bit stale. The coffee was good, though.",
+                                            "This bakery is a good place to grab a quick snack, but it's not a place I'd go for a special occasion.",
+                                            "The staff was friendly, but the wait time was a bit long. The desserts were okay.",
+                                            "I'm not sure if I'd come back to this bakery, but I didn't have a bad experience either."};
+                                    int randomComment = random.nextInt(cmt4.length);
+
+                                    String randomString = cmt4[randomIndex];
+                                    Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
+                                    reviewRef.push().setValue(review);
+                                }else if(randomIndex==5){
+                                    String[] cmt5={"Amazing pastries and delightful cakes! A must-visit for any dessert lover.",
+                                            "The best bakery in town! Their treats are always fresh, delicious, and beautifully presented.",
+                                            "I'm obsessed with their cupcakes! They have a wide variety of flavors, and they're always moist and perfectly frosted.",
+                                            "Their cakes are out of this world! They're the perfect blend of sweet and savory, and they're always decorated to perfection.",
+                                            "The staff is so friendly and helpful! They always go above and beyond to make sure their customers are happy.",
+                                            "This bakery is a hidden gem! The prices are very reasonable, and the quality is top-notch.",
+                                            "I highly recommend this bakery to anyone who loves sweets! You won't be disappointed.",
+                                            "This is my go-to bakery for all my dessert needs! They never let me down.",
+                                            "I'm so glad I found this bakery! It's a new favorite spot for me and my friends.",
+                                            "If you're looking for a delicious and affordable bakery, this is the place to go!"};
+                                    int randomComment = random.nextInt(cmt5.length);
+
+                                    String randomString = cmt5[randomIndex];
+                                    Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
+                                    reviewRef.push().setValue(review);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
