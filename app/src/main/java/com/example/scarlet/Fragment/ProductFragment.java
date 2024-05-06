@@ -121,6 +121,7 @@ public class ProductFragment extends Fragment {
         Bundle args=getArguments();
         if(args !=null){
             String categoryKey= args.getString("categoryKey");
+            String categoryName= args.getString("categoryName");
             if(categoryKey!=null){
                 productRef.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -137,8 +138,7 @@ public class ProductFragment extends Fragment {
                                 public void onDataChange(DataSnapshot categorySnapshot) {
                                     if (categorySnapshot.exists()) {
                                         String icon = categorySnapshot.child("img").getValue(String.class);
-                                        String categoryText=categorySnapshot.child("name_category").getValue(String.class);
-                                        category_text.setText(categoryText);
+                                        category_text.setText(categoryName);
                                         Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
                                         if(categoryKey.equals(categoryId)){
                                             productList.add(productWithIcon);

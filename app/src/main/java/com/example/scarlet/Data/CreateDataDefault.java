@@ -397,6 +397,11 @@ public class CreateDataDefault {
                     }
                 });
     }
+    public void deleteReview(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference reviewRef=database.getReference("review");
+        reviewRef.removeValue();
+    }
     public void createReview(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference userRef=database.getReference("user");
@@ -427,7 +432,7 @@ public class CreateDataDefault {
                                             "This bakery is a bit underwhelming, but it's not the worst I've ever been to."};
                                     int randomComment = random.nextInt(cmt3.length);
 
-                                    String randomString = cmt3[randomIndex];
+                                    String randomString = cmt3[randomComment];
                                     Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
                                     reviewRef.push().setValue(review);
                                 }else if(randomIndex==4){
@@ -443,7 +448,7 @@ public class CreateDataDefault {
                                             "I'm not sure if I'd come back to this bakery, but I didn't have a bad experience either."};
                                     int randomComment = random.nextInt(cmt4.length);
 
-                                    String randomString = cmt4[randomIndex];
+                                    String randomString = cmt4[randomComment];
                                     Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
                                     reviewRef.push().setValue(review);
                                 }else if(randomIndex==5){
@@ -459,7 +464,7 @@ public class CreateDataDefault {
                                             "If you're looking for a delicious and affordable bakery, this is the place to go!"};
                                     int randomComment = random.nextInt(cmt5.length);
 
-                                    String randomString = cmt5[randomIndex];
+                                    String randomString = cmt5[randomComment];
                                     Review review=new Review(userKey,productKey,randomIndex,randomString,new Date());
                                     reviewRef.push().setValue(review);
                                 }

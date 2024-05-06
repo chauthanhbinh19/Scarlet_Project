@@ -60,7 +60,7 @@ public class OrderActivitiesFragment extends Fragment {
         getStatus();
         getAnimation();
         orderRecycleView.setLayoutManager(new GridLayoutManager(getContext(),1));
-        orderRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
+//        orderRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
         getOrderData("pending");
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override

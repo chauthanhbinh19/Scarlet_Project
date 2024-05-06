@@ -48,7 +48,7 @@
 				android:gravity="center"
 				android:layout_centerHorizontal="true"
 				android:textSize="20sp"
-				android:textColor="@color/black"
+				android:textColor="@color/burgundy"
 				android:layout_centerVertical="true"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
 				android:textColor="@color/burgundy"
 				android:textStyle="bold"
 				android:textSize="16sp"
-				android:text="Total"/>
+				android:text="Subtotal"/>
 
 			<TextView android:id="@+id/total"
 				android:layout_width="wrap_content"
@@ -237,7 +237,7 @@
 						android:layout_height="match_parent"
 						android:layout_below="@+id/delivery_text"
 						android:layout_marginRight="70dp"
-						android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"
+						android:text=""
 						android:layout_marginTop="4dp"
 						android:textColor="@color/black"
 						android:textSize="14sp" />

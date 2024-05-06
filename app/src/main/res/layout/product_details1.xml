@@ -227,7 +227,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="54dp"
 					android:layout_below="@+id/description"
-					android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"
+					android:text="@string/lorem"
 					android:textColor="@color/ellipse_11_color"
 					android:textSize="14sp"
 					android:textStyle="bold" />

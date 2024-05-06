@@ -2,15 +2,19 @@ package com.example.scarlet.Adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Data.Order;
+import com.example.scarlet.OrderDetailsActivity;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -74,7 +78,10 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(context, OrderDetailsActivity.class);
+                intent.putExtra("orderKey",key);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeCustomAnimation(context, R.anim.slide_in_right, R.anim.slide_out_left);
+                ActivityCompat.startActivity(context, intent, options.toBundle());
             }
         });
     }

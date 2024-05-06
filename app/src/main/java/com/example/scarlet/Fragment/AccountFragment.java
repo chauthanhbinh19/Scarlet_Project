@@ -125,7 +125,7 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(), SignInActivity.class);
                 startActivity(intent);
-
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         dashboard_button.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +133,7 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(), AdminMainActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         sign_out_button.setOnClickListener(new View.OnClickListener() {

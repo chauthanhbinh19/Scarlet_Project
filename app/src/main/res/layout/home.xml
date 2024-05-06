@@ -23,7 +23,8 @@
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:paddingLeft="28dp"
+					android:layout_marginLeft="28dp"
+					android:layout_marginBottom="10dp"
 					android:layout_marginTop="10dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -60,7 +61,7 @@
 					android:textColor="@color/black"
 					android:layout_marginLeft="28dp"
 					android:layout_marginTop="10dp"
-					android:layout_width="92dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="Trends"
 					/>
@@ -103,10 +104,11 @@
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="28dp"
-					android:layout_width="200dp"
-					android:layout_height="43dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="Featured Products"
 					/>
 

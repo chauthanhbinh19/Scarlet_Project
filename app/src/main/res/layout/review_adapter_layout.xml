@@ -76,5 +76,5 @@
         android:layout_below="@+id/user_avatar"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/lorem_ipsum_dolor_sit_amet__consectetur_adipisicing_elit__string"/>
+        android:text="@string/lorem"/>
 </RelativeLayout>

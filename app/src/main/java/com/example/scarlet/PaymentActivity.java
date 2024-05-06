@@ -72,6 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
     double total;
     Address address;
     String deliveryStatus;
+    TextView delivery_address_content;
     RadioButton radioZaloPay, radioCash;
     int defaultStatus=4;
     int tip=0;
@@ -92,6 +93,7 @@ public class PaymentActivity extends AppCompatActivity {
         productRecycleView=findViewById(R.id.totalProductRecycleView);
         voucherBtn=findViewById(R.id.voucherBtn);
         voucher_name=findViewById(R.id.voucher_name);
+        delivery_address_content=findViewById(R.id.delivery_address_content);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,7 +112,23 @@ public class PaymentActivity extends AppCompatActivity {
         if(intent!= null){
             String totalT=intent.getStringExtra("total");
             deliveryStatus=intent.getStringExtra("deliveryStatus");
+            String street=intent.getStringExtra("street");
+            String ward=intent.getStringExtra("ward");
+            String district=intent.getStringExtra("district");
+            String province=intent.getStringExtra("province");
+            String postalCode=intent.getStringExtra("postalCode");
+            String additionalInfo=intent.getStringExtra("street");
             totalView.setText(totalT);
+            String a=street+", "+ward+", "+district+", "+province;
+            delivery_address_content.setText(a);
+            if(!postalCode.isEmpty()){
+                a=a+", "+postalCode;
+                delivery_address_content.setText(a);
+            }
+            if(!additionalInfo.isEmpty()){
+                a=a+", "+additionalInfo;
+                delivery_address_content.setText(a);
+            }
         }
         productQuantityList=new ArrayList<>();
         productRecycleView.setLayoutManager(new LinearLayoutManager(PaymentActivity.this,LinearLayoutManager.HORIZONTAL,false));
@@ -562,8 +580,6 @@ public class PaymentActivity extends AppCompatActivity {
                 String orderStatus="pending";
                 Date orderDate=new Date();
 //                Date orderDate=randomDate();
-                total=Double.parseDouble(totalView.getText().toString());
-                total=total+tip;
                 addressRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

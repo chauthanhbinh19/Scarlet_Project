@@ -20,7 +20,7 @@ import com.example.scarlet.R;
 public class CategoryHolderView extends RecyclerView.ViewHolder {
     ImageView imageView;
     TextView textView;
-    String categoryKey;
+    String categoryKey, categoryName;
     Context context;
 
     public CategoryHolderView(View itemView) {
@@ -35,6 +35,7 @@ public class CategoryHolderView extends RecyclerView.ViewHolder {
                     ProductFragment productFragment=new ProductFragment();
                     Bundle args=new Bundle();
                     args.putString("categoryKey",categoryKey);
+                    args.putString("categoryName",categoryName);
                     productFragment.setArguments(args);
 
                     FragmentManager fragmentManager = ((AppCompatActivity)itemView.getContext()).getSupportFragmentManager();
@@ -52,5 +53,6 @@ public class CategoryHolderView extends RecyclerView.ViewHolder {
         Glide.with(context).load(category.getImg()).into(imageView);
         textView.setText(category.getName_category());
         categoryKey=category.getKey();
+        categoryName=category.getName_category();
     }
 }

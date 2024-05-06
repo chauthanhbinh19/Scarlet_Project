@@ -51,18 +51,18 @@ public class ProductDetailActivity extends AppCompatActivity {
     ProductSearchAdapter productAdapter;
     List<Review> reviewList;
     List<Product> productList;
-    TextView productNameView, productPriceView, text1, text2, text3;
+    TextView  productPriceView, text1, text2, text3;
     ImageView productImageView, line1, line2, line3;
     String productKey;
     RecyclerView reviewRecycleView, productRecycleView;
     ImageView categoryIconView, plus, minus;
-    TextView  categoryNameView, quantity;
+    TextView  categoryNameView, quantity, productNameText;
     int defaultStatus=1;
 
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
         heart=findViewById(R.id.heart);
-        productNameView=findViewById(R.id.product_details_name);
+//        productNameView=findViewById(R.id.product_details_name);
         productPriceView=findViewById(R.id.product_details_price);
         productImageView=findViewById(R.id.product_details_image);
         categoryIconView=findViewById(R.id.product_details_category_icon);
@@ -84,6 +84,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         line1=findViewById(R.id.line1);
         line2=findViewById(R.id.line2);
         line3=findViewById(R.id.line3);
+        productNameText=findViewById(R.id.productNameText);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +98,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
-        Button add=(Button) findViewById(R.id.add);
+        RelativeLayout add=(RelativeLayout) findViewById(R.id.add);
         productRecycleView.setLayoutManager(new GridLayoutManager(this,1));
         productRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
         reviewRecycleView.setLayoutManager(new GridLayoutManager(this,1));
@@ -280,6 +281,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     Double productPrice=snapshot.child("price").getValue(Double.class);
                     String productImage=snapshot.child("img").getValue(String.class);
                     String categoryId=snapshot.child("categoryId").getValue(String.class);
+                    String categoryName=snapshot.child("categoryName").getValue(String.class);
 
                     myRef2.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -296,8 +298,10 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                         }
                     });
-                    productNameView.setText(productName);
+                    productNameText.setText(productName);
+//                    productNameView.setText(productName);
                     productPriceView.setText(String.valueOf(productPrice));
+                    categoryNameView.setText(categoryName);
 //                    productImageView.setImageResource(productImage);
                     Glide.with(ProductDetailActivity.this).load(productImage).into(productImageView);
                 }

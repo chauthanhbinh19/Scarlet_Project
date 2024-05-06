@@ -20,17 +20,17 @@
             android:layout_alignParentLeft="true"
             android:background="@color/lightpink"
             android:elevation="4dp"
-            android:src="@drawable/a_2"
+            android:src="@drawable/rectangle_gradient_light_burgundy"
             android:id="@+id/background_product"
             app:shapeAppearanceOverlay="@style/roundedImageView"
             android:scaleType="centerCrop"
             />
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="52dp"
-            android:layout_marginLeft="90dp"
-            android:elevation="4dp"
-            android:background="@drawable/_bg__white"/>
+<!--        <ImageView-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="52dp"-->
+<!--            android:layout_marginLeft="90dp"-->
+<!--            android:elevation="4dp"-->
+<!--            android:background="@drawable/_bg__white"/>-->
 
         <ImageView android:id="@+id/product_image"
             android:src="@drawable/bacon_cheese_onion"

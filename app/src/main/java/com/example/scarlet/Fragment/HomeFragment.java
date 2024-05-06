@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,13 +24,12 @@ import com.example.scarlet.Adapter.CategoryAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Adapter.TrendAdapter;
-import com.example.scarlet.AdminMainActivity;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.DealTransaction;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 import com.example.scarlet.SearchProductActivity;
-import com.example.scarlet.TestActivity;
+import com.example.scarlet.WalkthroughActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -77,6 +75,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), SearchProductActivity.class);
+                startActivity(intent);
+            }
+        });
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getContext(), WalkthroughActivity.class);
                 startActivity(intent);
             }
         });

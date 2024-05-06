@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/rectangle_gradient_light_burgundy"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView android:id="@+id/step1"
+                android:background="@drawable/rectangle_circle_white"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"/>
+            <ImageView android:id="@+id/step2"
+                android:background="@drawable/rectangle_circle_gray"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"/>
+            <ImageView android:id="@+id/step3"
+                android:background="@drawable/rectangle_circle_gray"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"/>
+            <ImageView android:id="@+id/step4"
+                android:background="@drawable/rectangle_circle_gray"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="10dp"
+                android:layout_height="10dp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:visibility="visible"
+            android:text="Next"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            style="@style/MyButtonTheme"
+            android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:visibility="gone"
+            android:text="Next"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            style="@style/MyButtonTheme"
+            android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:visibility="gone"
+            android:text="Next"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            style="@style/MyButtonTheme"
+            android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:visibility="gone"
+            android:text="Next"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            style="@style/MyButtonTheme"
+            android:layout_marginBottom="16dp" />
+        <Button
+            android:id="@+id/skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/transparent"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:text="Skip"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            style="@style/MyButtonTheme"
+            android:layout_marginBottom="16dp" />
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

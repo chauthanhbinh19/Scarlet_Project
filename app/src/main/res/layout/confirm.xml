@@ -5,6 +5,7 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto">
 
 	<RelativeLayout android:id="@+id/confirm"
+		android:background="@color/white"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
@@ -12,95 +13,40 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" >
 
-			<View
-				android:id="@+id/_bg__confirm"
-				android:layout_width="410dp"
-				android:layout_height="800dp"
-				android:background="@drawable/_bg__confirm_shape" />
-
-			<RelativeLayout
+			<RelativeLayout android:id="@+id/confrimBox"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="20dp">
 
 				<View
 					android:id="@+id/rectangle_18"
-					android:layout_width="410dp"
-					android:layout_height="104dp"
+					android:layout_width="match_parent"
+					android:layout_height="140dp"
 					android:background="@drawable/rectangle_stroke"/>
 
-				<ImageView android:id="@+id/confirm_1"
-					android:src="@drawable/confirm_1"
-					android:contentDescription="confirm_1"
-					android:layout_marginStart="20dp"
-					android:layout_marginTop="30dp"
-					android:layout_width="50dp"
-					android:layout_height="50dp" />
-
-				<TextView
-					android:id="@+id/confirmation__aaaaaaa"
-					android:layout_width="203.2dp"
-					android:layout_height="23.2dp"
-					android:layout_marginLeft="85dp"
-					android:layout_marginTop="30dp"
-					android:text="@string/confirmation__aaaaaaa_string"
-					android:textColor="@color/black"
-					android:textSize="12sp" />
-
-				<TextView
-					android:id="@+id/thank_you__aria_"
-					android:layout_width="199.2dp"
-					android:layout_height="38.2dp"
-					android:layout_marginLeft="87dp"
-					android:layout_marginTop="60dp"
-					android:text="@string/thank_you__aria__string"
-					android:textColor="@color/black"
-					android:textSize="12sp" />
-			</RelativeLayout>
-			<ImageView
-				android:id="@+id/basemap_image"
-				android:layout_width="410dp"
-				android:layout_height="250dp"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="150dp"
-				android:contentDescription="basemap_image"
-				android:src="@drawable/basemap_image" />
-			<RelativeLayout android:id="@+id/default_marker_component"
-				android:layout_marginTop="204dp"
-				android:layout_marginStart="110dp"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				>
-
-				<RelativeLayout android:id="@+id/frame"
-					android:layout_marginTop="0dp"
-					android:layout_marginStart="0dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					>
-
-
-
-					<ImageView android:id="@+id/vector_ek1"
-						android:src="@drawable/vector_ek1"
-						android:contentDescription="vector_ek1"
-						android:layout_marginStart="0.11dp"
-						android:layout_marginTop="0.2dp"
-						android:layout_width="7.46dp"
-						android:layout_height="19.12dp" />
-
-				</RelativeLayout>
+				<com.airbnb.lottie.LottieAnimationView
+					android:layout_width="130dp"
+					android:layout_height="130dp"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true"
+					app:lottie_autoPlay="true"
+					app:lottie_loop="false"
+					app:lottie_rawRes="@raw/confirm"/>
 
 			</RelativeLayout>
-
-
-			<RelativeLayout
+			<ImageView android:id="@+id/basemap_image"
+				android:layout_width="310dp"
+				android:layout_height="270dp"
+				android:layout_below="@+id/confrimBox"
+				android:layout_centerHorizontal="true"
+				android:layout_marginTop="10dp"
+				android:background="@drawable/successful_purchase_pana"/>
+			<RelativeLayout android:id="@+id/messBox"
+				android:layout_below="@+id/basemap_image"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="430dp"
+				android:layout_marginTop="10dp"
 				>
-
-
 				<TextView android:id="@+id/your_order_is_confirmed"
 					android:textStyle="bold"
 					android:layout_gravity="center_horizontal|center"
@@ -108,30 +54,32 @@
 					android:textSize="18sp"
 					android:textColor="@color/_bg__group_52_ek1_color"
 					android:layout_marginTop="5dp"
-					android:layout_width="234dp"
-					android:layout_height="25.8dp"
+					android:layout_marginLeft="30dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="@string/your_order_is_confirmed_string"
 					/>
 				<TextView android:id="@+id/mess"
-					android:textSize="15sp"
+					android:textSize="14sp"
 					android:textColor="@color/_bg__group_52_ek1_color"
-					android:layout_marginLeft="22dp"
-					android:layout_marginTop="40dp"
-					android:layout_width="385dp"
-					android:layout_height="70dp"
+					android:layout_marginLeft="60dp"
+					android:layout_centerHorizontal="true"
+					android:layout_below="@+id/your_order_is_confirmed"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
 					android:text="@string/we_ve_accepted_your_order__and_we_re_getting_it_ready__come_back_to_this_page_for_updates_on_your_shipment_status__string"
 					/>
 			</RelativeLayout>
 
-
-
 			<Button   android:id="@+id/track_btn"
+				android:layout_below="@+id/messBox"
 				android:background="@drawable/rectangle_21_shape"
 				 android:layout_marginStart="30dp"
-				android:layout_marginTop="540dp"
-				android:layout_width="190dp"
+				android:layout_marginTop="30dp"
+				android:layout_width="200dp"
 				android:layout_height="48dp"
 				android:textStyle="bold"
+				style="@style/MyButtonTheme"
 				android:textColor="@color/white"
 				android:text="@string/track_your_order_string"/>
 
@@ -140,29 +88,12 @@
 				android:layout_marginStart="30dp"
 				android:layout_marginTop="10dp"
 				android:layout_below="@+id/track_btn"
-				android:layout_width="190dp"
+				android:layout_width="200dp"
 				android:layout_height="48dp"
 				android:textStyle="bold"
+				style="@style/MyButtonTheme"
 				android:textColor="@color/white"
 				android:text="Continue to buy"/>
-
-
-			<TextView android:id="@+id/track_your_order"
-				android:textStyle="bold"
-				android:layout_gravity="center_horizontal|center"
-				android:gravity="center"
-				android:textSize="14sp"
-				android:textColor="@color/_bg__confirm_color"
-				android:layout_marginLeft="21dp"
-				android:layout_marginTop="642dp"
-				android:layout_width="130.4dp"
-				android:layout_height="22.4dp"
-
-				 />
-
-
-
-
 
 		</RelativeLayout>
 

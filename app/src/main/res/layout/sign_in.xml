@@ -40,48 +40,47 @@
 				android:text="@string/or_string"
 				 />
 
-			<View   android:id="@+id/rectangle_1"
-				android:background="@drawable/rectangle_white_stroke"
-				 android:layout_centerHorizontal="true"
-				android:layout_marginTop="350dp"
-				android:layout_width="match_parent"
-				android:layout_marginLeft="110dp"
-				android:layout_height="55dp" />
-
-			<View   android:id="@+id/rectangle_2"
-				android:background="@drawable/rectangle_white_stroke"
-				 android:layout_centerHorizontal="true"
-				android:layout_marginTop="420dp"
-				android:layout_width="match_parent"
-				android:layout_marginLeft="110dp"
-				android:layout_height="55dp" />
-
-
 
 			<EditText android:id="@+id/password"
 				android:textSize="16sp"
 				android:textColor="@color/lightbrown"
-				android:layout_marginLeft="140dp"
+				android:layout_marginLeft="100dp"
 				android:layout_marginTop="422dp"
 				android:layout_width="match_parent"
 				android:layout_centerHorizontal="true"
-				android:layout_height="47.6dp"
+				android:layout_height="48dp"
 				android:hint="@string/password_string"
+				android:paddingLeft="40dp"
 				android:inputType="textPassword"
-				android:background="@color/transparent"
+				android:background="@drawable/rectangle_white_stroke"
 				 />
+
+			<ImageView
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:layout_marginTop="434dp"
+				android:layout_marginLeft="60dp"
+				android:background="@drawable/padlock"/>
 
 			<EditText android:id="@+id/username_or_email"
 				android:textSize="16sp"
 				android:textColor="@color/lightbrown"
-				android:layout_marginLeft="140dp"
+				android:layout_marginLeft="100dp"
 				android:layout_marginTop="352dp"
 				android:layout_width="match_parent"
 				android:layout_centerHorizontal="true"
-				android:layout_height="47.6dp"
+				android:layout_height="48dp"
 				android:hint="Email"
-				android:background="@color/transparent"
+				android:paddingLeft="40dp"
+				android:background="@drawable/rectangle_white_stroke"
 				 />
+
+			<ImageView
+				android:layout_width="22dp"
+				android:layout_height="22dp"
+				android:layout_marginTop="364dp"
+				android:layout_marginLeft="60dp"
+				android:background="@drawable/user_2"/>
 
 			<Button
 				android:id="@+id/sign_in_button"
