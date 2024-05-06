@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,15 +29,19 @@ import java.util.List;
 
 public class ProductHorizontalHolderView extends RecyclerView.ViewHolder {
     ImageView imageView;
-    TextView textView1,textView2;
+    TextView textView1,textView2, quantityText;
+    RelativeLayout quantityBox;
     Context context;
     String productKey;
+    int quantity;
 
     public ProductHorizontalHolderView(@NonNull View itemView) {
         super(itemView);
         imageView=itemView.findViewById(R.id.product_image);
         textView1=itemView.findViewById(R.id.product_name);
         textView2=itemView.findViewById(R.id.product_price);
+        quantityBox=itemView.findViewById(R.id.quantityBox);
+        quantityText=itemView.findViewById(R.id.quantity);
         context=itemView.getContext();
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +71,14 @@ public class ProductHorizontalHolderView extends RecyclerView.ViewHolder {
     public void bindData(Product product){
         Glide.with(context).load(product.getImg()).into(imageView);
         textView1.setText(product.getName());
-        textView2.setText(String.valueOf(product.getPrice()));
+        textView2.setText(String.format("%.0f", product.getPrice())+" đ");
         productKey=product.getKey();
+        quantity=product.getQuantity();
+        if(quantity>1){
+            quantityBox.setVisibility(View.VISIBLE);
+            quantityText.setText(String.valueOf(quantity));
+        }else{
+            quantityBox.setVisibility(View.GONE);
+        }
     }
 }

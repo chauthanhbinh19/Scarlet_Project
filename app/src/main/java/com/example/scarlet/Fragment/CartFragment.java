@@ -79,12 +79,12 @@ public class CartFragment extends Fragment {
                 if(type==0){
                     double oldTotal=Double.parseDouble(totalView.getText().toString());
                     double newTotal=oldTotal+price;
-                    totalView.setText(String.valueOf(newTotal));
+                    totalView.setText(String.format("%.0f", newTotal));
                 }
                 if(type==1){
                     double oldTotal=Double.parseDouble(totalView.getText().toString());
                     double newTotal=oldTotal-price;
-                    totalView.setText(String.valueOf(newTotal));
+                    totalView.setText(String.format("%.0f", newTotal));
                 }
             }
         };
@@ -213,7 +213,7 @@ public class CartFragment extends Fragment {
                                     Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey.getProductId(),quantity,productPrice*quantity);
                                     productList.add(productWithIcon);
                                     totalView=view.findViewById(R.id.total);
-                                    totalView.setText(String.valueOf(total));
+                                    totalView.setText(String.format("%.0f", total));
                                 }
                             }
                             productAdapter=new CartAdapter(productList,getStringCallback1);

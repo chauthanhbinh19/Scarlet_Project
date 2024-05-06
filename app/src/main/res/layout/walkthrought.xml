@@ -21,26 +21,26 @@
                 android:background="@drawable/rectangle_circle_white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="10dp"
-                android:layout_height="10dp"/>
+                android:layout_width="8dp"
+                android:layout_height="8dp"/>
             <ImageView android:id="@+id/step2"
                 android:background="@drawable/rectangle_circle_gray"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="10dp"
-                android:layout_height="10dp"/>
+                android:layout_width="8dp"
+                android:layout_height="8dp"/>
             <ImageView android:id="@+id/step3"
                 android:background="@drawable/rectangle_circle_gray"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="10dp"
-                android:layout_height="10dp"/>
+                android:layout_width="8dp"
+                android:layout_height="8dp"/>
             <ImageView android:id="@+id/step4"
                 android:background="@drawable/rectangle_circle_gray"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_width="10dp"
-                android:layout_height="10dp"/>
+                android:layout_width="8dp"
+                android:layout_height="8dp"/>
         </LinearLayout>
         <Button
             android:id="@+id/btn1"

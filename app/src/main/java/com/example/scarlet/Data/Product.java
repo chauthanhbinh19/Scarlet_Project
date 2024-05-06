@@ -164,13 +164,14 @@ public class Product {
         this.quantity=quantity;
         this.total=total;
     }
-    public Product(String name,double price,int quantity,double total, String categoryName, int discount){
+    public Product(String name,double price,int quantity,double total, String categoryName, int discount, String key){
         this.name = name;
         this.price = price;
         this.quantity=quantity;
         this.total=total;
         this.categoryName=categoryName;
         this.discount=discount;
+        this.key=key;
     }
 
     public Product(String key, String name) {
@@ -183,10 +184,21 @@ public class Product {
         this.price = price;
         this.img=img;
     }
+    public Product(String name, double price, String img, int quantity) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.quantity=quantity;
+    }
 
     public Product(String key, String name, double price) {
         this.key = key;
         this.name = name;
         this.price = price;
+    }
+    public Product(String key, String name, int quantity) {
+        this.key = key;
+        this.name = name;
+        this.quantity = quantity;
     }
 }

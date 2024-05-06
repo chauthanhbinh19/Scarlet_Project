@@ -62,6 +62,7 @@
 			android:paddingBottom="0dp"
 			android:paddingLeft="20dp"
 			android:paddingRight="20dp"
+			android:background="@color/white"
 			android:layout_below="@+id/top_bar"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
@@ -85,7 +86,7 @@
 			<TextView android:id="@+id/unit"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="đ"
+				android:text=" đ"
 				android:layout_alignParentRight="true"
 				android:textSize="16sp"
 				android:textColor="@color/burgundy"
@@ -232,12 +233,19 @@
 						android:textSize="16sp"
 						android:textStyle="bold" />
 
+					<ImageView android:id="@+id/deliveryIcon"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_below="@+id/delivery_text"
+						android:background="@drawable/delivery_2"/>
 					<TextView android:id="@+id/delivery_address_content"
 						android:layout_width="match_parent"
 						android:layout_height="match_parent"
 						android:layout_below="@+id/delivery_text"
-						android:layout_marginRight="70dp"
+						android:layout_toRightOf="@+id/deliveryIcon"
+						android:layout_marginRight="90dp"
 						android:text=""
+						android:layout_marginLeft="4dp"
 						android:layout_marginTop="4dp"
 						android:textColor="@color/black"
 						android:textSize="14sp" />
@@ -296,13 +304,45 @@
 						android:textSize="14sp" />
 
 					<TextView android:id="@+id/voucher_name"
-						android:layout_width="match_parent"
-						android:layout_height="match_parent"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
 						android:layout_below="@+id/voucher_des"
 						android:text=""
 						android:visibility="gone"
 						android:layout_marginTop="4dp"
 						android:textColor="@color/blue"
+						android:textSize="14sp" />
+
+					<TextView android:id="@+id/discount_price"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/voucher_des"
+						android:layout_alignParentRight="true"
+						android:text=""
+						android:visibility="gone"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/blue"
+						android:textSize="14sp" />
+
+					<TextView android:id="@+id/voucher_total"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/voucher_name"
+						android:text="Total: "
+						android:visibility="gone"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/black"
+						android:textSize="14sp" />
+
+					<TextView android:id="@+id/totalAfterDiscount"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_below="@+id/voucher_name"
+						android:layout_alignParentRight="true"
+						android:text=""
+						android:visibility="gone"
+						android:layout_marginTop="4dp"
+						android:textColor="@color/black"
 						android:textSize="14sp" />
 
 					<Button android:id="@+id/voucherBtn"

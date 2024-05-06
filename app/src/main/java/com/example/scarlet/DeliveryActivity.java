@@ -194,10 +194,10 @@ public class DeliveryActivity extends AppCompatActivity {
                     if(checkKeyInList(productKey,productKeyList)){
                         String productName=productSnap.child("name").getValue(String.class);
                         double productPrice=productSnap.child("price").getValue(double.class);
-//                        int productQuantity=getQuantity(productKey,productKeyList);
+                        int productQuantity=getQuantity(productKey,productKeyList);
                         String productImg=productSnap.child("img").getValue(String.class);
-//                        double productTotal=productPrice*productQuantity;
-                        Product product=new Product(productName,productPrice, productImg);
+                        double productTotal=productPrice*productQuantity;
+                        Product product=new Product(productName,productTotal, productImg, productQuantity);
                         productList.add(product);
                     }
                 }
@@ -218,6 +218,14 @@ public class DeliveryActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    public int getQuantity(ProductQuantity key, List<ProductQuantity> keyList){
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return item.getQuantity();
+            }
+        }
+        return 1;
     }
     private void getAddressData(){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

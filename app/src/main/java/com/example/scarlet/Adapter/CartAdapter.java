@@ -34,7 +34,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartHolderView> {
     public void onBindViewHolder(@NonNull CartHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(productList.get(position),getStringCallback);
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

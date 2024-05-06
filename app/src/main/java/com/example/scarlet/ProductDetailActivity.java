@@ -300,7 +300,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                     });
                     productNameText.setText(productName);
 //                    productNameView.setText(productName);
-                    productPriceView.setText(String.valueOf(productPrice));
+                    productPriceView.setText(String.format("%.0f",productPrice));
                     categoryNameView.setText(categoryName);
 //                    productImageView.setImageResource(productImage);
                     Glide.with(ProductDetailActivity.this).load(productImage).into(productImageView);

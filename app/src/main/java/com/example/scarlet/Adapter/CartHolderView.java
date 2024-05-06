@@ -205,7 +205,7 @@ public class CartHolderView extends RecyclerView.ViewHolder {
     public void bindData(Product product, GetStringCallback getStringCallback1){
 //        imageView.setImageResource(product.getImg());
         textView1.setText(product.getName());
-        textView2.setText(String.valueOf(product.getTotal()));
+        textView2.setText(String.format("%.0f", product.getTotal())+" đ");
         textView3.setText(String.valueOf(product.getQuantity()));
         Glide.with(context).load(product.getIcon()).into(imageView2);
         Glide.with(context).load(product.getImg()).into(imageView);

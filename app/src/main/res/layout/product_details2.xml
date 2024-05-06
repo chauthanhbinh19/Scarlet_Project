@@ -167,6 +167,7 @@
 					android:layout_below="@+id/product_details_name"
 					android:text="@string/_20_000__string"
 					android:layout_marginBottom="5dp"
+					android:textStyle="bold"
 					android:textColor="@color/_bg__frame_3_ek1_color"
 					android:textSize="20sp" />
 				<TextView
@@ -176,6 +177,7 @@
 					android:layout_below="@+id/product_details_name"
 					android:layout_toRightOf="@+id/product_details_price"
 					android:text=" đ"
+					android:textStyle="bold"
 					android:layout_marginBottom="5dp"
 					android:textColor="@color/_bg__frame_3_ek1_color"
 					android:textSize="20sp" />

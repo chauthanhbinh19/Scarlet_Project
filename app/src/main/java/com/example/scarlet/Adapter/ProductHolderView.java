@@ -153,7 +153,7 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
 //        imageView.setImageResource(product.getImg());
         Glide.with(context).load(product.getImg()).into(imageView);
         textView1.setText(product.getName());
-        textView2.setText(String.valueOf(product.getPrice()));
+        textView2.setText(String.format("%.0f", product.getPrice())+" đ");
         Glide.with(context).load(product.getIcon()).into(imageView2);
         productKey=product.getKey();
     }

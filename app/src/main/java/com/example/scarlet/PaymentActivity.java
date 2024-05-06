@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
     double total;
     Address address;
     String deliveryStatus;
-    TextView delivery_address_content;
+    TextView delivery_address_content, discount_price, voucher_total, totalAfterDiscount;
     RadioButton radioZaloPay, radioCash;
     int defaultStatus=4;
     int tip=0;
@@ -93,6 +93,9 @@ public class PaymentActivity extends AppCompatActivity {
         productRecycleView=findViewById(R.id.totalProductRecycleView);
         voucherBtn=findViewById(R.id.voucherBtn);
         voucher_name=findViewById(R.id.voucher_name);
+        discount_price=findViewById(R.id.discount_price);
+        voucher_total=findViewById(R.id.voucher_total);
+        totalAfterDiscount=findViewById(R.id.totalAfterDiscount);
         delivery_address_content=findViewById(R.id.delivery_address_content);
     }
     @Override
@@ -218,7 +221,7 @@ public class PaymentActivity extends AppCompatActivity {
                     if(radioCash.isChecked()){
                         Payment payment=new Payment();
                         payment.setType("Cash");
-                        checkOrderVoucher(payment);
+                        checkOrderVoucher(payment,1);
                     }else if(radioZaloPay.isChecked()){
                         requestZaloPayVoucher();
                     }
@@ -249,8 +252,15 @@ public class PaymentActivity extends AppCompatActivity {
                                     if(!voucherKey.equals("0")){
                                         voucher_name.setText(voucherName);
                                         voucher_name.setVisibility(View.VISIBLE);
+                                        discount_price.setVisibility(View.VISIBLE);
+                                        voucher_total.setVisibility(View.VISIBLE);
+                                        totalAfterDiscount.setVisibility(View.VISIBLE);
+                                        checkOrderVoucher(new Payment(),2);
                                     }else{
                                         voucher_name.setVisibility(View.GONE);
+                                        discount_price.setVisibility(View.GONE);
+                                        voucher_total.setVisibility(View.GONE);
+                                        totalAfterDiscount.setVisibility(View.GONE);
                                     }
                                 }
                             }
@@ -307,10 +317,10 @@ public class PaymentActivity extends AppCompatActivity {
                     if(checkKeyInList(productKey,productKeyList)){
                         String productName=productSnap.child("name").getValue(String.class);
                         double productPrice=productSnap.child("price").getValue(double.class);
-//                        int productQuantity=getQuantity(productKey,productKeyList);
+                        int productQuantity=getQuantity(productKey,productKeyList);
                         String productImg=productSnap.child("img").getValue(String.class);
-//                        double productTotal=productPrice*productQuantity;
-                        Product product=new Product(productName,productPrice, productImg);
+                        double productTotal=productPrice*productQuantity;
+                        Product product=new Product(productName,productTotal, productImg,productQuantity);
                         productList.add(product);
                     }
                 }
@@ -463,7 +473,7 @@ public class PaymentActivity extends AppCompatActivity {
                         payment.setType("ZaloPay");
                         payment.setTransactionId(transactionId);
                         payment.setToken(transToken);
-                        checkOrderVoucher(payment);
+                        checkOrderVoucher(payment,1);
                     }
 
                     @Override
@@ -552,10 +562,11 @@ public class PaymentActivity extends AppCompatActivity {
                         int discount=getDiscount(productKey,productKeyList);
                         int point=productSnap.child("point").getValue(int.class);
                         totalPoint=totalPoint+point*productQuantity;
+                        String key= productSnap.getKey();
                         String categoryName=productSnap.child("categoryName").getValue(String.class);
                         double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
                         subTotal=subTotal+productTotal;
-                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount);
+                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key);
                         productList.add(product);
                     }
                 }
@@ -644,7 +655,7 @@ public class PaymentActivity extends AppCompatActivity {
         Date randomDate=calendar.getTime();
         return randomDate;
     }
-    private void checkOrderVoucher(Payment payment){
+    private void checkOrderVoucher(Payment payment, int vcStatus){
         firebaseDatabase=FirebaseDatabase.getInstance();
         myRef=firebaseDatabase.getReference("deal");
         myRef.child(voucherKey).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -657,7 +668,7 @@ public class PaymentActivity extends AppCompatActivity {
                     String productId = childSnapshot.getValue(String.class);
                     productIdList.add(productId);
                 }
-                getProductBaseOnVoucherList(productIdList, discount, payment);
+                getProductBaseOnVoucherList(productIdList, discount, payment, vcStatus);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -665,7 +676,7 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
-    private void getProductBaseOnVoucherList(List<String> productIdList, int discount, Payment payment){
+    private void getProductBaseOnVoucherList(List<String> productIdList, int discount, Payment payment, int vcStatus){
         List<Product> tempProductList=new ArrayList<>();
         firebaseDatabase=FirebaseDatabase.getInstance();
         myRef=firebaseDatabase.getReference("product");
@@ -687,7 +698,7 @@ public class PaymentActivity extends AppCompatActivity {
                 if(!allChecked){
                     statusVoucher=2;
                 }
-                getCartForVoucher(tempProductList,discount, payment, statusVoucher);
+                getCartForVoucher(tempProductList,discount, payment, statusVoucher, vcStatus);
             }
 
             @Override
@@ -696,7 +707,7 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
-    private void getCartForVoucher(List<Product> productList, int discount, Payment payment, int status){
+    private void getCartForVoucher(List<Product> productList, int discount, Payment payment, int status, int vcStatus){
         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         String userKey=sharedPreferences.getString("customerKey","");
@@ -723,10 +734,16 @@ public class PaymentActivity extends AppCompatActivity {
                                     }
                                     productQuantityList.add(productQuantity);
                                 }
-                                cartSnap.child("productQuantityList").getRef().removeValue();
+                                if(vcStatus==1){
+                                    cartSnap.child("productQuantityList").getRef().removeValue();
+                                }
                             }
                         }
-                        getProductDataToPay(productQuantityList, userKey, payment);
+                        if(vcStatus==1){
+                            getProductDataToPay(productQuantityList, userKey, payment);
+                        }else{
+                            changeTotalTextView(productQuantityList);
+                        }
                     }
                 }
                 @Override
@@ -735,6 +752,46 @@ public class PaymentActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+    private void changeTotalTextView(List<ProductQuantity> productKeyList){
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        productRef = firebaseDatabase.getReference("product");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                double subTotal=0;
+                int totalPoint=0;
+                List<Product> productList=new ArrayList<>();
+                for(DataSnapshot productSnap: snapshot.getChildren()){
+                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
+                    if(checkKeyInList(productKey,productKeyList)){
+                        String productName=productSnap.child("name").getValue(String.class);
+                        double productPrice=productSnap.child("price").getValue(double.class);
+                        int productQuantity=getQuantity(productKey,productKeyList);
+                        int discount=getDiscount(productKey,productKeyList);
+                        int point=productSnap.child("point").getValue(int.class);
+                        totalPoint=totalPoint+point*productQuantity;
+                        String key=productSnap.getKey();
+                        String categoryName=productSnap.child("categoryName").getValue(String.class);
+                        double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
+                        subTotal=subTotal+productTotal;
+                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key);
+                        productList.add(product);
+                    }
+                }
+                subTotal=subTotal+tip;
+                total=Double.parseDouble(totalView.getText().toString());
+                double temp=total-subTotal;
+                temp=-temp;
+                discount_price.setText(String.format("%.0f", temp) + " đ");
+                totalAfterDiscount.setText(String.format("%.0f", subTotal) +" đ");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
     public int getQuantity(ProductQuantity key, List<ProductQuantity> keyList){
         for (ProductQuantity item : keyList) {

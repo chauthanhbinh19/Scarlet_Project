@@ -28,7 +28,7 @@
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="80dp"
         android:layout_below="@id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

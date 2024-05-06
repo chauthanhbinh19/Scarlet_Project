@@ -86,7 +86,7 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         });
     }
     public void bindData(Order order){
-        total.setText(String.valueOf(order.getTotal()));
+        total.setText(String.format("%.0f", order.getTotal()));
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String formattedExpiryDate = format.format(order.getOrderDate());
         date.setText(formattedExpiryDate);
