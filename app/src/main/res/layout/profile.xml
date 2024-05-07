@@ -53,7 +53,7 @@
 			android:layout_centerVertical="true"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/policies_string"
+			android:text="@string/profile_string"
 			/>
 
 	</RelativeLayout>
@@ -80,18 +80,19 @@
 
 			<View   android:id="@+id/ellipse_24"
 				android:background="@drawable/ellipse_lightpink"
-				android:layout_marginStart="0dp"
+				android:layout_marginStart="10dp"
 				android:layout_marginTop="0dp"
-				android:layout_width="90dp"
-				android:layout_height="90dp" />
+				android:layout_width="100dp"
+				android:layout_height="100dp" />
 
-			<ImageView android:id="@+id/user__2__2"
-				android:src="@drawable/user__2__2"
-				android:contentDescription="user__2__2"
-				android:layout_marginStart="9dp"
-				android:layout_marginTop="9dp"
-				android:layout_width="72dp"
-				android:layout_height="72dp" />
+			<com.google.android.material.imageview.ShapeableImageView android:id="@+id/user_avatar"
+				android:src="@drawable/fox"
+				android:layout_marginStart="20dp"
+				android:layout_marginTop="10dp"
+				android:scaleType="centerCrop"
+				app:shapeAppearanceOverlay="@style/roundedImageView50"
+				android:layout_width="80dp"
+				android:layout_height="80dp" />
 
 		</RelativeLayout>
 
@@ -102,28 +103,28 @@
 			android:layout_height="wrap_content"
 			>
 
-			<TextView android:id="@+id/abca"
-				android:textStyle="bold"
-				android:textSize="16sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="83.6dp"
-				android:layout_height="43.6dp"
-				android:text="@string/abca_string"
-				/>
+<!--			<TextView android:id="@+id/abca"-->
+<!--				android:textStyle="bold"-->
+<!--				android:textSize="16sp"-->
+<!--				android:textColor="@color/white"-->
+<!--				android:layout_marginLeft="0dp"-->
+<!--				android:layout_marginTop="0dp"-->
+<!--				android:layout_width="83.6dp"-->
+<!--				android:layout_height="43.6dp"-->
+<!--				android:text="@string/abca_string"-->
+<!--				/>-->
 
-			<EditText android:id="@+id/member"
-				android:textStyle="bold"
-				android:textSize="18sp"
-				android:textColor="@color/white"
-				android:layout_marginLeft="119dp"
-				android:layout_marginTop="4dp"
-				android:layout_width="96.8dp"
-				android:layout_height="48dp"
-				android:clickable="false"
-				android:text="@string/member_string"
-				/>
+<!--			<EditText android:id="@+id/member"-->
+<!--				android:textStyle="bold"-->
+<!--				android:textSize="18sp"-->
+<!--				android:textColor="@color/white"-->
+<!--				android:layout_marginLeft="119dp"-->
+<!--				android:layout_marginTop="4dp"-->
+<!--				android:layout_width="96.8dp"-->
+<!--				android:layout_height="48dp"-->
+<!--				android:clickable="false"-->
+<!--				android:text="@string/member_string"-->
+<!--				/>-->
 
 		</RelativeLayout>
 

@@ -96,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity {
                             DatabaseReference userRef=FirebaseDatabase.getInstance().getReference("user");
                             DatabaseReference newUserRef=userRef.child(uid);
 
-                            User userAdd=new User(uid,"","","","","",email,0,"-1","",true,false);
+                            User userAdd=new User(uid,"","","","","",email,0,"-1","",true,false,0);
                             userRef.push().setValue(userAdd);
                             Toast.makeText(SignUpActivity.this,"Register successfully",Toast.LENGTH_SHORT).show();
 

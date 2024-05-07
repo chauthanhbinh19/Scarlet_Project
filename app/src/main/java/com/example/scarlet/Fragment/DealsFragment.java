@@ -47,6 +47,7 @@ public class DealsFragment extends Fragment {
     private DealAdapter dealAdapter;
     private List<Deal> dealList;
     RecyclerView recyclerView;
+    TextView voucher_text_1;
     RelativeLayout memberShip,exchangePoint,pointHistory,yourRights, voucher_box;
     TextView more,voucher_point;
     TextView deal_text;
@@ -62,6 +63,7 @@ public class DealsFragment extends Fragment {
         deal_text=view.findViewById(R.id.deal_text);
         voucher_box=view.findViewById(R.id.voucher_box);
         voucher_point=view.findViewById(R.id.voucher_point);
+        voucher_text_1=view.findViewById(R.id.voucher_text_1);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -263,11 +265,20 @@ public class DealsFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
+                        int oldRankPoint=snapshot.child("rankPoint").getValue(int.class);
                         int oldPoint=snapshot.child("point").getValue(int.class);
-                        voucher_point.setText(String.valueOf(oldPoint));
+                        voucher_point.setText(String.valueOf(oldPoint)+" point");
+                        if(oldRankPoint<10000){
+                            voucher_text_1.setText(String.valueOf(10000-oldRankPoint)+" points left and you achieve bronze");
+                        }else if(oldRankPoint>=10000 && oldRankPoint<30000){
+                            voucher_text_1.setText(String.valueOf(30000-oldRankPoint)+" points left and you achieve silver");
+                        }else if(oldRankPoint>=30000 && oldRankPoint<50000){
+                            voucher_text_1.setText(String.valueOf(50000-oldRankPoint)+" points left and you achieve gold");
+                        }else if(oldRankPoint>=50000 && oldRankPoint<70000){
+                            voucher_text_1.setText(String.valueOf(70000-oldRankPoint)+" points left and you achieve diamond");
+                        }
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
 

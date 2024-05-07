@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.EditProfileActivity;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ProfileFragment extends Fragment {
 
     private boolean isEditing=false;
+    ImageView user_avatar;
     RelativeLayout back_btn, first_name_box,last_name_box,gender_box,birthday_box,email_box,phone_box,
             google_box,facebook_box;
     TextView general_information, mobile_number, email,linked_accounts;
@@ -54,6 +57,7 @@ public class ProfileFragment extends Fragment {
         mobile_number=view.findViewById(R.id.mobile_number);
         email=view.findViewById(R.id.email);
         linked_accounts=view.findViewById(R.id.linked_accounts);
+        user_avatar=view.findViewById(R.id.user_avatar);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -180,36 +184,6 @@ public class ProfileFragment extends Fragment {
             }
         },delay*6);
     }
-    private void enableEditing(View view){
-        EditText firstnameView=view.findViewById(R.id.first_name);
-        EditText lastnameView=view.findViewById(R.id.last_name);
-        EditText genderView=view.findViewById(R.id.gender);
-        EditText birthdayView=view.findViewById(R.id.birthday);
-        EditText phoneView=view.findViewById(R.id.phone);
-        EditText emailView=view.findViewById(R.id.email_input);
-
-        firstnameView.setEnabled(true);
-        lastnameView.setEnabled(true);
-        genderView.setEnabled(true);
-        birthdayView.setEnabled(true);
-        phoneView.setEnabled(true);
-        emailView.setEnabled(true);
-    }
-    private void disableEditing(View view){
-        EditText firstnameView=view.findViewById(R.id.first_name);
-        EditText lastnameView=view.findViewById(R.id.last_name);
-        EditText genderView=view.findViewById(R.id.gender);
-        EditText birthdayView=view.findViewById(R.id.birthday);
-        EditText phoneView=view.findViewById(R.id.phone);
-        EditText emailView=view.findViewById(R.id.email_input);
-
-        firstnameView.setEnabled(false);
-        lastnameView.setEnabled(false);
-        genderView.setEnabled(false);
-        birthdayView.setEnabled(false);
-        phoneView.setEnabled(false);
-        emailView.setEnabled(false);
-    }
     private void getCustomerInfo(View view){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
@@ -227,6 +201,7 @@ public class ProfileFragment extends Fragment {
                         String dateofbirth=snapshot.child("date_of_birth").getValue(String.class);
                         String phone=snapshot.child("phone_number").getValue(String.class);
                         String email=snapshot.child("email").getValue(String.class);
+                        String avatar=snapshot.child("avatar_img").getValue(String.class);
 
                         EditText firstnameView=view.findViewById(R.id.first_name);
                         EditText lastnameView=view.findViewById(R.id.last_name);
@@ -241,6 +216,10 @@ public class ProfileFragment extends Fragment {
                         birthdayView.setText(dateofbirth);
                         phoneView.setText(phone);
                         emailView.setText(email);
+                        if(!avatar.isEmpty()){
+                            ImageView customerAvatarView=view.findViewById(R.id.user_avatar);
+                            Glide.with(getContext()).load(avatar).into(customerAvatarView);
+                        }
 
                         int blackcolor= ContextCompat.getColor(getContext(),R.color.black);
                         firstnameView.setTextColor(blackcolor);

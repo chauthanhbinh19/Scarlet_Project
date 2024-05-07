@@ -13,6 +13,7 @@ public class User {
     private String avatar_img;
     private boolean isCustomer;
     private boolean isEmployee;
+    private int rankPoint;
     private String key;
 
     public String getFirst_name() {
@@ -75,6 +76,14 @@ public class User {
         this.membershipId = membershipId;
     }
 
+    public int getRankPoint() {
+        return rankPoint;
+    }
+
+    public void setRankPoint(int rankPoint) {
+        this.rankPoint = rankPoint;
+    }
+
     public String getKey() {
         return key;
     }
@@ -129,6 +138,39 @@ public class User {
         this.membershipId = membershipId;
         this.avatar_img = avatar_img;
         this.key=key;
+    }
+
+    public User(String uid, String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, int point, String membershipId, String avatar_img, boolean isCustomer, boolean isEmployee, int rankPoint) {
+        this.uid = uid;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.gender = gender;
+        this.date_of_birth = date_of_birth;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.point = point;
+        this.membershipId = membershipId;
+        this.avatar_img = avatar_img;
+        this.isCustomer = isCustomer;
+        this.isEmployee = isEmployee;
+        this.rankPoint = rankPoint;
+    }
+
+    public User(String uid, String first_name, String last_name, String gender, String date_of_birth, String phone_number, String email, int point, String membershipId, String avatar_img, boolean isCustomer, boolean isEmployee, int rankPoint, String key) {
+        this.uid = uid;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.gender = gender;
+        this.date_of_birth = date_of_birth;
+        this.phone_number = phone_number;
+        this.email = email;
+        this.point = point;
+        this.membershipId = membershipId;
+        this.avatar_img = avatar_img;
+        this.isCustomer = isCustomer;
+        this.isEmployee = isEmployee;
+        this.rankPoint = rankPoint;
+        this.key = key;
     }
 
     public String getGender() {

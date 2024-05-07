@@ -854,8 +854,11 @@ public class PaymentActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
                         int oldPoint=snapshot.child("point").getValue(int.class);
+                        int oldRankPoint=snapshot.child("rankPoint").getValue(int.class);
                         int totalPoint=newPoint+oldPoint;
+                        int totalRankPoint=oldRankPoint+newPoint;
                         myRef.child(userKey).child("point").setValue(totalPoint);
+                        myRef.child(userKey).child("rankPoint").setValue(totalRankPoint);
                     }
                 }
 

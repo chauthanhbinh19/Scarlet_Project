@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,10 +34,13 @@ public class PointHistoryActivity extends AppCompatActivity {
     private OfferAdapter offerAdapter;
     private List<Offer> offerList;
     RelativeLayout back_btn;
+    TextView voucher_point, voucher_text_1;
     RecyclerView recyclerView;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         recyclerView=findViewById(R.id.exchange_point_history_recyclerView);
+        voucher_point=findViewById(R.id.voucher_point);
+        voucher_text_1=findViewById(R.id.voucher_text_1);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

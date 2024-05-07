@@ -31,8 +31,8 @@
 				android:layout_centerVertical="true"
 				android:layout_marginStart="20dp"
 				android:layout_marginTop="20dp"
-				android:layout_width="25dp"
-				android:layout_height="25dp" />
+				android:layout_width="22dp"
+				android:layout_height="22dp" />
 
 
 			<EditText android:id="@+id/search"
