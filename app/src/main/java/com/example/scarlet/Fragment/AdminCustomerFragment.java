@@ -79,11 +79,9 @@ public class AdminCustomerFragment extends Fragment {
     ImageButton calendar;
     final Handler handler = new Handler();
     int delay=150;
-    RelativeLayout sortIcon;
     private void BindView(View view){
         customerRecycleView=view.findViewById(R.id.customer_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
-        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -112,11 +110,7 @@ public class AdminCustomerFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String keyword=s.toString().trim();
-                if(keyword==null || keyword.isEmpty()){
-                    getCustomerData();
-                }else{
-                    searchCustomerData(keyword);
-                }
+                adminCustomerAdapter.filterBySearch(keyword);
             }
 
             @Override
@@ -128,15 +122,8 @@ public class AdminCustomerFragment extends Fragment {
     }
     private void getAnimation(){
         Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
-        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
         Animation recycleViewAnim= AnimationUtils.loadAnimation(customerRecycleView.getContext(), android.R.anim.fade_in);
         search_bar.startAnimation(searchAnim);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                sortIcon.startAnimation(sortIconAnim);
-            }
-        },delay*0);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -272,57 +259,6 @@ public class AdminCustomerFragment extends Fragment {
                 // Xử lý lỗi nếu có
             }
         });
-    }
-    private void searchCustomerData(String keyword){
-        userList=new ArrayList<>();
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference productRef = database.getReference("user");
-        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot productSnapshot) {
-                userList.clear();
-                for (DataSnapshot user : productSnapshot.getChildren()) {
-                    String userKey=user.getKey();
-                    String uid = user.child("uid").getValue(String.class);
-                    String firstname = user.child("first_name").getValue(String.class);
-                    String lastname=user.child("last_name").getValue(String.class);
-                    String dateofbirth=user.child("date_of_birth").getValue(String.class);
-                    String phone = user.child("phone_number").getValue(String.class);
-                    String email=user.child("email").getValue(String.class);
-                    int point=user.child("point").getValue(int.class);
-                    String gender=user.child("gender").getValue(String.class);
-                    String img=user.child("avatar_img").getValue(String.class);
-                    User user1 = new User(uid,firstname,lastname,gender,dateofbirth, phone,email,point,"",img,userKey);
-                    userList.add(user1);
-                }
-                userList=filterCustomer(userList,keyword);
-                if(userList.size()>0){
-                    adminCustomerAdapter=new AdminCustomerAdapter(userList);
-                    customerRecycleView.setAdapter(adminCustomerAdapter);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Xử lý lỗi nếu có
-            }
-        });
-    }
-    private List<User> filterCustomer(List<User> customerList,String keyword){
-        List<User> result=new ArrayList<>();
-        for(User user : customerList){
-            if(user.getFirst_name().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(user);
-            }else if(user.getLast_name().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(user);
-            }else if(user.getEmail().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(user);
-            }else if(user.getPhone_number().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(user);
-            }
-        }
-        return result;
     }
     private void saveCustomerData(String email,String password, String firstname, String lastname,String gender,String dateofbirth, String phone, boolean isCustomer, boolean isEmployee){
         progressDialog=new ProgressDialog(getContext());

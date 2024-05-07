@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Data.Deal;
 import com.example.scarlet.Data.Offer;
+import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminOfferAdapter extends RecyclerView.Adapter<AdminOfferHolderView> {
     public List<Offer> offerList;
-
+    public List<Offer> filteredData;
     public AdminOfferAdapter(List<Offer> offerList) {
-
         this.offerList = offerList;
+        this.filteredData=new ArrayList<>(offerList);
     }
 
     @NonNull
@@ -33,13 +36,34 @@ public class AdminOfferAdapter extends RecyclerView.Adapter<AdminOfferHolderView
     @Override
     public void onBindViewHolder(@NonNull AdminOfferHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
-        holder.bindData(offerList.get(position));
+        holder.bindData(filteredData.get(position));
         holder.itemView.startAnimation(animation);
     }
 
     @Override
     public int getItemCount() {
-        return offerList.size();
+        return filteredData.size();
+    }
+    public void filterBySearch(String query){
+        filteredData.clear();
+        if(query.isEmpty() || query==null){
+            filteredData.addAll(offerList);
+        }else{
+            query=query.toLowerCase();
+            SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            for(Offer offer : offerList){
+                if(offer.getName().toLowerCase().contains(query)){
+                    filteredData.add(offer);
+                }else if(String.valueOf(offer.getPoint()).toLowerCase().contains(query)){
+                    filteredData.add(offer);
+                }else if(format.format(offer.getStartDate()).toLowerCase().contains(query)){
+                    filteredData.add(offer);
+                }else if(format.format(offer.getEndDate()).toLowerCase().contains(query)){
+                    filteredData.add(offer);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
 

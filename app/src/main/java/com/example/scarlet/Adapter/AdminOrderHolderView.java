@@ -54,7 +54,7 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
         });
     }
     public void bindData(Order order){
-        orderKey.setText("Order-"+order.getKey());
+        orderKey.setText("#-"+order.getKey());
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
         String formattedOrderDate = format.format(order.getOrderDate());
         orderDate.setText("Order date: "+formattedOrderDate);

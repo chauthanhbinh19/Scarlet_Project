@@ -67,7 +67,7 @@
         android:layout_marginRight="20dp"
         android:text="20-11-2024"/>
 
-    <TextView android:id="@+id/reviewComment"
+    <com.borjabravo.readmoretextview.ReadMoreTextView android:id="@+id/reviewComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
@@ -76,5 +76,9 @@
         android:layout_below="@+id/user_avatar"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="10dp"
+        app:trimExpandedText="Read more"
+        app:trimCollapsedText="Read less"
+        app:trimMode="trimModeLength"
+        app:trimLength="60"
         android:text="@string/lorem"/>
 </RelativeLayout>

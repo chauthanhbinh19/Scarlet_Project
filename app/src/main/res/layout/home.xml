@@ -81,24 +81,54 @@
 				</RelativeLayout>
 
 			</RelativeLayout>
-			<com.google.android.material.imageview.ShapeableImageView
-				android:layout_width="match_parent"
-				android:layout_marginLeft="20dp"
-				android:layout_marginRight="20dp"
-				android:layout_height="190dp"
-				android:src="@drawable/slider_img2"
-				android:background="@color/burgundy"
-				android:scaleType="centerCrop"
-				android:id="@+id/box_image"
-				android:layout_marginTop="10dp"
-				app:shapeAppearanceOverlay="@style/roundedImageView"
+			<RelativeLayout android:id="@+id/box_slider"
 				android:layout_below="@+id/box_trend"
-				android:layout_centerHorizontal="true"
-				/>
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+				<ViewFlipper
+					android:layout_width="match_parent"
+					android:layout_marginLeft="20dp"
+					android:layout_marginRight="20dp"
+					android:layout_height="190dp"
+					android:id="@+id/box_image"
+					android:layout_marginTop="10dp"
+					android:layout_centerHorizontal="true"
+					android:autoStart="true"
+					android:flipInterval="3500"
+					android:inAnimation="@anim/slide_in_right"
+					android:outAnimation="@anim/slide_out_left">
+					<com.google.android.material.imageview.ShapeableImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:scaleType="centerCrop"
+						android:src="@drawable/slider_img1"
+						app:shapeAppearanceOverlay="@style/roundedImageView"/>
+					<com.google.android.material.imageview.ShapeableImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:scaleType="centerCrop"
+						android:src="@drawable/slider_img2"
+						app:shapeAppearanceOverlay="@style/roundedImageView"/>
+					<com.google.android.material.imageview.ShapeableImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:scaleType="centerCrop"
+						android:src="@drawable/slider_img3"
+						app:shapeAppearanceOverlay="@style/roundedImageView"/>
+					<com.google.android.material.imageview.ShapeableImageView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:scaleType="centerCrop"
+						android:src="@drawable/slider_img4"
+						app:shapeAppearanceOverlay="@style/roundedImageView"/>
+				</ViewFlipper>
+			</RelativeLayout>
+
 			<RelativeLayout android:id="@+id/box_product"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_below="@+id/box_image">
+				android:layout_below="@+id/box_slider">
 
 				<TextView android:id="@+id/featureproduct"
 					android:textStyle="bold"

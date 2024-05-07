@@ -6,9 +6,9 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="60dp"
         android:layout_width="310dp"
-        android:layout_height="270dp" />
+        android:layout_height="290dp" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -28,7 +28,7 @@
         android:layout_marginTop="20dp"
         android:textSize="16sp"
         android:textColor="@color/white"
-        android:layout_marginLeft="80dp"
+        android:layout_marginLeft="60dp"
         android:layout_below="@id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

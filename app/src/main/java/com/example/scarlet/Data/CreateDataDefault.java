@@ -300,16 +300,16 @@ public class CreateDataDefault {
         List<Offer> offerList=new ArrayList<>();
         Date startDate=new Date();
         Date endDate=new Date();
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 18000VND",350,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 30000VND",400,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
-        myRef.push().setValue(new Offer("The Scarlet coffee house","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B30","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B31","Tiramisu pudding only 18000VND",350,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B32","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B33","Tiramisu pudding only 30000VND",400,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B34","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B35","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B36","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B37","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B38","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
+        myRef.push().setValue(new Offer("The Scarlet coffee house","B11B22B39","Tiramisu pudding only 20000VND",300,R.drawable.tiramisu_pudding,startDate,endDate));
     }
     public void createOfferTransactionData(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
@@ -400,6 +400,16 @@ public class CreateDataDefault {
     public void deleteReview(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference reviewRef=database.getReference("review");
+        reviewRef.removeValue();
+    }
+    public void deleteOffer(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference reviewRef=database.getReference("offer");
+        reviewRef.removeValue();
+    }
+    public void deleteOfferTransaction(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference reviewRef=database.getReference("offer_transaction");
         reviewRef.removeValue();
     }
     public void createReview(){

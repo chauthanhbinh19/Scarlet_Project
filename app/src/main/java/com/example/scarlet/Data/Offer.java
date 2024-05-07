@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Offer {
     private String name;
+    private String code;
     private String description;
     private int point;
     private int image;
@@ -67,11 +68,38 @@ public class Offer {
         this.key = key;
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public Offer() {
     }
 
     public Offer(String name, String description, int point, int image, Date startDate, Date endDate) {
         this.name = name;
+        this.description = description;
+        this.point = point;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Offer(String name, String code, String description, int point, int image, String key) {
+        this.name = name;
+        this.code = code;
+        this.description = description;
+        this.point = point;
+        this.image = image;
+        this.key = key;
+    }
+
+    public Offer(String name, String code, String description, int point, int image, Date startDate, Date endDate) {
+        this.name = name;
+        this.code = code;
         this.description = description;
         this.point = point;
         this.image = image;
@@ -88,6 +116,17 @@ public class Offer {
 
     public Offer(String name, String description, int point, int image, Date startDate, Date endDate, String key) {
         this.name = name;
+        this.description = description;
+        this.point = point;
+        this.image = image;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.key = key;
+    }
+
+    public Offer(String name, String code, String description, int point, int image, Date startDate, Date endDate, String key) {
+        this.name = name;
+        this.code = code;
         this.description = description;
         this.point = point;
         this.image = image;

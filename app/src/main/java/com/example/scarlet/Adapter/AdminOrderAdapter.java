@@ -10,15 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Data.Order;
+import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView> {
     public List<Order> orderList;
-
+    public List<Order> filteredData;
     public AdminOrderAdapter(List<Order> orderList) {
         this.orderList = orderList;
+        this.filteredData=new ArrayList<>(orderList);
     }
 
     @NonNull
@@ -31,12 +34,26 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView
     @Override
     public void onBindViewHolder(@NonNull AdminOrderHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
-        holder.bindData(orderList.get(position));
+        holder.bindData(filteredData.get(position));
         holder.itemView.startAnimation(animation);
     }
 
     @Override
     public int getItemCount() {
-        return orderList.size();
+        return filteredData.size();
     }
+//    public void filterBySearch(String query){
+//        filteredData.clear();
+//        if(query.isEmpty() || query==null){
+//            filteredData.addAll(productList);
+//        }else{
+//            query=query.toLowerCase();
+//            for(Product product:productList){
+//                if(product.getName().toLowerCase().contains(query)){
+//                    filteredData.add(product);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
 }

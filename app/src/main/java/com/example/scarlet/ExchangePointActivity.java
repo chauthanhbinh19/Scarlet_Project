@@ -79,7 +79,9 @@ public class ExchangePointActivity extends AppCompatActivity {
                         String offerDescription=snap.child("description").getValue(String.class);
                         int offerPoint=snap.child("point").getValue(int.class);
                         int offerImage=snap.child("image").getValue(int.class);
-                        Offer offer=new Offer(offerName,offerDescription,offerPoint,R.drawable.scartet_1);
+                        String code=snap.child("code").getValue(String.class);
+                        String key=snap.getKey();
+                        Offer offer=new Offer(offerName,code,offerDescription,offerPoint,R.drawable.scartet_1,key);
                         offerList.add(offer);
                     }
                     if(offerList.size()>0){

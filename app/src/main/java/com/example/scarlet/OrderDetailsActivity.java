@@ -39,7 +39,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     List<Product> productList;
     ProductHorizontalAdapter adapter;
     RecyclerView productRecycleView;
-    TextView addressText, timeText, subtotal, delivery, tipText, totalText;
+    TextView addressText, timeText, subtotal, delivery, tipText, totalText, status;
     LottieAnimationView lottieAnimationView;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
@@ -51,6 +51,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         totalText=findViewById(R.id.total);
         productRecycleView=findViewById(R.id.totalProductRecycleView);
         lottieAnimationView=findViewById(R.id.status_animation);
+        status=findViewById(R.id.status);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,10 +111,14 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         lottieAnimationView.setAnimation(R.raw.pending_animation);
                         lottieAnimationView.playAnimation();
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                        status.setText("Pending");
+                        status.setTextColor(getColor(R.color.yellow));
                     }else if(orderStatus.equals("done")){
                         lottieAnimationView.setAnimation(R.raw.done_animation);
                         lottieAnimationView.playAnimation();
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                        status.setText("Done");
+                        status.setTextColor(getColor(R.color.green1));
                     }
                 }
             }

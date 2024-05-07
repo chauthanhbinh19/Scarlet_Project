@@ -48,6 +48,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class AdminOfferFragment extends Fragment {
 
@@ -59,13 +60,11 @@ public class AdminOfferFragment extends Fragment {
     TextView offerStartDate,offerEndDate;
     ImageButton calendarStart,calendarEnd;
     ProgressDialog progressDialog;
-    RelativeLayout sortIcon;
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
         offerRecycleView=view.findViewById(R.id.offer_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
-        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -95,11 +94,7 @@ public class AdminOfferFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String keyword=s.toString().trim();
-                if(keyword==null || keyword.isEmpty()){
-                    getOfferData();
-                }else{
-                    searchOfferData(keyword);
-                }
+                adminOfferAdapter.filterBySearch(keyword);
             }
 
             @Override
@@ -111,15 +106,8 @@ public class AdminOfferFragment extends Fragment {
     }
     private void getAnimation(){
         Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
-        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
         Animation recycleViewAnim= AnimationUtils.loadAnimation(offerRecycleView.getContext(), android.R.anim.fade_in);
         search_bar.startAnimation(searchAnim);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                sortIcon.startAnimation(sortIconAnim);
-            }
-        },delay*0);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -217,50 +205,6 @@ public class AdminOfferFragment extends Fragment {
             }
         });
     }
-    private void searchOfferData(String keyword){
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference myRef= firebaseDatabase.getReference("offer");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                offerList.clear();
-                for(DataSnapshot snap:snapshot.getChildren()){
-                    String key=snap.getKey();
-                    Date startDate=snap.child("startDate").getValue(Date.class);
-                    Date endDate=snap.child("endDate").getValue(Date.class);
-                    String name=snap.child("name").getValue(String.class);
-                    String description=snap.child("description").getValue(String.class);
-                    int point=snap.child("point").getValue(int.class);
-                    Offer offer=new Offer(name,description,point,R.drawable.discount_offer,startDate,endDate,key);
-                    offerList.add(offer);
-                }
-                offerList=filterOffer(offerList,keyword);
-                adminOfferAdapter=new AdminOfferAdapter(offerList);
-                offerRecycleView.setAdapter(adminOfferAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private List<Offer> filterOffer(List<Offer> offerList, String keyword){
-        List<Offer> result=new ArrayList<>();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        for(Offer offer : offerList){
-            if(offer.getName().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(offer);
-            }else if(String.valueOf(offer.getPoint()).toLowerCase().contains(keyword.toLowerCase())){
-                result.add(offer);
-            }else if(format.format(offer.getStartDate()).toLowerCase().contains(keyword.toLowerCase())){
-                result.add(offer);
-            }else if(format.format(offer.getEndDate()).toLowerCase().contains(keyword.toLowerCase())){
-                result.add(offer);
-            }
-        }
-        return result;
-    }
     private void saveOfferData(){
         progressDialog=new ProgressDialog(getContext());
         progressDialog.setTitle("Uploading file...");
@@ -279,7 +223,8 @@ public class AdminOfferFragment extends Fragment {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
             date1 = dateFormat.parse(startdate);
             date2 = dateFormat.parse(enddate);
-            Offer offer=new Offer(name,description,point,0,date1,date2);
+            String code=generateCode();
+            Offer offer=new Offer(name,code,description,point,0,date1,date2);
             myRef.push().setValue(offer);
             if(progressDialog.isShowing()){
                 progressDialog.dismiss();
@@ -288,6 +233,30 @@ public class AdminOfferFragment extends Fragment {
         }catch(ParseException e){
             e.printStackTrace();
         }
+    }
+    private String generateCode() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("ddMMyyyy");
+        String currentTime = dateFormat.format(new Date());
+
+        // Extract the first 8 characters
+        String timeCode = currentTime.substring(0, 8);
+
+        // Generate the remaining 4 characters
+        StringBuilder codeBuilder = new StringBuilder(timeCode);
+        Random random = new Random();
+        int codeSizeSmall=6;
+        for (int i = 0; i < codeSizeSmall; i++) {
+            int charType = random.nextInt(3); // 0: lowercase, 1: uppercase, 2: number
+            if (charType == 0) {
+                codeBuilder.append((char) (random.nextInt(26) + 'a'));
+            } else if (charType == 1) {
+                codeBuilder.append((char) (random.nextInt(26) + 'A'));
+            } else {
+                codeBuilder.append(random.nextInt(10));
+            }
+        }
+
+        return codeBuilder.toString();
     }
     @Override
     public void onDestroyView() {

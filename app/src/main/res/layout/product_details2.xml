@@ -143,7 +143,7 @@
 						android:background="@drawable/heart" />
 				</RelativeLayout>
 
-				<RelativeLayout android:id="@+id/add"
+				<RelativeLayout android:id="@+id/addBox"
 					android:layout_toLeftOf="@+id/heartBox"
 					android:layout_width="50dp"
 					android:layout_height="50dp"
@@ -151,7 +151,7 @@
 					android:layout_marginRight="20dp"
 					android:background="@drawable/rectangle_white_stroke">
 					<ImageButton
-						android:id="@+id/cartBtn"
+						android:id="@+id/add"
 						android:layout_width="30dp"
 						android:layout_height="30dp"
 						android:layout_centerVertical="true"
@@ -215,12 +215,57 @@
 					android:textColor="@color/gray1"
 					android:textSize="12sp" />
 
+				<RelativeLayout android:id="@+id/starBox"
+					android:layout_below="@+id/timeIcon"
+					android:layout_marginLeft="0dp"
+					android:layout_marginTop="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content">
+					<ImageView android:id="@+id/star1"
+						android:background="@drawable/star_yellow_active"
+						android:layout_width="15dp"
+						android:layout_height="15dp"/>
+					<ImageView android:id="@+id/star2"
+						android:background="@drawable/star_yellow_active"
+						android:layout_toRightOf="@+id/star1"
+						android:layout_marginLeft="3dp"
+						android:layout_width="15dp"
+						android:layout_height="15dp"/>
+					<ImageView android:id="@+id/star3"
+						android:background="@drawable/star_yellow_active"
+						android:layout_toRightOf="@+id/star2"
+						android:layout_marginLeft="3dp"
+						android:layout_width="15dp"
+						android:layout_height="15dp"/>
+					<ImageView android:id="@+id/star4"
+						android:background="@drawable/star_yellow_active"
+						android:layout_toRightOf="@+id/star3"
+						android:layout_marginLeft="3dp"
+						android:layout_width="15dp"
+						android:layout_height="15dp"/>
+					<ImageView android:id="@+id/star5"
+						android:background="@drawable/star_yellow_active"
+						android:layout_toRightOf="@+id/star4"
+						android:layout_marginLeft="3dp"
+						android:layout_width="15dp"
+						android:layout_height="15dp"/>
+				</RelativeLayout>
+
+				<TextView android:id="@+id/averageRating"
+					android:layout_marginTop="10dp"
+					android:layout_marginLeft="5dp"
+					android:layout_below="@+id/timeIcon"
+					android:layout_toRightOf="@+id/starBox"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text=" (4.9)"/>
+
 				<TextView android:id="@+id/description"
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:layout_marginTop="10dp"
 					android:layout_marginBottom="10dp"
-					android:layout_below="@+id/openShop"
+					android:layout_below="@+id/starBox"
 					android:textColor="@color/black"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -228,7 +273,7 @@
 					android:singleLine="true"
 					/>
 
-				<TextView
+				<com.borjabravo.readmoretextview.ReadMoreTextView
 					android:id="@+id/product_details_description"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -236,6 +281,10 @@
 					android:text="@string/lorem"
 					android:textColor="@color/gray1"
 					android:textSize="14sp"
+					app:trimExpandedText="Read more"
+					app:trimCollapsedText="Read less"
+					app:trimMode="trimModeLength"
+					app:trimLength="150"
 					android:layout_marginBottom="10dp" />
 
 				<TextView android:id="@+id/product_details_category"

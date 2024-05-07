@@ -40,7 +40,6 @@ public class AdminOrderFragment extends Fragment {
     List<Order> orderList;
     RecyclerView orderRecycleview;
     EditText search_bar;
-    RelativeLayout sortIcon;
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
@@ -52,7 +51,6 @@ public class AdminOrderFragment extends Fragment {
         textcancel=view.findViewById(R.id.textcancel);
         orderRecycleview=view.findViewById(R.id.order_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
-        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -93,18 +91,11 @@ public class AdminOrderFragment extends Fragment {
     }
     private void getAnimation(){
         Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
-        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
         Animation pendingAnim= AnimationUtils.loadAnimation(pending.getContext(), android.R.anim.slide_in_left);
         Animation doneAnim= AnimationUtils.loadAnimation(done.getContext(), android.R.anim.slide_in_left);
         Animation cancelAnim= AnimationUtils.loadAnimation(cancel.getContext(), android.R.anim.slide_in_left);
         Animation recycleViewAnim= AnimationUtils.loadAnimation(orderRecycleview.getContext(), android.R.anim.fade_in);
         search_bar.startAnimation(searchAnim);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                sortIcon.startAnimation(sortIconAnim);
-            }
-        },delay*0);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

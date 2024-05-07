@@ -86,7 +86,7 @@
 
 			<TextView android:id="@+id/voucher_point"
 				android:layout_marginLeft="40dp"
-				android:textSize="20sp"
+				android:textSize="18sp"
 				android:textStyle="bold"
 				android:elevation="4dp"
 				android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
 
 			<TextView android:id="@+id/voucher_point_text"
 				android:layout_toRightOf="@+id/voucher_point"
-				android:textSize="20sp"
+				android:textSize="18sp"
 				android:textStyle="bold"
 				android:elevation="4dp"
 				android:layout_marginTop="10dp"
@@ -114,10 +114,10 @@
 				android:textColor="@color/burgundy"
 				android:textSize="12sp"
 				android:layout_marginTop="10dp"
-				android:paddingRight="15dp"
-				android:paddingLeft="15dp"
+				android:paddingRight="12dp"
+				android:paddingLeft="12dp"
 				android:layout_alignParentRight="true"
-				android:layout_marginRight="40dp"
+				android:layout_marginRight="30dp"
 				android:text="My voucher"/>
 
 			<TextView android:id="@+id/voucher_text_1"

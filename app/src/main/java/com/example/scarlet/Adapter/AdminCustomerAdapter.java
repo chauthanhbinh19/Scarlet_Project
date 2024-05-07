@@ -13,13 +13,15 @@ import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.User;
 import com.example.scarlet.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminCustomerAdapter extends RecyclerView.Adapter<AdminCustomerHolderView> {
     public List<User> userList;
+    public List<User> filteredData;
     public AdminCustomerAdapter(List<User> userList){
-
         this.userList=userList;
+        this.filteredData=new ArrayList<>(userList);
     }
 
 
@@ -33,12 +35,32 @@ public class AdminCustomerAdapter extends RecyclerView.Adapter<AdminCustomerHold
     @Override
     public void onBindViewHolder(@NonNull AdminCustomerHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
-        holder.bindData(userList.get(position));
+        holder.bindData(filteredData.get(position));
         holder.itemView.startAnimation(animation);
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return filteredData.size();
+    }
+    public void filterBySearch(String query){
+        filteredData.clear();
+        if(query.isEmpty() || query==null){
+            filteredData.addAll(userList);
+        }else{
+            query=query.toLowerCase();
+            for(User user:userList){
+                if(user.getFirst_name().toLowerCase().contains(query)){
+                    filteredData.add(user);
+                }else if(user.getLast_name().toLowerCase().contains(query)){
+                    filteredData.add(user);
+                }else if(user.getEmail().toLowerCase().contains(query)){
+                    filteredData.add(user);
+                }else if(user.getPhone_number().toLowerCase().contains(query)){
+                    filteredData.add(user);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

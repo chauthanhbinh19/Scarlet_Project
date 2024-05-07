@@ -56,8 +56,12 @@ public class ProductDetailActivity extends AppCompatActivity {
     String productKey;
     RecyclerView reviewRecycleView, productRecycleView;
     ImageView categoryIconView, plus, minus;
-    TextView  categoryNameView, quantity, productNameText;
+    TextView  categoryNameView, quantity, productNameText, averageRating;
     int defaultStatus=1;
+    int count=0;
+    double average=0;
+    int total=0;
+    ImageView star1, star2, star3, star4, star5;
 
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
@@ -85,6 +89,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         line2=findViewById(R.id.line2);
         line3=findViewById(R.id.line3);
         productNameText=findViewById(R.id.productNameText);
+        averageRating=findViewById(R.id.averageRating);
+        star1=findViewById(R.id.star1);
+        star2=findViewById(R.id.star2);
+        star3=findViewById(R.id.star3);
+        star4=findViewById(R.id.star4);
+        star5=findViewById(R.id.star5);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +108,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
-        RelativeLayout add=(RelativeLayout) findViewById(R.id.add);
+        ImageButton add=(ImageButton) findViewById(R.id.add);
         productRecycleView.setLayoutManager(new GridLayoutManager(this,1));
         productRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
         reviewRecycleView.setLayoutManager(new GridLayoutManager(this,1));
@@ -462,6 +472,12 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     Review review=new Review(customerId,productKey,rating,comment,date,last_name+" "+first_name,image);
                                     reviewList.add(review);
 
+                                    count=count+1;
+                                    total=total+rating;
+                                    average=(double)total/(double)count;
+                                    averageRating.setText(" ("+String.format("%.1f",average)+") - " + String.valueOf(count)+" Reviews");
+                                    changeStar(average);
+
                                     if(reviewList.size()>0){
                                         List<Review> limitedReviewList = reviewList.subList(0, Math.min(reviewList.size(), 5));
                                         adapter=new ReviewAdapter(limitedReviewList);
@@ -533,5 +549,37 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void changeStar(double rating){
+        if(rating<1){
+            star1.setBackgroundResource(R.drawable.star_yellow_active);
+            star2.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star3.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star4.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star5.setBackgroundResource(R.drawable.star_yellow_unactive);
+        }else if(rating>= 1 && rating<2){
+            star1.setBackgroundResource(R.drawable.star_yellow_active);
+            star2.setBackgroundResource(R.drawable.star_yellow_active);
+            star3.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star4.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star5.setBackgroundResource(R.drawable.star_yellow_unactive);
+        }else if(rating>=2 && rating<3){
+            star1.setBackgroundResource(R.drawable.star_yellow_active);
+            star2.setBackgroundResource(R.drawable.star_yellow_active);
+            star3.setBackgroundResource(R.drawable.star_yellow_active);
+            star4.setBackgroundResource(R.drawable.star_yellow_unactive);
+            star5.setBackgroundResource(R.drawable.star_yellow_unactive);
+        }else if(rating>=3 && rating<4){
+            star1.setBackgroundResource(R.drawable.star_yellow_active);
+            star2.setBackgroundResource(R.drawable.star_yellow_active);
+            star3.setBackgroundResource(R.drawable.star_yellow_active);
+            star4.setBackgroundResource(R.drawable.star_yellow_active);
+            star5.setBackgroundResource(R.drawable.star_yellow_unactive);
+        }else if(rating>=4){
+            star1.setBackgroundResource(R.drawable.star_yellow_active);
+            star2.setBackgroundResource(R.drawable.star_yellow_active);
+            star3.setBackgroundResource(R.drawable.star_yellow_active);
+            star4.setBackgroundResource(R.drawable.star_yellow_active);
+            star5.setBackgroundResource(R.drawable.star_yellow_active);
+        }
+    }
 }

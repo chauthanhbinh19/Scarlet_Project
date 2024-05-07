@@ -63,7 +63,7 @@ public class AdminVoucherFragment extends Fragment {
     RelativeLayout btnAll, btnDelivery, btnInstore, btnPickup;
     ImageView imageAll, imageDelivery, imageInstore, imagePickup;
     TextView textAll, textDelivery, textInstore, textPickup;
-    private AdminDealAdapter dealAdapter;
+    AdminDealAdapter dealAdapter;
     private List<Deal> dealList;
     RecyclerView recyclerView,productRecycleView;
     ProductCheckboxAdapter productCheckboxAdapter;
@@ -74,7 +74,6 @@ public class AdminVoucherFragment extends Fragment {
     GetKeyCallback getKeyCallback;
     List<String> keyList;
     ProgressDialog progressDialog;
-    RelativeLayout sortIcon;
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
@@ -92,7 +91,6 @@ public class AdminVoucherFragment extends Fragment {
         textPickup=view.findViewById(R.id.text4);
         recyclerView=view.findViewById(R.id.voucher_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
-        sortIcon=view.findViewById(R.id.sortIcon);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -100,36 +98,41 @@ public class AdminVoucherFragment extends Fragment {
         View view =inflater.inflate(R.layout.admin_fragment_voucher, container, false);
 
         BindView(view);
-        toggleButtonEvent("");
+        dealList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,5));
+        getVoucherData();
         getAnimation();
         btnAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=1;
-                toggleButtonEvent("");
+                keyStatus=1;
+                toggleButtonEvent();
             }
         });
         btnDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=2;
-                toggleButtonEvent("");
+                keyStatus=1;
+                toggleButtonEvent();
             }
         });
         btnInstore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=3;
-                toggleButtonEvent("");
+                keyStatus=1;
+                toggleButtonEvent();
             }
         });
         btnPickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=4;
-                toggleButtonEvent("");
+                keyStatus=1;
+                toggleButtonEvent();
             }
         });
         FloatingActionButton fab = view.findViewById(R.id.fab);
@@ -148,12 +151,14 @@ public class AdminVoucherFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String keyword=s.toString().trim();
-                if(keyword==null || keyword.isEmpty()){
-                    keyStatus=0;
-                    toggleButtonEvent("");
+                if(defaultStatus==1){
+                    dealAdapter.filterBySearch(keyword,"all");
+                }else if(defaultStatus==2){
+                    dealAdapter.filterBySearch(keyword,"delivery");
+                }else if(defaultStatus==3){
+                    dealAdapter.filterBySearch(keyword,"instore");
                 }else{
-                    keyStatus=1;
-                    toggleButtonEvent(keyword);
+                    dealAdapter.filterBySearch(keyword,"pickup");
                 }
             }
 
@@ -162,23 +167,17 @@ public class AdminVoucherFragment extends Fragment {
 
             }
         });
+        toggleButtonEvent();
         return view;
     }
     private void getAnimation(){
         Animation searchAnim= AnimationUtils.loadAnimation(search_bar.getContext(), android.R.anim.slide_in_left);
-        Animation sortIconAnim= AnimationUtils.loadAnimation(sortIcon.getContext(), android.R.anim.slide_in_left);
         Animation allAnim= AnimationUtils.loadAnimation(btnAll.getContext(), android.R.anim.slide_in_left);
         Animation deliveryAnim= AnimationUtils.loadAnimation(btnDelivery.getContext(), android.R.anim.slide_in_left);
         Animation instoreAnim= AnimationUtils.loadAnimation(btnInstore.getContext(), android.R.anim.slide_in_left);
         Animation pickupAnim= AnimationUtils.loadAnimation(btnPickup.getContext(), android.R.anim.slide_in_left);
         Animation recycleViewAnim= AnimationUtils.loadAnimation(recyclerView.getContext(), android.R.anim.fade_in);
         search_bar.startAnimation(searchAnim);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                sortIcon.startAnimation(sortIconAnim);
-            }
-        },delay*0);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -300,7 +299,7 @@ public class AdminVoucherFragment extends Fragment {
         newFragment.setTextDate(expiryDate);
         newFragment.show(getActivity().getSupportFragmentManager(), "DatePicker");
     }
-    private void toggleButtonEvent(String keyword){
+    private void toggleButtonEvent(){
         if(defaultStatus==1){
             btnAll.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
             imageAll.setImageResource(R.drawable.menu_12);
@@ -314,9 +313,7 @@ public class AdminVoucherFragment extends Fragment {
             textPickup.setTextColor(getResources().getColor(R.color.burgundy));
 
             if(keyStatus==1){
-                searchAllVoucherData(recyclerView,keyword);
-            }else{
-                getAllVoucherData(recyclerView);
+                dealAdapter.filterBySearch("","");
             }
         }else if(defaultStatus==2){
             btnDelivery.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
@@ -331,9 +328,7 @@ public class AdminVoucherFragment extends Fragment {
             imageAll.setImageResource(R.drawable.menu_11);
 
             if(keyStatus==1){
-                searchVoucherData(recyclerView,"delivery", R.drawable.delivery_bike, keyword);
-            }else{
-                getVoucherData(recyclerView,"delivery", R.drawable.delivery_bike);
+                dealAdapter.filterByDelivery();
             }
         }else if(defaultStatus==3){
             btnInstore.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
@@ -348,9 +343,7 @@ public class AdminVoucherFragment extends Fragment {
             imageAll.setImageResource(R.drawable.menu_11);
 
             if(keyStatus==1){
-                searchVoucherData(recyclerView,"instore", R.drawable.store, keyword);
-            }else{
-                getVoucherData(recyclerView,"instore", R.drawable.store);
+                dealAdapter.filterByInstore();
             }
         }else if(defaultStatus==4){
             btnPickup.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
@@ -365,14 +358,11 @@ public class AdminVoucherFragment extends Fragment {
             imageAll.setImageResource(R.drawable.menu_11);
 
             if(keyStatus==1){
-                searchVoucherData(recyclerView,"pickup", R.drawable.food_delivery, keyword);
-            }else{
-                getVoucherData(recyclerView,"pickup", R.drawable.food_delivery);
+                dealAdapter.filterByPickup();
             }
         }
     }
-    private void getAllVoucherData(RecyclerView recyclerView){
-        dealList=new ArrayList<>();
+    private void getVoucherData(){
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         Query Query= firebaseDatabase.getReference("deal");
         Query.addValueEventListener(new ValueEventListener() {
@@ -398,130 +388,6 @@ public class AdminVoucherFragment extends Fragment {
                         Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description,key);
                         dealList.add(deal);
                     }
-                    if(dealList.size()>0){
-                        dealAdapter=new AdminDealAdapter(dealList);
-                        recyclerView.setAdapter(dealAdapter);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void searchAllVoucherData(RecyclerView recyclerView, String keyword){
-        dealList=new ArrayList<>();
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        Query Query= firebaseDatabase.getReference("deal");
-        Query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    dealList.clear();
-                    for (DataSnapshot snap: snapshot.getChildren()){
-                        String voucherName=snap.child("name").getValue(String.class);
-                        int discount=snap.child("discount").getValue(int.class);
-                        Date expiryDate=snap.child("expiryDate").getValue(Date.class);
-                        String deliveryMethod=snap.child("deliveryMethod").getValue(String.class);
-                        String description=snap.child("description").getValue(String.class);
-                        String key=snap.getKey();
-                        int deliveryMethodIcon=1;
-                        if(deliveryMethod.equals("delivery")){
-                            deliveryMethodIcon=R.drawable.delivery_bike;
-                        }else if(deliveryMethod.equals("instore")){
-                            deliveryMethodIcon=R.drawable.store;
-                        }else if(deliveryMethod.equals("pickup")){
-                            deliveryMethodIcon=R.drawable.food_delivery;
-                        }
-                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description,key);
-                        dealList.add(deal);
-                    }
-                    dealList=filterVoucher(dealList,keyword);
-                    if(dealList.size()>0){
-                        dealAdapter=new AdminDealAdapter(dealList);
-                        recyclerView.setAdapter(dealAdapter);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private List<Deal> filterVoucher(List<Deal> dealList, String keyword){
-        List<Deal> result=new ArrayList<>();
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        for(Deal deal : dealList){
-            if(deal.getName().toLowerCase().contains(keyword.toLowerCase())){
-                result.add(deal);
-            }else if(String.valueOf(deal.getDiscount()).toLowerCase().contains(keyword.toLowerCase())){
-                result.add(deal);
-            }else if(format.format(deal.getExpiryDate()).toLowerCase().contains(keyword.toLowerCase())){
-                result.add(deal);
-            }
-        }
-        return result;
-    }
-    private void getVoucherData(RecyclerView recyclerView, String deliveryMethodClicked, int deliveryMethodIcon){
-        dealList=new ArrayList<>();
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        Query Query= firebaseDatabase.getReference("deal");
-        Query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    dealList.clear();
-                    for (DataSnapshot snap: snapshot.getChildren()){
-                        String voucherName=snap.child("name").getValue(String.class);
-                        int discount=snap.child("discount").getValue(int.class);
-                        Date expiryDate=snap.child("expiryDate").getValue(Date.class);
-                        String deliveryMethod=snap.child("deliveryMethod").getValue(String.class);
-                        String description=snap.child("description").getValue(String.class);
-                        String key=snap.getKey();
-                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description, key);
-                        if(deliveryMethod.equals(deliveryMethodClicked)){
-                            dealList.add(deal);
-                        }
-                    }
-                    if(dealList.size()>0){
-                        dealAdapter=new AdminDealAdapter(dealList);
-                        recyclerView.setAdapter(dealAdapter);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void searchVoucherData(RecyclerView recyclerView, String deliveryMethodClicked, int deliveryMethodIcon, String keyword){
-        dealList=new ArrayList<>();
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        Query Query= firebaseDatabase.getReference("deal");
-        Query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    dealList.clear();
-                    for (DataSnapshot snap: snapshot.getChildren()){
-                        String voucherName=snap.child("name").getValue(String.class);
-                        int discount=snap.child("discount").getValue(int.class);
-                        Date expiryDate=snap.child("expiryDate").getValue(Date.class);
-                        String deliveryMethod=snap.child("deliveryMethod").getValue(String.class);
-                        String description=snap.child("description").getValue(String.class);
-                        String key=snap.getKey();
-                        Deal deal=new Deal(voucherName,discount,expiryDate,deliveryMethod,deliveryMethodIcon,description, key);
-                        if(deliveryMethod.equals(deliveryMethodClicked)){
-                            dealList.add(deal);
-                        }
-                    }
-                    dealList=filterVoucher(dealList,keyword);
                     if(dealList.size()>0){
                         dealAdapter=new AdminDealAdapter(dealList);
                         recyclerView.setAdapter(dealAdapter);
