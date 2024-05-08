@@ -1,10 +1,14 @@
 package com.example.scarlet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +24,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.scarlet.Adapter.CartAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductSearchAdapter;
 import com.example.scarlet.Adapter.ReviewAdapter;
@@ -28,6 +33,7 @@ import com.example.scarlet.Data.Favourite;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
 import com.example.scarlet.Data.Review;
+import com.example.scarlet.Interface.GetStringCallback;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,12 +62,16 @@ public class ProductDetailActivity extends AppCompatActivity {
     String productKey;
     RecyclerView reviewRecycleView, productRecycleView;
     ImageView categoryIconView, plus, minus;
-    TextView  categoryNameView, quantity, productNameText, averageRating;
+    TextView  categoryNameView, quantity, productNameText, averageRating, itemText, totalView;
     int defaultStatus=1;
     int count=0;
     double average=0;
     int total=0;
-    ImageView star1, star2, star3, star4, star5;
+    double subtotal=0;
+    Button purchase;
+    RelativeLayout checkoutBtn;
+    ImageView star1, star2, star3, star4, star5, package_box;
+    final Handler handler = new Handler();
 
     private void BindView(){
         back_button=findViewById(R.id.back_btn);
@@ -95,6 +105,10 @@ public class ProductDetailActivity extends AppCompatActivity {
         star3=findViewById(R.id.star3);
         star4=findViewById(R.id.star4);
         star5=findViewById(R.id.star5);
+        purchase=findViewById(R.id.purchase);
+        checkoutBtn=findViewById(R.id.checkoutBtn);
+        itemText=findViewById(R.id.itemText);
+        package_box=findViewById(R.id.package_box);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,6 +147,29 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addToCart(productKey);
+                getNumberOfItems();
+                package_box.setVisibility(View.VISIBLE);
+                checkoutBtn.setVisibility(View.VISIBLE);
+                getTotal();
+                Animation slideUpAnimation = AnimationUtils.loadAnimation(ProductDetailActivity.this, R.anim.slide_up);
+                checkoutBtn.setAnimation(slideUpAnimation);
+                package_box.setAnimation(slideUpAnimation);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        package_box.setBackgroundResource(R.drawable.paper_bag_packed);
+                    }
+                },700);
+            }
+        });
+        checkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String totalString=totalView.getText().toString();
+                Intent intent=new Intent(ProductDetailActivity.this, DeliveryActivity.class);
+                intent.putExtra("total",totalString);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         plus.setOnClickListener(new View.OnClickListener() {
@@ -581,5 +618,160 @@ public class ProductDetailActivity extends AppCompatActivity {
             star4.setBackgroundResource(R.drawable.star_yellow_active);
             star5.setBackgroundResource(R.drawable.star_yellow_active);
         }
+    }
+    private void getNumberOfItems(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        final String userKey=sharedPreferences.getString("customerKey","");
+        if(isLoggedIn && !userKey.isEmpty()){
+            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
+                        Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                                        if(productIdObject.getValue() instanceof List){
+                                            List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                            for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                                ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                                tempProductIdList.add(productQuantity);
+                                            }
+                                            List<ProductQuantity> productKeyList=new ArrayList<>(tempProductIdList);
+                                            itemText.setText(String.valueOf(productKeyList.size())+" Items");
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void getTotal(){
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        final String userKey=sharedPreferences.getString("customerKey","");
+        if(isLoggedIn && !userKey.isEmpty()){
+            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if(snapshot.exists()){
+                        FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
+                        Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                                        if(productIdObject.getValue() instanceof List){
+                                            for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                                ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                                tempProductIdList.add(productQuantity);
+                                            }
+                                        }
+                                    }
+                                    getTotalFromProductData(tempProductIdList);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+    }
+    private void getTotalFromProductData(List<ProductQuantity> productKeyList){
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference productRef = firebaseDatabase.getReference("product");
+        DatabaseReference categoryRef = firebaseDatabase.getReference("category");
+        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot productSnapshot) {
+                for (DataSnapshot product : productSnapshot.getChildren()) {
+//                    String productKey=product.getKey();
+                    ProductQuantity productKey=new ProductQuantity(product.getKey(),1);
+                    String categoryId = product.child("categoryId").getValue(String.class);
+                    String productName = product.child("name").getValue(String.class);
+                    double productPrice = product.child("price").getValue(double.class);
+                    String productImage = product.child("img").getValue(String.class);
+
+                    categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot categorySnapshot) {
+                            if (categorySnapshot.exists()) {
+                                String icon = categorySnapshot.child("img").getValue(String.class);
+                                if(checkKeyInList(productKey,productKeyList)){
+                                    int quantity=getQuantity(productKey,productKeyList);
+                                    subtotal=subtotal+productPrice*quantity;
+                                    Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey.getProductId(),quantity,productPrice*quantity);
+                                    productList.add(productWithIcon);
+                                    totalView=findViewById(R.id.totalView);
+                                    totalView.setText(String.format("%.0f", subtotal));
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Xử lý lỗi nếu có
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Xử lý lỗi nếu có
+            }
+        });
+    }
+    public boolean checkKeyInList(ProductQuantity key, List<ProductQuantity> keyList) {
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public int getQuantity(ProductQuantity key, List<ProductQuantity> keyList){
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return item.getQuantity();
+            }
+        }
+        return 1;
     }
 }

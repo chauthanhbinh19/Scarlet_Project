@@ -95,7 +95,7 @@
 					android:layout_marginTop="10dp"
 					android:layout_centerHorizontal="true"
 					android:autoStart="true"
-					android:flipInterval="3500"
+					android:flipInterval="3000"
 					android:inAnimation="@anim/slide_in_right"
 					android:outAnimation="@anim/slide_out_left">
 					<com.google.android.material.imageview.ShapeableImageView

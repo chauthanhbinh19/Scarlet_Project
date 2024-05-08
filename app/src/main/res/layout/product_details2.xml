@@ -97,12 +97,19 @@
 
 				<ImageView
 					android:id="@+id/product_details_image"
-					android:layout_width="190dp"
-					android:layout_height="190dp"
-					android:layout_marginTop="10dp"
+					android:layout_width="160dp"
+					android:layout_height="160dp"
+					android:layout_marginTop="20dp"
 					android:layout_centerHorizontal="true"
-					android:src="@drawable/dsc02313_optimized" />
+					android:src="@drawable/eggppang" />
 
+				<ImageView android:id="@+id/package_box"
+					android:layout_width="210dp"
+					android:layout_height="210dp"
+					android:layout_marginTop="5dp"
+					android:visibility="gone"
+					android:layout_centerHorizontal="true"
+					android:background="@drawable/paper_bag_unpacked" />
 
 			</RelativeLayout>
 
@@ -465,6 +472,59 @@
 						android:textSize="20sp"
 						android:textStyle="bold" />
 				</RelativeLayout>
+				<RelativeLayout android:id="@+id/checkoutBtn"
+					android:layout_below="@+id/box_quantity"
+					android:paddingLeft="30dp"
+					android:paddingRight="30dp"
+					android:paddingTop="5dp"
+					android:paddingBottom="5dp"
+					android:visibility="gone"
+					android:layout_marginTop="20dp"
+					android:layout_marginLeft="50dp"
+					android:layout_centerHorizontal="true"
+					android:background="@drawable/button_burgundy"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<com.airbnb.lottie.LottieAnimationView
+						android:id="@+id/processAnimation"
+						android:layout_centerVertical="true"
+						app:lottie_rawRes="@raw/check_animation"
+						app:lottie_autoPlay="true"
+						app:lottie_loop="true"
+						android:layout_width="40dp"
+						android:layout_height="40dp"/>
+					<ImageView android:id="@+id/line"
+						android:layout_toRightOf="@+id/processAnimation"
+						android:layout_width="1dp"
+						android:layout_centerVertical="true"
+						android:layout_marginLeft="15dp"
+						android:layout_marginRight="15dp"
+						android:layout_height="30dp"
+						android:background="@color/burgundy"/>
+					<TextView android:id="@+id/proceedText"
+						android:layout_centerVertical="true"
+						android:layout_toRightOf="@+id/line"
+						android:textColor="@color/black"
+						android:textStyle="bold"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Proceed to Checkout"/>
+					<TextView android:id="@+id/itemText"
+						android:layout_centerVertical="true"
+						android:layout_toRightOf="@+id/proceedText"
+						android:textColor="@color/burgundy"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="10dp"
+						android:text="4 Items"/>
+				</RelativeLayout>
+				<TextView android:id="@+id/totalView"
+					android:layout_below="@+id/checkoutBtn"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="0"
+					android:visibility="gone"/>
 				<Button android:id="@+id/purchase"
 					android:layout_marginTop="20dp"
 					android:layout_width="wrap_content"

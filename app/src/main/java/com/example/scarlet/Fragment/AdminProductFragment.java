@@ -78,6 +78,8 @@ public class AdminProductFragment extends Fragment {
     Button btnSave;
     final Handler handler = new Handler();
     int delay=150;
+    private int currentPage=1;
+    private int pageSize=10;
     private void BindView(View view){
         productRecycleView=view.findViewById(R.id.product_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
@@ -117,6 +119,7 @@ public class AdminProductFragment extends Fragment {
 
             }
         });
+
         return view;
     }
     private void getAnimation(){
@@ -200,7 +203,8 @@ public class AdminProductFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference productRef = database.getReference("product");
-        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        int startOffset=(currentPage-1)*pageSize;
+        productRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot productSnapshot) {
                 productList.clear();

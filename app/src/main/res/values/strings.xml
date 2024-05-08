@@ -257,5 +257,20 @@
     <string name="menu_pie_chart">Pie chart</string>
     <string name="menu_back">Back to app</string>
     <string name="menu_signout">Sign out</string>
-
+    <string name="introduction">Welcome to the Cake Shop App Scarlet,
+        operated by Team 6.This Membership Policy Loyalty outlines the terms and conditions governing the use of the App membership program Loyalty. By using the Membership, you agree to be bound by this Policy.</string>
+    <string name="eligibility">To become a member of the Membership, you must: \n
+        \t - Be at least 18 years of age or have the consent of a legal guardian. \n
+        \t - Provide accurate and complete information about yourself when creating your account. \n
+        \t - Agree to receive electronic communications from the Company, including marketing emails and promotional offers.</string>
+    <string name="benefit">As a member of the Membership, you will enjoy a variety of benefits, including: \n
+        \t - Exclusive discounts on cakes and other products.\n
+        \t - Early access to new products and promotions.\n
+        \t - Birthday rewards and treats.\n
+        \t - Invitations to special events and tastings.\n
+        \t - Free delivery on orders over a certain amount.</string>
+    <string name="fees">There are two Membership tiers: \n
+        \t - Basic Membership: Free to join and provides access to basic benefits. \n
+        \t - Premium Membership: Requires a monthly subscription fee and provides access to all benefits, including exclusive discounts and early access to new products.</string>
+    <string name="cancelled">You may cancel your Membership at any time by contacting customer support. If you cancel your Membership, you will no longer have access to Membership benefits.</string>
 </resources>

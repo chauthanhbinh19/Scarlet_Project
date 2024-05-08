@@ -35,7 +35,7 @@
 
 			</RelativeLayout>
 			<ImageView android:id="@+id/basemap_image"
-				android:layout_width="310dp"
+				android:layout_width="300dp"
 				android:layout_height="290dp"
 				android:layout_below="@+id/confrimBox"
 				android:layout_centerHorizontal="true"
