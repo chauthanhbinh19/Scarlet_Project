@@ -18,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Adapter.AdminOrderAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
+import com.example.scarlet.Data.Address;
 import com.example.scarlet.Data.Order;
+import com.example.scarlet.Data.Payment;
+import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -160,9 +163,21 @@ public class AdminOrderFragment extends Fragment {
                     String status=snap.child("orderStatus").getValue(String.class);
                     if(status.equals(orderStatus)){
                         String key=snap.getKey();
-                        Date orderdate=snap.child("orderDate").getValue(Date.class);
+                        double deliveryFee=snap.child("deliveryFee").getValue(double.class);
+                        String deliveryStatus=snap.child("deliveryStatus").getValue(String.class);
+                        Date orderDate=snap.child("orderDate").getValue(Date.class);
+                        String orderStatus=snap.child("orderStatus").getValue(String.class);
+                        Address address=snap.child("shippingAddress").getValue(Address.class);
+                        double tip=snap.child("tip").getValue(double.class);
                         double total=snap.child("total").getValue(double.class);
-                        Order order=new Order(orderStatus,orderdate,total,key);
+                        DataSnapshot productListSnapshot =snap.child("productList");
+
+                        List<Product> tempList=new ArrayList<>();
+                        for(DataSnapshot snapshot1:productListSnapshot.getChildren()){
+                            Product product=snapshot1.getValue(Product.class);
+                            tempList.add(product);
+                        }
+                        Order order=new Order("",orderStatus,new Payment(),address,orderDate,total,tip,deliveryStatus,deliveryFee,tempList,key);
                         orderList.add(order);
                     }
                 }

@@ -14,6 +14,7 @@ import com.example.scarlet.Data.Product;
 import com.example.scarlet.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView> {
@@ -22,6 +23,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView
     public AdminOrderAdapter(List<Order> orderList) {
         this.orderList = orderList;
         this.filteredData=new ArrayList<>(orderList);
+        sortFilteredDataByLastedTime();
     }
 
     @NonNull
@@ -41,6 +43,24 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView
     @Override
     public int getItemCount() {
         return filteredData.size();
+    }
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+        this.filteredData = new ArrayList<>(orderList);
+        sortFilteredDataByLastedTime();
+        notifyDataSetChanged();
+    }
+    public void updateData(List<Order> orderList) {
+        this.orderList = orderList;
+        this.filteredData = new ArrayList<>(orderList);
+        sortFilteredDataByLastedTime();
+        notifyDataSetChanged();
+    }
+    private void sortFilteredDataByLastedTime() {
+        Collections.sort(filteredData, (o1, o2) -> o2.getOrderDate().compareTo(o1.getOrderDate()));
+    }
+    private void sortFilteredDataByLateTime() {
+        Collections.sort(filteredData, (o1, o2) -> o1.getOrderDate().compareTo(o2.getOrderDate()));
     }
 //    public void filterBySearch(String query){
 //        filteredData.clear();

@@ -100,7 +100,7 @@
 					android:layout_width="0dp"
 					android:layout_weight="1"
 					android:layout_height="wrap_content"
-					android:background="@drawable/rectangle_lightpink"
+					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
 					<EditText android:id="@+id/first_name"
@@ -122,7 +122,7 @@
 					android:layout_weight="1.5"
 					android:layout_marginStart="10dp"
 					android:layout_marginEnd="27dp"
-					android:background="@drawable/rectangle_lightpink"
+					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
 					<EditText android:id="@+id/last_name"
@@ -147,7 +147,7 @@
 				android:layout_height="wrap_content"
 				android:layout_marginTop="10dp"
 				android:layout_marginEnd="27dp"
-				android:background="@drawable/rectangle_lightpink"
+				android:background="@drawable/rectangle_lightpink_radius"
 				android:layout_below="@+id/name_box"
 				>
 
@@ -171,7 +171,7 @@
 				android:layout_marginEnd="27dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:background="@drawable/rectangle_lightpink"
+				android:background="@drawable/rectangle_lightpink_radius"
 				android:layout_below="@+id/gender_box"
 				>
 
@@ -193,7 +193,7 @@
 				android:layout_below="@+id/mobile_number"
 				android:layout_marginStart="27dp"
 				android:layout_marginEnd="27dp"
-				android:background="@drawable/rectangle_lightpink"
+				android:background="@drawable/rectangle_lightpink_radius"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				>
@@ -221,8 +221,7 @@
 
 			</RelativeLayout>
 
-				<Button
-					android:id="@+id/btn"
+				<Button android:id="@+id/btn"
 					android:layout_marginTop="20dp"
 					android:layout_centerHorizontal="true"
 					android:gravity="center"
@@ -235,10 +234,6 @@
 					android:textColor="@color/white"
 					android:theme="@style/MyButtonTheme"
 					android:text="Save"/>
-
-
-
-
 			</RelativeLayout>
 	</RelativeLayout>
 

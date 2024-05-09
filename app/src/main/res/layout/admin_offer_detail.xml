@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:background="@drawable/_bg_white_radius30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+        <ImageButton android:id="@+id/btnClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/close"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rectangle_circie_gradient_burgundy2"
+            android:layout_below="@+id/btnClose"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_circie_gradient_burgundy"
+            android:layout_below="@+id/btnClose"
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
+
+        <TextView android:id="@+id/offerPoint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:gravity="center"
+            android:layout_below="@+id/btnClose"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView android:id="@+id/offerName"
+            android:layout_below="@+id/offerPoint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:paddingLeft="30dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/offerDescription"
+            android:layout_below="@+id/offerName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:paddingLeft="30dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+<!--        <TextView android:id="@+id/offerPoint"-->
+<!--            android:layout_below="@+id/offerDescription"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:layout_marginRight="80dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:background="@drawable/rectangle_lightpink_radius"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:paddingLeft="30dp"-->
+<!--            android:textSize="14sp"-->
+<!--            android:gravity="center_vertical"-->
+<!--            android:textColor="@color/burgundy"-->
+<!--            android:layout_height="50dp"/>-->
+
+        <TextView android:id="@+id/offerStartDate"
+            android:layout_below="@+id/offerDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:paddingLeft="30dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/offerEndDate"
+            android:layout_below="@+id/offerStartDate"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="30dp"
+            android:textSize="14sp"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

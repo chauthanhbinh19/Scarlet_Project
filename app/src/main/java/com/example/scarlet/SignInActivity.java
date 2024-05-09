@@ -44,13 +44,14 @@ public class SignInActivity extends AppCompatActivity {
 
     public EditText username;
     public EditText password;
-    Button createAccount,forgotPassword,signin;
+    Button createAccount,forgotPassword,signin, continueBtn;
     private void BindView(){
         createAccount=(Button) findViewById(R.id._create_account_);
         forgotPassword=(Button) findViewById(R.id.forgot_password_);
         username =(EditText) findViewById(R.id.username_or_email);
         password=(EditText) findViewById(R.id.password);
         signin=(Button) findViewById(R.id.sign_in_button);
+        continueBtn=findViewById(R.id.continueBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,13 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(SignInActivity.this,SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SignInActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

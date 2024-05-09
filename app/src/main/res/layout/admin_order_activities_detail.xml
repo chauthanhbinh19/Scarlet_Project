@@ -3,68 +3,26 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
-	<RelativeLayout android:id="@+id/top_bar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		android:paddingBottom="10dp"
-		android:background="@color/white"
-		>
-		<RelativeLayout android:id="@+id/back_btn"
-			android:layout_marginTop="22dp"
-			android:layout_marginStart="25dp"
-			android:layout_centerVertical="true"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			>
-
-
-			<View   android:id="@+id/rectangle_3"
-				android:background="@drawable/btn_burgundy"
-				android:layout_marginStart="0dp"
-				android:layout_marginTop="0dp"
-				android:layout_width="40dp"
-				android:layout_height="35dp" />
-
-
-			<ImageView android:id="@+id/vector"
-				android:src="@drawable/vector"
-				android:contentDescription="vector"
-				android:layout_centerHorizontal="true"
-				android:layout_centerVertical="true"
-				android:layout_width="15dp"
-				android:layout_height="15dp" />
-
-
-
-		</RelativeLayout>
-
-		<TextView android:id="@+id/profile_1"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="center"
-			android:layout_centerHorizontal="true"
-			android:textSize="20sp"
-			android:textColor="@color/burgundy"
-			android:layout_centerVertical="true"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="Order details"
-			/>
-
-	</RelativeLayout>
 	<RelativeLayout
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintTop_toBottomOf="@id/top_bar"
+		app:layout_constraintTop_toTopOf="parent"
 		android:paddingTop="10dp"
+		android:background="@color/white2"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
+		<ImageButton android:id="@+id/btnClose"
+			android:layout_width="30dp"
+			android:layout_height="30dp"
+			android:layout_marginTop="10dp"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="20dp"
+			android:background="@drawable/close"/>
 		<RelativeLayout android:id="@+id/statusBox"
 			android:background="@color/white"
 			android:padding="5dp"
+			android:layout_marginTop="20dp"
+			android:layout_below="@+id/btnClose"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 			<TextView android:id="@+id/statusText"
@@ -91,15 +49,6 @@
 				android:layout_marginLeft="10dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
-
-			<com.airbnb.lottie.LottieAnimationView android:id="@+id/status_animation"
-				android:layout_width="60dp"
-				android:layout_height="60dp"
-				android:layout_marginRight="20dp"
-				android:layout_alignParentRight="true"
-				app:lottie_autoPlay="true"
-				app:lottie_loop="true"
-				app:lottie_rawRes="@raw/done_animation"/>
 		</RelativeLayout>
 		<RelativeLayout android:id="@+id/shipBox"
 			android:background="@color/white"
@@ -255,6 +204,7 @@
 				android:layout_below="@+id/tipText"
 				android:textSize="16sp"
 				android:textStyle="bold"
+				android:layout_marginBottom="50dp"
 				android:textColor="@color/black"
 				android:layout_marginTop="15dp"
 				android:text="Total"/>

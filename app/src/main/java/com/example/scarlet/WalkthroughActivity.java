@@ -30,7 +30,6 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
     List<Review> reviewList;
     ReviewAdapter adapter;
     Button btn1, btn2, btn3, btn4, skip;
-    ImageView step1, step2, step3, step4;
 
     private void BindView(){
         reviewRecycleView=findViewById(R.id.review_recyclerView);
@@ -39,10 +38,6 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
         btn3=findViewById(R.id.btn3);
         btn4=findViewById(R.id.btn4);
         skip=findViewById(R.id.skip);
-        step1=findViewById(R.id.step1);
-        step2=findViewById(R.id.step2);
-        step3=findViewById(R.id.step3);
-        step4=findViewById(R.id.step4);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,22 +54,22 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
                 "   Welcome to Cake App, your one-stop shop for all things cake! Whether you're a " +
                         "seasoned baker or just starting out, our app has something for everyone. " +
                         "Browse our extensive collection of cake recipes, find inspiration for your next baking project, " +
-                        "and order custom cakes for any occasion."));
+                        "and order custom cakes for any occasion.",1));
         fragments.add(new WalkthroughtFragment(R.drawable.privacy_policy_rafiki, "Discover a World of Cake Delights",
                 "   Delve into our vast library of cake recipes, featuring a variety of flavors, styles, and techniques. " +
                         "From classic chocolate cakes to trendy red velvet creations, we have something to satisfy every sweet " +
                         "tooth. Each recipe includes detailed instructions, helpful tips, and beautiful images to guide you " +
-                        "through the baking process."));
+                        "through the baking process.",2));
         fragments.add(new WalkthroughtFragment(R.drawable.rainbow_cake_pana, "Unleash Your Inner Cake Artist",
                 "   Get inspired by our curated galleries of stunning cakes, showcasing the creativity and artistry of " +
                         "bakers worldwide. Browse by occasion, type of cake, or decorating style to find ideas for your next " +
                         "masterpiece. Whether you're planning a birthday cake, a wedding cake, or a simple treat for yourself, " +
-                        "we'll help you create a cake that's both delicious and visually captivating."));
+                        "we'll help you create a cake that's both delicious and visually captivating.",3));
         fragments.add(new WalkthroughtFragment(R.drawable.take_away_pana, "Let Us Create Your Dream Cake",
                 "   For those special occasions that call for something truly extraordinary, our custom cake ordering service " +
                         "is here to make your dreams come true. Simply share your vision with our talented cake designers, and " +
                         "we'll craft a personalized cake that reflects your unique style and taste. From intricate designs to " +
-                        "personalized messages, we'll ensure your cake is the centerpiece of any celebration."));
+                        "personalized messages, we'll ensure your cake is the centerpiece of any celebration.",4));
 
         WalkthroughtAdapter adapter = new WalkthroughtAdapter(getSupportFragmentManager(), fragments);
         viewPager.setAdapter(adapter);
@@ -86,10 +81,6 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
                 btn2.setVisibility(View.VISIBLE);
                 btn3.setVisibility(View.GONE);
                 btn4.setVisibility(View.GONE);
-                step1.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step2.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step3.setBackgroundResource(R.drawable.rectangle_circle_gray);
-                step4.setBackgroundResource(R.drawable.rectangle_circle_gray);
             }
         });
         btn2.setOnClickListener(new View.OnClickListener() {
@@ -100,10 +91,6 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
                 btn2.setVisibility(View.GONE);
                 btn3.setVisibility(View.VISIBLE);
                 btn4.setVisibility(View.GONE);
-                step1.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step2.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step3.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step4.setBackgroundResource(R.drawable.rectangle_circle_gray);
             }
         });
         btn3.setOnClickListener(new View.OnClickListener() {
@@ -114,10 +101,6 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
                 btn2.setVisibility(View.GONE);
                 btn3.setVisibility(View.GONE);
                 btn4.setVisibility(View.VISIBLE);
-                step1.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step2.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step3.setBackgroundResource(R.drawable.rectangle_circle_white);
-                step4.setBackgroundResource(R.drawable.rectangle_circle_white);
             }
         });
         btn4.setOnClickListener(new View.OnClickListener() {

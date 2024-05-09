@@ -14,6 +14,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -23,10 +27,12 @@ import com.example.scarlet.Adapter.DealAdapter;
 import com.example.scarlet.Adapter.DealSecondAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Data.Deal;
+import com.example.scarlet.Data.Payment;
 import com.example.scarlet.ExchangePointActivity;
 import com.example.scarlet.MemberShipActivity;
 import com.example.scarlet.PointHistoryActivity;
 import com.example.scarlet.R;
+import com.example.scarlet.SelectVoucherActivity;
 import com.example.scarlet.VoucherActivity;
 import com.example.scarlet.YourRightsActivity;
 import com.google.firebase.Firebase;
@@ -89,7 +95,8 @@ public class DealsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), ExchangePointActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                catcherForResult.launch(intent);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -119,6 +126,22 @@ public class DealsFragment extends Fragment {
         });
         return view;
     }
+    ActivityResultLauncher<Intent> catcherForResult=
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            if(result.getResultCode()== ExchangePointActivity.RESULT_OK){
+                                Intent catcher=result.getData();
+                                if(catcher!=null){
+                                    String status=catcher.getStringExtra("status");
+                                    if(status.equals("1")){
+                                        getPoint();
+                                    }
+                                }
+                            }
+                        }
+                    });
     private void getAnimation(View view){
         Animation dealTextAnim= AnimationUtils.loadAnimation(deal_text.getContext(), android.R.anim.fade_in);
         Animation voucherBoxAnim=AnimationUtils.loadAnimation(voucher_box.getContext(), android.R.anim.slide_in_left);
@@ -267,7 +290,7 @@ public class DealsFragment extends Fragment {
                     if(snapshot.exists()){
                         int oldRankPoint=snapshot.child("rankPoint").getValue(int.class);
                         int oldPoint=snapshot.child("point").getValue(int.class);
-                        voucher_point.setText(String.valueOf(oldPoint)+" point");
+                        voucher_point.setText(String.valueOf(oldPoint));
                         if(oldRankPoint<10000){
                             voucher_text_1.setText(String.valueOf(10000-oldRankPoint)+" points left and you achieve bronze");
                         }else if(oldRankPoint>=10000 && oldRankPoint<30000){

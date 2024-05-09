@@ -45,7 +45,7 @@ public class AccountFragment extends Fragment {
     Button sign_out_button;
     TextView accountText, orderText, generalText, helpText;
     final Handler handler = new Handler();
-    int delay=100;
+    int delay=60;
     private void BindView(View view){
         profile_btn=view.findViewById(R.id.profile_button);
         setting_btn=view.findViewById(R.id.settings_button);

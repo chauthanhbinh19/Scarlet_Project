@@ -139,13 +139,27 @@
 					android:layout_marginLeft="28dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:text="Featured Products"
+					android:text="Products"
+					/>
+
+				<TextView android:id="@+id/moreBtn"
+					android:textStyle="bold"
+					android:textSize="14sp"
+					android:layout_alignParentRight="true"
+					android:layout_marginTop="10dp"
+					android:layout_marginBottom="10dp"
+					android:textColor="@color/burgundy"
+					android:layout_marginLeft="28dp"
+					android:layout_marginRight="30dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="More"
 					/>
 
 
 				<RelativeLayout
-					android:layout_marginLeft="20dp"
-					android:layout_marginRight="20dp"
+					android:layout_marginLeft="0dp"
+					android:layout_marginRight="0dp"
 					android:padding="10dp"
 					android:layout_below="@+id/featureproduct"
 					android:layout_width="match_parent"
@@ -272,7 +286,7 @@
 				android:src="@drawable/search"
 				android:contentDescription="search_icon"
 				android:layout_centerVertical="true"
-				android:layout_marginStart="25dp"
+				android:layout_marginStart="30dp"
 				android:layout_marginTop="20dp"
 				android:layout_width="22dp"
 				android:layout_height="22dp" />

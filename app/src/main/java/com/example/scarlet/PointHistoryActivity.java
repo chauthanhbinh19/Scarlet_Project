@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.OfferAdapter;
 import com.example.scarlet.Data.Offer;
+import com.example.scarlet.Interface.GetPointCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class PointHistoryActivity extends AppCompatActivity {
     RelativeLayout back_btn;
     TextView voucher_point, voucher_text_1;
     RecyclerView recyclerView;
+    GetPointCallback getPointCallback;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         recyclerView=findViewById(R.id.exchange_point_history_recyclerView);
@@ -53,7 +55,13 @@ public class PointHistoryActivity extends AppCompatActivity {
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(PointHistoryActivity.this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
-        getPointHistoryData(recyclerView);
+        getPointCallback=new GetPointCallback() {
+            @Override
+            public void itemClick(int point, int type) {
+
+            }
+        };
+        getPointHistoryData(recyclerView,getPointCallback);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +70,7 @@ public class PointHistoryActivity extends AppCompatActivity {
             }
         });
     }
-    private void getPointHistoryData(RecyclerView recyclerView){
+    private void getPointHistoryData(RecyclerView recyclerView, GetPointCallback getPointCallback){
         SharedPreferences sharedPreferences =getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         String userKey=sharedPreferences.getString("customerKey","");
@@ -90,7 +98,7 @@ public class PointHistoryActivity extends AppCompatActivity {
                                                 offerList.add(offer);
                                         }
                                         if(offerList.size()>0){
-                                            offerAdapter=new OfferAdapter(offerList);
+                                            offerAdapter=new OfferAdapter(offerList,getPointCallback);
                                             recyclerView.setAdapter(offerAdapter);
                                         }
                                     }

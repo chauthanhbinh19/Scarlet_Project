@@ -13,49 +13,43 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content" >
 
-
-
-
 			<RelativeLayout android:id="@+id/frame_1"
-				android:layout_marginTop="224dp"
+				android:layout_marginTop="160dp"
 				android:layout_marginStart="0dp"
 				android:layout_centerHorizontal="true"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				>
-
-
 				<TextView android:id="@+id/logo"
 					android:layout_width="300dp"
-					android:layout_height="230dp"
+					android:layout_height="240dp"
 					android:background="@drawable/scartet_1"
 					android:layout_centerHorizontal="true"/>
 
 			</RelativeLayout>
-
-
 
 			<TextView android:id="@+id/app_version_1_0"
 				android:textStyle="bold"
 				android:layout_gravity="center_horizontal|center"
 				android:gravity="center"
 				android:textSize="28sp"
+				android:layout_below="@+id/frame_1"
 				android:textColor="@color/black"
-				android:layout_marginTop="458dp"
-				android:layout_width="272dp"
-				android:layout_height="50.8dp"
+				android:layout_marginTop="20dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:text="@string/app_version_1_0_string"
 				android:layout_centerHorizontal="true"
 				 />
 
-			<TextView
-				android:id="@+id/des"
-				android:layout_width="323dp"
+			<TextView android:id="@+id/des"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_centerHorizontal="true"
 				android:layout_gravity="center_horizontal|center"
 				android:layout_marginLeft="40dp"
-				android:layout_marginTop="556dp"
+				android:layout_marginTop="10dp"
+				android:layout_below="@+id/team_10"
 				android:gravity="center"
 				android:text="Đường Hàn Thuyên, khu phố 6, phường Thủ Đức, thành phố Hồ Chí Minh"
 				android:textColor="@color/black"
@@ -74,8 +68,8 @@
 					android:background="@drawable/btn_burgundy"
 					android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:layout_width="45dp"
-					android:layout_height="40dp" />
+					android:layout_width="40dp"
+					android:layout_height="35dp" />
 
 
 				<ImageView android:id="@+id/vector"
@@ -96,9 +90,10 @@
 				android:textSize="20sp"
 				android:layout_centerHorizontal="true"
 				android:textColor="@color/black"
-				android:layout_marginTop="518dp"
-				android:layout_width="176dp"
-				android:layout_height="26dp"
+				android:layout_below="@id/app_version_1_0"
+				android:layout_marginTop="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
 				android:text="@string/team_10_string"
 				 />
 

@@ -1,9 +1,12 @@
 package com.example.scarlet.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +35,7 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
     Context context;
     String key,img,name,description, startDate, endDate;
     int point;
+    private Activity activity;
     double price;
     public AdminOfferAdapter adapter;
     public AdminOfferHolderView linkAdapter(AdminOfferAdapter adapter){
@@ -47,8 +51,39 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
         textView3=itemView.findViewById(R.id.start_date_offer);
         textView4=itemView.findViewById(R.id.end_date_offer);
         context=itemView.getContext();
+        activity=(Activity) itemView.getContext();
         btnEdit=itemView.findViewById(R.id.btnEdit);
         btnDelete=itemView.findViewById(R.id.btnDelete);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,5 +135,36 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
         startDate=formattedStartDate;
         endDate=formattedEndDate;
 
+    }
+    public void showPopup(){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.admin_offer_detail, null);
+
+        TextView offerName=dialogView.findViewById(R.id.offerName);
+        TextView offerDescription=dialogView.findViewById(R.id.offerDescription);
+        TextView offerPoint=dialogView.findViewById(R.id.offerPoint);
+        TextView offerStartDate=dialogView.findViewById(R.id.offerStartDate);
+        TextView offerEndDate=dialogView.findViewById(R.id.offerEndDate);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
+        builder.setView(dialogView);
+
+        android.app.AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+
+        offerName.setText(name);
+        offerDescription.setText("Description: "+description);
+        offerPoint.setText("Point "+String.valueOf(point));
+        offerStartDate.setText("Start date: "+startDate);
+        offerEndDate.setText("End date: "+endDate);
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }

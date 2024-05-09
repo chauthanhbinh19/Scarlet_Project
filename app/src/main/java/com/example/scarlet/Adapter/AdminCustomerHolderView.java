@@ -1,9 +1,12 @@
 package com.example.scarlet.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,10 +39,11 @@ public class AdminCustomerHolderView extends RecyclerView.ViewHolder {
     ImageView imageView,imageView2, btnEdit,btnDelete;
     TextView textView1,textView2,textView3;
     Context context;
-    String userkey,img,firstname,lastname,phone,dateofbirth, gender;
+    String userkey,img,firstname,lastname,phone,dateofbirth, gender, email;
     int point;
     double price;
     public AdminCustomerAdapter adapter;
+    private Activity activity;
     public AdminCustomerHolderView linkAdapter(AdminCustomerAdapter adapter){
         this.adapter=adapter;
         return this;
@@ -52,8 +56,33 @@ public class AdminCustomerHolderView extends RecyclerView.ViewHolder {
         textView2=itemView.findViewById(R.id.phone_customer);
         textView3=itemView.findViewById(R.id.email_customer);
         context=itemView.getContext();
+        activity=(Activity) itemView.getContext();
         btnEdit=itemView.findViewById(R.id.btnEdit);
         btnDelete=itemView.findViewById(R.id.btnDelete);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,5 +141,40 @@ public class AdminCustomerHolderView extends RecyclerView.ViewHolder {
         userkey=user.getKey();
         gender=user.getGender();
         img=user.getAvatar_img();
+        email=user.getEmail();
+    }
+    public void showPopup(){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.admin_customer_detail, null);
+
+        TextView customerFirstName = dialogView.findViewById(R.id.customerFirstName);
+        TextView customerLastName=dialogView.findViewById(R.id.customerLastName);
+        TextView customerDateofBirth=dialogView.findViewById(R.id.customerDateofBirth);
+        TextView customerGender=dialogView.findViewById(R.id.customerGender);
+        TextView customerPhone=dialogView.findViewById(R.id.customerPhone);
+        TextView customerEmail=dialogView.findViewById(R.id.customerEmail);
+        ImageView btnImage = dialogView.findViewById(R.id.btnImage);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
+        builder.setView(dialogView);
+
+        android.app.AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+
+        customerFirstName.setText(firstname);
+        customerLastName.setText(lastname);
+        customerDateofBirth.setText("Birthday: "+dateofbirth);
+        customerGender.setText("Gender: "+gender);
+        customerPhone.setText("Phone: "+phone);
+        customerEmail.setText("Email: "+email);
+        Glide.with(context).load(img).into(btnImage);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }

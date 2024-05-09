@@ -120,6 +120,20 @@ public class Order {
         this.productList = productList;
     }
 
+    public Order(String userId, String orderStatus, Payment paymentMethod, Address shippingAddress, Date orderDate, double total, double tip, String deliveryStatus, double deliveryFee, List<Product> productList, String key) {
+        this.userId = userId;
+        this.orderStatus = orderStatus;
+        this.paymentMethod = paymentMethod;
+        this.shippingAddress = shippingAddress;
+        this.orderDate = orderDate;
+        this.total = total;
+        this.tip = tip;
+        this.deliveryStatus = deliveryStatus;
+        this.deliveryFee = deliveryFee;
+        this.productList = productList;
+        this.key = key;
+    }
+
     public Order(String orderStatus, Date orderDate, double total, List<Product> productList, String key) {
         this.orderStatus = orderStatus;
         this.orderDate = orderDate;

@@ -1,9 +1,12 @@
 package com.example.scarlet.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.scarlet.AdminEditProductActivity;
 import com.example.scarlet.AdminEditVoucherActivity;
 import com.example.scarlet.Data.Deal;
@@ -25,6 +29,7 @@ public class AdminDealtHolderView extends RecyclerView.ViewHolder {
     ImageView icon, btnEdit, btnDelete;
     TextView discount,voucherName,expiryDate,deliveryMethod;
     Context context;
+    private Activity activity;
     String vouchername,voucherdiscount, deliverymethod, voucherdescription, expirydate, key;
     public AdminDealAdapter adapter;
     public AdminDealtHolderView linkAdapter(AdminDealAdapter adapter){
@@ -39,8 +44,39 @@ public class AdminDealtHolderView extends RecyclerView.ViewHolder {
         expiryDate=itemView.findViewById(R.id.voucher_date);
         deliveryMethod=itemView.findViewById(R.id.delivery_method);
         context=itemView.getContext();
+        activity=(Activity) itemView.getContext();
         btnEdit=itemView.findViewById(R.id.btnEdit);
         btnDelete=itemView.findViewById(R.id.btnDelete);
+        icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        discount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        voucherName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        expiryDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        deliveryMethod.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,5 +125,35 @@ public class AdminDealtHolderView extends RecyclerView.ViewHolder {
         voucherdescription=deal.getDescription();
         expirydate=formattedExpiryDate;
         key=deal.getKey();
+    }
+    public void showPopup(){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.admin_voucher_detail, null);
+
+        TextView voucherName = dialogView.findViewById(R.id.voucherName);
+        TextView deliveryMethod=dialogView.findViewById(R.id.deliveryMethod);
+        TextView voucherDiscount=dialogView.findViewById(R.id.voucherDiscount);
+        TextView voucherDiscription=dialogView.findViewById(R.id.voucherDescription);
+        TextView expiryDateText=dialogView.findViewById(R.id.voucherExpiryDate);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
+        builder.setView(dialogView);
+
+        android.app.AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+
+        voucherName.setText(vouchername);
+        deliveryMethod.setText("Delivery method: "+deliverymethod);
+        voucherDiscount.setText("Sales "+voucherdiscount+"%");
+        voucherDiscription.setText("Description: "+voucherdescription);
+        expiryDateText.setText("Expiry date: "+expirydate);
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }

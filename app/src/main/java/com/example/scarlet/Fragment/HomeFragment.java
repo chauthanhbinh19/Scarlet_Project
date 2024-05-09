@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-//        getProductData(view);
+        getProductData(view);
         return view;
     }
     private void getAnimation(){
@@ -117,12 +117,6 @@ public class HomeFragment extends Fragment {
                 trendRecyclerView.startAnimation(trendRecyclerViewAnim);
             }
         },delay*3);
-    }
-    private void generateVoucherTransaction(){
-        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-        DatabaseReference myRef=firebaseDatabase.getReference("deal_transaction");
-        DealTransaction dealTransaction=new DealTransaction("A11A22A30","","");
-        myRef.push().setValue(dealTransaction);
     }
     private void validateUser(View view){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -215,10 +209,10 @@ public class HomeFragment extends Fragment {
     private void getProductData(View view){
         productList=new ArrayList<>();
         ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
+        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,40));
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference productRef = database.getReference("product");
+        Query productRef = database.getReference("product");
         DatabaseReference categoryRef = database.getReference("category");
         productRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -240,7 +234,8 @@ public class HomeFragment extends Fragment {
 
                             }
                             if(productList.size()>0){
-                                productAdapter=new ProductAdapter(productList);
+                                List<Product> tempList=productList.subList(0,Math.min(productList.size(),6));
+                                productAdapter=new ProductAdapter(tempList);
                                 ProductRecyclerView.setAdapter(productAdapter);
                             }
 

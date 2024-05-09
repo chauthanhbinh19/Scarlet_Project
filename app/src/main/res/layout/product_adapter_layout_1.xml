@@ -3,6 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
+    android:layout_marginBottom="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 <!--        <View   android:id="@+id/rectangle_9"-->
@@ -51,25 +52,26 @@
 
         <TextView android:id="@+id/product_name"
             android:textStyle="bold"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="@color/burgundy"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/background_product"
-            android:layout_width="90.2dp"
-            android:layout_height="24.2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/black_coffee_string"
             android:elevation="4dp"
+            android:maxWidth="80dp"
             android:singleLine="true"
             />
 
         <TextView android:id="@+id/product_price"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
-            android:layout_width="90.2dp"
-            android:layout_height="20.2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:elevation="4dp"
             android:layout_marginTop="2dp"
             android:layout_below="@id/product_name"
@@ -79,7 +81,7 @@
         <ImageView
             android:background="@drawable/rectangle_circle_linkwhite_500"
             android:layout_marginStart="124dp"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="22dp"
             android:layout_below="@+id/background_product"
             android:elevation="4dp"
             android:layout_marginBottom="5dp"
@@ -89,7 +91,7 @@
         <ImageView android:id="@+id/add_btn"
             android:src="@drawable/add_to_cart_2"
             android:layout_marginStart="129dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="26dp"
             android:elevation="4dp"
             android:layout_below="@+id/background_product"
             android:layout_width="20dp"

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:padding="2dp"
+    android:background="@color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/_bg_white_radius30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp">
+
+        <ImageButton android:id="@+id/btnClose"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/close"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rectangle_circie_gradient_burgundy"
+            android:layout_below="@+id/btnClose"
+            android:layout_width="130dp"
+            android:layout_height="130dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView android:id="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/fox"
+            android:layout_below="@+id/btnClose"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+        <TextView android:id="@+id/productName"
+            android:layout_below="@+id/btnImage"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:text="Product name"
+            android:paddingLeft="30dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/productPoint"
+            android:layout_below="@+id/productName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:text="0"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:paddingLeft="30dp"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/productPrice"
+            android:layout_below="@+id/productPoint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:text="Product price"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:paddingLeft="30dp"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/productDescription"
+            android:layout_below="@+id/productPrice"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:text="Product description"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:paddingLeft="30dp"
+            android:layout_height="50dp"/>
+
+        <TextView android:id="@+id/productCategory"
+            android:layout_below="@+id/productDescription"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rectangle_lightpink_radius"
+            android:layout_width="match_parent"
+            android:textSize="14sp"
+            android:text="Product price"
+            android:gravity="center_vertical"
+            android:textColor="@color/burgundy"
+            android:paddingLeft="30dp"
+            android:textColorHint="@color/burgundy"
+            android:layout_height="50dp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

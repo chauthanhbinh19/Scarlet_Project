@@ -1,6 +1,7 @@
 package com.example.scarlet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.MembershipAdapter;
 import com.example.scarlet.Adapter.OfferAdapter;
 import com.example.scarlet.Data.Offer;
+import com.example.scarlet.Interface.GetPointCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +39,7 @@ public class ExchangePointActivity extends AppCompatActivity {
     private OfferAdapter offerAdapter;
     private List<Offer> offerList;
     RelativeLayout back_btn;
+    GetPointCallback getPointCallback;
     RecyclerView recyclerView;
     TextView voucher_point;
     private void BindView(){
@@ -55,18 +58,27 @@ public class ExchangePointActivity extends AppCompatActivity {
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(ExchangePointActivity.this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(0,10));
-        getOfferData(recyclerView);
+        getPointCallback=new GetPointCallback() {
+            @Override
+            public void itemClick(int point, int type) {
+                voucher_point.setText(String.valueOf(point)+" point");
+            }
+        };
+        getOfferData(recyclerView,getPointCallback);
         getPoint();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
+                Intent intent=new Intent();
+                intent.putExtra("status","1");
+                setResult(ExchangePointActivity.RESULT_OK,intent);
+                ExchangePointActivity.super.onBackPressed();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
-
     }
-    private void getOfferData(RecyclerView recyclerView){
+    private void getOfferData(RecyclerView recyclerView, GetPointCallback getPointCallback){
         offerList=new ArrayList<>();
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
         Query Query= firebaseDatabase.getReference("offer");
@@ -85,7 +97,7 @@ public class ExchangePointActivity extends AppCompatActivity {
                         offerList.add(offer);
                     }
                     if(offerList.size()>0){
-                        offerAdapter=new OfferAdapter(offerList);
+                        offerAdapter=new OfferAdapter(offerList,getPointCallback);
                         recyclerView.setAdapter(offerAdapter);
                     }
                 }

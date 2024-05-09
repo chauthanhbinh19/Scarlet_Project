@@ -15,6 +15,7 @@ import com.example.scarlet.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AdminDealAdapter extends RecyclerView.Adapter<AdminDealtHolderView> {
@@ -23,6 +24,7 @@ public class AdminDealAdapter extends RecyclerView.Adapter<AdminDealtHolderView>
     public AdminDealAdapter(List<Deal> dealList) {
         this.dealList = dealList;
         this.filteredData=new ArrayList<>(dealList);
+        sortFilteredDataByLastedTime();
     }
 
     @NonNull
@@ -42,6 +44,12 @@ public class AdminDealAdapter extends RecyclerView.Adapter<AdminDealtHolderView>
     @Override
     public int getItemCount() {
         return filteredData.size();
+    }
+    private void sortFilteredDataByLastedTime() {
+        Collections.sort(filteredData, (o1, o2) -> o2.getExpiryDate().compareTo(o1.getExpiryDate()));
+    }
+    private void sortFilteredDataByLateTime() {
+        Collections.sort(filteredData, (o1, o2) -> o1.getExpiryDate().compareTo(o2.getExpiryDate()));
     }
     public void filterByDelivery(){
         filteredData.clear();

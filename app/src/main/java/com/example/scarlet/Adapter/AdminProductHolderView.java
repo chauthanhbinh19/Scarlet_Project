@@ -1,10 +1,13 @@
 package com.example.scarlet.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +44,7 @@ public class AdminProductHolderView extends RecyclerView.ViewHolder {
     int point;
     double price;
     public AdminProductAdapter adapter;
+    private Activity activity;
     public AdminProductHolderView linkAdapter(AdminProductAdapter adapter){
         this.adapter=adapter;
         return this;
@@ -53,8 +57,33 @@ public class AdminProductHolderView extends RecyclerView.ViewHolder {
         textView2=itemView.findViewById(R.id.price_product);
         textView3=itemView.findViewById(R.id.point_product);
         context=itemView.getContext();
+        activity=(Activity) itemView.getContext();
         btnEdit=itemView.findViewById(R.id.btnEdit);
         btnDelete=itemView.findViewById(R.id.btnDelete);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopup();
+            }
+        });
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,5 +141,38 @@ public class AdminProductHolderView extends RecyclerView.ViewHolder {
         img=product.getImg();
         categoryId=product.getCategoryId();
         categoryName=product.getCategoryName();
+    }
+    public void showPopup(){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(activity);
+        LayoutInflater inflater = activity.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.admin_product_detail, null);
+
+        TextView productName=dialogView.findViewById(R.id.productName);
+        TextView productPoint=dialogView.findViewById(R.id.productPoint);
+        TextView productPrice=dialogView.findViewById(R.id.productPrice);
+        TextView productDescription=dialogView.findViewById(R.id.productDescription);
+        TextView productCategory=dialogView.findViewById(R.id.productCategory);
+        ImageView btnImage = dialogView.findViewById(R.id.btnImage);
+        ImageButton btnClose=dialogView.findViewById(R.id.btnClose);
+        builder.setView(dialogView);
+
+        android.app.AlertDialog dialog = builder.create();
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+
+        productName.setText(name);
+        productPoint.setText("Point: "+String.valueOf(point));
+        productPrice.setText("Price: "+String.format("%.0f",price)+" đ");
+        productDescription.setText("Description: "+description);
+        productCategory.setText("Category: "+categoryName);
+        Glide.with(context).load(img).into(btnImage);
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 }
