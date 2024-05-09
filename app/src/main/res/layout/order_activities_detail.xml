@@ -101,11 +101,42 @@
 				app:lottie_loop="true"
 				app:lottie_rawRes="@raw/done_animation"/>
 		</RelativeLayout>
-		<RelativeLayout android:id="@+id/shipBox"
+		<RelativeLayout android:id="@+id/deliveryMethodBox"
 			android:background="@color/white"
 			android:padding="5dp"
 			android:layout_marginTop="5dp"
 			android:layout_below="@+id/statusBox"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+			<TextView android:id="@+id/deliveryMethodText"
+				android:text="Delivery method"
+				android:textSize="14sp"
+				android:layout_marginLeft="20dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+			<ImageView android:id="@+id/deliveryMethodIcon"
+				android:layout_marginLeft="20dp"
+				android:layout_width="30dp"
+				android:layout_marginTop="5dp"
+				android:layout_height="30dp"
+				android:layout_below="@+id/deliveryMethodText"
+				android:background="@drawable/delivery_2"/>
+			<TextView android:id="@+id/deliveryMethod"
+				android:text="bbbbbbbbbbbbbbbbbb"
+				android:layout_marginTop="10dp"
+				android:textSize="14sp"
+				android:textColor="@color/black"
+				android:layout_below="@+id/deliveryMethodText"
+				android:layout_toRightOf="@id/deliveryMethodIcon"
+				android:layout_marginLeft="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"/>
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/shipBox"
+			android:background="@color/white"
+			android:padding="5dp"
+			android:layout_marginTop="5dp"
+			android:layout_below="@+id/deliveryMethodBox"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 			<TextView android:id="@+id/shipText"
@@ -175,18 +206,20 @@
 				android:layout_marginLeft="20dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"/>
-			<HorizontalScrollView android:id="@+id/scrollBox"
+<!--			<HorizontalScrollView android:id="@+id/scrollBox"-->
+<!--				android:layout_below="@+id/itemText"-->
+<!--				android:layout_width="match_parent"-->
+<!--				android:layout_height="wrap_content">-->
+<!--				-->
+<!--			</HorizontalScrollView>-->
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/totalProductRecycleView"
+				android:layout_marginRight="0dp"
+				android:layout_marginLeft="20dp"
+				android:paddingRight="20dp"
 				android:layout_below="@+id/itemText"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content">
-				<androidx.recyclerview.widget.RecyclerView
-					android:id="@+id/totalProductRecycleView"
-					android:layout_marginRight="20dp"
-					android:layout_marginLeft="20dp"
-					android:paddingRight="20dp"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"/>
-			</HorizontalScrollView>
+				android:layout_height="wrap_content"/>
 		</RelativeLayout>
 		<RelativeLayout android:id="@+id/totalBox"
 			android:padding="5dp"

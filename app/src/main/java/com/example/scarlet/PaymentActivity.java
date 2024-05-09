@@ -80,6 +80,7 @@ public class PaymentActivity extends AppCompatActivity {
     ProductHorizontalAdapter adapter;
     List<ProductQuantity> productQuantityList;
     String voucherKey="0", voucherName, voucherCode;
+    double deliveryfee=0;
     private void BindView() {
         totalView=findViewById(R.id.total);
         back_btn=findViewById(R.id.back_btn);
@@ -131,6 +132,9 @@ public class PaymentActivity extends AppCompatActivity {
             if(!additionalInfo.isEmpty()){
                 a=a+", "+additionalInfo;
                 delivery_address_content.setText(a);
+            }
+            if(deliveryStatus.equals("delivery")) {
+                deliveryfee = 10000;
             }
         }
         productQuantityList=new ArrayList<>();
@@ -604,8 +608,9 @@ public class PaymentActivity extends AppCompatActivity {
                                 String postalCodeText=snap.child("postalCode").getValue(String.class);
                                 String additionalText=snap.child("additional").getValue(String.class);
 
+
                                 address=new Address(customerId,streetText,wardText,districtText,provinceText,postalCodeText,"","",additionalText);
-                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,0,productList);
+                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,deliveryfee,productList);
                                 String key=orderRef.push().getKey();
                                 orderRef.child(key).setValue(order);
                                 if(!voucherKey.equals("0")){

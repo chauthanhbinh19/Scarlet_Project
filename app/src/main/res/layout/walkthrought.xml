@@ -65,7 +65,7 @@
             android:textSize="22sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="20dp" />
         <Button
             android:id="@+id/skip"
             android:layout_width="wrap_content"
@@ -77,6 +77,6 @@
             android:textSize="22sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="20dp" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

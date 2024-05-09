@@ -17,7 +17,6 @@ import java.util.List;
 public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizontalHolderView> {
     private List<Product> productList;
     public ProductHorizontalAdapter(List<Product> productList){
-
         this.productList=productList;
     }
 

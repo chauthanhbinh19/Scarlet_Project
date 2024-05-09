@@ -70,6 +70,9 @@
             android:name=".OrderNotificationActivity"
             android:exported="true" />
         <activity
+            android:name=".OrderStatusActivity"
+            android:exported="true" />
+        <activity
             android:name=".VoucherActivity"
             android:exported="true" />
         <activity

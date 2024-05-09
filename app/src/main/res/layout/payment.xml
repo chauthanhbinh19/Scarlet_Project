@@ -197,7 +197,7 @@
 						android:layout_marginLeft="20dp"
 						android:paddingRight="20dp"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content"/>
+						android:layout_height="match_parent"/>
 				</HorizontalScrollView>
 
 				<TextView android:id="@+id/delivery_address_text"

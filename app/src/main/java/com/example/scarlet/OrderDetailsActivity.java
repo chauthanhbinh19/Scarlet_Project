@@ -39,7 +39,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     List<Product> productList;
     ProductHorizontalAdapter adapter;
     RecyclerView productRecycleView;
-    TextView addressText, timeText, subtotal, delivery, tipText, totalText, status;
+    TextView addressText, timeText, subtotal, delivery, tipText, totalText, status,deliveryMethodText;
     LottieAnimationView lottieAnimationView;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
@@ -52,6 +52,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         productRecycleView=findViewById(R.id.totalProductRecycleView);
         lottieAnimationView=findViewById(R.id.status_animation);
         status=findViewById(R.id.status);
+        deliveryMethodText=findViewById(R.id.deliveryMethod);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +107,13 @@ public class OrderDetailsActivity extends AppCompatActivity {
                     delivery.setText(String.format("%.0f",deliveryFee)+" đ");
                     tipText.setText(String.format("%.0f",tip)+" đ");
                     totalText.setText(String.format("%.0f",total)+" đ");
+                    if(deliveryStatus.equals("delivery")){
+                        deliveryMethodText.setText("Delivery");
+                    }else if(deliveryStatus.equals("instore")){
+                        deliveryMethodText.setText("In store");
+                    }else if(deliveryStatus.equals("pickup")){
+                        deliveryMethodText.setText("Pick up");
+                    }
                     getProductData(tempList);
                     if(orderStatus.equals("pending")){
                         lottieAnimationView.setAnimation(R.raw.pending_animation);
@@ -141,19 +149,20 @@ public class OrderDetailsActivity extends AppCompatActivity {
                 for(DataSnapshot productSnap: snapshot.getChildren()){
                     String productName=productSnap.child("name").getValue(String.class);
                     double productPrice=productSnap.child("price").getValue(double.class);
+                    String key=productSnap.getKey();
                     Product productKey=new Product(productSnap.getKey(),productName,1);
                     if(checkKeyInList(productKey,productKeyList)){
                         int productQuantity=getQuantity(productKey,productKeyList);
                         String productImg=productSnap.child("img").getValue(String.class);
                         double productTotal=productPrice*productQuantity;
                         tempTotal=tempTotal+productTotal;
-                        Product product=new Product(productName,productTotal, productImg,productQuantity);
+                        Product product=new Product(productName,productTotal, productImg,productQuantity,key);
                         productList.add(product);
                     }
                 }
                 adapter=new ProductHorizontalAdapter(productList);
                 productRecycleView.setAdapter(adapter);
-                subtotal.setText(String.format("%.0f",tempTotal));
+                subtotal.setText(String.format("%.0f",tempTotal)+" đ");
             }
 
             @Override
@@ -164,7 +173,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     }
     public int getQuantity(Product key, List<Product> keyList){
         for (Product item : keyList) {
-            if (item.getName().equals(key.getName())) {
+            if (item.getKey().equals(key.getKey())) {
                 return item.getQuantity();
             }
         }
@@ -172,7 +181,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     }
     public boolean checkKeyInList(Product key, List<Product> keyList) {
         for (Product item : keyList) {
-            if (item.getName().equals(key.getName())) {
+            if (item.getKey().equals(key.getKey())) {
                 return true;
             }
         }

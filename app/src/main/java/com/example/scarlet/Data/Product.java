@@ -190,6 +190,13 @@ public class Product {
         this.img=img;
         this.quantity=quantity;
     }
+    public Product(String name, double price, String img, int quantity, String key) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.quantity=quantity;
+        this.key=key;
+    }
 
     public Product(String key, String name, double price) {
         this.key = key;

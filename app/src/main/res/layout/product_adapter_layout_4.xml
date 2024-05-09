@@ -5,8 +5,6 @@
         android:layout_marginRight="10dp"
         >
 
-
-
         <ImageView android:id="@+id/mask_group"
             android:layout_width="80dp"
             android:elevation="10dp"
@@ -16,11 +14,11 @@
 
         <ImageView android:id="@+id/product_image"
             android:src="@drawable/bubble_tea"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:elevation="10dp"
-            android:layout_marginLeft="3dp"
-            android:layout_width="75dp"
-            android:layout_height="75dp" />
+            android:layout_marginLeft="4dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp" />
 
         <RelativeLayout android:id="@+id/quantityBox"
             android:layout_marginTop="0dp"

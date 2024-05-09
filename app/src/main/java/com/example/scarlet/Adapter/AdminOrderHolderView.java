@@ -177,6 +177,7 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
         TextView statusText=dialogView.findViewById(R.id.status);
         TextView addressText=dialogView.findViewById(R.id.address);
         TextView timeText=dialogView.findViewById(R.id.time);
+        TextView deliveryMethodText=dialogView.findViewById(R.id.deliveryMethod);
         RecyclerView productRecycleView=dialogView.findViewById(R.id.totalProductRecycleView);
         subtotalText=dialogView.findViewById(R.id.subtotal);
         TextView deliveryText=dialogView.findViewById(R.id.delivery);
@@ -196,6 +197,13 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
         deliveryText.setText(String.format("%.0f",deliveryFee)+" đ");
         tipText.setText(String.format("%.0f",tip)+" đ");
         totalText.setText(String.format("%.0f",total)+" đ");
+        if(deliveryStatus.equals("delivery")){
+            deliveryMethodText.setText("Delivery");
+        }else if(deliveryStatus.equals("instore")){
+            deliveryMethodText.setText("In store");
+        }else if(deliveryStatus.equals("pickup")){
+            deliveryMethodText.setText("Pick up");
+        }
 
         if(orderStatusString.equals("pending")){
             statusText.setText("Pending");
@@ -233,11 +241,12 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
                     double productPrice=productSnap.child("price").getValue(double.class);
                     Product productKey=new Product(productSnap.getKey(),productName,1);
                     if(checkKeyInList(productKey,productKeyList)){
+                        String key=productSnap.getKey();
                         int productQuantity=getQuantity(productKey,productKeyList);
                         String productImg=productSnap.child("img").getValue(String.class);
                         double productTotal=productPrice*productQuantity;
                         tempTotal=tempTotal+productTotal;
-                        Product product=new Product(productName,productTotal, productImg,productQuantity);
+                        Product product=new Product(productName,productTotal, productImg,productQuantity, key);
                         productList1.add(product);
                     }
                 }
@@ -254,7 +263,7 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
     }
     public int getQuantity(Product key, List<Product> keyList){
         for (Product item : keyList) {
-            if (item.getName().equals(key.getName())) {
+            if (item.getKey().equals(key.getKey())) {
                 return item.getQuantity();
             }
         }
@@ -262,7 +271,7 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
     }
     public boolean checkKeyInList(Product key, List<Product> keyList) {
         for (Product item : keyList) {
-            if (item.getName().equals(key.getName())) {
+            if (item.getKey().equals(key.getKey())) {
                 return true;
             }
         }
