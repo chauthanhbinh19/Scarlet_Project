@@ -6,7 +6,9 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -35,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         Window window = getWindow();
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setStatusBarColor(ContextCompat.getColor(this,R.color.burgundy));
+        getWindow().getDecorView().setSystemUiVisibility(0);
 
         openHomeFragment();
         createBottomNavigation(savedInstanceState);

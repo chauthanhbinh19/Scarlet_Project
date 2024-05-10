@@ -102,7 +102,6 @@ public class SelectVoucherActivity extends AppCompatActivity {
                 intent1.putExtra("voucherName",voucherName);
                 intent1.putExtra("voucherCode",voucherCode);
                 setResult(SelectVoucherActivity.RESULT_OK,intent1);
-//                finish();
                 SelectVoucherActivity.super.onBackPressed();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }

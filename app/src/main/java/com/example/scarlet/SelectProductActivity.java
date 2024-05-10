@@ -1,5 +1,8 @@
 package com.example.scarlet;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,57 +11,87 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Adapter.GridLayoutDecoration;
-import com.example.scarlet.Adapter.ProductAdapter;
+import com.example.scarlet.Adapter.ProductReviewAdapter;
 import com.example.scarlet.Adapter.ProductSearchAdapter;
+import com.example.scarlet.Data.Payment;
 import com.example.scarlet.Data.Product;
+import com.example.scarlet.Interface.GetKeyCallback;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchProductActivity extends AppCompatActivity {
-    private ProductSearchAdapter productAdapter;
+public class SelectProductActivity extends AppCompatActivity {
+
+    RelativeLayout back_btn;
+    private ProductReviewAdapter productAdapter;
     private List<Product> productList;
     RecyclerView recyclerView;
-    Button back_btn;
+    GetKeyCallback getKeyCallback;
+    String keyString;
     EditText search;
+    Button chooseBtn;
     private void BindView(){
+        back_btn=findViewById(R.id.back_btn);
         recyclerView=findViewById(R.id.product_recyclerView);
-        back_btn=(Button) findViewById(R.id.cancled_btn);
-        search=(EditText) findViewById(R.id.search);
+        chooseBtn=findViewById(R.id.chooseBtn);
+        search=findViewById(R.id.search);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.search);
+        setContentView(R.layout.select_product);
 
         Window window = getWindow();
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
-
+        
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
-
-        getProductData(recyclerView);
+        getKeyCallback=new GetKeyCallback() {
+            @Override
+            public void itemClick(String key, int type) {
+                keyString=key;
+            }
+        };
+        getProductData(recyclerView, getKeyCallback);
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+//                finish();
+                Intent intent=new Intent();
+                intent.putExtra("key","0");
+                setResult(SelectVoucherActivity.RESULT_OK,intent);
+                SelectProductActivity.super.onBackPressed();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+        chooseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.putExtra("key",keyString);
+                setResult(SelectVoucherActivity.RESULT_OK,intent);
+                SelectProductActivity.super.onBackPressed();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             }
         });
         search.addTextChangedListener(new TextWatcher() {
@@ -79,7 +112,7 @@ public class SearchProductActivity extends AppCompatActivity {
             }
         });
     }
-    private void getProductData(RecyclerView recyclerView){
+    private void getProductData(RecyclerView recyclerView, GetKeyCallback getKeyCallback){
         productList=new ArrayList<>();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -105,7 +138,7 @@ public class SearchProductActivity extends AppCompatActivity {
 
                             }
                             if(productList.size()>0){
-                                productAdapter=new ProductSearchAdapter(productList);
+                                productAdapter=new ProductReviewAdapter(productList, getKeyCallback);
                                 recyclerView.setAdapter(productAdapter);
                             }
                         }

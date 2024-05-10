@@ -3,9 +3,144 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<RelativeLayout android:id="@+id/hi_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent"
+		android:paddingTop="5dp"
+		android:background="@color/burgundy">
+		<TextView
+			android:layout_width="160dp"
+			android:layout_height="wrap_content"
+			android:id="@+id/welcome_message"
+			android:layout_marginTop="20dp"
+			android:layout_marginStart="80dp"
+			android:textColor="@color/white"
+			android:textSize="18sp"
+			android:text="Hi, User!"
+			android:singleLine="true"
+			android:layout_centerVertical="true"/>
+
+		<ImageView
+			android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:src="@drawable/rollcake"
+			android:layout_marginStart="20dp"
+			android:layout_centerVertical="true"
+			/>
+		<RelativeLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toLeftOf="@id/notification"
+			android:layout_marginRight="10dp"
+			android:layout_marginTop="7dp">
+
+			<ImageView
+				android:layout_width="70dp"
+				android:layout_height="35dp"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+				android:background="@drawable/rectangle_circle_white"
+				/>
+
+			<ImageView
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="10dp"
+				android:src="@drawable/coupon"
+				/>
+
+			<TextView
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="40dp"
+				android:gravity="center_horizontal"
+				android:text="1"
+				android:textStyle="bold"
+				android:textSize="18sp"
+				android:textColor="@color/burgundy"
+				/>
+		</RelativeLayout>
+		<RelativeLayout android:id="@+id/notification"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="20dp"
+			android:layout_marginTop="7dp">
+
+			<ImageView
+				android:layout_width="35dp"
+				android:layout_height="35dp"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+				android:background="@drawable/rectangle_circle_white"
+				/>
+
+			<ImageView
+				android:layout_width="20dp"
+				android:layout_height="20dp"
+				android:layout_centerVertical="true"
+				android:layout_centerHorizontal="true"
+				android:src="@drawable/notification"
+				/>
+		</RelativeLayout>
+
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/search_bar"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toBottomOf="@+id/hi_bar"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		android:gravity="center_horizontal"
+		android:paddingTop="15dp"
+		android:paddingBottom="15dp"
+		android:background="@drawable/rectangle_burgundy_bottom_radius"
+		>
+		<View
+			android:id="@+id/rectangle_1"
+			android:layout_width="match_parent"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_height="50dp"
+			android:background="@drawable/rectangle_white_radius" />
+
+		<ImageView android:id="@+id/vector"
+			android:src="@drawable/search"
+			android:contentDescription="search_icon"
+			android:layout_centerVertical="true"
+			android:layout_marginStart="30dp"
+			android:layout_marginTop="20dp"
+			android:layout_width="22dp"
+			android:layout_height="22dp" />
+
+
+		<TextView android:id="@+id/search"
+			android:textStyle="bold"
+			android:layout_gravity="center_horizontal|center"
+			android:gravity="left|center_vertical"
+			android:layout_centerVertical="true"
+			android:textSize="16sp"
+			android:textColor="@color/burgundy"
+			android:layout_marginLeft="65dp"
+			android:layout_width="match_parent"
+			android:layout_marginRight="15dp"
+			android:layout_height="48dp"
+			android:hint="@string/search_string"
+			android:textColorHint="@color/burgundy"
+			android:background="@color/transparent"
+			/>
+
+
+	</RelativeLayout>
 	<ScrollView android:id="@+id/food___all" 
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
+		android:layout_height="wrap_content"
+		app:layout_constraintTop_toBottomOf="@+id/search_bar"
 		android:background="@color/white"
 		>
 
@@ -18,7 +153,7 @@
 			<RelativeLayout android:id="@+id/box_menu"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="110dp">
+				android:layout_marginTop="0dp">
 				<TextView android:id="@+id/menu"
 					android:textStyle="bold"
 					android:textSize="16sp"
@@ -83,7 +218,7 @@
 			</RelativeLayout>
 			<RelativeLayout android:id="@+id/box_slider"
 				android:layout_below="@+id/box_trend"
-				android:layout_marginTop="10dp"
+				android:layout_marginTop="0dp"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 				<ViewFlipper
@@ -177,138 +312,5 @@
 		</RelativeLayout>
 
 	</ScrollView>
-	<RelativeLayout android:id="@+id/hi_bar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		app:layout_constraintLeft_toLeftOf="parent"
-		android:paddingTop="5dp"
-		android:background="@color/white">
-		<TextView
-			android:layout_width="160dp"
-			android:layout_height="wrap_content"
-			android:id="@+id/welcome_message"
-			android:layout_marginTop="20dp"
-			android:layout_marginStart="80dp"
-			android:textSize="18sp"
-			android:text="Hi, User!"
-			android:singleLine="true"
-			android:layout_centerVertical="true"/>
-
-		<ImageView
-			android:layout_width="35dp"
-			android:layout_height="35dp"
-			android:src="@drawable/rollcake"
-			android:layout_marginStart="20dp"
-			android:layout_centerVertical="true"
-			/>
-		<RelativeLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_toLeftOf="@id/notification"
-			android:layout_marginRight="10dp"
-			android:layout_marginTop="7dp">
-
-			<ImageView
-				android:layout_width="70dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:background="@drawable/rectangle_circle_white"
-				/>
-
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:layout_centerVertical="true"
-				android:layout_marginLeft="10dp"
-				android:src="@drawable/coupon"
-				/>
-
-			<TextView
-				android:layout_width="25dp"
-				android:layout_height="25dp"
-				android:layout_centerVertical="true"
-				android:layout_marginLeft="40dp"
-				android:gravity="center_horizontal"
-				android:text="1"
-				android:textStyle="bold"
-				android:textSize="18sp"
-				android:textColor="@color/burgundy"
-				/>
-		</RelativeLayout>
-		<RelativeLayout android:id="@+id/notification"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentRight="true"
-			android:layout_marginRight="20dp"
-			android:layout_marginTop="7dp">
-
-			<ImageView
-				android:layout_width="35dp"
-				android:layout_height="35dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:background="@drawable/rectangle_circle_white"
-				/>
-
-			<ImageView
-				android:layout_width="20dp"
-				android:layout_height="20dp"
-				android:layout_centerVertical="true"
-				android:layout_centerHorizontal="true"
-				android:src="@drawable/notification"
-				/>
-		</RelativeLayout>
-
-	</RelativeLayout>
-	<RelativeLayout android:id="@+id/search_bar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toBottomOf="@+id/hi_bar"
-		app:layout_constraintLeft_toLeftOf="parent"
-		app:layout_constraintRight_toRightOf="parent"
-		android:gravity="center_horizontal"
-		android:paddingTop="10dp"
-		android:paddingBottom="10dp"
-		android:background="@color/white"
-		>
-		<View
-			android:id="@+id/rectangle_1"
-			android:layout_width="match_parent"
-			android:layout_marginLeft="15dp"
-			android:layout_marginRight="15dp"
-			android:layout_height="50dp"
-			android:background="@drawable/rectangle_lightpink_radius" />
-
-		<ImageView android:id="@+id/vector"
-				android:src="@drawable/search"
-				android:contentDescription="search_icon"
-				android:layout_centerVertical="true"
-				android:layout_marginStart="30dp"
-				android:layout_marginTop="20dp"
-				android:layout_width="22dp"
-				android:layout_height="22dp" />
-
-
-		<TextView android:id="@+id/search"
-			android:textStyle="bold"
-			android:layout_gravity="center_horizontal|center"
-			android:gravity="left|center_vertical"
-			android:layout_centerVertical="true"
-			android:textSize="16sp"
-			android:textColor="@color/burgundy"
-			android:layout_marginLeft="65dp"
-			android:layout_width="match_parent"
-			android:layout_marginRight="15dp"
-			android:layout_height="48dp"
-			android:hint="@string/search_string"
-			android:textColorHint="@color/burgundy"
-			android:background="@color/transparent"
-			/>
-
-
-	</RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

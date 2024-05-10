@@ -97,6 +97,12 @@
             android:name=".ChangePasswordActivity"
             android:exported="true" />
         <activity
+            android:name=".ReviewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SelectProductActivity"
+            android:exported="true" />
+        <activity
             android:name=".PaymentActivity"
             android:exported="true"
             android:launchMode="singleTask">

@@ -11,12 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.scarlet.Interface.GetListStringCallback;
 import com.example.scarlet.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -71,8 +76,16 @@ public class AdminChartFragment extends Fragment {
             "July", "August", "September", "October", "November", "December"};
     String[] monthLabels1 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun",
             "Jul", "Aug", "Step", "Oct", "Nov", "Dec"};
+    String[] monthLabels2 = new String[]{"","Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Step", "Oct", "Nov", "Dec"};
     final Handler handler = new Handler();
     int delay=150;
+    Spinner spinner1, spinner2, spinner3, spinner4, spinner5, spinner6, spinner7, spinner8, spinner9,
+            spinner10, spinner11, spinner12;
+    GetListStringCallback getListStringCallback;
+    List<String> categoryList;
+    private int selectedYear = 0, type1=0, type2=0, type3=0;
+    private String selectedCategory = "";
     private void BindView(View view){
         bar=view.findViewById(R.id.barchartBox);
         line=view.findViewById(R.id.linechartBox);
@@ -83,6 +96,32 @@ public class AdminChartFragment extends Fragment {
         barBox=view.findViewById(R.id.barBox);
         lineBox=view.findViewById(R.id.lineBox);
         pieBox=view.findViewById(R.id.pieBox);
+
+        spinner1=view.findViewById(R.id.spinner1);
+        spinner2=view.findViewById(R.id.spinner2);
+        spinner3=view.findViewById(R.id.spinner3);
+        spinner4=view.findViewById(R.id.spinner4);
+        spinner5=view.findViewById(R.id.spinner5);
+        spinner6=view.findViewById(R.id.spinner6);
+        spinner7=view.findViewById(R.id.spinner7);
+        spinner8=view.findViewById(R.id.spinner8);
+        spinner9=view.findViewById(R.id.spinner9);
+        spinner10=view.findViewById(R.id.spinner10);
+        spinner11=view.findViewById(R.id.spinner11);
+        spinner12=view.findViewById(R.id.spinner12);
+
+
+        barChart = view.findViewById(R.id.barChart);
+        barChart1=view.findViewById(R.id.barChart1);
+        barChart2=view.findViewById(R.id.barChart2);
+
+        lineChart = view.findViewById(R.id.lineChart);
+        lineChart1=view.findViewById(R.id.lineChart1);
+        lineChart2=view.findViewById(R.id.lineChart2);
+
+        pieChart = view.findViewById(R.id.pieChart);
+        pieChart1=view.findViewById(R.id.pieChart1);
+        pieChart2=view.findViewById(R.id.pieChart2);
     }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -90,8 +129,212 @@ public class AdminChartFragment extends Fragment {
         view =inflater.inflate(R.layout.admin_fragment_chart, container, false);
 
         BindView(view);
+        barEntries = new ArrayList<>();
+        barEntries1=new ArrayList<>();
+        barEntries2=new ArrayList<>();
+
+        lineEntries = new ArrayList<>();
+        lineEntries1=new ArrayList<>();
+        lineEntries2=new ArrayList<>();
+
+        pieEntries = new ArrayList<>();
+        pieEntries1=new ArrayList<>();
+        pieEntries2=new ArrayList<>();
+
         getDefaultStatus();
         getAnimation();
+        List<String> years = new ArrayList<>();
+        categoryList=new ArrayList<>();
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = 2023; i <= currentYear; i++) {
+            years.add(String.valueOf(i));
+        }
+        getListStringCallback=new GetListStringCallback() {
+            @Override
+            public void getItem(List<String> items) {
+                categoryList=items;
+                ArrayAdapter<String> adapter1 = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, categoryList);
+                adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner10.setAdapter(adapter1);
+                spinner11.setAdapter(adapter1);
+                spinner12.setAdapter(adapter1);
+            }
+        };
+        getCategoryName(getListStringCallback);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_item, years);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        spinner1.setAdapter(adapter);
+        spinner4.setAdapter(adapter);
+        spinner7.setAdapter(adapter);
+        spinner2.setAdapter(adapter);
+        spinner5.setAdapter(adapter);
+        spinner8.setAdapter(adapter);
+        spinner3.setAdapter(adapter);
+        spinner6.setAdapter(adapter);
+        spinner9.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getTotalRevenueByMonth(yearInt,1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner4.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getTotalRevenueByMonth(yearInt,2);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner7.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getTotalRevenueByMonth(yearInt,3);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYearString = parent.getItemAtPosition(position).toString();
+                selectedYear=Integer.parseInt(selectedYearString);
+                type1=1;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner10.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String categoryNameString = parent.getItemAtPosition(position).toString();
+                selectedCategory=categoryNameString;
+                type1=1;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYearString = parent.getItemAtPosition(position).toString();
+                selectedYear=Integer.parseInt(selectedYearString);
+                type1=2;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner11.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String categoryNameString = parent.getItemAtPosition(position).toString();
+                selectedCategory=categoryNameString;
+                type1=2;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner8.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYearString = parent.getItemAtPosition(position).toString();
+                selectedYear=Integer.parseInt(selectedYearString);
+                type1=3;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner12.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String categoryNameString = parent.getItemAtPosition(position).toString();
+                selectedCategory=categoryNameString;
+                type1=3;
+                handleSpinnerSelection();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner3.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getCakeTypeCompare(yearInt,1);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getCakeTypeCompare(yearInt,2);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinner9.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedYear = parent.getItemAtPosition(position).toString();
+                int yearInt=Integer.parseInt(selectedYear);
+                getCakeTypeCompare(yearInt,3);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,9 +356,6 @@ public class AdminChartFragment extends Fragment {
                 getDefaultStatus();
             }
         });
-
-
-
         return view;
     }
     private void getAnimation(){
@@ -148,6 +388,19 @@ public class AdminChartFragment extends Fragment {
                 barBox.setVisibility(View.VISIBLE);
                 lineBox.setVisibility(View.GONE);
                 pieBox.setVisibility(View.GONE);
+
+                spinner1.setVisibility(View.VISIBLE);
+                spinner2.setVisibility(View.VISIBLE);
+                spinner3.setVisibility(View.VISIBLE);
+                spinner10.setVisibility(View.VISIBLE);
+
+                spinner4.setVisibility(View.GONE);
+                spinner5.setVisibility(View.GONE);
+                spinner6.setVisibility(View.GONE);
+
+                spinner7.setVisibility(View.GONE);
+                spinner8.setVisibility(View.GONE);
+                spinner9.setVisibility(View.GONE);
                 openBarChart();
                 break;
             case 2:
@@ -161,6 +414,19 @@ public class AdminChartFragment extends Fragment {
                 lineBox.setVisibility(View.VISIBLE);
                 pieBox.setVisibility(View.GONE);
                 openLineChart();
+
+                spinner1.setVisibility(View.GONE);
+                spinner2.setVisibility(View.GONE);
+                spinner3.setVisibility(View.GONE);
+
+                spinner4.setVisibility(View.VISIBLE);
+                spinner5.setVisibility(View.VISIBLE);
+                spinner6.setVisibility(View.VISIBLE);
+                spinner11.setVisibility(View.VISIBLE);
+
+                spinner7.setVisibility(View.GONE);
+                spinner8.setVisibility(View.GONE);
+                spinner9.setVisibility(View.GONE);
                 break;
             case 3:
                 bar.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
@@ -173,44 +439,45 @@ public class AdminChartFragment extends Fragment {
                 lineBox.setVisibility(View.GONE);
                 pieBox.setVisibility(View.VISIBLE);
                 openPieChart();
+
+                spinner1.setVisibility(View.GONE);
+                spinner2.setVisibility(View.GONE);
+                spinner3.setVisibility(View.GONE);
+
+                spinner4.setVisibility(View.GONE);
+                spinner5.setVisibility(View.GONE);
+                spinner6.setVisibility(View.GONE);
+
+                spinner7.setVisibility(View.VISIBLE);
+                spinner8.setVisibility(View.VISIBLE);
+                spinner9.setVisibility(View.VISIBLE);
+                spinner12.setVisibility(View.VISIBLE);
                 break;
         }
     }
     private void openBarChart(){
-        barChart = view.findViewById(R.id.barChart);
-        barChart1=view.findViewById(R.id.barChart1);
-        barChart2=view.findViewById(R.id.barChart2);
-
-        barEntries = new ArrayList<>();
-        barEntries1=new ArrayList<>();
-        barEntries2=new ArrayList<>();
         getTotalRevenueByMonth(2024,1);
         getCakeTypeByMonth(2024,1, "Cookies");
         getCakeTypeCompare(2024,1);
     }
     private void openLineChart(){
-        lineChart = view.findViewById(R.id.lineChart);
-        lineChart1=view.findViewById(R.id.lineChart1);
-        lineChart2=view.findViewById(R.id.lineChart2);
-
-        lineEntries = new ArrayList<>();
-        lineEntries1=new ArrayList<>();
-        lineEntries2=new ArrayList<>();
         getTotalRevenueByMonth(2024,2);
         getCakeTypeByMonth(2024,2, "Cookies");
         getCakeTypeCompare(2024,2);
     }
     private void openPieChart(){
-        pieChart = view.findViewById(R.id.pieChart);
-        pieChart1=view.findViewById(R.id.pieChart1);
-        pieChart2=view.findViewById(R.id.pieChart2);
-
-        pieEntries = new ArrayList<>();
-        pieEntries1=new ArrayList<>();
-        pieEntries2=new ArrayList<>();
         getTotalRevenueByMonth(2024,3);
         getCakeTypeByMonth(2024,3, "Cookies");
         getCakeTypeCompare(2024,3);
+    }
+    private void handleSpinnerSelection(){
+        if (selectedYear != 0 && !selectedCategory.isEmpty() && type1==1) {
+            getCakeTypeByMonth(selectedYear, 1, selectedCategory);
+        }else if(selectedYear != 0 && !selectedCategory.isEmpty() && type1==2){
+            getCakeTypeByMonth(selectedYear, 2, selectedCategory);
+        }else if(selectedYear != 0 && !selectedCategory.isEmpty() && type1==3){
+            getCakeTypeByMonth(selectedYear, 3, selectedCategory);
+        }
     }
     private void getTotalRevenueByMonth(int yearString, int status){
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
@@ -238,6 +505,8 @@ public class AdminChartFragment extends Fragment {
                 }
                 TreeMap<Float, Float> sortedRevenueByMonth = new TreeMap<>(revenueByMonth);
                 if(status==1){
+                    barChart.clear();
+                    barEntries.clear();
                     for (Float month : sortedRevenueByMonth.keySet()) {
                         Float value = sortedRevenueByMonth.get(month);
                         barEntries.add(new BarEntry(month-1, value));
@@ -260,6 +529,8 @@ public class AdminChartFragment extends Fragment {
 
                     barChart.invalidate();
                 }else if(status==2){
+                    lineChart.clear();
+                    lineEntries.clear();
                     for (Float key : sortedRevenueByMonth.keySet()) {
                         Float value = sortedRevenueByMonth.get(key);
                         lineEntries.add(new BarEntry(key, value));
@@ -270,11 +541,11 @@ public class AdminChartFragment extends Fragment {
                     lineChart.getDescription().setEnabled(false);
 
                     XAxis xAxis = lineChart.getXAxis();
-                    xAxis.setValueFormatter(new IndexAxisValueFormatter(monthLabels1));
+                    xAxis.setValueFormatter(new IndexAxisValueFormatter(monthLabels2));
                     xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                     xAxis.setGranularity(1f);
-                    xAxis.setLabelCount(monthLabels1.length);
-                    xAxis.setDrawLabels(false);
+                    xAxis.setLabelCount(monthLabels2.length);
+                    xAxis.setDrawLabels(true);
                     xAxis.setDrawGridLines(false);
 
                     YAxis yAxis=lineChart.getAxisRight();
@@ -282,6 +553,8 @@ public class AdminChartFragment extends Fragment {
 
                     lineChart.invalidate();
                 }else if(status==3){
+                    pieChart.clear();
+                    pieEntries.clear();
                     float totalPie = 0f;
                     for (Float value : sortedRevenueByMonth.values()) {
                         totalPie += value;
@@ -341,6 +614,8 @@ public class AdminChartFragment extends Fragment {
                 }
                 TreeMap<Float, Float> sortedRevenueByMonth = new TreeMap<>(cakeTypeByMonth);
                 if(status==1){
+                    barChart1.clear();
+                    barEntries1.clear();
                     for (Float key : sortedRevenueByMonth.keySet()) {
                         Float value = sortedRevenueByMonth.get(key);
                         barEntries1.add(new BarEntry(key, value));
@@ -365,6 +640,8 @@ public class AdminChartFragment extends Fragment {
 
                     barChart1.invalidate();
                 }else if(status==2){
+                    lineChart1.clear();
+                    lineEntries1.clear();
                     for (Float key : sortedRevenueByMonth.keySet()) {
                         Float value = sortedRevenueByMonth.get(key);
                         lineEntries1.add(new BarEntry(key, value));
@@ -377,10 +654,10 @@ public class AdminChartFragment extends Fragment {
                     lineChart1.getDescription().setEnabled(false);
 
                     XAxis xAxis = lineChart1.getXAxis();
-                    xAxis.setValueFormatter(new IndexAxisValueFormatter(monthLabels1));
+                    xAxis.setValueFormatter(new IndexAxisValueFormatter(monthLabels2));
                     xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
                     xAxis.setGranularity(1f);
-                    xAxis.setLabelCount(monthLabels1.length);
+                    xAxis.setLabelCount(monthLabels2.length);
                     xAxis.setDrawLabels(true);
                     xAxis.setDrawGridLines(false);
 
@@ -389,6 +666,8 @@ public class AdminChartFragment extends Fragment {
 
                     lineChart1.invalidate();
                 }else if(status==3){
+                    pieChart1.clear();
+                    pieEntries1.clear();
                     float totalPie = 0f;
                     for (Float value : sortedRevenueByMonth.values()) {
                         totalPie += value;
@@ -485,6 +764,8 @@ public class AdminChartFragment extends Fragment {
                     count++;
                 }
                 if(status==1){
+                    barChart2.clear();
+                    barEntries2.clear();
                     for (Float key : intCakeCompare.keySet()) {
                         Float value = intCakeCompare.get(key);
                         barEntries2.add(new BarEntry(key, value));
@@ -510,6 +791,8 @@ public class AdminChartFragment extends Fragment {
 
                     barChart2.invalidate();
                 }else if(status==2){
+                    lineChart2.clear();
+                    lineEntries2.clear();
                     for (Float key : intCakeCompare.keySet()) {
                         Float value = intCakeCompare.get(key);
                         lineEntries2.add(new BarEntry(key, value));
@@ -535,6 +818,8 @@ public class AdminChartFragment extends Fragment {
 
                     lineChart2.invalidate();
                 }else if(status==3){
+                    pieChart2.clear();
+                    pieEntries2.clear();
                     float totalPie = 0f;
                     for (Float value : intCakeCompare.values()) {
                         totalPie += value;
@@ -559,6 +844,25 @@ public class AdminChartFragment extends Fragment {
                     pieChart2.setCenterTextTypeface(Typeface.DEFAULT_BOLD);
                     pieChart2.invalidate();
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    private void getCategoryName(GetListStringCallback getListStringCallback){
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=firebaseDatabase.getReference("category");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap:snapshot.getChildren()){
+                    String name=snap.child("name_category").getValue(String.class);
+                    categoryList.add(name);
+                }
+                getListStringCallback.getItem(categoryList);
             }
 
             @Override

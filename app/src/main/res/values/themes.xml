@@ -5,6 +5,7 @@
          <item name="colorPrimary">@color/burgundy</item>
         <item name="colorSecondary">@color/burgundy</item>
         <item name="android:navigationBarColor">@color/burgundy</item>
+        <item name="android:statusBarColor">@color/burgundy</item>
     </style>
 
     <style name="Theme.Scarlet" parent="Base.Theme.Scarlet" />

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/icon"
-        android:textSize="12sp"
+        android:textSize="10sp"
         android:elevation="4dp"
         android:gravity="center_horizontal"
         android:textColor="@color/black"

@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.example.scarlet.Adapter.AdminCategoryDropdownAdapter;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.Product;
+import com.example.scarlet.Dialog.DatePickerDialog;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -54,6 +55,7 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
     EditText customerFirstName, customerLastName, customerDateofBirth, customerGender, customerPhone;
     Uri uri;
     TextView btnImageError;
+    ImageView calendar;
     private void BindView(){
         customerFirstName = findViewById(R.id.customerFirstName);
         customerLastName=findViewById(R.id.customerLastName);
@@ -64,6 +66,7 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
         btnSave=findViewById(R.id.btnSave);
         back_btn=findViewById(R.id.back_btn);
         btnImageError=findViewById(R.id.btnImageError);
+        calendar=findViewById(R.id.calendar);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +123,17 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
                 }
             }
         });
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+    }
+    public void showDatePickerDialog(){
+        DatePickerDialog newFragment=new DatePickerDialog();
+        newFragment.setTextDate(customerDateofBirth);
+        newFragment.show(getSupportFragmentManager(), "DatePicker");
     }
     private void saveData(){
         progressDialog=new ProgressDialog(AdminEditCustomerActivity.this);
@@ -180,8 +194,8 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
                             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
                             DatabaseReference categoryRef= firebaseDatabase.getReference("user");
                             categoryRef.child(userKey).child("first_name").setValue(customerfirstname);
-                            categoryRef.child(userKey).child("last_name").setValue(customerLastName);
-                            categoryRef.child(userKey).child("gender").setValue(customerGender);
+                            categoryRef.child(userKey).child("last_name").setValue(customerlastname);
+                            categoryRef.child(userKey).child("gender").setValue(customergender);
                             categoryRef.child(userKey).child("date_of_birth").setValue(customerdateofbirth);
                             categoryRef.child(userKey).child("phone").setValue(customerphone);
                             categoryRef.child(userKey).child("avatar_img").setValue(urlImage.toString());

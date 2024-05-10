@@ -84,15 +84,16 @@
             android:layout_height="100dp"/>
 
         <Button android:id="@+id/btnSave"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@drawable/rectangle_burgundy_radius"
             android:textColor="@color/white"
-            android:layout_marginRight="120dp"
+            android:layout_marginRight="140dp"
             android:layout_below="@+id/btnImage"
             android:textSize="18sp"
+            style="@style/MyButtonTheme"
             android:text="Save"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

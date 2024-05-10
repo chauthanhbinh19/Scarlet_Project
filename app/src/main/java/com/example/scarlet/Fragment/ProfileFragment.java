@@ -17,6 +17,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -24,8 +28,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
+import com.example.scarlet.Data.Payment;
 import com.example.scarlet.EditProfileActivity;
 import com.example.scarlet.R;
+import com.example.scarlet.SelectVoucherActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +47,8 @@ public class ProfileFragment extends Fragment {
     TextView general_information, mobile_number, email,linked_accounts;
     Button edit_btn;
     final Handler handler = new Handler();
-    int delay=100;
+    int delay=50;
+    View view;
     private void BindView(View view){
         back_btn=view.findViewById(R.id.back_btn);
         edit_btn=view.findViewById(R.id.edit_button);
@@ -63,9 +70,9 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.profile, container, false);
+        view= inflater.inflate(R.layout.profile, container, false);
 
-        getCustomerInfo(view);
+        getCustomerInfo();
         BindView(view);
         getAnimation();
         back_btn.setOnClickListener(new View.OnClickListener() {
@@ -85,106 +92,112 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), EditProfileActivity.class);
-                startActivity(intent);
+//                startActivity(intent);
+                catcherForResult.launch(intent);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
         return view;
     }
+    ActivityResultLauncher<Intent> catcherForResult=
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            if(result.getResultCode()== EditProfileActivity.RESULT_OK){
+                                Intent catcher=result.getData();
+                                if(catcher!=null){
+                                    String reload=catcher.getStringExtra("reload");
+                                    if(reload.equals("1")){
+                                        getCustomerInfo();
+                                    }
+                                }
+                            }
+                        }
+                    });
     private void getAnimation(){
-        Animation generalInformationAnim= AnimationUtils.loadAnimation(general_information.getContext(), android.R.anim.fade_in);
-        Animation mobileNumberAnim= AnimationUtils.loadAnimation(mobile_number.getContext(), android.R.anim.fade_in);
-        Animation emailAnim= AnimationUtils.loadAnimation(email.getContext(), android.R.anim.fade_in);
-        Animation linkedAccountAnim= AnimationUtils.loadAnimation(linked_accounts.getContext(), android.R.anim.fade_in);
-        Animation first_name_boxAnim= AnimationUtils.loadAnimation(first_name_box.getContext(), android.R.anim.slide_in_left);
-        Animation last_name_boxAnim= AnimationUtils.loadAnimation(last_name_box.getContext(), android.R.anim.slide_in_left);
-        Animation gender_boxAnim= AnimationUtils.loadAnimation(gender_box.getContext(), android.R.anim.slide_in_left);
-        Animation birthday_boxAnim= AnimationUtils.loadAnimation(birthday_box.getContext(), android.R.anim.slide_in_left);
-        Animation email_boxAnim= AnimationUtils.loadAnimation(email_box.getContext(), android.R.anim.slide_in_left);
-        Animation phone_boxAnim= AnimationUtils.loadAnimation(phone_box.getContext(), android.R.anim.slide_in_left);
-        Animation google_boxAnim= AnimationUtils.loadAnimation(google_box.getContext(), android.R.anim.slide_in_left);
-        Animation facebook_boxAnim= AnimationUtils.loadAnimation(facebook_box.getContext(), android.R.anim.slide_in_left);
-        Animation editBtnAnim= AnimationUtils.loadAnimation(edit_btn.getContext(), android.R.anim.slide_in_left);
+        Animation fadeInAnimation= AnimationUtils.loadAnimation(getContext(), android.R.anim.fade_in);
+        Animation slideInLeftAnimation= AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                general_information.startAnimation(generalInformationAnim);
+                general_information.startAnimation(slideInLeftAnimation);
             }
         },delay*0);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                edit_btn.startAnimation(editBtnAnim);
+                edit_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*1);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                first_name_box.startAnimation(first_name_boxAnim);
+                first_name_box.startAnimation(slideInLeftAnimation);
             }
         },delay*1);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                last_name_box.startAnimation(last_name_boxAnim);
+                last_name_box.startAnimation(slideInLeftAnimation);
             }
         },delay*1);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                gender_box.startAnimation(gender_boxAnim);
+                gender_box.startAnimation(slideInLeftAnimation);
             }
         },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                birthday_box.startAnimation(birthday_boxAnim);
+                birthday_box.startAnimation(slideInLeftAnimation);
             }
         },delay*3);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                phone_box.startAnimation(phone_boxAnim);
+                phone_box.startAnimation(slideInLeftAnimation);
             }
         },delay*3);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                email.startAnimation(email_boxAnim);
+                email_box.startAnimation(slideInLeftAnimation);
             }
         },delay*4);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                mobile_number.startAnimation(mobileNumberAnim);
+                mobile_number.startAnimation(slideInLeftAnimation);
             }
         },delay*1);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                email.startAnimation(emailAnim);
+                email.startAnimation(slideInLeftAnimation);
             }
         },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                linked_accounts.startAnimation(linkedAccountAnim);
+                linked_accounts.startAnimation(slideInLeftAnimation);
             }
         },delay*3);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                google_box.startAnimation(google_boxAnim);
+                google_box.startAnimation(slideInLeftAnimation);
             }
         },delay*5);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                facebook_box.startAnimation(facebook_boxAnim);
+                facebook_box.startAnimation(slideInLeftAnimation);
             }
         },delay*6);
     }
-    private void getCustomerInfo(View view){
+    private void getCustomerInfo(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         String userKey=sharedPreferences.getString("customerKey","");

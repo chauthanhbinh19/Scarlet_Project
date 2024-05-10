@@ -27,6 +27,7 @@ import com.example.scarlet.FeedbackActivity;
 import com.example.scarlet.LoyaltyActivity;
 import com.example.scarlet.PoliciesActivity;
 import com.example.scarlet.R;
+import com.example.scarlet.ReviewActivity;
 import com.example.scarlet.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -40,7 +41,7 @@ public class AccountFragment extends Fragment {
     RelativeLayout profile_btn;
     RelativeLayout setting_btn;
     RelativeLayout policies_btn, feedback_btn;
-    RelativeLayout app_version_btn, order_activities_btn, dashboard_button, loyalty_btn;
+    RelativeLayout app_version_btn, order_activities_btn, dashboard_button, loyalty_btn, review_button;
     Button create_account;
     Button sign_out_button;
     TextView accountText, orderText, generalText, helpText;
@@ -61,6 +62,7 @@ public class AccountFragment extends Fragment {
         orderText=view.findViewById(R.id.order);
         generalText=view.findViewById(R.id.general_information);
         helpText=view.findViewById(R.id.help_center);
+        review_button=view.findViewById(R.id.review_button);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,6 +99,14 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openPoliciesActivity();
+            }
+        });
+        review_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), ReviewActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 
@@ -161,90 +171,84 @@ public class AccountFragment extends Fragment {
     private void getAnimation(View view){
 //        Animation viewAnim= AnimationUtils.loadAnimation(getContext(), android.R.anim.slide_in_left);
 //        view.startAnimation(viewAnim);
-        Animation profileAnim=AnimationUtils.loadAnimation(profile_btn.getContext(), android.R.anim.slide_in_left);
-        Animation settingAnim=AnimationUtils.loadAnimation(setting_btn.getContext(), android.R.anim.slide_in_left);
-        Animation dashAnim=AnimationUtils.loadAnimation(dashboard_button.getContext(), android.R.anim.slide_in_left);
-        Animation orderAnim=AnimationUtils.loadAnimation(order_activities_btn.getContext(), android.R.anim.slide_in_left);
-        Animation policesAnim=AnimationUtils.loadAnimation(policies_btn.getContext(), android.R.anim.slide_in_left);
-        Animation loyalAnim=AnimationUtils.loadAnimation(loyalty_btn.getContext(), android.R.anim.slide_in_left);
-        Animation appVersionAnim=AnimationUtils.loadAnimation(app_version_btn.getContext(), android.R.anim.slide_in_left);
-        Animation feedbackAnim=AnimationUtils.loadAnimation(feedback_btn.getContext(), android.R.anim.slide_in_left);
-        Animation accountTextAnim=AnimationUtils.loadAnimation(accountText.getContext(), android.R.anim.slide_in_left);
-        Animation orderTextAnim=AnimationUtils.loadAnimation(orderText.getContext(), android.R.anim.slide_in_left);
-        Animation generalTextAnim=AnimationUtils.loadAnimation(generalText.getContext(), android.R.anim.slide_in_left);
-        Animation helpTextAnim=AnimationUtils.loadAnimation(helpText.getContext(), android.R.anim.slide_in_left);
-        Animation signoutAnim=AnimationUtils.loadAnimation(sign_out_button.getContext(), android.R.anim.slide_in_left);
-        accountText.startAnimation(accountTextAnim);
+        Animation slideInLeftAnimation=AnimationUtils.loadAnimation(profile_btn.getContext(), android.R.anim.slide_in_left);
+        accountText.startAnimation(slideInLeftAnimation);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                profile_btn.startAnimation(profileAnim);
+                profile_btn.startAnimation(slideInLeftAnimation);
             }
         },delay);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                setting_btn.startAnimation(settingAnim);
+                setting_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                dashboard_button.startAnimation(dashAnim);
+                dashboard_button.startAnimation(slideInLeftAnimation);
             }
         },delay*3);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                orderText.startAnimation(orderTextAnim);
+                orderText.startAnimation(slideInLeftAnimation);
             }
         },delay*4);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                order_activities_btn.startAnimation(orderAnim);
+                order_activities_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*5);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                generalText.startAnimation(generalTextAnim);
+                review_button.startAnimation(slideInLeftAnimation);
+            }
+        },delay*5);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                generalText.startAnimation(slideInLeftAnimation);
             }
         },delay*6);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                policies_btn.startAnimation(policesAnim);
+                policies_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*7);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                loyalty_btn.startAnimation(loyalAnim);
+                loyalty_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*8);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                app_version_btn.startAnimation(appVersionAnim);
+                app_version_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*9);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                helpText.startAnimation(helpTextAnim);
+                helpText.startAnimation(slideInLeftAnimation);
             }
         },delay*10);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                feedback_btn.startAnimation(feedbackAnim);
+                feedback_btn.startAnimation(slideInLeftAnimation);
             }
         },delay*11);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                sign_out_button.startAnimation(signoutAnim);
+                sign_out_button.startAnimation(slideInLeftAnimation);
             }
         },delay*12);
     }

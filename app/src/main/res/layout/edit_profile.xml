@@ -64,23 +64,32 @@
 					/>
 
 			</RelativeLayout>
+
+			<ImageView android:id="@+id/btnImage"
+				android:layout_centerHorizontal="true"
+				android:layout_marginRight="80dp"
+				android:layout_marginTop="10dp"
+				android:src="@drawable/picture"
+				android:layout_below="@+id/top_bar"
+				android:layout_width="100dp"
+				android:layout_height="100dp"/>
 			<TextView android:id="@+id/general_information"
 				android:textStyle="bold"
 				android:textSize="18sp"
 				android:textColor="@color/_bg__group_1_ek1_color"
-				android:layout_marginLeft="21dp"
+				android:layout_marginLeft="30dp"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/top_bar"
+				android:layout_below="@id/btnImage"
 				android:text="@string/general_information_string"
 				/>
 
 			<TextView android:id="@+id/mobile_number"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="21dp"
+				android:layout_marginLeft="30dp"
 				android:layout_marginTop="10dp"
 				android:layout_marginBottom="10dp"
 				android:layout_below="@+id/birthday_box"
@@ -107,7 +116,7 @@
 						android:textSize="14sp"
 						android:textColor="@color/black"
 						android:layout_marginLeft="24dp"
-						android:layout_width="104.4dp"
+						android:layout_width="match_parent"
 						android:layout_height="48dp"
 						android:layout_centerVertical="true"
 						android:background="@color/lightpink"
@@ -129,7 +138,7 @@
 						android:textSize="14sp"
 						android:textColor="@color/black"
 						android:layout_marginLeft="12dp"
-						android:layout_width="104.4dp"
+						android:layout_width="match_parent"
 						android:layout_height="48dp"
 						android:layout_centerVertical="true"
 						android:background="@color/lightpink"
@@ -155,7 +164,7 @@
 					android:textSize="14sp"
 					android:textColor="@color/lightbrown"
 					android:layout_marginLeft="24dp"
-					android:layout_width="239.4dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_centerVertical="true"
 					android:background="@color/lightpink"
@@ -179,13 +188,21 @@
 					android:textSize="14sp"
 					android:textColor="@color/lightbrown"
 					android:layout_marginLeft="22dp"
-					android:layout_width="239.4dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_centerVertical="true"
 					android:background="@color/lightpink"
 					android:enabled="false"
 					android:hint="@string/birthday_string"
 					/>
+
+				<ImageButton android:id="@+id/calendar"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="20dp"
+					android:layout_centerVertical="true"
+					android:background="@drawable/calendar" />
 
 			</RelativeLayout>
 
@@ -203,7 +220,7 @@
 					android:textSize="14sp"
 					android:textColor="@color/black"
 					android:layout_marginLeft="17dp"
-					android:layout_width="wrap_content"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:layout_centerVertical="true"
 					android:background="@color/lightpink"
@@ -221,15 +238,16 @@
 
 			</RelativeLayout>
 
-				<Button android:id="@+id/btn"
+				<Button android:id="@+id/saveBtn"
 					android:layout_marginTop="20dp"
 					android:layout_centerHorizontal="true"
 					android:gravity="center"
 					android:background="@drawable/rectangle_burgundy_radius"
 					android:textStyle="bold"
-					android:layout_width="300dp"
+					android:layout_width="match_parent"
 					android:layout_height="48dp"
 					android:textSize="20sp"
+					android:layout_marginLeft="140dp"
 					android:layout_below="@+id/phone_box"
 					android:textColor="@color/white"
 					android:theme="@style/MyButtonTheme"

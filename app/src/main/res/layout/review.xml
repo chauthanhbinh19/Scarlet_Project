@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingBottom="10dp"
+        android:background="@color/white"
+        >
+        <RelativeLayout android:id="@+id/back_btn"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="25dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+
+            <View   android:id="@+id/rectangle_3"
+                android:background="@drawable/btn_burgundy"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_width="40dp"
+                android:layout_height="35dp" />
+
+
+            <ImageView android:id="@+id/vector"
+                android:src="@drawable/vector"
+                android:contentDescription="vector"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="15dp"
+                android:layout_height="15dp" />
+
+
+
+        </RelativeLayout>
+
+        <TextView android:id="@+id/profile_1"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:textSize="20sp"
+            android:textColor="@color/burgundy"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:paddingTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView android:id="@+id/imageBtn"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginLeft="40dp"
+            android:src="@drawable/add_4"/>
+        <TextView android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/imageBtn"
+            android:text="Product name"/>
+        <RelativeLayout android:id="@+id/reviewBox"
+            android:layout_below="@+id/productName"
+            android:layout_toRightOf="@id/imageBtn"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView android:id="@+id/star1"
+                android:background="@drawable/star_yellow_unactive"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView android:id="@+id/star2"
+                android:background="@drawable/star_yellow_unactive"
+                android:layout_toRightOf="@+id/star1"
+                android:layout_marginLeft="3dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView android:id="@+id/star3"
+                android:background="@drawable/star_yellow_unactive"
+                android:layout_toRightOf="@+id/star2"
+                android:layout_marginLeft="3dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView android:id="@+id/star4"
+                android:background="@drawable/star_yellow_unactive"
+                android:layout_toRightOf="@+id/star3"
+                android:layout_marginLeft="3dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+            <ImageView android:id="@+id/star5"
+                android:background="@drawable/star_yellow_unactive"
+                android:layout_toRightOf="@+id/star4"
+                android:layout_marginLeft="3dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+        </RelativeLayout>
+        <EditText android:id="@+id/review"
+            android:textSize="12sp"
+            android:textColor="@color/gray1"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:padding="20dp"
+            android:gravity="top"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/imageBtn"
+            android:hint="Send review"
+            android:textColorHint="@color/lightbrown"
+            android:background="@drawable/rectangle_white_radius"
+            android:layout_height="150dp"
+            android:text=""
+            />
+
+        <Button android:id="@+id/reviewBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/review"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            style="@style/MyButtonTheme"
+            android:background="@drawable/rectangle_burgundy_radius"
+            android:text="Send review"/>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
