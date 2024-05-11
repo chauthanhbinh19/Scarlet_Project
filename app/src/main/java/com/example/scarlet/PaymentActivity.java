@@ -316,16 +316,20 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Product> productList=new ArrayList<>();
-                for(DataSnapshot productSnap: snapshot.getChildren()){
-                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
-                    if(checkKeyInList(productKey,productKeyList)){
-                        String productName=productSnap.child("name").getValue(String.class);
-                        double productPrice=productSnap.child("price").getValue(double.class);
-                        int productQuantity=getQuantity(productKey,productKeyList);
-                        String productImg=productSnap.child("img").getValue(String.class);
-                        double productTotal=productPrice*productQuantity;
-                        Product product=new Product(productName,productTotal, productImg,productQuantity);
-                        productList.add(product);
+                for(ProductQuantity pq:productKeyList){
+                    for(DataSnapshot productSnap: snapshot.getChildren()){
+                        String key=productSnap.getKey();
+
+                        if(pq.getProductId().equals(key)){
+                            String productName=productSnap.child("name").getValue(String.class);
+                            double productPrice=productSnap.child("price").getValue(double.class);
+                            int productQuantity=pq.getQuantity();
+                            String productImg=productSnap.child("img").getValue(String.class);
+                            double productTotal=productPrice*productQuantity;
+                            String size=pq.getSize();
+                            Product product=new Product(productName,productTotal, productImg, productQuantity,key,size);
+                            productList.add(product);
+                        }
                     }
                 }
                 adapter=new ProductHorizontalAdapter(productList);
@@ -444,7 +448,7 @@ public class PaymentActivity extends AppCompatActivity {
     }
     private void requestZaloPayVoucher(){
         CreateOrder orderApi = new CreateOrder();
-        total=Double.parseDouble(totalView.getText().toString());
+        total=Double.parseDouble(totalAfterDiscount.getText().toString());
         total=total+tip;
         try {
             JSONObject data = orderApi.createOrder(String.format("%.0f", total));
@@ -557,21 +561,24 @@ public class PaymentActivity extends AppCompatActivity {
                 double subTotal=0;
                 int totalPoint=0;
                 List<Product> productList=new ArrayList<>();
-                for(DataSnapshot productSnap: snapshot.getChildren()){
-                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
-                    if(checkKeyInList(productKey,productKeyList)){
-                        String productName=productSnap.child("name").getValue(String.class);
-                        double productPrice=productSnap.child("price").getValue(double.class);
-                        int productQuantity=getQuantity(productKey,productKeyList);
-                        int discount=getDiscount(productKey,productKeyList);
-                        int point=productSnap.child("point").getValue(int.class);
-                        totalPoint=totalPoint+point*productQuantity;
-                        String key= productSnap.getKey();
-                        String categoryName=productSnap.child("categoryName").getValue(String.class);
-                        double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
-                        subTotal=subTotal+productTotal;
-                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key);
-                        productList.add(product);
+                for(ProductQuantity pq:productKeyList){
+                    for(DataSnapshot productSnap: snapshot.getChildren()){
+                        String key=productSnap.getKey();
+
+                        if(pq.getProductId().equals(key)){
+                            String productName=productSnap.child("name").getValue(String.class);
+                            double productPrice=productSnap.child("price").getValue(double.class);
+                            int productQuantity=pq.getQuantity();
+                            int discount=pq.getDiscount();
+                            int point=productSnap.child("point").getValue(int.class);
+                            String size=pq.getSize();
+                            totalPoint=totalPoint+point*productQuantity;
+                            String categoryName=productSnap.child("categoryName").getValue(String.class);
+                            double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
+                            subTotal=subTotal+productTotal;
+                            Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key,size);
+                            productList.add(product);
+                        }
                     }
                 }
                 subTotal=subTotal+tip;
@@ -724,6 +731,7 @@ public class PaymentActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
+                        productQuantityList.clear();
                         for(DataSnapshot cartSnap: snapshot.getChildren()){
                             String customerId=cartSnap.child("customerId").getValue(String.class);
                             if(customerId.equals(userKey)){
@@ -775,12 +783,13 @@ public class PaymentActivity extends AppCompatActivity {
                         int productQuantity=getQuantity(productKey,productKeyList);
                         int discount=getDiscount(productKey,productKeyList);
                         int point=productSnap.child("point").getValue(int.class);
+                        String size=getSize(productKey,productKeyList);
                         totalPoint=totalPoint+point*productQuantity;
                         String key=productSnap.getKey();
                         String categoryName=productSnap.child("categoryName").getValue(String.class);
                         double productTotal=(productPrice*productQuantity)-(productPrice*productQuantity*discount/100);
                         subTotal=subTotal+productTotal;
-                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key);
+                        Product product=new Product(productName,productPrice,productQuantity,productTotal, categoryName, discount, key,size);
                         productList.add(product);
                     }
                 }
@@ -813,6 +822,14 @@ public class PaymentActivity extends AppCompatActivity {
             }
         }
         return 0;
+    }
+    public String getSize(ProductQuantity key, List<ProductQuantity> keyList){
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return item.getSize();
+            }
+        }
+        return "";
     }
     public boolean checkKeyInList(ProductQuantity key, List<ProductQuantity> keyList) {
         for (ProductQuantity item : keyList) {

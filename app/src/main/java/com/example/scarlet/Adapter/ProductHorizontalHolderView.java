@@ -29,10 +29,10 @@ import java.util.List;
 
 public class ProductHorizontalHolderView extends RecyclerView.ViewHolder {
     ImageView imageView;
-    TextView textView1,textView2, quantityText;
-    RelativeLayout quantityBox;
+    TextView textView1,textView2, quantityText, sizeText;
+    RelativeLayout quantityBox, sizeBox;
     Context context;
-    String productKey;
+    String productKey, size;
     int quantity;
 
     public ProductHorizontalHolderView(@NonNull View itemView) {
@@ -42,6 +42,8 @@ public class ProductHorizontalHolderView extends RecyclerView.ViewHolder {
         textView2=itemView.findViewById(R.id.product_price);
         quantityBox=itemView.findViewById(R.id.quantityBox);
         quantityText=itemView.findViewById(R.id.quantity);
+        sizeBox=itemView.findViewById(R.id.sizeBox);
+        sizeText=itemView.findViewById(R.id.size);
         context=itemView.getContext();
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,11 +76,24 @@ public class ProductHorizontalHolderView extends RecyclerView.ViewHolder {
         textView2.setText(String.format("%.0f", product.getPrice())+" đ");
         productKey=product.getKey();
         quantity=product.getQuantity();
+        size=product.getSize();
         if(quantity>1){
             quantityBox.setVisibility(View.VISIBLE);
             quantityText.setText(String.valueOf(quantity));
         }else{
             quantityBox.setVisibility(View.GONE);
+        }
+        if(size.equals("small")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("S");
+        }else if(size.equals("medium")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("M");
+        }else if(size.equals("large")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("L");
+        }else{
+            sizeBox.setVisibility(View.GONE);
         }
     }
 }

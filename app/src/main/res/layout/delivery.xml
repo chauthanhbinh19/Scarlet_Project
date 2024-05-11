@@ -261,24 +261,18 @@
 					android:text="Total items"
 					/>
 
-				<HorizontalScrollView android:id="@+id/scrollBox"
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/totalProductRecycleView"
+					android:layout_marginLeft="20dp"
+					android:paddingRight="20dp"
 					android:layout_below="@+id/total_product"
-					android:layout_marginTop="5dp"
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
-					<androidx.recyclerview.widget.RecyclerView
-						android:id="@+id/totalProductRecycleView"
-						android:layout_marginRight="20dp"
-						android:layout_marginLeft="20dp"
-						android:paddingRight="20dp"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"/>
-				</HorizontalScrollView>
+					android:layout_height="wrap_content"/>
 
 				<TextView android:id="@+id/delivery_address"
 					android:textStyle="bold"
 					android:textSize="16sp"
-					android:layout_below="@+id/scrollBox"
+					android:layout_below="@+id/totalProductRecycleView"
 					android:textColor="@color/black"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="15dp"

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +29,11 @@ import java.util.List;
 
 public class CartHolderView extends RecyclerView.ViewHolder {
     ImageView imageView,imageView2, delete_btn;
-    TextView textView1,textView2,textView3;
+    TextView textView1,textView2,textView3, sizeText;
     ImageView plus,minus;
     Context context;
-    String productKey;
+    String productKey, size;
+    RelativeLayout sizeBox;
     private GetStringCallback getStringCallback;
     private CartAdapter adapter;
     public CartHolderView linkAdapter(CartAdapter adapter){
@@ -46,6 +48,8 @@ public class CartHolderView extends RecyclerView.ViewHolder {
         textView2=itemView.findViewById(R.id.product_price);
         imageView2=itemView.findViewById(R.id.product_category_icon);
         textView3=itemView.findViewById(R.id.product_quantity_text);
+        sizeBox=itemView.findViewById(R.id.sizeBox);
+        sizeText=itemView.findViewById(R.id.size);
         context=itemView.getContext();
         delete_btn=itemView.findViewById(R.id.delete_btn);
         plus=itemView.findViewById(R.id.plus);
@@ -211,5 +215,18 @@ public class CartHolderView extends RecyclerView.ViewHolder {
         Glide.with(context).load(product.getImg()).into(imageView);
         productKey=product.getKey();
         this.getStringCallback=getStringCallback1;
+        size=product.getSize();
+        if(size.equals("small")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("S");
+        }else if(size.equals("medium")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("M");
+        }else if(size.equals("large")){
+            sizeBox.setVisibility(View.VISIBLE);
+            sizeText.setText("L");
+        }else{
+            sizeBox.setVisibility(View.GONE);
+        }
     }
 }

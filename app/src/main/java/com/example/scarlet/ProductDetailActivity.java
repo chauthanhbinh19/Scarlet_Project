@@ -68,8 +68,13 @@ public class ProductDetailActivity extends AppCompatActivity {
     double average=0;
     int total=0;
     double subtotal=0;
+    int statusSize=1;
+    String size="small";
     Button purchase;
-    RelativeLayout checkoutBtn;
+    View smallBg,mediumBg,largeBg;
+    ImageView smallIcon, mediumIcon, largeIcon;
+    TextView smallText, mediumText, largeText;
+    RelativeLayout checkoutBtn, small, medium,large, box_size;
     ImageView star1, star2, star3, star4, star5, package_box;
     final Handler handler = new Handler();
 
@@ -109,6 +114,20 @@ public class ProductDetailActivity extends AppCompatActivity {
         checkoutBtn=findViewById(R.id.checkoutBtn);
         itemText=findViewById(R.id.itemText);
         package_box=findViewById(R.id.package_box);
+
+        box_size=findViewById(R.id.box_size);
+        small=findViewById(R.id.small);
+        medium=findViewById(R.id.medium);
+        large=findViewById(R.id.large);
+        smallBg=findViewById(R.id.smallBg);
+        mediumBg=findViewById(R.id.mediumBg);
+        largeBg=findViewById(R.id.largeBg);
+        smallIcon=findViewById(R.id.smallIcon);
+        mediumIcon=findViewById(R.id.mediumIcon);
+        largeIcon=findViewById(R.id.largeIcon);
+        smallText=findViewById(R.id.smallText);
+        mediumText=findViewById(R.id.mediumText);
+        largeText=findViewById(R.id.largeText);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,6 +230,67 @@ public class ProductDetailActivity extends AppCompatActivity {
                 checkTabStatus();
             }
         });
+        small.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusSize=1;
+                size="small";
+                changeSizeStatus();
+            }
+        });
+        medium.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusSize=2;
+                size="medium";
+                changeSizeStatus();
+            }
+        });
+        large.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                statusSize=3;
+                size="large";
+                changeSizeStatus();
+            }
+        });
+    }
+    private void changeSizeStatus(){
+        switch (statusSize){
+            case 1:
+                smallBg.setBackgroundResource(R.drawable.rectangle_11_shape);
+                mediumBg.setBackgroundResource(R.drawable._bg__white);
+                largeBg.setBackgroundResource(R.drawable._bg__white);
+                smallText.setTextColor(getColor(R.color.white));
+                mediumText.setTextColor(getColor(R.color.black));
+                largeText.setTextColor(getColor(R.color.black));
+                smallIcon.setBackground(getResources().getDrawable(R.drawable.cup));
+                mediumIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                largeIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                break;
+            case 2:
+                smallBg.setBackgroundResource(R.drawable._bg__white);
+                mediumBg.setBackgroundResource(R.drawable.rectangle_11_shape);
+                largeBg.setBackgroundResource(R.drawable._bg__white);
+                smallText.setTextColor(getColor(R.color.black));
+                mediumText.setTextColor(getColor(R.color.white));
+                largeText.setTextColor(getColor(R.color.black));
+                smallIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                mediumIcon.setBackground(getResources().getDrawable(R.drawable.cup));
+                largeIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                break;
+            case 3:
+                smallBg.setBackgroundResource(R.drawable._bg__white);
+                mediumBg.setBackgroundResource(R.drawable._bg__white);
+                largeBg.setBackgroundResource(R.drawable.rectangle_11_shape);
+                smallText.setTextColor(getColor(R.color.black));
+                mediumText.setTextColor(getColor(R.color.black));
+                largeText.setTextColor(getColor(R.color.white));
+                smallIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                mediumIcon.setBackground(getResources().getDrawable(R.drawable.cup_2));
+                largeIcon.setBackground(getResources().getDrawable(R.drawable.cup));
+                break;
+        }
     }
     private void checkTabStatus(){
         switch (defaultStatus){
@@ -329,6 +409,9 @@ public class ProductDetailActivity extends AppCompatActivity {
                     String productImage=snapshot.child("img").getValue(String.class);
                     String categoryId=snapshot.child("categoryId").getValue(String.class);
                     String categoryName=snapshot.child("categoryName").getValue(String.class);
+                    if(categoryName.equals("Drinks")){
+                        box_size.setVisibility(View.VISIBLE);
+                    }
 
                     myRef2.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -421,6 +504,10 @@ public class ProductDetailActivity extends AppCompatActivity {
                     if (snapshot.exists()) {
                         boolean found=false;
                         boolean founUser=false;
+                        String categoryName=categoryNameView.getText().toString();
+                        if(!categoryName.equals("Drinks")){
+                            size="";
+                        }
                         for(DataSnapshot snap: snapshot.getChildren()){
                             if(snap.child("customerId").getValue(String.class).equals(userKey)){
                                 founUser=true;
@@ -435,15 +522,15 @@ public class ProductDetailActivity extends AppCompatActivity {
                                         }
                                         productIdList=tempProductIdList;
                                         for(ProductQuantity pd:productIdList){
-                                            if(pd.getProductId().equals(productKey)){
+                                            if(pd.getProductId().equals(productKey) && pd.getSize().equals(size)){
+                                                found=true;
                                                 qt=pd.getQuantity()+1;
                                                 pd.setQuantity(qt);
-                                                found=true;
                                                 break;
                                             }
                                         }
                                         if(!found){
-                                            productIdList.add(new ProductQuantity(productKey,qt,0));
+                                            productIdList.add(new ProductQuantity(productKey,qt,0,size));
                                         }
 
                                         myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
@@ -452,7 +539,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     }
                                 } else{
                                     int qt=Integer.parseInt(quantity.getText().toString());
-                                    productIdList.add(new ProductQuantity(productKey,qt,0));
+                                    productIdList.add(new ProductQuantity(productKey,qt,0,size));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
                                     Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                     break;
@@ -461,14 +548,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                         }
                         if(!founUser){
                             int qt=Integer.parseInt(quantity.getText().toString());
-                            productIdList.add(new ProductQuantity(productKey, qt,0));
+                            productIdList.add(new ProductQuantity(productKey, qt,0,size));
                             Cart cart=new Cart(userKey,productIdList);
                             myRef.push().setValue(cart);
                             Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                         }
                     }else{
                         int qt=Integer.parseInt(quantity.getText().toString());
-                        productIdList.add(new ProductQuantity(productKey, qt,0));
+                        productIdList.add(new ProductQuantity(productKey, qt,0,size));
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
                         Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
@@ -624,38 +711,24 @@ public class ProductDetailActivity extends AppCompatActivity {
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         final String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
-            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
-            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
+            Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
-                        FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
-                        Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
-                        query.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(snapshot.exists()){
-                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
-                                        if(productIdObject.getValue() instanceof List){
-                                            List<ProductQuantity> tempProductIdList = new ArrayList<>();
-                                            for(DataSnapshot productSnap: productIdObject.getChildren()){
-                                                ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
-                                                tempProductIdList.add(productQuantity);
-                                            }
-                                            List<ProductQuantity> productKeyList=new ArrayList<>(tempProductIdList);
-                                            itemText.setText(String.valueOf(productKeyList.size())+" Items");
-                                        }
-                                    }
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                            if(productIdObject.getValue() instanceof List){
+                                List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                                for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                    ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                    tempProductIdList.add(productQuantity);
                                 }
+                                List<ProductQuantity> productKeyList=new ArrayList<>(tempProductIdList);
+                                itemText.setText(String.valueOf(productKeyList.size())+" Items");
                             }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                        }
                     }
                 }
 
@@ -671,37 +744,23 @@ public class ProductDetailActivity extends AppCompatActivity {
         boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
         final String userKey=sharedPreferences.getString("customerKey","");
         if(isLoggedIn && !userKey.isEmpty()){
-            FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
-            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
+            Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if(snapshot.exists()){
-                        FirebaseDatabase firebaseDatabase1=FirebaseDatabase.getInstance();
-                        Query query=firebaseDatabase1.getReference("cart").orderByChild("customerId").equalTo(userKey);
-                        query.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(snapshot.exists()){
-                                    List<ProductQuantity> tempProductIdList = new ArrayList<>();
-                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
-                                        if(productIdObject.getValue() instanceof List){
-                                            for(DataSnapshot productSnap: productIdObject.getChildren()){
-                                                ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
-                                                tempProductIdList.add(productQuantity);
-                                            }
-                                        }
-                                    }
-                                    getTotalFromProductData(tempProductIdList);
+                        List<ProductQuantity> tempProductIdList = new ArrayList<>();
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                            if(productIdObject.getValue() instanceof List){
+                                for(DataSnapshot productSnap: productIdObject.getChildren()){
+                                    ProductQuantity productQuantity=productSnap.getValue(ProductQuantity.class);
+                                    tempProductIdList.add(productQuantity);
                                 }
                             }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                        }
+                        getTotalFromProductData(tempProductIdList);
                     }
                 }
 

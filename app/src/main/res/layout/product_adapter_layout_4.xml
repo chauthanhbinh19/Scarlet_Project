@@ -35,6 +35,22 @@
                 android:textColor="@color/white"
                 android:text="1"/>
         </RelativeLayout>
+        <RelativeLayout android:id="@+id/sizeBox"
+            android:layout_marginTop="28dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="10dp"
+            android:layout_marginLeft="66dp"
+            android:background="@drawable/rectangle_circle_burgundy_3">
+            <TextView android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="S"/>
+        </RelativeLayout>
 
         <TextView android:id="@+id/product_name"
             android:textStyle="bold"

@@ -109,7 +109,7 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                                                     }
                                                 }
                                                 if(!found){
-                                                    productIdList.add(new ProductQuantity(productKey,quantity,0));
+                                                    productIdList.add(new ProductQuantity(productKey,quantity,0,""));
                                                 }
 
                                                 myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
@@ -117,7 +117,7 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                                                 break;
                                             }
                                         } else{
-                                            productIdList.add(new ProductQuantity(productKey,1,0));
+                                            productIdList.add(new ProductQuantity(productKey,1,0,""));
                                             myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
                                             Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                             break;
@@ -125,13 +125,13 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                                     }
                                 }
                                 if(!founUser){
-                                    productIdList.add(new ProductQuantity(productKey, 1,0));
+                                    productIdList.add(new ProductQuantity(productKey, 1,0,""));
                                     Cart cart=new Cart(userKey,productIdList);
                                     myRef.push().setValue(cart);
                                     Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
                                 }
                             }else{
-                                productIdList.add(new ProductQuantity(productKey, 1,0));
+                                productIdList.add(new ProductQuantity(productKey, 1,0,""));
                                 Cart cart=new Cart(userKey,productIdList);
                                 myRef.push().setValue(cart);
                                 Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();

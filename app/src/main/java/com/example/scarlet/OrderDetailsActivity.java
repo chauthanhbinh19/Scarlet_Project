@@ -146,18 +146,21 @@ public class OrderDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Product> productList=new ArrayList<>();
                 double tempTotal=0;
-                for(DataSnapshot productSnap: snapshot.getChildren()){
-                    String productName=productSnap.child("name").getValue(String.class);
-                    double productPrice=productSnap.child("price").getValue(double.class);
-                    String key=productSnap.getKey();
-                    Product productKey=new Product(productSnap.getKey(),productName,1);
-                    if(checkKeyInList(productKey,productKeyList)){
-                        int productQuantity=getQuantity(productKey,productKeyList);
-                        String productImg=productSnap.child("img").getValue(String.class);
-                        double productTotal=productPrice*productQuantity;
-                        tempTotal=tempTotal+productTotal;
-                        Product product=new Product(productName,productTotal, productImg,productQuantity,key);
-                        productList.add(product);
+                for(Product pq:productKeyList){
+                    for(DataSnapshot productSnap: snapshot.getChildren()){
+                        String key=productSnap.getKey();
+
+                        String productName=productSnap.child("name").getValue(String.class);
+                        double productPrice=productSnap.child("price").getValue(double.class);
+                        if(pq.getKey().equals(key)){
+                            int productQuantity=pq.getQuantity();
+                            String size=pq.getSize();
+                            String productImg=productSnap.child("img").getValue(String.class);
+                            double productTotal=productPrice*productQuantity;
+                            tempTotal=tempTotal+productTotal;
+                            Product product=new Product(productName,productTotal, productImg,productQuantity,key,size);
+                            productList.add(product);
+                        }
                     }
                 }
                 adapter=new ProductHorizontalAdapter(productList);

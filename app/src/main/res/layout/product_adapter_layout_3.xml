@@ -20,6 +20,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_height="80dp" />
 
+
         <ImageView android:id="@+id/product_image"
             android:src="@drawable/dsc02313_optimized"
             android:layout_marginStart="20dp"
@@ -27,6 +28,23 @@
             android:elevation="10dp"
             android:layout_width="75dp"
             android:layout_height="75dp" />
+
+        <RelativeLayout android:id="@+id/sizeBox"
+            android:layout_marginTop="5dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:elevation="10dp"
+            android:layout_marginLeft="86dp"
+            android:background="@drawable/rectangle_circle_burgundy_3">
+            <TextView android:id="@+id/size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="S"/>
+        </RelativeLayout>
 
         <ImageView android:id="@+id/product_category_icon"
             android:layout_width="20dp"

@@ -14,6 +14,7 @@ public class Product {
     private double total;
     private boolean isChecked;
     private int discount;
+    private String size;
 
     public String getKey() {
         return key;
@@ -118,6 +119,14 @@ public class Product {
         this.discount = discount;
     }
 
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     public Product() {
     }
 
@@ -164,6 +173,16 @@ public class Product {
         this.quantity=quantity;
         this.total=total;
     }
+    public Product(String name, double price, String img,String icon,String key,int quantity, double total, String size) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.icon=icon;
+        this.key=key;
+        this.quantity=quantity;
+        this.total=total;
+        this.size=size;
+    }
     public Product(String name,double price,int quantity,double total, String categoryName, int discount, String key){
         this.name = name;
         this.price = price;
@@ -173,7 +192,16 @@ public class Product {
         this.discount=discount;
         this.key=key;
     }
-
+    public Product(String name,double price,int quantity,double total, String categoryName, int discount, String key, String size){
+        this.name = name;
+        this.price = price;
+        this.quantity=quantity;
+        this.total=total;
+        this.categoryName=categoryName;
+        this.discount=discount;
+        this.key=key;
+        this.size=size;
+    }
     public Product(String key, String name) {
         this.key = key;
         this.name = name;
@@ -197,6 +225,14 @@ public class Product {
         this.quantity=quantity;
         this.key=key;
     }
+    public Product(String name, double price, String img, int quantity, String key, String size) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.quantity=quantity;
+        this.key=key;
+        this.size=size;
+    }
 
     public Product(String key, String name, double price) {
         this.key = key;
@@ -207,5 +243,11 @@ public class Product {
         this.key = key;
         this.name = name;
         this.quantity = quantity;
+    }
+
+    public Product(String name, int quantity, double total) {
+        this.name = name;
+        this.quantity = quantity;
+        this.total = total;
     }
 }

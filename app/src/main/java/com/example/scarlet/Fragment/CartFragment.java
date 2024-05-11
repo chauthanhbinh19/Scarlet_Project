@@ -194,37 +194,40 @@ public class CartFragment extends Fragment {
         productRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot productSnapshot) {
-                for (DataSnapshot product : productSnapshot.getChildren()) {
-//                    String productKey=product.getKey();
-                    ProductQuantity productKey=new ProductQuantity(product.getKey(),1);
-                    String categoryId = product.child("categoryId").getValue(String.class);
-                    String productName = product.child("name").getValue(String.class);
-                    double productPrice = product.child("price").getValue(double.class);
-                    String productImage = product.child("img").getValue(String.class);
+                for(ProductQuantity pq:productKeyList){
+                    for (DataSnapshot product : productSnapshot.getChildren()) {
+                    String key=product.getKey();
+                        ProductQuantity productKey=new ProductQuantity(product.getKey(),1);
+                        String categoryId = product.child("categoryId").getValue(String.class);
+                        String productName = product.child("name").getValue(String.class);
+                        double productPrice = product.child("price").getValue(double.class);
+                        String productImage = product.child("img").getValue(String.class);
 
-                    categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot categorySnapshot) {
-                            if (categorySnapshot.exists()) {
-                                String icon = categorySnapshot.child("img").getValue(String.class);
-                                if(checkKeyInList(productKey,productKeyList)){
-                                    int quantity=getQuantity(productKey,productKeyList);
-                                    total=total+productPrice*quantity;
-                                    Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey.getProductId(),quantity,productPrice*quantity);
-                                    productList.add(productWithIcon);
-                                    totalView=view.findViewById(R.id.total);
-                                    totalView.setText(String.format("%.0f", total));
+                        categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot categorySnapshot) {
+                                if (categorySnapshot.exists()) {
+                                    String icon = categorySnapshot.child("img").getValue(String.class);
+                                    if(key.equals(pq.getProductId())){
+                                        int quantity=pq.getQuantity();
+                                        String size=pq.getSize();
+                                        total=total+productPrice*quantity;
+                                        Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey.getProductId(),quantity,productPrice*quantity,size);
+                                        productList.add(productWithIcon);
+                                        totalView=view.findViewById(R.id.total);
+                                        totalView.setText(String.format("%.0f", total));
+                                    }
                                 }
+                                productAdapter=new CartAdapter(productList,getStringCallback1);
+                                recyclerView.setAdapter(productAdapter);
                             }
-                            productAdapter=new CartAdapter(productList,getStringCallback1);
-                            recyclerView.setAdapter(productAdapter);
-                        }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            // Xử lý lỗi nếu có
-                        }
-                    });
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                // Xử lý lỗi nếu có
+                            }
+                        });
+                    }
                 }
             }
 

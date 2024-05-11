@@ -333,30 +333,30 @@
 					/>
 
 				<RelativeLayout android:id="@+id/box_size"
+					android:layout_marginTop="20dp"
+					android:visibility="gone"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:visibility="gone"
 					android:layout_below="@+id/size">
 
-					<RelativeLayout
+					<RelativeLayout android:id="@+id/small"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginLeft="20dp">
 
-						<View
-							android:id="@+id/rectangle_11"
+						<View android:id="@+id/smallBg"
 							android:layout_width="73dp"
 							android:layout_height="120dp"
 							android:background="@drawable/rectangle_11_shape" />
 
-						<ImageView android:id="@+id/cup_2"
-							android:src="@drawable/cup"
+						<ImageView android:id="@+id/smallIcon"
+							android:background="@drawable/cup"
 							android:layout_centerHorizontal="true"
 							android:layout_marginTop="10dp"
 							android:layout_width="50dp"
 							android:layout_height="50dp" />
 
-						<TextView android:id="@+id/medium"
+						<TextView android:id="@+id/smallText"
 							android:textStyle="bold"
 							android:layout_gravity="center_horizontal|center"
 							android:gravity="center"
@@ -369,25 +369,24 @@
 							android:text="@string/small_string"
 							/>
 					</RelativeLayout>
-					<RelativeLayout
+					<RelativeLayout android:id="@+id/medium"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_centerHorizontal="true">
 
-						<View
-							android:id="@+id/rectangle_12"
+						<View android:id="@+id/mediumBg"
 							android:layout_width="73dp"
 							android:layout_height="120dp"
 							android:background="@drawable/_bg__white" />
 
-						<ImageView android:id="@+id/cup_3"
-							android:src="@drawable/cup_2"
+						<ImageView android:id="@+id/mediumIcon"
 							android:layout_centerHorizontal="true"
 							android:layout_marginTop="10dp"
+							android:background="@drawable/cup_2"
 							android:layout_width="50dp"
 							android:layout_height="50dp" />
 
-						<TextView android:id="@+id/small"
+						<TextView android:id="@+id/mediumText"
 							android:textStyle="bold"
 							android:layout_gravity="center_horizontal|center"
 							android:gravity="center"
@@ -400,26 +399,25 @@
 							android:text="@string/medium_string"
 							/>
 					</RelativeLayout>
-					<RelativeLayout
+					<RelativeLayout android:id="@+id/large"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_alignParentRight="true"
 						android:layout_marginRight="20dp">
 
-						<View
-							android:id="@+id/rectangle_13"
+						<View android:id="@+id/largeBg"
 							android:layout_width="73dp"
 							android:layout_height="120dp"
 							android:background="@drawable/_bg__white" />
 
-						<ImageView android:id="@+id/cup_4"
-							android:src="@drawable/cup_2"
+						<ImageView android:id="@+id/largeIcon"
 							android:layout_centerHorizontal="true"
+							android:background="@drawable/cup_2"
 							android:layout_marginTop="10dp"
 							android:layout_width="50dp"
 							android:layout_height="50dp" />
 
-						<TextView android:id="@+id/large"
+						<TextView android:id="@+id/largeText"
 							android:textStyle="bold"
 							android:layout_gravity="center_horizontal|center"
 							android:gravity="center"

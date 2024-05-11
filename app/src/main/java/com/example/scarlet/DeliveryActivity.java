@@ -189,16 +189,20 @@ public class DeliveryActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Product> productList=new ArrayList<>();
-                for(DataSnapshot productSnap: snapshot.getChildren()){
-                    ProductQuantity productKey=new ProductQuantity(productSnap.getKey(),1);
-                    if(checkKeyInList(productKey,productKeyList)){
-                        String productName=productSnap.child("name").getValue(String.class);
-                        double productPrice=productSnap.child("price").getValue(double.class);
-                        int productQuantity=getQuantity(productKey,productKeyList);
-                        String productImg=productSnap.child("img").getValue(String.class);
-                        double productTotal=productPrice*productQuantity;
-                        Product product=new Product(productName,productTotal, productImg, productQuantity);
-                        productList.add(product);
+                for(ProductQuantity pq:productKeyList){
+                    for(DataSnapshot productSnap: snapshot.getChildren()){
+                        String key=productSnap.getKey();
+
+                        if(pq.getProductId().equals(key)){
+                            String productName=productSnap.child("name").getValue(String.class);
+                            double productPrice=productSnap.child("price").getValue(double.class);
+                            int productQuantity=pq.getQuantity();
+                            String productImg=productSnap.child("img").getValue(String.class);
+                            double productTotal=productPrice*productQuantity;
+                            String size=pq.getSize();
+                            Product product=new Product(productName,productTotal, productImg, productQuantity,key,size);
+                            productList.add(product);
+                        }
                     }
                 }
                 adapter=new ProductHorizontalAdapter(productList);
@@ -218,6 +222,14 @@ public class DeliveryActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    public String getSize(ProductQuantity key, List<ProductQuantity> keyList){
+        for (ProductQuantity item : keyList) {
+            if (item.getProductId().equals(key.getProductId())) {
+                return item.getSize();
+            }
+        }
+        return "";
     }
     public int getQuantity(ProductQuantity key, List<ProductQuantity> keyList){
         for (ProductQuantity item : keyList) {
