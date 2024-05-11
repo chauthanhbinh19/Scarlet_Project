@@ -94,13 +94,14 @@ public class SearchProductActivity extends AppCompatActivity {
                     String productName = product.child("name").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
                     String productImage = product.child("img").getValue(String.class);
+                    String categoryName=product.child("categoryName").getValue(String.class);
 
                     categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot categorySnapshot) {
                             if (categorySnapshot.exists()) {
                                 String icon = categorySnapshot.child("img").getValue(String.class);
-                                Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
+                                Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey, categoryName);
                                 productList.add(productWithIcon);
 
                             }

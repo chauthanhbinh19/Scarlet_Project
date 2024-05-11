@@ -132,6 +132,7 @@ public class ProductFragment extends Fragment {
                             String productName = product.child("name").getValue(String.class);
                             double productPrice = product.child("price").getValue(double.class);
                             String productImage = product.child("img").getValue(String.class);
+                            String categoryName=product.child("categoryName").getValue(String.class);
 
                             categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
@@ -139,7 +140,7 @@ public class ProductFragment extends Fragment {
                                     if (categorySnapshot.exists()) {
                                         String icon = categorySnapshot.child("img").getValue(String.class);
                                         category_text.setText(categoryName);
-                                        Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
+                                        Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey, categoryName);
                                         if(categoryKey.equals(categoryId)){
                                             productList.add(productWithIcon);
                                         }

@@ -23,6 +23,8 @@ import android.widget.TextView;
 import com.example.scarlet.Adapter.CategoryAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductAdapter;
+import com.example.scarlet.Adapter.ProductReviewAdapter;
+import com.example.scarlet.Adapter.ProductSearchAdapter;
 import com.example.scarlet.Adapter.TrendAdapter;
 import com.example.scarlet.Data.Category;
 import com.example.scarlet.Data.DealTransaction;
@@ -67,25 +69,21 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.home, container, false);
         BindView(view);
+        ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,40));
         validateUser(view);
         getCategoryData(view);
         getTrendData(view);
+        getProductData();
         getAnimation();
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getContext(), SearchProductActivity.class);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
-        notification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getContext(), WalkthroughActivity.class);
-                startActivity(intent);
-            }
-        });
-        getProductData(view);
         return view;
     }
     private void getAnimation(){
@@ -178,6 +176,7 @@ public class HomeFragment extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                productList.clear();
                 for(DataSnapshot snap:snapshot.getChildren()){
                     String productKey=snap.getKey();
                     String categoryId = snap.child("categoryId").getValue(String.class);
@@ -206,40 +205,41 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-    private void getProductData(View view){
+    private void getProductData(){
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference productRef = firebaseDatabase.getReference("product");
+        DatabaseReference categoryRef = firebaseDatabase.getReference("category");
+
         productList=new ArrayList<>();
         ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,40));
+        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,10));
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        Query productRef = database.getReference("product");
-        DatabaseReference categoryRef = database.getReference("category");
-        productRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        productRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot productSnapshot) {
+                productList.clear();
                 for (DataSnapshot product : productSnapshot.getChildren()) {
                     String productKey=product.getKey();
                     String categoryId = product.child("categoryId").getValue(String.class);
                     String productName = product.child("name").getValue(String.class);
                     double productPrice = product.child("price").getValue(double.class);
                     String productImage = product.child("img").getValue(String.class);
-
+                    String categoryName=product.child("categoryName").getValue(String.class);
                     categoryRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot categorySnapshot) {
                             if (categorySnapshot.exists()) {
-                                String icon = categorySnapshot.child("img").getValue(String.class);
-                                Product productWithIcon = new Product(productName, productPrice,productImage, icon,productKey);
+                                String categoryImage=categorySnapshot.child("img").getValue(String.class);
+                                Product productWithIcon = new Product(productName, productPrice,productImage, categoryImage,productKey, categoryName);
                                 productList.add(productWithIcon);
-
                             }
                             if(productList.size()>0){
-                                List<Product> tempList=productList.subList(0,Math.min(productList.size(),6));
-                                productAdapter=new ProductAdapter(tempList);
+                                List<Product> subProductList = productList.subList(0, Math.min(productList.size(), 6));
+                                productAdapter=new ProductAdapter(subProductList);
                                 ProductRecyclerView.setAdapter(productAdapter);
                             }
-
                         }
+
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                             // Xử lý lỗi nếu có

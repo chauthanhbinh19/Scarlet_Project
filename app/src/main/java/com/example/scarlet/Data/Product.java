@@ -156,6 +156,14 @@ public class Product {
         this.icon=icon;
         this.key=key;
     }
+    public Product(String name, double price, String img,String icon,String key, String categoryName) {
+        this.name = name;
+        this.price = price;
+        this.img=img;
+        this.icon=icon;
+        this.key=key;
+        this.categoryName=categoryName;
+    }
     public Product(String name, double price, String img,String icon,String key,int point) {
         this.name = name;
         this.price = price;
