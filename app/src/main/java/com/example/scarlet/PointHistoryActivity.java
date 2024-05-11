@@ -50,7 +50,7 @@ public class PointHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.point_history);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(PointHistoryActivity.this,1));

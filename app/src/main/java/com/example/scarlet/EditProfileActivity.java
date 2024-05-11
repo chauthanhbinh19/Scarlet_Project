@@ -67,7 +67,7 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.edit_profile);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         BindView();
         getKeyCallback=new GetKeyCallback() {
             @Override

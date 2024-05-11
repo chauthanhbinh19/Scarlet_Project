@@ -53,7 +53,7 @@ public class ExchangePointActivity extends AppCompatActivity {
         setContentView(R.layout.exchange_point);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(ExchangePointActivity.this,1));

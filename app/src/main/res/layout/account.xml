@@ -103,7 +103,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:elevation="2dp"
 					>
 
@@ -143,7 +143,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -184,7 +184,7 @@
 					android:visibility="gone"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -236,7 +236,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -277,7 +277,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -329,7 +329,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -368,7 +368,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -407,7 +407,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -461,7 +461,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -501,7 +501,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="70dp"
+					android:layout_marginLeft="50dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -544,6 +544,7 @@
 					android:layout_centerHorizontal="true"
 					android:gravity="center"
 					android:textSize="18sp"
+					style="@style/MyButtonTheme"
 					android:textColor="@color/white"
 					android:layout_marginLeft="80dp"
 					android:text="@string/sign_out_string"/>

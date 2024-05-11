@@ -67,7 +67,7 @@ public class DeliveryActivity extends AppCompatActivity {
         setContentView(R.layout.delivery);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         getAddressData();

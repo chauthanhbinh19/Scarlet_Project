@@ -5,17 +5,17 @@
 		android:layout_height="match_parent" >
 
 		<RelativeLayout android:id="@+id/content_container"
-			android:background="@drawable/_bg__white"
+			android:background="@color/lightpink"
 			android:layout_width="match_parent"
 			android:layout_height="match_parent" >
 
 			<ImageView
 				android:id="@+id/mask_group"
 				android:layout_width="match_parent"
-				android:layout_height="260dp"
+				android:layout_height="220dp"
 				android:layout_marginStart="-25dp"
 				android:layout_marginTop="-10dp"
-				android:src="@drawable/signin" />
+				android:background="@drawable/signin" />
 
 			<TextView android:id="@+id/sign_in_1"
 				android:layout_width="wrap_content"
@@ -27,13 +27,13 @@
 				android:gravity="center"
 				android:text="Sign In"
 				android:textColor="@color/sign_in_color"
-				android:textSize="50sp" />
+				android:textSize="45sp" />
 
 			<EditText android:id="@+id/password"
-				android:textSize="16sp"
+				android:textSize="14sp"
 				android:textColor="@color/lightbrown"
-				android:layout_marginLeft="100dp"
-				android:layout_marginTop="20dp"
+				android:layout_marginLeft="70dp"
+				android:layout_marginTop="15dp"
 				android:layout_width="match_parent"
 				android:layout_centerHorizontal="true"
 				android:layout_height="48dp"
@@ -47,16 +47,16 @@
 			<ImageView
 				android:layout_width="22dp"
 				android:layout_height="22dp"
-				android:layout_marginTop="32dp"
+				android:layout_marginTop="26dp"
 				android:layout_below="@+id/username_or_email"
-				android:layout_marginLeft="60dp"
+				android:layout_marginLeft="45dp"
 				android:background="@drawable/padlock"/>
 
 			<EditText android:id="@+id/username_or_email"
-				android:textSize="16sp"
+				android:textSize="14sp"
 				android:textColor="@color/lightbrown"
-				android:layout_marginLeft="100dp"
-				android:layout_marginTop="20dp"
+				android:layout_marginLeft="70dp"
+				android:layout_marginTop="15dp"
 				android:layout_width="match_parent"
 				android:layout_centerHorizontal="true"
 				android:layout_height="48dp"
@@ -69,8 +69,8 @@
 			<ImageView
 				android:layout_width="22dp"
 				android:layout_height="22dp"
-				android:layout_marginTop="32dp"
-				android:layout_marginLeft="60dp"
+				android:layout_marginTop="30dp"
+				android:layout_marginLeft="45dp"
 				android:layout_below="@+id/sign_in_1"
 				android:background="@drawable/user_2"/>
 
@@ -95,7 +95,7 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal|center"
 				android:layout_marginTop="20dp"
-				android:layout_marginLeft="95dp"
+				android:layout_marginLeft="50dp"
 				android:gravity="center"
 				android:layout_below="@+id/sign_in_button"
 				android:text="Continue as a guest"
@@ -106,13 +106,14 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="center_horizontal|center"
-				android:layout_toRightOf="@+id/text1"
+				android:layout_alignParentRight="true"
 				android:layout_marginTop="8dp"
 				android:gravity="center"
 				style="@style/MyButtonTheme"
 				android:layout_below="@+id/sign_in_button"
 				android:background="@color/transparent"
 				android:text="Continue"
+				android:layout_marginRight="60dp"
 				android:textColor="@color/purple_700"
 				android:textSize="15sp" />
 
@@ -156,7 +157,7 @@
 				android:layout_below="@+id/password"
 				android:textColor="@color/lightbrown"
 				android:layout_alignParentRight="true"
-				android:layout_marginRight="60dp"
+				android:layout_marginRight="50dp"
 				android:layout_marginTop="10dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
@@ -169,7 +170,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_gravity="top"
-				android:layout_marginLeft="60dp"
+				android:layout_marginLeft="50dp"
 				android:layout_marginTop="10dp"
 				android:layout_below="@+id/password"
 				android:background="@color/transparent"

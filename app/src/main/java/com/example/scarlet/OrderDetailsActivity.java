@@ -60,7 +60,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.order_activities_detail);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         
         BindView();
         Intent intent=new Intent();

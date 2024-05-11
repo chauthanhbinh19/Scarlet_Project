@@ -58,7 +58,7 @@ public class SelectVoucherActivity extends AppCompatActivity {
         setContentView(R.layout.discount);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         Intent intent=getIntent();
         if(intent!= null){

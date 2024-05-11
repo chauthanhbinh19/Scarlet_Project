@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
         View view=inflater.inflate(R.layout.home, container, false);
         BindView(view);
         ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,40));
+        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,25));
         validateUser(view);
         getCategoryData(view);
         getTrendData(view);
@@ -211,8 +211,6 @@ public class HomeFragment extends Fragment {
         DatabaseReference categoryRef = firebaseDatabase.getReference("category");
 
         productList=new ArrayList<>();
-        ProductRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        ProductRecyclerView.addItemDecoration(new GridLayoutDecoration(5,10));
 
         productRef.addValueEventListener(new ValueEventListener() {
             @Override

@@ -138,7 +138,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         getProductDetails(productKey);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         ImageButton add=(ImageButton) findViewById(R.id.add);

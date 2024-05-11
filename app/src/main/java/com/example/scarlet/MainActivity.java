@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         window.setStatusBarColor(ContextCompat.getColor(this,R.color.burgundy));
         getWindow().getDecorView().setSystemUiVisibility(0);
 

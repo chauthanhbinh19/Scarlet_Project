@@ -130,10 +130,10 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                                     }
                                     productIdList=tempProductIdList;
                                     for(ProductQuantity pd:productIdList){
-                                        if(pd.getProductId().equals(productKey)){
+                                        if(pd.getProductId().equals(productKey) && pd.getSize().equals(size)){
+                                            found=true;
                                             quantity=pd.getQuantity()+1;
                                             pd.setQuantity(quantity);
-                                            found=true;
                                             break;
                                         }
                                     }

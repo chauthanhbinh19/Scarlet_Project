@@ -48,7 +48,7 @@ public class MemberShipActivity extends AppCompatActivity {
         setContentView(R.layout.member_ship);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         getPoint();

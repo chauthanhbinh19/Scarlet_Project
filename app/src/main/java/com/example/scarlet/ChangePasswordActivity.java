@@ -41,7 +41,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         setContentView(R.layout.change_password);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {

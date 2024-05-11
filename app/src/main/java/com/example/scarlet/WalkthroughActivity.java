@@ -45,7 +45,7 @@ public class WalkthroughActivity extends AppCompatActivity implements ViewPager.
         setContentView(R.layout.walkthrought);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         
         BindView();
         ViewPager viewPager = findViewById(R.id.viewPager);

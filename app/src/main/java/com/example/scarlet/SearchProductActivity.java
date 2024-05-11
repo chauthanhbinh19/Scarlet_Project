@@ -48,7 +48,7 @@ public class SearchProductActivity extends AppCompatActivity {
         setContentView(R.layout.search);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));

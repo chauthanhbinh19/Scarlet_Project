@@ -25,7 +25,7 @@ public class OrderNotificationActivity extends AppCompatActivity {
         setContentView(R.layout.confirm);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {

@@ -36,7 +36,7 @@ public class YourRightsActivity extends AppCompatActivity {
         setContentView(R.layout.your_rights);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         
         BindView();
         getPoint();

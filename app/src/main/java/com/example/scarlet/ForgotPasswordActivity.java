@@ -43,7 +43,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.forgot_password);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {

@@ -37,7 +37,7 @@ public class AdminMainActivity extends AppCompatActivity {
         setContentView(R.layout.admin_activity_main);
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        getWindow().setNavigationBarColor(getColor(R.color.burgundy));
+        getWindow().setNavigationBarColor(getColor(R.color.white));
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {

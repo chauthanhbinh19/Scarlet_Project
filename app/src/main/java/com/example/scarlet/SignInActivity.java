@@ -59,7 +59,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.sign_in);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         BindView();
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -37,7 +37,7 @@ public class VoucherActivity extends AppCompatActivity {
         setContentView(R.layout.voucher);
 
         Window window = getWindow();
-        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
+        window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
