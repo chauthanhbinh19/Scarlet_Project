@@ -581,7 +581,7 @@ public class PaymentActivity extends AppCompatActivity {
                         }
                     }
                 }
-                subTotal=subTotal+tip;
+                subTotal=subTotal+tip+deliveryfee;
                 saveOrder(productList,userKey, payment,subTotal);
                 savePoint(totalPoint);
             }
@@ -592,7 +592,7 @@ public class PaymentActivity extends AppCompatActivity {
             }
         });
     }
-    private void saveOrder(List<Product> productList, String userKey, Payment payment,double subTotal){
+    private void saveOrder(List<Product> productList, String userKey, Payment payment, double subTotal){
         firebaseDatabase=FirebaseDatabase.getInstance();
         orderRef=firebaseDatabase.getReference("order");
         addressRef=firebaseDatabase.getReference("address");
@@ -614,7 +614,6 @@ public class PaymentActivity extends AppCompatActivity {
                                 String provinceText=snap.child("province").getValue(String.class);
                                 String postalCodeText=snap.child("postalCode").getValue(String.class);
                                 String additionalText=snap.child("additional").getValue(String.class);
-
 
                                 address=new Address(customerId,streetText,wardText,districtText,provinceText,postalCodeText,"","",additionalText);
                                 Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,deliveryfee,productList);

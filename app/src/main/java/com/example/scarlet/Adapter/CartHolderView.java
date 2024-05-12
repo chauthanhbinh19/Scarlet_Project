@@ -136,7 +136,9 @@ public class CartHolderView extends RecyclerView.ViewHolder {
                                     DataSnapshot productQuantityListSnapshot =snapshot1.child("productQuantityList");
 
                                     for(DataSnapshot snap:productQuantityListSnapshot.getChildren()){
-                                        if(snap.child("productId").getValue(String.class).equals(productKey)){
+                                        String key=snap.child("productId").getValue(String.class);
+                                        String productSize=snap.child("size").getValue(String.class);
+                                        if(key.equals(productKey) && productSize.equals(size)){
                                             int quantity=snap.child("quantity").getValue(int.class);
                                             quantity=quantity+1;
                                             adapter.productList.get(getAdapterPosition()).setQuantity(quantity);
@@ -180,7 +182,9 @@ public class CartHolderView extends RecyclerView.ViewHolder {
                                     DataSnapshot productQuantityListSnapshot =snapshot1.child("productQuantityList");
 
                                     for(DataSnapshot snap:productQuantityListSnapshot.getChildren()){
-                                        if(snap.child("productId").getValue(String.class).equals(productKey)){
+                                        String key=snap.child("productId").getValue(String.class);
+                                        String productSize=snap.child("size").getValue(String.class);
+                                        if(key.equals(productKey) && productSize.equals(size)){
                                             int quantity=snap.child("quantity").getValue(int.class);
                                             quantity=quantity-1;
                                             adapter.productList.get(getAdapterPosition()).setQuantity(quantity);

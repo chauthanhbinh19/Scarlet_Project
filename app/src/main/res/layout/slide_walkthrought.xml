@@ -7,13 +7,13 @@
     <ImageView android:layout_centerHorizontal="true"
         android:background="@drawable/rectangle_circie_gradient_burgundy"
         android:layout_marginTop="40dp"
-        android:layout_width="330dp"
-        android:layout_height="330dp" />
+        android:layout_width="310dp"
+        android:layout_height="310dp" />
     <ImageView android:id="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="70dp"
-        android:layout_width="260dp"
-        android:layout_height="260dp" />
+        android:layout_marginTop="75dp"
+        android:layout_width="240dp"
+        android:layout_height="240dp" />
 
     <TextView android:id="@+id/titleTextView"
         android:layout_centerHorizontal="true"

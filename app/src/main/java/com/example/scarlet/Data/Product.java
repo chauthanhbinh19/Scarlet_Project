@@ -258,4 +258,11 @@ public class Product {
         this.quantity = quantity;
         this.total = total;
     }
+    public Product(String name, int quantity, double total, String size, String key) {
+        this.name = name;
+        this.quantity = quantity;
+        this.total = total;
+        this.size=size;
+        this.key=key;
+    }
 }

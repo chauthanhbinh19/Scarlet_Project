@@ -236,18 +236,21 @@ public class AdminOrderHolderView extends RecyclerView.ViewHolder {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 List<Product> productList1=new ArrayList<>();
                 double tempTotal=0;
-                for(DataSnapshot productSnap: snapshot.getChildren()){
-                    String productName=productSnap.child("name").getValue(String.class);
-                    double productPrice=productSnap.child("price").getValue(double.class);
-                    Product productKey=new Product(productSnap.getKey(),productName,1);
-                    if(checkKeyInList(productKey,productKeyList)){
+                for(Product pq:productKeyList){
+                    for(DataSnapshot productSnap: snapshot.getChildren()){
                         String key=productSnap.getKey();
-                        int productQuantity=getQuantity(productKey,productKeyList);
-                        String productImg=productSnap.child("img").getValue(String.class);
-                        double productTotal=productPrice*productQuantity;
-                        tempTotal=tempTotal+productTotal;
-                        Product product=new Product(productName,productTotal, productImg,productQuantity, key);
-                        productList1.add(product);
+
+                        String productName=productSnap.child("name").getValue(String.class);
+                        double productPrice=productSnap.child("price").getValue(double.class);
+                        if(pq.getKey().equals(key)){
+                            int productQuantity=pq.getQuantity();
+                            String productImg=productSnap.child("img").getValue(String.class);
+                            String size=pq.getSize();
+                            double productTotal=productPrice*productQuantity;
+                            tempTotal=tempTotal+productTotal;
+                            Product product=new Product(productName,productTotal, productImg,productQuantity, key,size);
+                            productList1.add(product);
+                        }
                     }
                 }
                 productAdapter=new ProductHorizontalAdapter(productList1);

@@ -250,7 +250,7 @@
 				android:layout_below="@+id/subtotalText"
 				android:textSize="14sp"
 				android:textColor="@color/gray1"
-				android:layout_marginTop="5dp"
+				android:layout_marginTop="10dp"
 				android:text="Delivery cost"/>
 			<TextView android:id="@+id/delivery"
 				android:layout_width="wrap_content"
@@ -260,7 +260,7 @@
 				android:layout_alignParentRight="true"
 				android:textSize="14sp"
 				android:textColor="@color/black"
-				android:layout_marginTop="5dp"
+				android:layout_marginTop="10dp"
 				android:text="0đ"/>
 			<TextView android:id="@+id/tipText"
 				android:layout_width="wrap_content"
@@ -269,7 +269,7 @@
 				android:layout_below="@+id/deliveryText"
 				android:textSize="14sp"
 				android:textColor="@color/gray1"
-				android:layout_marginTop="5dp"
+				android:layout_marginTop="10dp"
 				android:text="Tip"/>
 			<TextView android:id="@+id/tip"
 				android:layout_width="wrap_content"
@@ -279,7 +279,7 @@
 				android:layout_alignParentRight="true"
 				android:textSize="14sp"
 				android:textColor="@color/black"
-				android:layout_marginTop="5dp"
+				android:layout_marginTop="10dp"
 				android:text="0đ"/>
 			<TextView android:id="@+id/totalText"
 				android:layout_width="wrap_content"
@@ -297,11 +297,40 @@
 				android:layout_marginRight="20dp"
 				android:layout_below="@+id/tipText"
 				android:layout_alignParentRight="true"
-				android:textSize="18sp"
+				android:textSize="20sp"
 				android:textStyle="bold"
 				android:textColor="@color/burgundy"
 				android:layout_marginTop="15dp"
 				android:text="100000đ"/>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:id="@+id/cancelledBtn"
+				android:layout_marginTop="30dp"
+				android:layout_centerHorizontal="true"
+				android:layout_marginLeft="80dp"
+				android:layout_below="@+id/total"
+				style="@style/MyButtonTheme"
+				android:textSize="18sp"
+				android:visibility="gone"
+				android:textColor="@color/black"
+				android:background="@drawable/rectangle_white2_radius"
+				android:text="Cancelled"/>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="48dp"
+				android:id="@+id/orderAgainBtn"
+				android:layout_marginTop="30dp"
+				android:layout_centerHorizontal="true"
+				android:layout_marginLeft="80dp"
+				android:layout_below="@+id/total"
+				style="@style/MyButtonTheme"
+				android:textSize="18sp"
+				android:textColor="@color/white"
+				android:background="@drawable/rectangle_burgundy_radius"
+				android:text="Order again"/>
 		</RelativeLayout>
 	</RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,37 +44,6 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         textContent=itemView.findViewById(R.id.textContent);
         icon=itemView.findViewById(R.id.icon);
         context=itemView.getContext();
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to cancel your order?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
-                                DatabaseReference myRef=firebaseDatabase.getReference("order").child(key);
-                                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        if(snapshot.exists()){
-                                            myRef.child("orderStatus").setValue("cancelled");
-                                            adapter.orderList.remove(getAdapterPosition());
-                                            adapter.notifyDataSetChanged();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
-                            }
-                        })
-                        .setNegativeButton("No", null)
-                        .show();
-            }
-        });
         detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +62,6 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         item.setText(String.valueOf(order.getProductList().size())+" items");
         key=order.getKey();
         if(order.getOrderStatus().equals("done")){
-            cancel.setVisibility(View.GONE);
             textContent.setText("Order was delivered successfully");
             icon.setImageResource(R.drawable.fast_delivery_3);
         }

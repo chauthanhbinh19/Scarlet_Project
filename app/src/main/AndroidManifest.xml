@@ -91,6 +91,9 @@
             android:name=".OrderDetailsActivity"
             android:exported="true" />
         <activity
+            android:name=".OrderAgainActivity"
+            android:exported="true" />
+        <activity
             android:name=".SelectVoucherActivity"
             android:exported="true" />
         <activity

@@ -190,55 +190,55 @@ public class AccountFragment extends Fragment {
             public void run() {
                 dashboard_button.startAnimation(slideInLeftAnimation);
             }
-        },delay*3);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 orderText.startAnimation(slideInLeftAnimation);
             }
-        },delay*4);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 order_activities_btn.startAnimation(slideInLeftAnimation);
             }
-        },delay*5);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 review_button.startAnimation(slideInLeftAnimation);
             }
-        },delay*5);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 generalText.startAnimation(slideInLeftAnimation);
             }
-        },delay*6);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 policies_btn.startAnimation(slideInLeftAnimation);
             }
-        },delay*7);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 loyalty_btn.startAnimation(slideInLeftAnimation);
             }
-        },delay*8);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 app_version_btn.startAnimation(slideInLeftAnimation);
             }
-        },delay*9);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 helpText.startAnimation(slideInLeftAnimation);
             }
-        },delay*10);
+        },delay*2);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -250,7 +250,7 @@ public class AccountFragment extends Fragment {
             public void run() {
                 sign_out_button.startAnimation(slideInLeftAnimation);
             }
-        },delay*12);
+        },delay*2);
     }
     private void checkSignInStautus(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

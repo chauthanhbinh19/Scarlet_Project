@@ -1,13 +1,17 @@
 package com.example.scarlet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -41,6 +45,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     RecyclerView productRecycleView;
     TextView addressText, timeText, subtotal, delivery, tipText, totalText, status,deliveryMethodText;
     LottieAnimationView lottieAnimationView;
+    Button cancelledBtn, orderAgainBtn;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         addressText=findViewById(R.id.address);
@@ -53,6 +58,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
         lottieAnimationView=findViewById(R.id.status_animation);
         status=findViewById(R.id.status);
         deliveryMethodText=findViewById(R.id.deliveryMethod);
+        cancelledBtn=findViewById(R.id.cancelledBtn);
+        orderAgainBtn=findViewById(R.id.orderAgainBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +82,45 @@ public class OrderDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+        cancelledBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(OrderDetailsActivity.this);
+                builder.setMessage("Do you want to cancel your order?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                                DatabaseReference myRef=firebaseDatabase.getReference("order").child(key);
+                                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if(snapshot.exists()){
+                                            myRef.child("orderStatus").setValue("cancelled");
+                                            Toast.makeText(OrderDetailsActivity.this,"Cancelled successfully",Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            }
+        });
+        orderAgainBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(OrderDetailsActivity.this,OrderAgainActivity.class);
+                intent1.putExtra("key",key);
+                startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
     }
@@ -121,12 +167,16 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
                         status.setText("Pending");
                         status.setTextColor(getColor(R.color.yellow));
+                        cancelledBtn.setVisibility(View.VISIBLE);
+                        orderAgainBtn.setVisibility(View.GONE);
                     }else if(orderStatus.equals("done")){
                         lottieAnimationView.setAnimation(R.raw.done_animation);
                         lottieAnimationView.playAnimation();
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
                         status.setText("Done");
                         status.setTextColor(getColor(R.color.green1));
+                        cancelledBtn.setVisibility(View.GONE);
+                        orderAgainBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }

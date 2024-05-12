@@ -541,7 +541,7 @@
 					android:textSize="18sp"
 					android:textColor="@color/white"
 					android:theme="@style/MyButtonTheme"
-					android:text="Continue to payment"/>
+					android:text="Pay"/>
 			</RelativeLayout>
 
 		</RelativeLayout>
