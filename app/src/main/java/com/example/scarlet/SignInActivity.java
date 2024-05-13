@@ -2,13 +2,20 @@ package com.example.scarlet;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -21,6 +28,11 @@ import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Fragment.DealsFragment;
 import com.example.scarlet.Fragment.FavouriteFragment;
 import com.example.scarlet.Fragment.HomeFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +56,8 @@ public class SignInActivity extends AppCompatActivity {
 
     public EditText username;
     public EditText password;
+    ImageView gmailBtn;
+    RelativeLayout gmailBox;
     Button createAccount,forgotPassword,signin, continueBtn;
     private void BindView(){
         createAccount=(Button) findViewById(R.id._create_account_);
@@ -52,6 +66,8 @@ public class SignInActivity extends AppCompatActivity {
         password=(EditText) findViewById(R.id.password);
         signin=(Button) findViewById(R.id.sign_in_button);
         continueBtn=findViewById(R.id.continueBtn);
+        gmailBtn=findViewById(R.id.gmailBtn);
+        gmailBox=findViewById(R.id.gmailBox);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +112,47 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInAccount googleSignInAccount=GoogleSignIn.getLastSignedInAccount(this);
+        if(googleSignInAccount != null ){
+            Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
+            startActivity(intent);
+        }
+        ActivityResultLauncher activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+                handleSignInTask(task);
+            }
+        });
+        gmailBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent signInIntent=mGoogleSignInClient.getSignInIntent();
+                activityResultLauncher.launch(signInIntent);
+            }
+        });
     }
+
+    private void handleSignInTask(Task<GoogleSignInAccount> task) {
+        try {
+            GoogleSignInAccount account=task.getResult(ApiException.class);
+
+            final String getFullName=account.getDisplayName();
+            final String getEmail=account.getEmail();
+            final Uri photoUri=account.getPhotoUrl();
+
+            Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
+            startActivity(intent);
+        }catch(Exception e){
+            e.printStackTrace();
+            Toast.makeText(SignInActivity.this, "Failed or cancelled", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void validateUser(String email, String password){
         FirebaseAuth mAuth=FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(email,password)
