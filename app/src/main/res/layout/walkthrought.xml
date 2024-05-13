@@ -20,7 +20,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:visibility="visible"
             android:text="Next"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
             android:layout_marginBottom="16dp" />
@@ -34,7 +34,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:visibility="gone"
             android:text="Next"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
             android:layout_marginBottom="16dp" />
@@ -48,7 +48,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:visibility="gone"
             android:text="Next"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
             android:layout_marginBottom="16dp" />
@@ -62,7 +62,7 @@
             android:layout_marginEnd="@dimen/fab_margin"
             android:visibility="gone"
             android:text="Next"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
             android:layout_marginBottom="20dp" />
@@ -74,7 +74,7 @@
             android:background="@color/transparent"
             android:layout_marginStart="@dimen/fab_margin"
             android:text="Skip"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             style="@style/MyButtonTheme"
             android:layout_marginBottom="20dp" />

@@ -111,7 +111,7 @@
 					<TextView android:id="@+id/profile_ek2"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/profile_ek2_string"
@@ -121,7 +121,7 @@
 
 					<ImageView android:id="@+id/edit_1"
 						android:src="@drawable/edit_1"
-						 android:layout_marginStart="17dp"
+						 android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -130,7 +130,7 @@
 						android:src="@drawable/right_arrow_3"
 						android:layout_alignParentRight="true"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
 
@@ -151,7 +151,7 @@
 					<TextView android:id="@+id/settings_ek2"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/settings_ek2_string"
@@ -161,7 +161,7 @@
 
 					<ImageView android:id="@+id/setting_1"
 						android:src="@drawable/setting_1"
-						 android:layout_marginStart="17dp"
+						 android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -170,7 +170,7 @@
 						android:src="@drawable/right_arrow_3"
 						 android:layout_alignParentRight="true"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
 
@@ -192,7 +192,7 @@
 					<TextView
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="Dashboard"
@@ -202,7 +202,7 @@
 
 					<ImageView
 						android:src="@drawable/dashboard"
-						android:layout_marginStart="17dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -210,7 +210,7 @@
 					<ImageView
 						android:src="@drawable/right_arrow_3"
 						android:layout_alignParentRight="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
@@ -244,7 +244,7 @@
 					<TextView android:id="@+id/order_activities"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/order_activities_string"
@@ -254,7 +254,7 @@
 
 					<ImageView android:id="@+id/file_1"
 						android:src="@drawable/file_1"
-						 android:layout_marginStart="17dp"
+						 android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -265,7 +265,7 @@
 						android:layout_height="wrap_content"
 						android:layout_alignParentRight="true"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
@@ -285,7 +285,7 @@
 					<TextView android:id="@+id/review"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="Send reviews"
@@ -295,7 +295,7 @@
 
 					<ImageView android:id="@+id/reviewIcon"
 						android:src="@drawable/review"
-						android:layout_marginStart="17dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -305,7 +305,7 @@
 						android:layout_height="wrap_content"
 						android:layout_alignParentRight="true"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
@@ -337,7 +337,7 @@
 					<TextView android:id="@+id/policies"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/policies_string"
@@ -347,7 +347,7 @@
 
 					<ImageView android:id="@+id/file__1__1"
 						android:src="@drawable/file__1__1"
-						android:layout_marginStart="15dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -356,7 +356,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_alignParentRight="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:src="@drawable/right_arrow_3" />
 
 				</RelativeLayout>
@@ -376,7 +376,7 @@
 					<TextView android:id="@+id/loyalty_program"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/loyalty_program_string"
@@ -386,7 +386,7 @@
 
 					<ImageView android:id="@+id/file__1__2"
 						android:src="@drawable/customer_loyalty"
-						android:layout_marginStart="15dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -394,7 +394,7 @@
 					<ImageView android:id="@+id/right_arrow_7"
 						android:src="@drawable/right_arrow_3"
 						android:layout_alignParentRight="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
 
@@ -415,7 +415,7 @@
 					<TextView android:id="@+id/about_app_version"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/about_app_version_string"
@@ -425,7 +425,7 @@
 
 					<ImageView android:id="@+id/information_button_1"
 						android:src="@drawable/information_button_1"
-						android:layout_marginStart="15dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -435,7 +435,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_alignParentRight="true"
 						android:src="@drawable/right_arrow_3" />
 
@@ -469,7 +469,7 @@
 					<TextView android:id="@+id/faqs_ek1"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:text="@string/faqs_ek1_string"
@@ -479,7 +479,7 @@
 
 					<ImageView android:id="@+id/chat_box_1"
 						android:src="@drawable/chat_box_1"
-						android:layout_marginStart="15dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -488,7 +488,7 @@
 						android:src="@drawable/right_arrow_3"
 						android:layout_centerVertical="true"
 						android:layout_alignParentRight="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
 
@@ -509,7 +509,7 @@
 					<TextView android:id="@+id/feedback___support"
 						android:textSize="16sp"
 						android:textColor="@color/black"
-						android:layout_marginLeft="60dp"
+						android:layout_marginLeft="55dp"
 						android:layout_marginTop="11dp"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
@@ -520,7 +520,7 @@
 
 					<ImageView android:id="@+id/feedback_1"
 						android:src="@drawable/feedback_1"
-						android:layout_marginStart="15dp"
+						android:layout_marginStart="10dp"
 						android:layout_centerVertical="true"
 						android:layout_width="25dp"
 						android:layout_height="25dp" />
@@ -529,7 +529,7 @@
 						android:src="@drawable/right_arrow_3"
 						android:layout_alignParentRight="true"
 						android:layout_centerVertical="true"
-						android:layout_marginRight="20dp"
+						android:layout_marginRight="10dp"
 						android:layout_width="15dp"
 						android:layout_height="15dp" />
 
