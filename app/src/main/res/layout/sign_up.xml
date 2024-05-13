@@ -180,7 +180,7 @@
 					android:text="Sign Up"
 					android:layout_below="@+id/confirm_password"
 					style="@style/MyButtonTheme"
-					android:layout_marginLeft="140dp"
+					android:layout_marginLeft="80dp"
 					android:textColor="@color/white"
 					android:textSize="18sp"
 					android:textStyle="bold"
@@ -190,7 +190,7 @@
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_horizontal|center"
-					android:layout_marginTop="20dp"
+					android:layout_marginTop="15dp"
 					android:layout_marginLeft="45dp"
 					android:gravity="center"
 					android:layout_below="@+id/sign_up_ek1"
@@ -203,7 +203,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_toRightOf="@+id/text1"
-					android:layout_marginTop="8dp"
+					android:layout_marginTop="2dp"
 					android:gravity="center"
 					style="@style/MyButtonTheme"
 					android:layout_below="@+id/sign_up_ek1"
@@ -215,7 +215,7 @@
 				<TextView android:id="@+id/or"
 					android:layout_gravity="center_horizontal|center"
 					android:gravity="center"
-					android:textSize="35sp"
+					android:textSize="25sp"
 					android:layout_below="@+id/text1"
 					android:textColor="@color/sign_in_color"
 					android:layout_centerHorizontal="true"
@@ -225,24 +225,28 @@
 					android:text="@string/or_string"
 					/>
 
-				<ImageView android:id="@+id/icons8_facebook_240_1"
-					android:src="@drawable/icons8_facebook_240_1"
-					android:layout_marginTop="10dp"
-					android:layout_alignParentRight="true"
-					android:layout_marginRight="120dp"
+				<RelativeLayout android:id="@+id/gmailBox"
 					android:layout_below="@+id/or"
-					android:layout_marginBottom="20dp"
-					android:layout_width="40dp"
-					android:layout_height="40dp" />
-
-				<ImageView
-					android:id="@+id/icons8_google_240_1"
-					android:layout_width="40dp"
-					android:layout_height="40dp"
-					android:layout_marginLeft="120dp"
-					android:layout_marginTop="10dp"
-					android:layout_below="@+id/or"
-					android:src="@drawable/icons8_google_240_1" />
+					android:background="@drawable/rectangle_white_stroke"
+					android:layout_marginLeft="70dp"
+					android:layout_centerHorizontal="true"
+					android:padding="8dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+					<ImageView android:id="@+id/gmailBtn"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="20dp"
+						android:contentDescription="icons8_google_240_1"
+						android:src="@drawable/icons8_google_240_1" />
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textSize="16sp"
+						android:layout_centerVertical="true"
+						android:layout_marginLeft="60dp"
+						android:text="Sign in with google"/>
+				</RelativeLayout>
 			</RelativeLayout>
 		</ScrollView>
 

@@ -82,28 +82,29 @@
 					android:background="@drawable/_bg_white_radius30"
 					 android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
-					android:layout_width="412dp"
+					android:layout_width="match_parent"
 					android:layout_height="717dp" />
 
 				<TextView android:id="@+id/account_ek1"
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_marginLeft="38dp"
+					android:layout_marginLeft="20dp"
 					android:layout_marginTop="23dp"
-					android:layout_width="115.8dp"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/account_ek1_string"
 					 />
 
 				<RelativeLayout android:id="@+id/profile_button"
-					android:layout_marginTop="61dp"
+					android:layout_marginTop="10dp"
 					android:layout_centerHorizontal="true"
 					android:background="@drawable/rectangle_lightpink_radius"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
-					android:layout_marginLeft="50dp"
+					android:layout_below="@+id/account_ek1"
+					android:layout_marginLeft="40dp"
 					android:elevation="2dp"
 					>
 
@@ -136,14 +137,14 @@
 				</RelativeLayout>
 
 				<RelativeLayout android:id="@+id/settings_button"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/profile_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -184,7 +185,7 @@
 					android:visibility="gone"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -221,8 +222,8 @@
 					android:textSize="16sp"
 					android:layout_below="@id/dashboard_button"
 					android:textColor="@color/black"
-					android:layout_marginLeft="36dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginTop="15dp"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:text="@string/order_string"
@@ -236,7 +237,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -270,14 +271,14 @@
 				</RelativeLayout>
 
 				<RelativeLayout android:id="@+id/review_button"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/order_activities_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -313,8 +314,8 @@
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_marginLeft="38dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/review_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -329,7 +330,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -361,14 +362,14 @@
 				</RelativeLayout>
 
 				<RelativeLayout android:id="@+id/loyalty_program_button"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/policies_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -400,14 +401,14 @@
 				</RelativeLayout>
 
 				<RelativeLayout android:id="@+id/app_version_button"
-					android:layout_marginTop="10dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/loyalty_program_button"
 					android:layout_centerHorizontal="true"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -444,8 +445,8 @@
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_marginLeft="36dp"
-					android:layout_marginTop="10dp"
+					android:layout_marginLeft="20dp"
+					android:layout_marginTop="15dp"
 					android:layout_below="@+id/app_version_button"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
@@ -461,7 +462,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
@@ -501,7 +502,7 @@
 					android:layout_height="wrap_content"
 					android:padding="12dp"
 					android:elevation="2dp"
-					android:layout_marginLeft="50dp"
+					android:layout_marginLeft="40dp"
 					android:background="@drawable/rectangle_lightpink_radius"
 					>
 
