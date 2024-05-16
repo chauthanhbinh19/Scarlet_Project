@@ -78,6 +78,7 @@
         android:layout_height="15dp"
         android:layout_toRightOf="@+id/name_product"
         android:elevation="10dp"
+        android:visibility="gone"
         android:gravity="center_horizontal"
         android:background="@drawable/search_1"/>
 
