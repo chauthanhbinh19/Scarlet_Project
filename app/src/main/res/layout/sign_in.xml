@@ -125,6 +125,7 @@
 				android:layout_below="@id/text1"
 				android:textColor="@color/sign_in_color"
 				android:layout_marginTop="15dp"
+				android:visibility="gone"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="@string/or_string"
@@ -145,6 +146,7 @@
 				android:layout_marginLeft="70dp"
 				android:layout_centerHorizontal="true"
 				android:padding="8dp"
+				android:visibility="gone"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
 				<ImageView android:id="@+id/gmailBtn"
