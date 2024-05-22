@@ -122,7 +122,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/fast_delivery_2"/>
+            android:src="@drawable/fast_delivery_2"/>
         <TextView android:id="@+id/textContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

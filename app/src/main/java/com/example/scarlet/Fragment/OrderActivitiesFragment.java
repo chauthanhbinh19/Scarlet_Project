@@ -61,7 +61,7 @@ public class OrderActivitiesFragment extends Fragment {
         getAnimation();
         orderRecycleView.setLayoutManager(new GridLayoutManager(getContext(),1));
 //        orderRecycleView.addItemDecoration(new GridLayoutDecoration(5,10));
-        getOrderData("pending");
+        getOrderData("ongoing");
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +80,7 @@ public class OrderActivitiesFragment extends Fragment {
             public void onClick(View v) {
                 defaultStatus=1;
                 getStatus();
-                getOrderData("pending");
+                getOrderData("ongoing");
             }
         });
         btnHistory.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +88,7 @@ public class OrderActivitiesFragment extends Fragment {
             public void onClick(View v) {
                 defaultStatus=2;
                 getStatus();
-                getOrderData("done");
+                getOrderData("history");
             }
         });
         return view;
@@ -127,18 +127,49 @@ public class OrderActivitiesFragment extends Fragment {
                     for(DataSnapshot snap: snapshot.getChildren()){
                         String customerKey=snap.child("userId").getValue(String.class);
                         String orderStatus=snap.child("orderStatus").getValue(String.class);
-                        if(orderStatus.equals(status)){
-                            if(customerKey.equals(userKey)){
-                                String key=snap.getKey();
-                                Date date=snap.child("orderDate").getValue(Date.class);
-                                double total=snap.child("total").getValue(double.class);
-                                List<Product> productList=new ArrayList<>();
-                                for(DataSnapshot productSnap: snap.child("productList").getChildren()){
-                                    Product product=productSnap.getValue(Product.class);
-                                    productList.add(product);
+                        boolean isConfirmed=snap.child("confirmed").getValue(boolean.class);
+                        if(status.equals("ongoing")){
+                            if(orderStatus.equals("pending")){
+                                if(customerKey.equals(userKey)){
+                                    String key=snap.getKey();
+                                    Date date=snap.child("orderDate").getValue(Date.class);
+                                    double total=snap.child("total").getValue(double.class);
+                                    List<Product> productList=new ArrayList<>();
+                                    for(DataSnapshot productSnap: snap.child("productList").getChildren()){
+                                        Product product=productSnap.getValue(Product.class);
+                                        productList.add(product);
+                                    }
+                                    Order order=new Order(orderStatus,date,total,productList,key,isConfirmed);
+                                    orderList.add(order);
                                 }
-                                Order order=new Order(orderStatus,date,total,productList,key);
-                                orderList.add(order);
+                            }else if(orderStatus.equals("done") && !isConfirmed){
+                                if(customerKey.equals(userKey)){
+                                    String key=snap.getKey();
+                                    Date date=snap.child("orderDate").getValue(Date.class);
+                                    double total=snap.child("total").getValue(double.class);
+                                    List<Product> productList=new ArrayList<>();
+                                    for(DataSnapshot productSnap: snap.child("productList").getChildren()){
+                                        Product product=productSnap.getValue(Product.class);
+                                        productList.add(product);
+                                    }
+                                    Order order=new Order(orderStatus,date,total,productList,key,isConfirmed);
+                                    orderList.add(order);
+                                }
+                            }
+                        }else{
+                            if((orderStatus.equals("done") && isConfirmed) || orderStatus.equals("cancelled")){
+                                if(customerKey.equals(userKey)){
+                                    String key=snap.getKey();
+                                    Date date=snap.child("orderDate").getValue(Date.class);
+                                    double total=snap.child("total").getValue(double.class);
+                                    List<Product> productList=new ArrayList<>();
+                                    for(DataSnapshot productSnap: snap.child("productList").getChildren()){
+                                        Product product=productSnap.getValue(Product.class);
+                                        productList.add(product);
+                                    }
+                                    Order order=new Order(orderStatus,date,total,productList,key,isConfirmed);
+                                    orderList.add(order);
+                                }
                             }
                         }
                     }

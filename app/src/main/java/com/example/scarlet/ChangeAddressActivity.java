@@ -29,7 +29,6 @@ import java.util.List;
 public class ChangeAddressActivity extends AppCompatActivity {
 
     RelativeLayout back_btn;
-    List<Address> addressList;
     EditText street,ward,province,district,postalCode, additionalInfo;
     Button saveBtn;
     private void BindView(){
@@ -106,7 +105,6 @@ public class ChangeAddressActivity extends AppCompatActivity {
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
             DatabaseReference myRef=firebaseDatabase.getReference("address");
-            addressList=new ArrayList<>();
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -147,7 +145,6 @@ public class ChangeAddressActivity extends AppCompatActivity {
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
             DatabaseReference myRef=firebaseDatabase.getReference("address");
-            addressList=new ArrayList<>();
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -160,6 +157,10 @@ public class ChangeAddressActivity extends AppCompatActivity {
                             }
                         }
                         if(!found){
+                            Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
+                            String key=myRef.push().getKey();
+                            myRef.child(key).setValue(address);
+                        }else{
                             Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
                             String key=myRef.push().getKey();
                             myRef.child(key).setValue(address);

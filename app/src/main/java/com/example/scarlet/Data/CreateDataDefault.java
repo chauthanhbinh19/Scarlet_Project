@@ -412,6 +412,24 @@ public class CreateDataDefault {
         DatabaseReference reviewRef=database.getReference("offer_transaction");
         reviewRef.removeValue();
     }
+    public void deleteX(){
+        FirebaseDatabase database=FirebaseDatabase.getInstance();
+        DatabaseReference c=database.getReference("order");
+        c.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot orderSnapshot : snapshot.getChildren()) {
+                    // Xóa thuộc tính isConfirmed của mỗi order
+                    orderSnapshot.getRef().child("isConfirmed").removeValue();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     public void createReview(){
         FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference userRef=database.getReference("user");
@@ -486,6 +504,23 @@ public class CreateDataDefault {
 
                         }
                     });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+    public void addConfirmed(){
+        FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+        DatabaseReference myRef=firebaseDatabase.getReference("order");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot snap: snapshot.getChildren()){
+                    snap.getRef().child("confirmed").setValue(true);
                 }
             }
 

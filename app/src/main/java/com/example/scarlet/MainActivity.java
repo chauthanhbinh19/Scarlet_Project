@@ -43,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         openHomeFragment();
         createBottomNavigation(savedInstanceState);
 //        CreateDataDefault text=new CreateDataDefault();
-//        text.deleteOfferTransaction();
+//        text.deleteX();
+//        text.addConfirmed();
 //        text.createCategoryData();
 //        text.createProductData();
 //        text.createMembershipData();

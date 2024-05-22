@@ -40,7 +40,6 @@ public class DeliveryActivity extends AppCompatActivity {
     DatabaseReference cartRef, productRef;
     Button continue_btn;
     RadioButton delivery_radio_btn,pickup_radio_btn;
-    List<Address> addressList;
     List<Product> productList;
     String deliveryStatus="delivery";
     String total;
@@ -247,7 +246,6 @@ public class DeliveryActivity extends AppCompatActivity {
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
             DatabaseReference myRef=firebaseDatabase.getReference("address");
-            addressList=new ArrayList<>();
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -288,7 +286,6 @@ public class DeliveryActivity extends AppCompatActivity {
         if(isLoggedIn && !userKey.isEmpty()){
             FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
             DatabaseReference myRef=firebaseDatabase.getReference("address");
-            addressList=new ArrayList<>();
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -301,6 +298,10 @@ public class DeliveryActivity extends AppCompatActivity {
                             }
                         }
                         if(!found){
+                            Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
+                            String key=myRef.push().getKey();
+                            myRef.child(key).setValue(address);
+                        }else{
                             Address address=new Address(userKey,street,ward,district,province,postalCode,"","",additionalInfo);
                             String key=myRef.push().getKey();
                             myRef.child(key).setValue(address);

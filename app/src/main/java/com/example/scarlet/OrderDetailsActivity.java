@@ -1,5 +1,6 @@
 package com.example.scarlet;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +27,7 @@ import com.example.scarlet.Adapter.ProductHorizontalAdapter;
 import com.example.scarlet.Data.Address;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
+import com.example.scarlet.Fragment.OrderActivitiesFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,7 +49,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
     RecyclerView productRecycleView;
     TextView addressText, timeText, subtotal, delivery, tipText, totalText, status,deliveryMethodText;
     LottieAnimationView lottieAnimationView;
-    Button cancelledBtn, orderAgainBtn;
+    Button cancelledBtn, orderAgainBtn, confirmOrderBtn, continueBtn;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         addressText=findViewById(R.id.address);
@@ -60,6 +64,8 @@ public class OrderDetailsActivity extends AppCompatActivity {
         deliveryMethodText=findViewById(R.id.deliveryMethod);
         cancelledBtn=findViewById(R.id.cancelledBtn);
         orderAgainBtn=findViewById(R.id.orderAgainBtn);
+        confirmOrderBtn=findViewById(R.id.confirmOrderBtn);
+        continueBtn=findViewById(R.id.continueBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +105,10 @@ public class OrderDetailsActivity extends AppCompatActivity {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         if(snapshot.exists()){
                                             myRef.child("orderStatus").setValue("cancelled");
-                                            Toast.makeText(OrderDetailsActivity.this,"Cancelled successfully",Toast.LENGTH_SHORT).show();
+                                            showSuccessDialog();
+                                            continueBtn.setVisibility(View.VISIBLE);
+                                            cancelledBtn.setVisibility(View.GONE);
+                                            confirmOrderBtn.setVisibility(View.GONE);
                                         }
                                     }
 
@@ -123,6 +132,45 @@ public class OrderDetailsActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
+        confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                DatabaseReference myRef=firebaseDatabase.getReference("order");
+                myRef.child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        snapshot.getRef().child("confirmed").setValue(true);
+                        showSuccessDialog();
+                        continueBtn.setVisibility(View.VISIBLE);
+                        cancelledBtn.setVisibility(View.GONE);
+                        confirmOrderBtn.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(OrderDetailsActivity.this, MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+    }
+    private void openOrderActivitiesFragment(){
+        OrderActivitiesFragment orderActivitiesFragment=new OrderActivitiesFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left);
+        fragmentTransaction.replace(R.id.frame_layout,orderActivitiesFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
     private void getOrderDetail(){
         FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
@@ -138,6 +186,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
                     Address address=snapshot.child("shippingAddress").getValue(Address.class);
                     double tip=snapshot.child("tip").getValue(double.class);
                     double total=snapshot.child("total").getValue(double.class);
+                    boolean isConfirmed=snapshot.child("confirmed").getValue(Boolean.class);
                     DataSnapshot productListSnapshot =snapshot.child("productList");
 
                     List<Product> tempList=new ArrayList<>();
@@ -161,21 +210,32 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         deliveryMethodText.setText("Pick up");
                     }
                     getProductData(tempList);
-                    if(orderStatus.equals("pending")){
+                    if(orderStatus.equals("pending") && !isConfirmed){
                         lottieAnimationView.setAnimation(R.raw.pending_animation);
                         lottieAnimationView.playAnimation();
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
                         status.setText("Pending");
                         status.setTextColor(getColor(R.color.yellow));
                         cancelledBtn.setVisibility(View.VISIBLE);
+//                        confirmOrderBtn.setVisibility(View.VISIBLE);
                         orderAgainBtn.setVisibility(View.GONE);
-                    }else if(orderStatus.equals("done")){
+                    }else if(orderStatus.equals("done") && !isConfirmed){
+                        lottieAnimationView.setAnimation(R.raw.done_animation);
+                        lottieAnimationView.playAnimation();
+                        lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                        status.setText("Done");
+                        status.setTextColor(getColor(R.color.green1));
+                        cancelledBtn.setVisibility(View.VISIBLE);
+                        confirmOrderBtn.setVisibility(View.VISIBLE);
+                        orderAgainBtn.setVisibility(View.GONE);
+                    }else if(orderStatus.equals("done") && isConfirmed){
                         lottieAnimationView.setAnimation(R.raw.done_animation);
                         lottieAnimationView.playAnimation();
                         lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
                         status.setText("Done");
                         status.setTextColor(getColor(R.color.green1));
                         cancelledBtn.setVisibility(View.GONE);
+                        confirmOrderBtn.setVisibility(View.GONE);
                         orderAgainBtn.setVisibility(View.VISIBLE);
                     }
                 }
@@ -239,5 +299,13 @@ public class OrderDetailsActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+    public void showSuccessDialog(){
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
 }

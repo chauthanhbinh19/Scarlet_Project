@@ -18,7 +18,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/check_1"/>
+            android:background="@drawable/question"/>
         <TextView android:id="@+id/mess"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,6 +28,35 @@
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:text="Yay! Success! Congratulations"/>
+            android:text="Do you want to cancel?"/>
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancelledBtn"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="50dp"
+            android:layout_below="@+id/mess"
+            style="@style/MyButtonTheme"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:background="@drawable/rectangle_white2_radius"
+            android:text="Cancelled"/>
+        <Button
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirmBtn"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/mess"
+            style="@style/MyButtonTheme"
+            android:textSize="16sp"
+            android:padding="15dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_burgundy_radius"
+            android:text="Confirm"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

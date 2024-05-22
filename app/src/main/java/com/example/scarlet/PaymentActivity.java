@@ -660,7 +660,7 @@ public class PaymentActivity extends AppCompatActivity {
                                 String additionalText=snap.child("additional").getValue(String.class);
 
                                 address=new Address(customerId,streetText,wardText,districtText,provinceText,postalCodeText,"","",additionalText);
-                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,deliveryfee,productList);
+                                Order order=new Order(userKey,orderStatus,payment,address,orderDate,subTotal,tip,deliveryStatus,deliveryfee,productList, false);
                                 String key=orderRef.push().getKey();
                                 orderRef.child(key).setValue(order);
                                 if(!voucherKey.equals("0")){
