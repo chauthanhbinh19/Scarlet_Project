@@ -61,8 +61,15 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         date.setText(formattedExpiryDate);
         item.setText(String.valueOf(order.getProductList().size())+" items");
         key=order.getKey();
-        if(order.getOrderStatus().equals("done")){
+        boolean isComfirmed=order.isConfirmed();
+        if(order.getOrderStatus().equals("done") && !isComfirmed){
+            textContent.setText("Your order has been taken by the Driver");
+            icon.setImageResource(R.drawable.fast_delivery_3);
+        }else if(order.getOrderStatus().equals("done") && isComfirmed){
             textContent.setText("Order was delivered successfully");
+            icon.setImageResource(R.drawable.fast_delivery_3);
+        }else if(order.getOrderStatus().equals("cancelled")){
+            textContent.setText("Your order has been cancelled");
             icon.setImageResource(R.drawable.fast_delivery_3);
         }
     }

@@ -27,6 +27,7 @@ import com.example.scarlet.Data.ProductQuantity;
 import com.example.scarlet.DeliveryActivity;
 import com.example.scarlet.Interface.GetStringCallback;
 import com.example.scarlet.R;
+import com.example.scarlet.SignInActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,11 +46,11 @@ public class CartFragment extends Fragment {
     private CartAdapter productAdapter;
     private RecyclerView recyclerView;
     private View view;
-    TextView totalView, cart_text, totalText;
-    Button purchase;
+    TextView totalView, cart_text, totalText, unit;
+    Button purchase, signInBtn;
     private double total=0;
     GetStringCallback getStringCallback;
-    RelativeLayout signinNotification,item_product;
+    RelativeLayout signinNotification,item_product, emptyNotification, boxPrice;
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
@@ -60,6 +61,10 @@ public class CartFragment extends Fragment {
         item_product=view.findViewById(R.id.item_product);
         cart_text=view.findViewById(R.id.cart_text);
         totalText=view.findViewById(R.id.totalText);
+        emptyNotification=view.findViewById(R.id.emptyNotification);
+        unit=view.findViewById(R.id.unit);
+        boxPrice=view.findViewById(R.id.boxx_price);
+        signInBtn=view.findViewById(R.id.signInBtn);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +73,7 @@ public class CartFragment extends Fragment {
 
         BindView(view);
         checkSignInStatus();
+        checkEmptyCart();
         getAnimation(view);
         productList=new ArrayList<>();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
@@ -88,6 +94,14 @@ public class CartFragment extends Fragment {
                 }
             }
         };
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
         validateUser(recyclerView,getStringCallback);
 
         purchase.setOnClickListener(new View.OnClickListener() {
@@ -131,9 +145,11 @@ public class CartFragment extends Fragment {
         if(!isLoggedIn && userKey.isEmpty()){
             signinNotification.setVisibility(View.VISIBLE);
             item_product.setVisibility(View.GONE);
+            boxPrice.setVisibility(View.GONE);
         }else{
             signinNotification.setVisibility(View.GONE);
             item_product.setVisibility(View.VISIBLE);
+            boxPrice.setVisibility(View.VISIBLE);
         }
     }
     private void validateUser(final RecyclerView recyclerView, GetStringCallback getStringCallback1){
@@ -252,6 +268,51 @@ public class CartFragment extends Fragment {
             }
         }
         return 1;
+    }
+    private void checkEmptyCart(){
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean isLoggedIn=sharedPreferences.getBoolean("isLoggedIn",false);
+        final String userKey=sharedPreferences.getString("customerKey","");
+        if(isLoggedIn && !userKey.isEmpty()){
+            firebaseDatabase=FirebaseDatabase.getInstance();
+            DatabaseReference myRef=firebaseDatabase.getReference("user").child(userKey);
+            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                    if(snapshot1.exists()){
+                        firebaseDatabase=FirebaseDatabase.getInstance();
+                        query=firebaseDatabase.getReference("cart").orderByChild("customerId").equalTo(userKey);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                        DataSnapshot productIdObject=childSnapshot.child("productQuantityList");
+                                        if(productIdObject.exists()){
+
+                                        }else{
+                                            emptyNotification.setVisibility(View.VISIBLE);
+                                            signinNotification.setVisibility(View.GONE);
+                                            boxPrice.setVisibility(View.GONE);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
     private void checkCartData(){
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

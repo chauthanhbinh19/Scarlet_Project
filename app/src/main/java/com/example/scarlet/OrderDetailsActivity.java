@@ -237,6 +237,15 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         cancelledBtn.setVisibility(View.GONE);
                         confirmOrderBtn.setVisibility(View.GONE);
                         orderAgainBtn.setVisibility(View.VISIBLE);
+                    }else if(orderStatus.equals("cancelled")){
+                        lottieAnimationView.setAnimation(R.raw.done_animation);
+                        lottieAnimationView.playAnimation();
+                        lottieAnimationView.setRepeatCount(LottieDrawable.INFINITE);
+                        status.setText("Cancelled");
+                        status.setTextColor(getColor(R.color.black));
+                        cancelledBtn.setVisibility(View.GONE);
+                        confirmOrderBtn.setVisibility(View.GONE);
+                        orderAgainBtn.setVisibility(View.VISIBLE);
                     }
                 }
             }

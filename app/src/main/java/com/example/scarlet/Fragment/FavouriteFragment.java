@@ -1,6 +1,7 @@
 package com.example.scarlet.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.example.scarlet.Adapter.ProductSearchAdapter;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.MainActivity;
 import com.example.scarlet.R;
+import com.example.scarlet.SignInActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -46,12 +49,14 @@ public class FavouriteFragment extends Fragment {
     RelativeLayout signinNotification,recycleBox;
     TextView favourite_text;
     final Handler handler = new Handler();
+    Button signInBtn;
     int delay=150;
     private void BindView(View view){
         recyclerView=view.findViewById(R.id.product_recyclerView);
         signinNotification=view.findViewById(R.id.signInNotification);
         recycleBox=view.findViewById(R.id.recycleBox);
         favourite_text=view.findViewById(R.id.favourite_text);
+        signInBtn=view.findViewById(R.id.signInBtn);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +71,14 @@ public class FavouriteFragment extends Fragment {
         recyclerView.addItemDecoration(new GridLayoutDecoration(5,15));
 
         validateUser(view,recyclerView);
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), SignInActivity.class);
+                startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
         return view;
     }
     private void getAnimation(View view){

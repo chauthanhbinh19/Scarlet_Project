@@ -146,11 +146,13 @@
 	<RelativeLayout android:id="@+id/signInNotification"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"
+		android:background="@color/white"
 		app:layout_constraintTop_toBottomOf="@id/hi_bar"
 		android:layout_marginTop="100dp"
+		android:paddingTop="50dp"
 		android:visibility="gone"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="match_parent">
 
 		<TextView android:id="@+id/textContent"
 			android:layout_width="wrap_content"
@@ -159,7 +161,7 @@
 			android:textSize="16sp"
 			android:layout_centerHorizontal="true"
 			android:text="Please sign in to use our features"/>
-		<Button
+		<Button android:id="@+id/signInBtn"
 			android:layout_width="150dp"
 			android:layout_height="40dp"
 			android:layout_centerHorizontal="true"
@@ -169,6 +171,44 @@
 			android:textColor="@color/white"
 			style="@style/MyButtonTheme"
 			android:text="Sign in"/>
+	</RelativeLayout>
+	<RelativeLayout android:id="@+id/emptyNotification"
+		app:layout_constraintLeft_toLeftOf="parent"
+		app:layout_constraintRight_toRightOf="parent"
+		app:layout_constraintTop_toBottomOf="@id/step"
+		android:layout_marginTop="100dp"
+		android:paddingTop="50dp"
+		android:visibility="gone"
+		android:background="@color/white"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<ImageView android:id="@+id/image1"
+			android:layout_width="200dp"
+			android:layout_height="200dp"
+			android:layout_centerHorizontal="true"
+			android:background="@drawable/cake_33"/>
+
+		<TextView android:id="@+id/textContent1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/black"
+			android:textSize="24sp"
+			android:textStyle="bold"
+			android:layout_below="@+id/image1"
+			android:layout_centerHorizontal="true"
+			android:text="Your cart is empty"/>
+
+		<TextView android:id="@+id/textContent2"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textColor="@color/black"
+			android:textSize="16sp"
+			android:layout_marginTop="10dp"
+			android:layout_below="@+id/textContent1"
+			android:gravity="center"
+			android:layout_centerHorizontal="true"
+			android:text="It appear that no product \n has been ordered yet"/>
 	</RelativeLayout>
 	<RelativeLayout android:id="@+id/boxx_price"
 		android:layout_width="match_parent"
