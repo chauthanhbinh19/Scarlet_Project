@@ -1,11 +1,13 @@
 package com.example.scarlet.Adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -111,7 +113,8 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
                                 databaseReference.removeValue();
                                 adapter.offerList.remove(getAdapterPosition());
                                 adapter.notifyDataSetChanged();
-                                Toast.makeText(context,"Delete successfully",Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context,"Delete successfully",Toast.LENGTH_SHORT).show();
+                                showSuccessDialog();
                             }
                         })
                         .setNegativeButton("Cancel",null)
@@ -165,6 +168,17 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
             }
         });
 
+        dialog.show();
+    }
+    public void showSuccessDialog(){
+        final Dialog dialog=new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        TextView mess=dialog.findViewById(R.id.mess);
+        mess.setText("Delete successfully");
+
+        dialog.getWindow().setBackgroundDrawable(context.getDrawable(R.drawable.rectangle_circle_white_30));
         dialog.show();
     }
 }

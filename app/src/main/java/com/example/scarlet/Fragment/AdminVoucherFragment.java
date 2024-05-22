@@ -1,6 +1,7 @@
 package com.example.scarlet.Fragment;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +10,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -447,7 +449,8 @@ public class AdminVoucherFragment extends Fragment {
                 progressDialog.dismiss();
             }
             keyList.clear();
-            Toast.makeText(getContext(),"Insert successfully", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getContext(),"Insert successfully", Toast.LENGTH_SHORT).show();
+            showSuccessDialog();
         } catch (ParseException e) {
             e.printStackTrace(); // Handle parsing exception
         }
@@ -476,6 +479,22 @@ public class AdminVoucherFragment extends Fragment {
         }
 
         return codeBuilder.toString();
+    }
+    public void showSuccessDialog(){
+        final Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
+    }
+    public void showFailedDialog(){
+        final Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.failed_dialog);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
     @Override
     public void onDestroyView() {

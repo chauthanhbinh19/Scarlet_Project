@@ -1,5 +1,6 @@
 package com.example.scarlet;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,7 +38,7 @@ public class ReviewActivity extends AppCompatActivity {
     RelativeLayout back_btn;
     ImageView star1, star2, star3, star4, star5, imageBtn;
     int star=0;
-    Button reviewBtn;
+    Button reviewBtn, cancelBtn;
     TextView productName;
     EditText review;
     String keyString;
@@ -52,6 +53,7 @@ public class ReviewActivity extends AppCompatActivity {
         imageBtn=findViewById(R.id.imageBtn);
         productName=findViewById(R.id.productName);
         review=findViewById(R.id.review);
+        cancelBtn=findViewById(R.id.cancelBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,13 @@ public class ReviewActivity extends AppCompatActivity {
         
         BindView();
         back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            }
+        });
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -176,7 +185,9 @@ public class ReviewActivity extends AppCompatActivity {
             String comment=review.getText().toString();
             Review review1=new Review(userKey,keyString,star,comment,new Date());
             reviewRef.push().setValue(review1);
-            Toast.makeText(ReviewActivity.this,"Send review successfully", Toast.LENGTH_SHORT).show();
+            review.setText("");
+//            Toast.makeText(ReviewActivity.this,"Send review successfully", Toast.LENGTH_SHORT).show();
+            showStatusDialog();
         }
     }
     private void getProduct(String key){
@@ -199,5 +210,13 @@ public class ReviewActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void showStatusDialog(){
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
 }

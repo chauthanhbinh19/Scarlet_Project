@@ -1,5 +1,6 @@
 package com.example.scarlet;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -142,7 +143,8 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
                             }
-                            Toast.makeText(AdminEditCategoryActivity.this,"Save successfully",Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(AdminEditCategoryActivity.this,"Save successfully",Toast.LENGTH_SHORT).show();
+                            showSuccessDialog();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
@@ -151,7 +153,8 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
                             if(progressDialog.isShowing()){
                                 progressDialog.dismiss();
                             }
-                            Toast.makeText(AdminEditCategoryActivity.this,"Save failed",Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(AdminEditCategoryActivity.this,"Save failed",Toast.LENGTH_SHORT).show();
+                            showFailedDialog();
                         }
                     });
         }
@@ -169,5 +172,21 @@ public class AdminEditCategoryActivity extends AppCompatActivity {
             uri=data.getData();
             btnImage.setImageURI(uri);
         }
+    }
+    public void showSuccessDialog(){
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
+    }
+    public void showFailedDialog(){
+        final Dialog dialog=new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.failed_dialog);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
 }

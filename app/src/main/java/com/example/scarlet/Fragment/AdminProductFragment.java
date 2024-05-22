@@ -3,6 +3,7 @@ package com.example.scarlet.Fragment;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -303,7 +305,8 @@ public class AdminProductFragment extends Fragment {
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
-                        Toast.makeText(getContext(),"Save successfully",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(),"Save successfully",Toast.LENGTH_SHORT).show();
+                        showSuccessDialog();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -312,9 +315,26 @@ public class AdminProductFragment extends Fragment {
                         if(progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
-                        Toast.makeText(getContext(),"Save failed",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getContext(),"Save failed",Toast.LENGTH_SHORT).show();
+                        showFailedDialog();
                     }
                 });
+    }
+    public void showSuccessDialog(){
+        final Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog_2);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
+    }
+    public void showFailedDialog(){
+        final Dialog dialog=new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.failed_dialog);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
     @Override
     public void onDestroyView() {

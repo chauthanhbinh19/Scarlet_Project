@@ -1,5 +1,6 @@
 package com.example.scarlet;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -534,14 +535,16 @@ public class ProductDetailActivity extends AppCompatActivity {
                                         }
 
                                         myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
-                                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                                        showStatusDialog();
                                         break;
                                     }
                                 } else{
                                     int qt=Integer.parseInt(quantity.getText().toString());
                                     productIdList.add(new ProductQuantity(productKey,qt,0,size));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
-                                    Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                                    showStatusDialog();
                                     break;
                                 }
                             }
@@ -551,14 +554,16 @@ public class ProductDetailActivity extends AppCompatActivity {
                             productIdList.add(new ProductQuantity(productKey, qt,0,size));
                             Cart cart=new Cart(userKey,productIdList);
                             myRef.push().setValue(cart);
-                            Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                            showStatusDialog();
                         }
                     }else{
                         int qt=Integer.parseInt(quantity.getText().toString());
                         productIdList.add(new ProductQuantity(productKey, qt,0,size));
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
-                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                        showStatusDialog();
                         return;
                     }
 
@@ -832,5 +837,13 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         }
         return 1;
+    }
+    public void showStatusDialog(){
+        final Dialog dialog=new Dialog(ProductDetailActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog);
+
+        dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
 }

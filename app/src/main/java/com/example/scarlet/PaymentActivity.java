@@ -81,6 +81,7 @@ public class PaymentActivity extends AppCompatActivity {
     List<ProductQuantity> productQuantityList;
     String voucherKey="0", voucherName, voucherCode;
     double deliveryfee=0;
+    Button changeAddressBtn;
     private void BindView() {
         totalView=findViewById(R.id.total);
         back_btn=findViewById(R.id.back_btn);
@@ -99,6 +100,7 @@ public class PaymentActivity extends AppCompatActivity {
         totalAfterDiscount=findViewById(R.id.totalAfterDiscount);
         delivery_address_content=findViewById(R.id.delivery_address_content);
         totalUnit=findViewById(R.id.totalUnit);
+        changeAddressBtn=findViewById(R.id.changeAddressBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,8 +156,15 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1=new Intent(PaymentActivity.this, SelectVoucherActivity.class);
                 intent1.putExtra("deliveryStatus",deliveryStatus);
-//                startActivity(intent1);
                 catcherForResult.launch(intent1);
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+        changeAddressBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1=new Intent(PaymentActivity.this, ChangeAddressActivity.class);
+                catcherForAddressResult.launch(intent1);
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
@@ -268,6 +277,38 @@ public class PaymentActivity extends AppCompatActivity {
                                         voucher_total.setVisibility(View.GONE);
                                         totalAfterDiscount.setVisibility(View.GONE);
                                         totalUnit.setVisibility(View.GONE);
+                                    }
+                                }
+                            }
+                        }
+                    });
+    ActivityResultLauncher<Intent> catcherForAddressResult=
+            registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+                    new ActivityResultCallback<ActivityResult>() {
+                        @Override
+                        public void onActivityResult(ActivityResult result) {
+                            if(result.getResultCode()==ChangeAddressActivity.RESULT_OK){
+                                Intent catcher=result.getData();
+                                if(catcher!=null){
+                                    String addressStatus=catcher.getStringExtra("status");
+                                    if(!addressStatus.equals("0")){
+                                        String street=catcher.getStringExtra("street");
+                                        String ward=catcher.getStringExtra("ward");
+                                        String district=catcher.getStringExtra("district");
+                                        String province=catcher.getStringExtra("province");
+                                        String postalCode=catcher.getStringExtra("postalCode");
+                                        String additionalInfo=catcher.getStringExtra("street");
+
+                                        String a=street+", "+ward+", "+district+", "+province;
+                                        delivery_address_content.setText(a);
+                                        if(!postalCode.isEmpty()){
+                                            a=a+", "+postalCode;
+                                            delivery_address_content.setText(a);
+                                        }
+                                        if(!additionalInfo.isEmpty()){
+                                            a=a+", "+additionalInfo;
+                                            delivery_address_content.setText(a);
+                                        }
                                     }
                                 }
                             }

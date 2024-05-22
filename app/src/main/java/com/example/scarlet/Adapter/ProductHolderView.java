@@ -142,13 +142,15 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                                     }
 
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
-                                    Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                                    showStatusDialog();
                                     break;
                                 }
                             } else{
                                 productIdList.add(new ProductQuantity(productKey,1,0,size));
                                 myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
-                                Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                                showStatusDialog();
                                 break;
                             }
                         }
@@ -157,13 +159,15 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
                         productIdList.add(new ProductQuantity(productKey, 1,0,size));
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
-                        Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                        showStatusDialog();
                     }
                 }else{
                     productIdList.add(new ProductQuantity(productKey, 1,0,size));
                     Cart cart=new Cart(userKey,productIdList);
                     myRef.push().setValue(cart);
-                    Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context,"Add to cart successfully", Toast.LENGTH_SHORT).show();
+                    showStatusDialog();
                     return;
                 }
 
@@ -231,5 +235,13 @@ public class ProductHolderView extends RecyclerView.ViewHolder {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations=R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+    public void showStatusDialog(){
+        final Dialog dialog=new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.success_dialog);
+
+        dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        dialog.show();
     }
 }

@@ -4,7 +4,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<ScrollView android:id="@+id/account" 
+	<ScrollView android:id="@+id/account"
+		android:paddingBottom="20dp"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" >
 
@@ -74,6 +75,7 @@
 			<RelativeLayout android:id="@+id/frame_8"
 				android:layout_marginTop="183dp"
 				android:layout_marginStart="0dp"
+				android:layout_marginBottom="30dp"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				>
@@ -83,7 +85,7 @@
 					 android:layout_marginStart="0dp"
 					android:layout_marginTop="0dp"
 					android:layout_width="match_parent"
-					android:layout_height="717dp" />
+					android:layout_height="757dp" />
 
 				<TextView android:id="@+id/account_ek1"
 					android:textStyle="bold"
