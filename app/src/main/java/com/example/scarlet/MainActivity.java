@@ -42,6 +42,16 @@ public class MainActivity extends AppCompatActivity {
 
         openHomeFragment();
         createBottomNavigation(savedInstanceState);
+        String fragmentToLoad = getIntent().getStringExtra("fragmentToLoad");
+        if (fragmentToLoad != null) {
+            switch (fragmentToLoad) {
+                case "CartFragment":
+                    openCartFragment();
+                    bottomNavigation.show(3,true);
+                    break;
+                // Handle other fragments if needed
+            }
+        }
 //        CreateDataDefault text=new CreateDataDefault();
 //        text.deleteX();
 //        text.addConfirmed();
@@ -81,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
                         openAccountFragment();
                         break;
                 }
-//                Toast.makeText(MainActivity.this,name,Toast.LENGTH_SHORT).show();
                 return null;
             }
         });

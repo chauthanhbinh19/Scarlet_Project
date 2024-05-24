@@ -21,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,6 +36,7 @@ import com.example.scarlet.Data.Favourite;
 import com.example.scarlet.Data.Product;
 import com.example.scarlet.Data.ProductQuantity;
 import com.example.scarlet.Data.Review;
+import com.example.scarlet.Fragment.CartFragment;
 import com.example.scarlet.Interface.GetStringCallback;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -76,7 +79,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     ImageView smallIcon, mediumIcon, largeIcon;
     TextView smallText, mediumText, largeText;
     RelativeLayout checkoutBtn, small, medium,large, box_size;
-    ImageView star1, star2, star3, star4, star5, package_box;
+    ImageView star1, star2, star3, star4, star5, package_box, cartBtn;
     final Handler handler = new Handler();
 
     private void BindView(){
@@ -129,6 +132,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         smallText=findViewById(R.id.smallText);
         mediumText=findViewById(R.id.mediumText);
         largeText=findViewById(R.id.largeText);
+
+        cartBtn=findViewById(R.id.cartBtn);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -255,7 +260,16 @@ public class ProductDetailActivity extends AppCompatActivity {
                 changeSizeStatus();
             }
         });
+        cartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ProductDetailActivity.this, MainActivity.class);
+                intent.putExtra("fragmentToLoad","CartFragment");
+                startActivity(intent);
+            }
+        });
     }
+
     private void changeSizeStatus(){
         switch (statusSize){
             case 1:

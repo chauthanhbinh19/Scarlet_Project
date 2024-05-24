@@ -66,6 +66,14 @@
 			android:text="@string/product_detail"
 			/>
 
+		<ImageView android:id="@+id/cartBtn"
+			android:layout_width="32dp"
+			android:layout_height="32dp"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="20dp"
+			android:background="@drawable/shopping_bag_2"/>
+
 	</RelativeLayout>
 	<ScrollView android:id="@+id/product_details"
 		android:layout_width="match_parent"
