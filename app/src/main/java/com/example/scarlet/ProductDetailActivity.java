@@ -550,7 +550,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                                         myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
 //                                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
-                                        showStatusDialog();
+//                                        showStatusDialog();
                                         break;
                                     }
                                 } else{
@@ -558,7 +558,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                     productIdList.add(new ProductQuantity(productKey,qt,0,size));
                                     myRef.child(snap.getKey()).child("productQuantityList").setValue(productIdList);
 //                                    Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
-                                    showStatusDialog();
+//                                    showStatusDialog();
                                     break;
                                 }
                             }
@@ -569,7 +569,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                             Cart cart=new Cart(userKey,productIdList);
                             myRef.push().setValue(cart);
 //                            Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
-                            showStatusDialog();
+//                            showStatusDialog();
                         }
                     }else{
                         int qt=Integer.parseInt(quantity.getText().toString());
@@ -577,7 +577,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                         Cart cart=new Cart(userKey,productIdList);
                         myRef.push().setValue(cart);
 //                        Toast.makeText(ProductDetailActivity.this,"Add to cart successfully", Toast.LENGTH_SHORT).show();
-                        showStatusDialog();
+//                        showStatusDialog();
                         return;
                     }
 
