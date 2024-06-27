@@ -57,7 +57,7 @@ dependencies {
 
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation(fileTree(mapOf(
-        "dir" to "D:\\ScarletProject\\Scarlet\\app\\libs",
+        "dir" to "libs",
         "include" to listOf("*.aar", "*.jar"),
         "exclude" to listOf("*.jar")
     )))

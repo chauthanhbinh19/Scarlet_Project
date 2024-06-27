@@ -175,31 +175,10 @@
 				android:layout_height="wrap_content"
 
 				>
-
-				<TextView android:id="@+id/total_product"
-					android:textStyle="bold"
-					android:textSize="16sp"
-					android:textColor="@color/black"
-					android:layout_marginLeft="23dp"
-					android:layout_marginTop="5dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Total items"
-					/>
-
-				<androidx.recyclerview.widget.RecyclerView
-					android:id="@+id/totalProductRecycleView"
-					android:layout_marginLeft="20dp"
-					android:paddingRight="20dp"
-					android:layout_below="@+id/total_product"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"/>
-
 				<TextView android:id="@+id/delivery_address_text"
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_below="@+id/totalProductRecycleView"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="10dp"
 					android:layout_width="wrap_content"
@@ -257,11 +236,33 @@
 						android:background="@color/transparent"/>
 				</RelativeLayout>
 
+
+				<TextView android:id="@+id/total_product"
+					android:textStyle="bold"
+					android:textSize="16sp"
+					android:textColor="@color/black"
+					android:layout_marginLeft="23dp"
+					android:layout_marginTop="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_below="@+id/delivery_box"
+					android:text="Total items"
+					/>
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/totalProductRecycleView"
+					android:layout_marginLeft="20dp"
+					android:paddingRight="20dp"
+					android:layout_below="@+id/total_product"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"/>
+
+
 				<TextView android:id="@+id/voucher_text"
 					android:textStyle="bold"
 					android:textSize="16sp"
 					android:textColor="@color/black"
-					android:layout_below="@+id/delivery_box"
+					android:layout_below="@+id/totalProductRecycleView"
 					android:layout_marginLeft="23dp"
 					android:layout_marginTop="5dp"
 					android:layout_width="wrap_content"
@@ -392,7 +393,7 @@
 						android:layout_height="wrap_content"
 						android:textColor="@color/black"
 						android:layout_marginBottom="10dp"
-						android:text="Show your support for the team at Scartlet store"/>
+						android:text="Show your support for the team at Scarlet store"/>
 
 					<RelativeLayout android:id="@+id/tip_box_1"
 						android:layout_centerHorizontal="true"
