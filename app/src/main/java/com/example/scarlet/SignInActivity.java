@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -56,8 +59,10 @@ public class SignInActivity extends AppCompatActivity {
 
     public EditText username;
     public EditText password;
+    ImageButton show, hide;
     ImageView gmailBtn;
     RelativeLayout gmailBox;
+    int defaultStatus=0;
     Button createAccount,forgotPassword,signin, continueBtn;
     private void BindView(){
         createAccount=(Button) findViewById(R.id._create_account_);
@@ -66,8 +71,8 @@ public class SignInActivity extends AppCompatActivity {
         password=(EditText) findViewById(R.id.password);
         signin=(Button) findViewById(R.id.sign_in_button);
         continueBtn=findViewById(R.id.continueBtn);
-//        gmailBtn=findViewById(R.id.gmailBtn);
-//        gmailBox=findViewById(R.id.gmailBox);
+        show=findViewById(R.id.show_1);
+        hide=findViewById(R.id.hide_1);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,31 +117,36 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestEmail()
-//                .build();
-//        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-//        GoogleSignInAccount googleSignInAccount=GoogleSignIn.getLastSignedInAccount(this);
-//        if(googleSignInAccount != null ){
-//            Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
-//            startActivity(intent);
-//        }
-//        ActivityResultLauncher activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//            @Override
-//            public void onActivityResult(ActivityResult result) {
-//                Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(result.getData());
-//                handleSignInTask(task);
-//            }
-//        });
-//        gmailBox.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent signInIntent=mGoogleSignInClient.getSignInIntent();
-//                activityResultLauncher.launch(signInIntent);
-//            }
-//        });
-    }
+        show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=1;
+                checkStatus();
+            }
+        });
+        hide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=0;
+                checkStatus();
+            }
+        });
 
+    }
+    public void checkStatus(){
+        switch (defaultStatus){
+            case 0:
+                show.setVisibility(View.VISIBLE);
+                hide.setVisibility(View.GONE);
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                break;
+            case 1:
+                show.setVisibility(View.GONE);
+                hide.setVisibility(View.VISIBLE);
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                break;
+        }
+    }
     private void handleSignInTask(Task<GoogleSignInAccount> task) {
         try {
             GoogleSignInAccount account=task.getResult(ApiException.class);

@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -57,10 +58,10 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
     RelativeLayout back_btn;
     RecyclerView productRecycleView;
     ImageView btnImage;
-    EditText voucherName, voucherDiscount, deliveryMethod, voucherDiscription;
+    EditText voucherName, voucherDiscount, voucherDiscription;
     Button btnSave;
     ProgressDialog progressDialog;
-    String vouchername,voucherdiscount, deliverymethod, voucherdiscription, expirydate, key;
+    String vouchername,voucherdiscount, voucherdiscription, expirydate, key;
     Uri uri;
     ImageView calendar;
     RadioButton radioProduct, radioAll;
@@ -69,7 +70,10 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
     GetKeyCallback getKeyCallback;
     List<String> keyList;
     List<Product> productList;
+    RadioGroup deliveryMethod;
+    String deliverymethodText="delivery";
     ProductCheckboxAdapter productCheckboxAdapter;
+    private RadioButton radioDelivery, radioPickup, radioInstore;
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         btnSave=findViewById(R.id.btnSave);
@@ -83,6 +87,9 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
         radioProduct=findViewById(R.id.radioProduct);
         radioAll=findViewById(R.id.radioAll);
         scrollView=findViewById(R.id.scrollProduct);
+        radioDelivery = findViewById(R.id.radioDelivery);
+        radioPickup = findViewById(R.id.radioPickup);
+        radioInstore=findViewById(R.id.radioInstore);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,17 +100,35 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
+        deliveryMethod.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.radioDelivery){
+                    deliverymethodText="delivery";
+                }else if(checkedId==R.id.radioPickup){
+                    deliverymethodText="pickup";
+                }else if(checkedId==R.id.radioInstore){
+                    deliverymethodText="instore";
+                }
+            }
+        });
         Intent intent=new Intent();
         if(intent!= null){
             vouchername= getIntent().getStringExtra("voucherName");
             voucherdiscount=getIntent().getStringExtra("voucherDiscount");
-            deliverymethod=getIntent().getStringExtra("deliveryMethod");
+            deliverymethodText=getIntent().getStringExtra("deliveryMethod");
             voucherdiscription=getIntent().getStringExtra("voucherDiscription");
             expirydate=getIntent().getStringExtra("expiryDate");
             key=getIntent().getStringExtra("voucherKey");
             voucherName.setText(vouchername);
             voucherDiscount.setText(voucherdiscount);
-            deliveryMethod.setText(deliverymethod);
+            if (deliverymethodText.equals("delivery")) {
+                radioDelivery.setChecked(true); // Đánh dấu RadioButton Delivery là đã chọn
+            } else if (deliverymethodText.equals("pickup")) {
+                radioPickup.setChecked(true); // Đánh dấu RadioButton Pickup là đã chọn
+            }else if (deliverymethodText.equals("instore")) {
+                radioInstore.setChecked(true); // Đánh dấu RadioButton Pickup là đã chọn
+            }
             voucherDiscription.setText(voucherdiscription);
             expiryDate.setText(expirydate);
         }
@@ -153,8 +178,6 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(voucherName.getText().toString().isEmpty()){
                     voucherName.setError("Voucher name can not be empty");
-                }else if(deliveryMethod.getText().toString().isEmpty()){
-                    deliveryMethod.setError("Delivery method can not be empty");
                 }else if(voucherDiscount.getText().toString().isEmpty()){
                     voucherDiscount.setError("Delivery discount can not be empty");
                 }else if(voucherDiscription.getText().toString().isEmpty()){
@@ -205,7 +228,7 @@ public class AdminEditVoucherActivity extends AppCompatActivity {
         String vouchername=voucherName.getText().toString();
         int discount=Integer.parseInt(voucherDiscount.getText().toString());
         String voucherdescription=voucherDiscription.getText().toString();
-        String deliverymethod=deliveryMethod.getText().toString();
+        String deliverymethod=deliverymethodText;
         String date=expiryDate.getText().toString();
         Date expirydate;
         try {

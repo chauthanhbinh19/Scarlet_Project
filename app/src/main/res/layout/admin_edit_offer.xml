@@ -84,7 +84,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
 
         <TextView
@@ -107,7 +107,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 
@@ -132,7 +132,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:hint="0"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:inputType="number"
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
@@ -157,7 +157,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textSize="16sp"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
@@ -184,7 +184,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textSize="16sp"
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>

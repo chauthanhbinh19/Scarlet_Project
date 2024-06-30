@@ -82,7 +82,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="45dp"/>
 
         <TextView
@@ -105,7 +105,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="45dp"/>
         <TextView
             android:id="@+id/proPrice"
@@ -127,7 +127,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="45dp"/>
 
         <TextView
@@ -150,7 +150,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="45dp"/>
 
         <TextView
@@ -173,7 +173,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:hint="Product category"
-            android:paddingLeft="22dp"
+            android:paddingLeft="15dp"
             android:textColorHint="@color/burgundy"
             android:layout_height="45dp"/>
 

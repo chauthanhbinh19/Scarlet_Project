@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +41,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -57,15 +59,18 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
     Uri uri;
     TextView btnImageError;
     ImageView calendar;
+    String genderText;
+    Spinner gender;
     private void BindView(){
         customerFirstName = findViewById(R.id.customerFirstName);
         customerLastName=findViewById(R.id.customerLastName);
         customerDateofBirth=findViewById(R.id.customerDateofBirth);
-        customerGender=findViewById(R.id.customerGender);
+//        customerGender=findViewById(R.id.customerGender);
         customerPhone=findViewById(R.id.customerPhone);
         btnImage = findViewById(R.id.btnImage);
         btnSave=findViewById(R.id.btnSave);
         back_btn=findViewById(R.id.back_btn);
+        gender=findViewById(R.id.gender);
         btnImageError=findViewById(R.id.btnImageError);
         calendar=findViewById(R.id.calendar);
     }
@@ -78,6 +83,21 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.burgundy));
 
         BindView();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderText=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         Intent intent=new Intent();
         if(intent!= null){
             customerfirstname= getIntent().getStringExtra("customerFirstName");
@@ -90,7 +110,10 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
             customerFirstName.setText(customerfirstname);
             customerLastName.setText(customerlastname);
             customerDateofBirth.setText(customerdateofbirth);
-            customerGender.setText(customergender);
+            String[] genders = getResources().getStringArray(R.array.gender_array);
+            int position = Arrays.asList(genders).indexOf(customergender);
+            gender.setSelection(position);
+//            customerGender.setText(customergender);
             customerPhone.setText(customerphone);
             Glide.with(AdminEditCustomerActivity.this).load(oldCustomerImg).into(btnImage);
         }
@@ -147,7 +170,7 @@ public class AdminEditCustomerActivity extends AppCompatActivity {
 
         customerfirstname=customerFirstName.getText().toString();
         customerlastname=customerLastName.getText().toString();
-        customergender=customerGender.getText().toString();
+        customergender=genderText;
         customerdateofbirth=customerDateofBirth.getText().toString();
         customerphone=customerPhone.getText().toString();
         if(uri==null && !oldCustomerImg.isEmpty()){

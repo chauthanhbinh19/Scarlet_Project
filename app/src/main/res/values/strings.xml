@@ -273,7 +273,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
     <string name="menu_home">Home</string>
     <string name="menu_category">Category</string>
     <string name="menu_product">Product</string>

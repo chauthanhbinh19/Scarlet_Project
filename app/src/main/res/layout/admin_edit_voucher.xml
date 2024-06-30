@@ -88,7 +88,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
 
         <TextView
@@ -127,6 +127,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Pick up"/>
+            <RadioButton android:id="@+id/radioInstore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Instore"/>
         </RadioGroup>
 
         <TextView
@@ -150,7 +155,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:hint="Discount %"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:inputType="number"
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
@@ -175,7 +180,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
 
         <TextView
@@ -200,7 +205,7 @@
             android:layout_width="match_parent"
             android:text="dd-MM-yyyy"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textSize="16sp"
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>

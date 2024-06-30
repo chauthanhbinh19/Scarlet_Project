@@ -2,11 +2,16 @@ package com.example.scarlet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,9 +42,14 @@ public class SignUpActivity extends AppCompatActivity {
     public EditText username;
     public EditText password;
     public EditText confirmpassword;
-    EditText first_name, last_name, gender,birthday, phone;
+    EditText first_name, last_name,birthday, phone;
+    Spinner gender;
     Button signUp,signIn;
     ImageButton calendar;
+    ImageButton show1, hide1,show2,hide2;
+    int defaultStatus1=0;
+    int defaultStatus2=0;
+    String genderText;
     private void BindView(){
         signUp=findViewById(R.id.sign_up_ek1);
         signIn=findViewById(R.id.sign_in_btn);
@@ -52,6 +62,10 @@ public class SignUpActivity extends AppCompatActivity {
         birthday=findViewById(R.id.birthday);
         phone=findViewById(R.id.phone);
         calendar=findViewById(R.id.calendar);
+        show1=findViewById(R.id.show_1);
+        hide1=findViewById(R.id.hide_1);
+        show2=findViewById(R.id.show_2);
+        hide2=findViewById(R.id.hide_2);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +76,21 @@ public class SignUpActivity extends AppCompatActivity {
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
 
         BindView();
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderText=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +99,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String confirmPasswordText=confirmpassword.getText().toString();
                 String firstName=first_name.getText().toString();
                 String lastname=last_name.getText().toString();
-                String genderText=gender.getText().toString();
+
                 String phoneText=phone.getText().toString();
                 String dateOfBirth=birthday.getText().toString();
 
@@ -111,7 +140,62 @@ public class SignUpActivity extends AppCompatActivity {
                 showDatePickerDialog();
             }
         });
-
+        show1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus1=1;
+                checkStatus1();
+            }
+        });
+        hide1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus1=0;
+                checkStatus1();
+            }
+        });
+        show2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus2=1;
+                checkStatus2();
+            }
+        });
+        hide2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus2=0;
+                checkStatus2();
+            }
+        });
+    }
+    public void checkStatus1(){
+        switch (defaultStatus1){
+            case 0:
+                show1.setVisibility(View.VISIBLE);
+                hide1.setVisibility(View.GONE);
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                break;
+            case 1:
+                show1.setVisibility(View.GONE);
+                hide1.setVisibility(View.VISIBLE);
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                break;
+        }
+    }
+    public void checkStatus2(){
+        switch (defaultStatus2){
+            case 0:
+                show2.setVisibility(View.VISIBLE);
+                hide2.setVisibility(View.GONE);
+                confirmpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                break;
+            case 1:
+                show2.setVisibility(View.GONE);
+                hide2.setVisibility(View.VISIBLE);
+                confirmpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                break;
+        }
     }
     public void showDatePickerDialog(){
         DatePickerDialog newFragment=new DatePickerDialog();

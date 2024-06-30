@@ -76,6 +76,7 @@ public class AdminVoucherFragment extends Fragment {
     GetKeyCallback getKeyCallback;
     List<String> keyList;
     ProgressDialog progressDialog;
+    String deliverymethodText="delivery";
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
@@ -217,7 +218,8 @@ public class AdminVoucherFragment extends Fragment {
         View dialogView = inflater.inflate(R.layout.admin_voucher_popup, null);
 
         voucherName = dialogView.findViewById(R.id.voucherName);
-        deliveryMethod=dialogView.findViewById(R.id.deliveryMethod);
+//        deliveryMethod=dialogView.findViewById(R.id.deliveryMethod);
+        RadioGroup deliveryMethod=dialogView.findViewById(R.id.deliveryMethod);
         voucherDiscount=dialogView.findViewById(R.id.voucherDiscount);
         voucherDiscription=dialogView.findViewById(R.id.voucherDescription);
         expiryDate=dialogView.findViewById(R.id.voucherExpiryDate);
@@ -247,6 +249,18 @@ public class AdminVoucherFragment extends Fragment {
                 }
             }
         };
+        deliveryMethod.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId==R.id.radioDelivery){
+                    deliverymethodText="delivery";
+                }else if(checkedId==R.id.radioPickup){
+                    deliverymethodText="pickup";
+                }else if(checkedId==R.id.radioInstore){
+                    deliverymethodText="instore";
+                }
+            }
+        });
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,8 +295,6 @@ public class AdminVoucherFragment extends Fragment {
             public void onClick(View v) {
                 if(voucherName.getText().toString().isEmpty()){
                     voucherName.setError("Voucher name can not be empty");
-                }else if(deliveryMethod.getText().toString().isEmpty()){
-                    deliveryMethod.setError("Delivery method can not be empty");
                 }else if(voucherDiscount.getText().toString().isEmpty()){
                     voucherDiscount.setError("Delivery discount can not be empty");
                 }else if(voucherDiscription.getText().toString().isEmpty()){
@@ -437,7 +449,7 @@ public class AdminVoucherFragment extends Fragment {
         String vouchername=voucherName.getText().toString();
         int discount=Integer.parseInt(voucherDiscount.getText().toString());
         String voucherdescription=voucherDiscription.getText().toString();
-        String deliverymethod=deliveryMethod.getText().toString();
+        String deliverymethod=deliverymethodText;
         String date=expiryDate.getText().toString();
         Date expirydate;
         try {

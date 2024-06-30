@@ -8,10 +8,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +39,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -44,11 +48,13 @@ public class EditProfileActivity extends AppCompatActivity {
 
     RelativeLayout back_btn;
     Button saveBtn;
-    EditText first_name, last_name, gender, birthday, phone;
+    EditText first_name, last_name, birthday, phone;
     ImageView calendar, btnImage;
     Uri uri;
     ProgressDialog progressDialog;
     GetKeyCallback getKeyCallback;
+    Spinner gender;
+    String genderText;
     String customerfirstname, customerlastname, customerdateofbirth, customergender,customerphone, oldCustomerImg, userKey;
     private void BindView(){
         back_btn=(RelativeLayout) findViewById(R.id.back_btn);
@@ -76,6 +82,21 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         };
         getCustomerInfo(getKeyCallback);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderText=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +148,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
                         first_name.setText(firstname);
                         last_name.setText(lastname);
-                        gender.setText(genderString);
+                        String[] genders = getResources().getStringArray(R.array.gender_array);
+                        int position = Arrays.asList(genders).indexOf(genderString);
+                        gender.setSelection(position);
                         birthday.setText(dateofbirth);
                         phone.setText(phoneString);
                         getKeyCallback.itemClick(avatar,1);
@@ -139,7 +162,6 @@ public class EditProfileActivity extends AppCompatActivity {
                         int blackcolor= ContextCompat.getColor(EditProfileActivity.this,R.color.black);
                         first_name.setTextColor(blackcolor);
                         last_name.setTextColor(blackcolor);
-                        gender.setTextColor(blackcolor);
                         birthday.setTextColor(blackcolor);
                         phone.setTextColor(blackcolor);
                     }
@@ -168,7 +190,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         customerfirstname=first_name.getText().toString();
         customerlastname=last_name.getText().toString();
-        customergender=gender.getText().toString();
+        customergender=genderText;
         customerdateofbirth=birthday.getText().toString();
         customerphone=phone.getText().toString();
         SharedPreferences sharedPreferences =getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

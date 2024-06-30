@@ -70,7 +70,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:hint="Category name"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 

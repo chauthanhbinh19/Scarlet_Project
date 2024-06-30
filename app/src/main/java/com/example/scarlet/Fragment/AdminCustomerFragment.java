@@ -18,11 +18,13 @@ import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -81,6 +83,8 @@ public class AdminCustomerFragment extends Fragment {
     ImageButton calendar;
     final Handler handler = new Handler();
     int delay=150;
+    String genderText;
+    Spinner gender;
     private void BindView(View view){
         customerRecycleView=view.findViewById(R.id.customer_recyclerView);
         search_bar=view.findViewById(R.id.search_bar);
@@ -141,7 +145,7 @@ public class AdminCustomerFragment extends Fragment {
         customerFirstName = dialogView.findViewById(R.id.customerFirstName);
         customerLastName=dialogView.findViewById(R.id.customerLastName);
         customerDateofBirth=dialogView.findViewById(R.id.customerDateofBirth);
-        customerGender=dialogView.findViewById(R.id.customerGender);
+        gender=dialogView.findViewById(R.id.gender);
         customerPhone=dialogView.findViewById(R.id.customerPhone);
         customerEmail=dialogView.findViewById(R.id.customerEmail);
         customerPassword=dialogView.findViewById(R.id.customerPassword);
@@ -155,6 +159,21 @@ public class AdminCustomerFragment extends Fragment {
 
         AlertDialog dialog = builder.create();
         dialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.rectangle_circle_white_30));
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                getContext(), R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        gender.setAdapter(adapter);
+        gender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                genderText=parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,7 +217,7 @@ public class AdminCustomerFragment extends Fragment {
                     String password=customerPassword.getText().toString();
                     String firstname=customerFirstName.getText().toString();
                     String lastname=customerLastName.getText().toString();
-                    String gender=customerGender.getText().toString();
+                    String gender=genderText;
                     String dateofbirth=customerDateofBirth.getText().toString();
                     String phone=customerPhone.getText().toString();
                     saveCustomerData(email,password,firstname,lastname,gender,dateofbirth, phone, true,false);
