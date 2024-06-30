@@ -491,7 +491,7 @@
 							android:layout_height="wrap_content"/>
 
 						<ImageView android:id="@+id/icon_cash"
-							android:layout_width="50dp"
+							android:layout_width="40dp"
 							android:layout_height="40dp"
 							android:layout_marginLeft="10dp"
 							android:layout_centerVertical="true"
@@ -501,12 +501,12 @@
 						<TextView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:layout_marginLeft="10dp"
+							android:layout_marginLeft="70dp"
 							android:layout_centerVertical="true"
-							android:layout_toRightOf="@+id/icon_cash"
+							android:layout_toRightOf="@+id/radio_cash"
 							android:text="Payment in cash"
 							android:textColor="@color/black"
-							android:textSize="20sp"/>
+							android:textSize="16sp"/>
 					</RelativeLayout>
 					<RelativeLayout android:id="@+id/zalo_box"
 						android:layout_marginTop="10dp"
@@ -521,7 +521,7 @@
 							android:layout_height="wrap_content"/>
 
 						<ImageView android:id="@+id/icon_zaloPay"
-							android:layout_width="60dp"
+							android:layout_width="50dp"
 							android:layout_height="40dp"
 							android:layout_marginLeft="10dp"
 							android:layout_centerVertical="true"
@@ -531,22 +531,83 @@
 						<TextView
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:layout_marginLeft="10dp"
+							android:layout_marginLeft="70dp"
 							android:layout_centerVertical="true"
-							android:layout_toRightOf="@+id/icon_zaloPay"
+							android:layout_toRightOf="@+id/radio_zaloPay"
 							android:text="Pay with Zalo pay"
 							android:textColor="@color/black"
-							android:textSize="20sp"/>
+							android:textSize="16sp"/>
 					</RelativeLayout>
+				</RelativeLayout>
+				<RelativeLayout android:id="@+id/totalBox"
+					android:layout_below="@+id/payment_box"
+					android:paddingTop="15dp"
+					android:layout_marginLeft="25dp"
+					android:layout_marginRight="25dp"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+					<TextView android:id="@+id/discountText"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/black"
+						android:textStyle="bold"
+						android:textSize="16sp"
+						android:text="Discount"/>
+					<TextView android:id="@+id/txtdiscount"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="0"
+						android:layout_toLeftOf="@+id/txtunitdiscount"
+						android:textSize="16sp"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
+					<TextView android:id="@+id/txtunitdiscount"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text=" đ"
+						android:layout_alignParentRight="true"
+						android:textSize="16sp"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/black"
+						android:layout_marginTop="5dp"
+						android:layout_below="@+id/discountText"
+						android:textStyle="bold"
+						android:textSize="16sp"
+						android:text="Total"/>
+
+					<TextView android:id="@+id/txttotal"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="0"
+						android:layout_marginTop="5dp"
+						android:layout_below="@+id/discountText"
+						android:layout_toLeftOf="@+id/txtunit"
+						android:textSize="16sp"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
+					<TextView android:id="@+id/txtunit"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text=" đ"
+						android:layout_marginTop="5dp"
+						android:layout_below="@+id/discountText"
+						android:layout_alignParentRight="true"
+						android:textSize="16sp"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
 				</RelativeLayout>
 				<Button   android:id="@+id/btnPay"
 					android:background="@drawable/rectangle_burgundy_radius"
 					android:layout_marginLeft="80dp"
-					android:layout_marginTop="30dp"
+					android:layout_marginTop="20dp"
 					android:layout_marginBottom="10dp"
 					android:layout_width="match_parent"
 					android:layout_height="48dp"
-					android:layout_below="@+id/payment_box"
+					android:layout_below="@+id/totalBox"
 					android:textStyle="bold"
 					android:layout_gravity="center_horizontal|center"
 					android:layout_centerHorizontal="true"

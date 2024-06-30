@@ -172,19 +172,20 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addToCart(productKey);
-                getNumberOfItems();
-                package_box.setVisibility(View.VISIBLE);
-                checkoutBtn.setVisibility(View.VISIBLE);
-                getTotal();
-                Animation slideUpAnimation = AnimationUtils.loadAnimation(ProductDetailActivity.this, R.anim.slide_up);
-                checkoutBtn.setAnimation(slideUpAnimation);
-                package_box.setAnimation(slideUpAnimation);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        package_box.setBackgroundResource(R.drawable.paper_bag_packed);
-                    }
-                },700);
+                Toast.makeText(ProductDetailActivity.this,"Add successfully!",Toast.LENGTH_SHORT).show();
+//                getNumberOfItems();
+//                package_box.setVisibility(View.VISIBLE);
+//                checkoutBtn.setVisibility(View.VISIBLE);
+//                getTotal();
+//                Animation slideUpAnimation = AnimationUtils.loadAnimation(ProductDetailActivity.this, R.anim.slide_up);
+//                checkoutBtn.setAnimation(slideUpAnimation);
+//                package_box.setAnimation(slideUpAnimation);
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        package_box.setBackgroundResource(R.drawable.paper_bag_packed);
+//                    }
+//                },700);
             }
         });
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -539,7 +540,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                                         for(ProductQuantity pd:productIdList){
                                             if(pd.getProductId().equals(productKey) && pd.getSize().equals(size)){
                                                 found=true;
-                                                qt=pd.getQuantity()+1;
+                                                qt=pd.getQuantity()+qt;
                                                 pd.setQuantity(qt);
                                                 break;
                                             }

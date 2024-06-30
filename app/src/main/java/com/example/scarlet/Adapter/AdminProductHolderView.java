@@ -163,10 +163,10 @@ public class AdminProductHolderView extends RecyclerView.ViewHolder {
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
 
         productName.setText(name);
-        productPoint.setText("Point: "+String.valueOf(point));
-        productPrice.setText("Price: "+String.format("%.0f",price)+" đ");
-        productDescription.setText("Description: "+description);
-        productCategory.setText("Category: "+categoryName);
+        productPoint.setText(String.valueOf(point));
+        productPrice.setText(String.format("%.0f",price)+" đ");
+        productDescription.setText(description);
+        productCategory.setText(categoryName);
         Glide.with(context).load(img).into(btnImage);
 
         btnClose.setOnClickListener(new View.OnClickListener() {

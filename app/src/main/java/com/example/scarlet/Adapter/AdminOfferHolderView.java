@@ -156,10 +156,10 @@ public class AdminOfferHolderView extends RecyclerView.ViewHolder {
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
 
         offerName.setText(name);
-        offerDescription.setText("Description: "+description);
-        offerPoint.setText("Point "+String.valueOf(point));
-        offerStartDate.setText("Start date: "+startDate);
-        offerEndDate.setText("End date: "+endDate);
+        offerDescription.setText(description);
+        offerPoint.setText(String.valueOf(point));
+        offerStartDate.setText(startDate);
+        offerEndDate.setText(endDate);
 
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override

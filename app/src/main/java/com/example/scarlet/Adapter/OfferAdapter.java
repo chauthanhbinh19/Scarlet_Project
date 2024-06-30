@@ -34,7 +34,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferHolderView> {
     public void onBindViewHolder(@NonNull OfferHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(offerList.get(position),getPointCallback);
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

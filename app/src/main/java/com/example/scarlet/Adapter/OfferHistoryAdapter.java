@@ -26,7 +26,7 @@ public class OfferHistoryAdapter extends RecyclerView.Adapter<OfferHistoryHolder
     @NonNull
     @Override
     public OfferHistoryHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.offer_adapter_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.offer_adapter_layout_2, parent, false);
         return new OfferHistoryHolderView(view);
     }
 

@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
     double total;
     Address address;
     String deliveryStatus;
-    TextView delivery_address_content, discount_price, voucher_total, totalAfterDiscount, totalUnit;
+    TextView delivery_address_content, discount_price, voucher_total, totalAfterDiscount, totalUnit, txttotal, txtdiscount;
     RadioButton radioZaloPay, radioCash;
     int defaultStatus=4;
     int tip=0;
@@ -101,6 +101,8 @@ public class PaymentActivity extends AppCompatActivity {
         delivery_address_content=findViewById(R.id.delivery_address_content);
         totalUnit=findViewById(R.id.totalUnit);
         changeAddressBtn=findViewById(R.id.changeAddressBtn);
+        txttotal=findViewById(R.id.txttotal);
+        txtdiscount=findViewById(R.id.txtdiscount);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +128,7 @@ public class PaymentActivity extends AppCompatActivity {
             String postalCode=intent.getStringExtra("postalCode");
             String additionalInfo=intent.getStringExtra("street");
             totalView.setText(totalT);
+            txttotal.setText(totalT);
             String a=street+", "+ward+", "+district+", "+province;
             delivery_address_content.setText(a);
             if(!postalCode.isEmpty()){
@@ -277,6 +280,8 @@ public class PaymentActivity extends AppCompatActivity {
                                         voucher_total.setVisibility(View.GONE);
                                         totalAfterDiscount.setVisibility(View.GONE);
                                         totalUnit.setVisibility(View.GONE);
+                                        txttotal.setText(totalView.getText().toString());
+                                        txtdiscount.setText("0");
                                     }
                                 }
                             }
@@ -842,6 +847,8 @@ public class PaymentActivity extends AppCompatActivity {
                 temp=-temp;
                 discount_price.setText(String.format("%.0f", temp) + " đ");
                 totalAfterDiscount.setText(String.format("%.0f", subTotal));
+                txttotal.setText(String.format("%.0f", subTotal));
+                txtdiscount.setText(String.format("%.0f", temp));
             }
 
             @Override

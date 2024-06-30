@@ -33,7 +33,7 @@ public class TrendAdapter extends RecyclerView.Adapter<TrendHolderView> {
     public void onBindViewHolder(@NonNull TrendHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.fade_in);
         holder.bindData(productList.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

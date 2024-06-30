@@ -60,7 +60,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:text="Product name"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textSize="14sp"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
@@ -88,7 +88,7 @@
             android:text="0"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
 
         <TextView
@@ -115,7 +115,7 @@
             android:text="Product price"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
 
         <TextView
@@ -142,7 +142,7 @@
             android:text="Product description"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:layout_height="50dp"/>
         <TextView
             android:id="@+id/proCat"
@@ -168,7 +168,7 @@
             android:text="Product category"
             android:gravity="center_vertical"
             android:textColor="@color/burgundy"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 

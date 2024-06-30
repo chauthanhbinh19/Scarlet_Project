@@ -22,10 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class OfferHistoryHolderView extends RecyclerView.ViewHolder {
-    TextView offerName,offerDescription,offerPoint;
+    TextView offerName,offerDescription,offerPoint, time;
     ImageView offerImage;
     String key, code;
     int point;
@@ -37,13 +38,16 @@ public class OfferHistoryHolderView extends RecyclerView.ViewHolder {
         offerDescription=itemView.findViewById(R.id.offer_description);
         offerPoint=itemView.findViewById(R.id.offer_point);
         offerImage=itemView.findViewById(R.id.offer_image);
-
+        time=itemView.findViewById(R.id.time);
     }
     public void bindData(Offer offer, GetPointCallback getPointCallback1){
         offerName.setText(offer.getName());
         offerDescription.setText(offer.getDescription());
         offerPoint.setText(String.valueOf(offer.getPoint()));
-        offerImage.setImageResource(offer.getImage());
+//        offerImage.setImageResource(offer.getImage());
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String formattedExchangeDate = format.format(offer.getExchangeDate());
+        time.setText(formattedExchangeDate);
         key=offer.getKey();
         code=offer.getCode();
         point=offer.getPoint();

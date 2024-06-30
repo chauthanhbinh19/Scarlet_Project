@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.scarlet.Adapter.FavouriteAdapter;
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.ProductAdapter;
 import com.example.scarlet.Adapter.ProductSearchAdapter;
@@ -43,11 +44,11 @@ import java.util.List;
 public class FavouriteFragment extends Fragment {
     private EditText editText;
     private MeowBottomNavigation bottomNavigation;
-    private ProductSearchAdapter productAdapter;
+    private FavouriteAdapter productAdapter;
     private List<Product> productList;
     RecyclerView recyclerView;
     RelativeLayout signinNotification,recycleBox;
-    TextView favourite_text;
+    TextView favourite_text, btnDelete;
     final Handler handler = new Handler();
     Button signInBtn;
     int delay=150;
@@ -169,7 +170,7 @@ public class FavouriteFragment extends Fragment {
                                     productList.add(productWithIcon);
                                 }
                             }
-                            productAdapter=new ProductSearchAdapter(productList);
+                            productAdapter=new FavouriteAdapter(productList);
                             recyclerView.setAdapter(productAdapter);
                         }
 

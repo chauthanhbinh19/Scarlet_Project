@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:textSize="14sp"
-                android:paddingLeft="30dp"
+                android:paddingLeft="15dp"
                 android:layout_marginRight="5dp"
                 android:textColor="@color/burgundy"
                 android:text="First Name"
@@ -71,7 +71,7 @@
                 android:layout_weight="1"
                 android:textSize="14sp"
                 android:gravity="center_vertical"
-                android:paddingLeft="30dp"
+                android:paddingLeft="15dp"
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/burgundy"
                 android:text="Last Name"
@@ -100,7 +100,7 @@
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:text="Date of birth"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
@@ -125,7 +125,7 @@
             android:layout_width="match_parent"
             android:textSize="14sp"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/burgundy"
             android:text="Gender"
             android:layout_height="50dp"/>
@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:gravity="center_vertical"
             android:textSize="14sp"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/burgundy"
             android:text="Phone"
             android:layout_height="50dp"/>
@@ -177,7 +177,7 @@
             android:layout_width="match_parent"
             android:textSize="14sp"
             android:gravity="center_vertical"
-            android:paddingLeft="30dp"
+            android:paddingLeft="15dp"
             android:textColor="@color/burgundy"
             android:text="Email"
             android:layout_height="50dp" />

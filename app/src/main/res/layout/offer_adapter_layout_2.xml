@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        >
+
+
+        <View   android:id="@+id/rectangle_9"
+            android:background="@drawable/rectangle_circle_white_2"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rectangle_burgundy_top_right_bottom_right_radius"/>
+        <TextView android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="5dp"
+            android:textSize="12sp"
+            android:layout_marginTop="2dp"
+            android:text="time"/>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle_lightpink_radius" />
+
+        <ImageView android:id="@+id/offer_image"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/star"
+            android:layout_marginTop="35dp"/>
+
+        <TextView android:id="@+id/offer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:maxWidth="150dp"
+            android:singleLine="true"
+            android:layout_toRightOf="@+id/offer_image"
+            android:textColor="@color/burgundy"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="30dp"
+            android:text="Voucher number 1"/>
+
+        <TextView android:id="@+id/offer_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:maxWidth="150dp"
+            android:layout_toRightOf="@+id/offer_image"
+            android:layout_marginBottom="25dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentBottom="true"
+            android:text="Voucher number 1"/>
+        <RelativeLayout android:id="@+id/box_offer"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="25dp"
+                android:background="@drawable/rectangle_lightgreen"/>
+            <TextView android:id="@+id/offer_point"
+                android:layout_width="wrap_content"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textSize="16sp"
+                android:text="300"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="28dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/box_offer"
+            android:text="POINT"/>
+    </RelativeLayout>

@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 
 public class OrderHolderView extends RecyclerView.ViewHolder {
-    TextView date, item, total, detail, cancel,textContent;
+    TextView date, item, total, detail, cancel,textContent, orderStatus;
     ImageView icon;
     String key;
     Context context;
@@ -43,6 +43,7 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         cancel=itemView.findViewById(R.id.cancel);
         textContent=itemView.findViewById(R.id.textContent);
         icon=itemView.findViewById(R.id.icon);
+        orderStatus=itemView.findViewById(R.id.orderStatus);
         context=itemView.getContext();
         detail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,7 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
     }
     public void bindData(Order order){
         total.setText(String.format("%.0f", order.getTotal()));
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String formattedExpiryDate = format.format(order.getOrderDate());
         date.setText(formattedExpiryDate);
         item.setText(String.valueOf(order.getProductList().size())+" items");
@@ -71,6 +72,17 @@ public class OrderHolderView extends RecyclerView.ViewHolder {
         }else if(order.getOrderStatus().equals("cancelled")){
             textContent.setText("Your order has been cancelled");
             icon.setImageResource(R.drawable.fast_delivery_3);
+        }
+        orderStatus.setText(order.getOrderStatus());
+        if(order.getOrderStatus().equals("pending")){
+            orderStatus.setBackground(context.getDrawable(R.drawable.rectangle_yellow_radius));
+            orderStatus.setText("Ongoing");
+        }else if(order.getOrderStatus().equals("done")){
+            orderStatus.setText("Completed");
+            orderStatus.setBackground(context.getDrawable(R.drawable.rectangle_green_radius));
+        }else if(order.getOrderStatus().equals("cancelled")){
+            orderStatus.setText("Cancelled");
+            orderStatus.setBackground(context.getDrawable(R.drawable.rectangle_gray_radius));
         }
     }
 }

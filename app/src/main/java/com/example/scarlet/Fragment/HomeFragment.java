@@ -6,7 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -51,7 +54,7 @@ public class HomeFragment extends Fragment {
     private List<Product> productList;
     RelativeLayout search, notification;
     RecyclerView categoryRecyclerView,trendRecyclerView, ProductRecyclerView;
-    TextView welcomeMessage, menu, trends;
+    TextView welcomeMessage, menu, trends, moreBtn;
     final Handler handler = new Handler();
     int delay=150;
     private void BindView(View view){
@@ -63,6 +66,7 @@ public class HomeFragment extends Fragment {
         menu=view.findViewById(R.id.menu);
         trends=view.findViewById(R.id.trends);
         notification=view.findViewById(R.id.notification);
+        moreBtn=view.findViewById(R.id.moreBtn);
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -82,6 +86,43 @@ public class HomeFragment extends Fragment {
                 Intent intent=new Intent(getContext(), SearchProductActivity.class);
                 startActivity(intent);
                 getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
+        });
+        moreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Query query = FirebaseDatabase.getInstance().getReference("category");
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int count =0;
+                        for(DataSnapshot snap:snapshot.getChildren()){
+                            String categoryName=snap.child("name_category").getValue(String.class);
+                            String categoryKey=snap.getKey();
+
+                            ProductFragment productFragment=new ProductFragment();
+                            Bundle args=new Bundle();
+                            args.putString("categoryKey",categoryKey);
+                            args.putString("categoryName",categoryName);
+                            productFragment.setArguments(args);
+
+                            FragmentManager fragmentManager = ((AppCompatActivity)getContext()).getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.setCustomAnimations(R.anim.slide_in_left,R.anim.slide_out_right);
+                            fragmentTransaction.replace(R.id.frame_layout, productFragment);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            count++;
+                            if(count>0){
+                                break;
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
             }
         });
         return view;

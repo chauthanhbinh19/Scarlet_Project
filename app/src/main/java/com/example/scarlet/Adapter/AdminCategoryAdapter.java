@@ -31,7 +31,7 @@ public class AdminCategoryAdapter extends RecyclerView.Adapter<AdminCategoryHold
     public void onBindViewHolder(@NonNull AdminCategoryHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(categoryList.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
     @Override
     public int getItemCount() {

@@ -28,6 +28,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -87,6 +88,7 @@ public class PointHistoryActivity extends AppCompatActivity {
                         for(DataSnapshot snap1:snapshot1.getChildren()){
                             if(snap1.child("customerId").getValue(String.class).equals(userKey)){
                                 String offerId=snap1.child("offerId").getValue(String.class);
+                                Date exchangeDate=snap1.child("exchangeDate").getValue(Date.class);
                                 offerRef.child(offerId).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot2) {
@@ -95,7 +97,7 @@ public class PointHistoryActivity extends AppCompatActivity {
                                                 String offerDescription=snapshot2.child("description").getValue(String.class);
                                                 int offerPoint=snapshot2.child("point").getValue(int.class);
                                                 int offerImage=snapshot2.child("image").getValue(int.class);
-                                                Offer offer=new Offer(offerName,offerDescription,offerPoint,offerImage);
+                                                Offer offer=new Offer(offerName,offerDescription,offerPoint,offerImage,exchangeDate);
                                                 offerList.add(offer);
                                         }
                                         if(offerList.size()>0){

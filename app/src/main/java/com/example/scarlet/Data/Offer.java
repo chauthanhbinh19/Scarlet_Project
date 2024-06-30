@@ -11,6 +11,7 @@ public class Offer {
     private Date startDate;
     private Date endDate;
     private String key;
+    private Date exchangeDate;
 
     public String getName() {
         return name;
@@ -76,6 +77,14 @@ public class Offer {
         this.code = code;
     }
 
+    public Date getExchangeDate() {
+        return exchangeDate;
+    }
+
+    public void setExchangeDate(Date exchangeDate) {
+        this.exchangeDate = exchangeDate;
+    }
+
     public Offer() {
     }
 
@@ -107,11 +116,12 @@ public class Offer {
         this.endDate = endDate;
     }
 
-    public Offer(String name, String description, int point, int image) {
+    public Offer(String name, String description, int point, int image, Date exchangeDate) {
         this.name = name;
         this.description = description;
         this.point = point;
         this.image = image;
+        this.exchangeDate=exchangeDate;
     }
 
     public Offer(String name, String description, int point, int image, Date startDate, Date endDate, String key) {

@@ -163,10 +163,10 @@ public class AdminCustomerHolderView extends RecyclerView.ViewHolder {
 
         customerFirstName.setText(firstname);
         customerLastName.setText(lastname);
-        customerDateofBirth.setText("Birthday: "+dateofbirth);
-        customerGender.setText("Gender: "+gender);
-        customerPhone.setText("Phone: "+phone);
-        customerEmail.setText("Email: "+email);
+        customerDateofBirth.setText(dateofbirth);
+        customerGender.setText(gender);
+        customerPhone.setText(phone);
+        customerEmail.setText(email);
         Glide.with(context).load(img).into(btnImage);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override

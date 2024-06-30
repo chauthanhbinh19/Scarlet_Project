@@ -32,7 +32,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderHolderView> {
     public void onBindViewHolder(@NonNull OrderHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(orderList.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

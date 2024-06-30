@@ -34,7 +34,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealtHolderView> {
     public void onBindViewHolder(@NonNull DealtHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(dealList.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

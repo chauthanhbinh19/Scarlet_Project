@@ -146,10 +146,10 @@ public class AdminDealtHolderView extends RecyclerView.ViewHolder {
         dialog.getWindow().setBackgroundDrawable(context.getResources().getDrawable(R.drawable.rectangle_circle_white_30));
 
         voucherName.setText(vouchername);
-        deliveryMethod.setText("Delivery method: "+deliverymethod);
-        voucherDiscount.setText("Sales "+voucherdiscount+"%");
-        voucherDiscription.setText("Description: "+voucherdescription);
-        expiryDateText.setText("Expiry date: "+expirydate);
+        deliveryMethod.setText(deliverymethod);
+        voucherDiscount.setText(voucherdiscount+"%");
+        voucherDiscription.setText(voucherdescription);
+        expiryDateText.setText(expirydate);
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

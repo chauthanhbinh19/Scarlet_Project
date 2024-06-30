@@ -37,7 +37,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderHolderView
     public void onBindViewHolder(@NonNull AdminOrderHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(filteredData.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

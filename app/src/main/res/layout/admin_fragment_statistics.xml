@@ -28,8 +28,8 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:layout_width="120dp"
-                        android:layout_height="70dp"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rectangle_gradient_red" />
                     <TextView
@@ -39,7 +39,7 @@
                         android:layout_centerVertical="true"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
                         android:text="Product"/>
                 </RelativeLayout>
@@ -49,8 +49,8 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="120dp"
-                        android:layout_height="70dp"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rectangle_gradient_piglet"
                         app:shapeAppearanceOverlay="@style/roundedImageView"/>
@@ -61,7 +61,7 @@
                         android:layout_centerVertical="true"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
                         android:text="Revenue"/>
                 </RelativeLayout>
@@ -71,8 +71,8 @@
                     android:layout_weight="1">
 
                     <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="120dp"
-                        android:layout_height="70dp"
+                        android:layout_width="100dp"
+                        android:layout_height="60dp"
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/rectangle_gradient_vine"
                         app:shapeAppearanceOverlay="@style/roundedImageView"/>
@@ -83,7 +83,7 @@
                         android:layout_centerVertical="true"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
                         android:text="Category"/>
                 </RelativeLayout>

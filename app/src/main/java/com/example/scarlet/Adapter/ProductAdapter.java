@@ -35,7 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductHolderView> {
     public void onBindViewHolder(@NonNull ProductHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(productList.get(position));
-        holder.itemView.startAnimation(animation);
+//        holder.itemView.startAnimation(animation);
     }
 
     @Override

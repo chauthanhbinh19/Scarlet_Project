@@ -15,10 +15,10 @@ import com.example.scarlet.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductSearchAdapter extends RecyclerView.Adapter<ProductHolderView> {
-    private List<Product> productList;
-    private List<Product> filteredData;
-    public ProductSearchAdapter(List<Product> productList){
+public class FavouriteAdapter extends RecyclerView.Adapter<FavouriteHolderView> {
+    public List<Product> productList;
+    public List<Product> filteredData;
+    public FavouriteAdapter(List<Product> productList){
         this.productList=productList;
         this.filteredData=new ArrayList<>(productList);
     }
@@ -26,13 +26,13 @@ public class ProductSearchAdapter extends RecyclerView.Adapter<ProductHolderView
 
     @NonNull
     @Override
-    public ProductHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_adapter_layout_2, parent, false);
-        return new ProductHolderView(view);
+    public FavouriteHolderView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_adapter_layout_6, parent, false);
+        return new FavouriteHolderView(view).linkAdapter(this);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductHolderView holder, int position) {
+    public void onBindViewHolder(@NonNull FavouriteHolderView holder, int position) {
         Animation animation= AnimationUtils.loadAnimation(holder.itemView.getContext(), android.R.anim.slide_in_left);
         holder.bindData(filteredData.get(position));
 //        holder.itemView.startAnimation(animation);
