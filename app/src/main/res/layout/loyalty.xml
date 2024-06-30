@@ -88,6 +88,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
+				android:justificationMode="inter_word"
+				android:lineSpacingExtra="2sp"
 				android:text="@string/introduction"
 				/>
 
@@ -114,6 +116,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
+				android:justificationMode="inter_word"
+				android:lineSpacingExtra="2sp"
 				android:text="@string/eligibility"
 				/>
 
@@ -140,6 +144,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
+				android:justificationMode="inter_word"
+				android:lineSpacingExtra="2sp"
 				android:text="@string/benefit"
 				/>
 
@@ -166,6 +172,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
+				android:justificationMode="inter_word"
+				android:lineSpacingExtra="2sp"
 				android:text="@string/fees"
 				/>
 
@@ -192,6 +200,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentLeft="true"
+				android:justificationMode="inter_word"
+				android:lineSpacingExtra="2sp"
 				android:text="@string/cancelled"
 				/>
 		</RelativeLayout>

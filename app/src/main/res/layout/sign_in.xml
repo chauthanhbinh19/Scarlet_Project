@@ -44,6 +44,24 @@
 				android:background="@drawable/rectangle_white_stroke"
 				 />
 
+			<ImageButton android:id="@+id/show_1"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:layout_below="@+id/username_or_email"
+				android:layout_marginTop="25dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="50dp"
+				android:background="@drawable/show" />
+
+			<ImageButton android:id="@+id/hide_1"
+				android:layout_width="25dp"
+				android:layout_height="25dp"
+				android:layout_below="@+id/username_or_email"
+				android:layout_marginTop="25dp"
+				android:layout_alignParentRight="true"
+				android:layout_marginRight="50dp"
+				android:background="@drawable/hide" />
+
 			<ImageView
 				android:layout_width="22dp"
 				android:layout_height="22dp"
@@ -83,53 +101,27 @@
 				android:layout_centerHorizontal="true"
 				android:textSize="18sp"
 				style="@style/MyButtonTheme"
-				android:layout_below="@+id/_create_account_"
+				android:layout_below="@+id/forgot_password_"
 				android:layout_marginLeft="80dp"
 				android:layout_marginTop="-10dp"
 				android:layout_width="match_parent"
 				android:layout_height="50dp"
 				android:background="@drawable/_btn_burgundy_stroke"  />
 
-			<TextView android:id="@+id/text1"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal|center"
-				android:layout_marginTop="15dp"
-				android:layout_marginLeft="50dp"
-				android:gravity="center"
-				android:layout_below="@+id/sign_in_button"
-				android:text="Continue as a guest"
-				android:textColor="@color/lightbrown"
-				android:textSize="16sp" />
 
-			<Button android:id="@+id/continueBtn"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal|center"
-				android:layout_alignParentRight="true"
-				android:layout_marginTop="2dp"
-				android:gravity="center"
-				style="@style/MyButtonTheme"
-				android:layout_below="@+id/sign_in_button"
-				android:background="@color/transparent"
-				android:text="Continue"
-				android:layout_marginRight="60dp"
-				android:textColor="@color/purple_700"
-				android:textSize="15sp" />
-
-			<TextView android:id="@+id/or"
-				android:layout_gravity="center_horizontal|center"
-				android:gravity="center"
-				android:layout_centerHorizontal="true"
-				android:textSize="25sp"
-				android:layout_below="@id/text1"
-				android:textColor="@color/sign_in_color"
-				android:layout_marginTop="15dp"
-				android:visibility="gone"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="@string/or_string"
-				/>
+<!--			<TextView android:id="@+id/or"-->
+<!--				android:layout_gravity="center_horizontal|center"-->
+<!--				android:gravity="center"-->
+<!--				android:layout_centerHorizontal="true"-->
+<!--				android:textSize="25sp"-->
+<!--				android:layout_below="@id/text1"-->
+<!--				android:textColor="@color/sign_in_color"-->
+<!--				android:layout_marginTop="15dp"-->
+<!--				android:visibility="gone"-->
+<!--				android:layout_width="wrap_content"-->
+<!--				android:layout_height="wrap_content"-->
+<!--				android:text="@string/or_string"-->
+<!--				/>-->
 
 <!--			<ImageView android:id="@+id/icons8_facebook_240_1"-->
 <!--				android:src="@drawable/icons8_facebook_240_1"-->
@@ -140,29 +132,29 @@
 <!--				android:layout_width="40dp"-->
 <!--				android:layout_height="40dp" />-->
 
-			<RelativeLayout android:id="@+id/gmailBox"
-				android:layout_below="@+id/or"
-				android:background="@drawable/rectangle_white_stroke"
-				android:layout_marginLeft="70dp"
-				android:layout_centerHorizontal="true"
-				android:padding="8dp"
-				android:visibility="gone"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content">
-				<ImageView android:id="@+id/gmailBtn"
-					android:layout_width="30dp"
-					android:layout_height="30dp"
-					android:layout_marginLeft="20dp"
-					android:contentDescription="icons8_google_240_1"
-					android:src="@drawable/icons8_google_240_1" />
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textSize="16sp"
-					android:layout_centerVertical="true"
-					android:layout_marginLeft="60dp"
-					android:text="Sign in with google"/>
-			</RelativeLayout>
+<!--			<RelativeLayout android:id="@+id/gmailBox"-->
+<!--				android:layout_below="@+id/or"-->
+<!--				android:background="@drawable/rectangle_white_stroke"-->
+<!--				android:layout_marginLeft="70dp"-->
+<!--				android:layout_centerHorizontal="true"-->
+<!--				android:padding="8dp"-->
+<!--				android:visibility="gone"-->
+<!--				android:layout_width="match_parent"-->
+<!--				android:layout_height="wrap_content">-->
+<!--				<ImageView android:id="@+id/gmailBtn"-->
+<!--					android:layout_width="30dp"-->
+<!--					android:layout_height="30dp"-->
+<!--					android:layout_marginLeft="20dp"-->
+<!--					android:contentDescription="icons8_google_240_1"-->
+<!--					android:src="@drawable/icons8_google_240_1" />-->
+<!--				<TextView-->
+<!--					android:layout_width="wrap_content"-->
+<!--					android:layout_height="wrap_content"-->
+<!--					android:textSize="16sp"-->
+<!--					android:layout_centerVertical="true"-->
+<!--					android:layout_marginLeft="60dp"-->
+<!--					android:text="Sign in with google"/>-->
+<!--			</RelativeLayout>-->
 
 
 			<Button android:id="@+id/forgot_password_"
@@ -183,20 +175,37 @@
 				 />
 
 			<Button android:id="@+id/_create_account_"
+				android:gravity="center"
+				android:layout_centerHorizontal="true"
+				android:textSize="18sp"
+				android:layout_below="@+id/sign_in_button"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:layout_marginLeft="80dp"
+				android:layout_marginTop="40dp"
+				android:layout_gravity="center_horizontal|center"
+				android:text="Sign up"
+				android:textColor="@color/burgundy"
+				android:theme="@style/MyButtonTheme"
+				android:textStyle="bold"
+				android:background="@drawable/button_burgundy_stroke" />
+
+			<Button android:id="@+id/continueBtn"
+				android:text="Continue as Guest"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_gravity="top"
-				android:layout_marginLeft="50dp"
-				android:layout_marginTop="10dp"
-				android:layout_below="@+id/password"
+				android:textStyle="bold"
+				android:textColor="@color/burgundy"
+				android:layout_gravity="center_horizontal|center"
+				android:gravity="center"
+				android:layout_centerHorizontal="true"
+				android:textSize="18sp"
+				style="@style/MyButtonTheme"
+				android:layout_marginLeft="80dp"
+				android:layout_marginBottom="20dp"
+				android:layout_alignParentBottom="true"
 				android:background="@color/transparent"
-				android:gravity="top"
-				android:text="@string/_create_account__string"
-				android:textColor="@color/lightbrown"
-				android:textSize="13sp"
-				android:theme="@style/MyButtonTheme"
-				android:textStyle="bold" />
-
+				 />
 
 
 		</RelativeLayout>

@@ -32,32 +32,83 @@
             android:textStyle="bold"
             android:layout_centerHorizontal="true"/>
 
-        <EditText android:id="@+id/voucherName"
+        <TextView
+            android:id="@+id/voucher_name"
             android:layout_below="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Voucher Name:"
+            />
+
+
+        <EditText android:id="@+id/voucherName"
+            android:layout_below="@+id/voucher_name"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:hint="Voucher name"
             android:paddingLeft="30dp"
-            android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <EditText android:id="@+id/deliveryMethod"
+        <TextView
+            android:id="@+id/delivery_method"
             android:layout_below="@+id/voucherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Delivery method:"
+            />
+
+        <RadioGroup
+            android:id="@+id/deliveryMethod"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/delivery_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton android:id="@+id/radioDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Delivery"/>
+            <RadioButton android:id="@+id/radioPickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pick up"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/voucher_dis"
+            android:layout_below="@+id/deliveryMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_lightpink_radius"
-            android:layout_width="match_parent"
-            android:hint="Delivery method"
-            android:paddingLeft="30dp"
-            android:textColorHint="@color/burgundy"
-            android:layout_height="50dp"/>
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Voucher discount:"
+            />
 
         <EditText android:id="@+id/voucherDiscount"
-            android:layout_below="@+id/deliveryMethod"
+            android:layout_below="@+id/voucher_dis"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -69,20 +120,44 @@
             android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <EditText android:id="@+id/voucherDescription"
+        <TextView
+            android:id="@+id/voucher_desc"
             android:layout_below="@+id/voucherDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Voucher description:"
+            />
+
+        <EditText android:id="@+id/voucherDescription"
+            android:layout_below="@+id/voucher_desc"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
-            android:hint="Voucher description"
             android:paddingLeft="30dp"
-            android:textColorHint="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/voucherExpiryDate"
+        <TextView
+            android:id="@+id/voucher_expiry"
             android:layout_below="@+id/voucherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Expiry Date:"
+            />
+
+        <TextView android:id="@+id/voucherExpiryDate"
+            android:layout_below="@+id/voucher_expiry"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -98,7 +173,7 @@
         <ImageButton android:id="@+id/calendar"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_below="@+id/voucherDescription"
+            android:layout_below="@+id/voucher_expiry"
             android:layout_alignParentRight="true"
             android:layout_marginRight="50dp"
             android:layout_marginTop="20dp"

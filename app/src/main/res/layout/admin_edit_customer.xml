@@ -101,9 +101,20 @@
                 android:layout_height="50dp"/>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/customerBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_box"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/burgundy"
+            android:text="Date of birth"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText android:id="@+id/customerDateofBirth"
-            android:layout_below="@+id/name_box"
+            android:layout_below="@+id/customerBirth"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -118,26 +129,70 @@
         <ImageButton android:id="@+id/calendar"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_below="@+id/name_box"
+            android:layout_below="@+id/customerBirth"
             android:layout_marginTop="20dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="50dp"
             android:background="@drawable/calendar" />
 
-        <EditText android:id="@+id/customerGender"
+
+        <TextView
+            android:id="@+id/customerGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/customerDateofBirth"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/burgundy"
+            android:text="Gender"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/gender_select"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/customerGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <RadioButton android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Male"/>
+            <RadioButton android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Female"/>
+            <RadioButton android:id="@+id/radioOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Other"/>
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/phonetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/gender_select"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_lightpink_radius"
-            android:layout_width="match_parent"
-            android:hint="Gender"
-            android:paddingLeft="30dp"
-            android:textColorHint="@color/burgundy"
-            android:layout_height="50dp"/>
+            android:textColor="@color/burgundy"
+            android:text="Phone"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
 
         <EditText android:id="@+id/customerPhone"
-            android:layout_below="@+id/customerGender"
+            android:layout_below="@+id/phonetext"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"

@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/white2"
+        android:background="@color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_bar"
@@ -129,7 +129,19 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/voucher_info">
+        app:layout_constraintTop_toBottomOf="@id/voucher_info"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/yourright_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textAlignment="gravity"
+            android:justificationMode="inter_word"
+            android:lineSpacingExtra="2sp"
+            android:text="@string/yourrightcontent"/>
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

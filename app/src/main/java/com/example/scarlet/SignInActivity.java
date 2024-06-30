@@ -66,8 +66,8 @@ public class SignInActivity extends AppCompatActivity {
         password=(EditText) findViewById(R.id.password);
         signin=(Button) findViewById(R.id.sign_in_button);
         continueBtn=findViewById(R.id.continueBtn);
-        gmailBtn=findViewById(R.id.gmailBtn);
-        gmailBox=findViewById(R.id.gmailBox);
+//        gmailBtn=findViewById(R.id.gmailBtn);
+//        gmailBox=findViewById(R.id.gmailBox);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,29 +112,29 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        GoogleSignInAccount googleSignInAccount=GoogleSignIn.getLastSignedInAccount(this);
-        if(googleSignInAccount != null ){
-            Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
-            startActivity(intent);
-        }
-        ActivityResultLauncher activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(result.getData());
-                handleSignInTask(task);
-            }
-        });
-        gmailBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signInIntent=mGoogleSignInClient.getSignInIntent();
-                activityResultLauncher.launch(signInIntent);
-            }
-        });
+//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+//                .requestEmail()
+//                .build();
+//        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+//        GoogleSignInAccount googleSignInAccount=GoogleSignIn.getLastSignedInAccount(this);
+//        if(googleSignInAccount != null ){
+//            Intent intent=new Intent(SignInActivity.this, AdminMainActivity.class);
+//            startActivity(intent);
+//        }
+//        ActivityResultLauncher activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//            @Override
+//            public void onActivityResult(ActivityResult result) {
+//                Task<GoogleSignInAccount> task=GoogleSignIn.getSignedInAccountFromIntent(result.getData());
+//                handleSignInTask(task);
+//            }
+//        });
+//        gmailBox.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent signInIntent=mGoogleSignInClient.getSignInIntent();
+//                activityResultLauncher.launch(signInIntent);
+//            }
+//        });
     }
 
     private void handleSignInTask(Task<GoogleSignInAccount> task) {

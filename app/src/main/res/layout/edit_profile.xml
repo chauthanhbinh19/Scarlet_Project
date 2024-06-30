@@ -149,30 +149,62 @@
 				</RelativeLayout>
 			</LinearLayout>
 
-
-			<RelativeLayout android:id="@+id/gender_box"
-				android:layout_marginStart="27dp"
-				android:layout_width="match_parent"
+			<TextView
+				android:id="@+id/gender"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginTop="10dp"
-				android:layout_marginEnd="27dp"
-				android:background="@drawable/rectangle_lightpink_radius"
 				android:layout_below="@+id/name_box"
-				>
+				android:layout_marginStart="30dp"
+				android:layout_marginTop="10dp"
+				android:textColor="@color/black"
+				android:text="Gender"
+				android:textSize="16sp"
+				android:textStyle="bold" />
 
-				<EditText android:id="@+id/gender"
-					android:textSize="14sp"
-					android:textColor="@color/lightbrown"
-					android:layout_marginLeft="24dp"
+				<RadioGroup
+					android:id="@+id/gender_select"
+					android:layout_marginTop="10dp"
+					android:layout_below="@+id/gender"
 					android:layout_width="match_parent"
-					android:layout_height="48dp"
-					android:layout_centerVertical="true"
-					android:background="@color/lightpink"
-					android:enabled="false"
-					android:hint="@string/gender_string"
-					/>
+					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_marginRight="80dp"
+					android:paddingTop="10dp"
+					android:paddingBottom="10dp"
+					android:orientation="horizontal">
 
-			</RelativeLayout>
+					<RadioButton android:id="@+id/radioMale"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:checked="true"
+						android:text="Male"/>
+					<RadioButton android:id="@+id/radioFemale"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="Female"/>
+					<RadioButton android:id="@+id/radioOther"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:text="Other"/>
+				</RadioGroup>
+
+			<TextView
+				android:id="@+id/dateofbirth"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@+id/gender_select"
+				android:layout_marginStart="30dp"
+				android:layout_marginTop="10dp"
+				android:textColor="@color/black"
+				android:text="Date of birth"
+				android:textSize="16sp"
+				android:textStyle="bold" />
+
+
+
 
 			<RelativeLayout android:id="@+id/birthday_box"
 				android:layout_marginTop="10dp"
@@ -181,7 +213,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:background="@drawable/rectangle_lightpink_radius"
-				android:layout_below="@+id/gender_box"
+				android:layout_below="@+id/dateofbirth"
 				>
 
 				<EditText android:id="@+id/birthday"

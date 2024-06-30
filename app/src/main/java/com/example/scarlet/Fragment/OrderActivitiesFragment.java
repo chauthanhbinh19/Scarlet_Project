@@ -37,15 +37,20 @@ import java.util.List;
 public class OrderActivitiesFragment extends Fragment {
 
     RelativeLayout back_btn;
-    Button btnOngoing, btnHistory;
+    RelativeLayout pending, done, cancel;
+    TextView textpending, textdone, textcancel;
     RecyclerView orderRecycleView;
     List<Order> orderList;
     OrderAdapter orderAdapter;
     int defaultStatus=1;
     TextView order_activities_text;
     private void BindView(View view){
-        btnHistory=view.findViewById(R.id.btnHistory);
-        btnOngoing=view.findViewById(R.id.btnOngoing);
+        pending=view.findViewById(R.id.pending);
+        done=view.findViewById(R.id.done);
+        cancel=view.findViewById(R.id.cancel);
+        textpending=view.findViewById(R.id.textpending);
+        textdone=view.findViewById(R.id.textdone);
+        textcancel=view.findViewById(R.id.textcancel);
         back_btn=view.findViewById(R.id.back_btn);
         orderRecycleView=view.findViewById(R.id.order_activities_recyclerView);
         order_activities_text=view.findViewById(R.id.order_activities_text);
@@ -75,7 +80,7 @@ public class OrderActivitiesFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-        btnOngoing.setOnClickListener(new View.OnClickListener() {
+        pending.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=1;
@@ -83,12 +88,20 @@ public class OrderActivitiesFragment extends Fragment {
                 getOrderData("ongoing");
             }
         });
-        btnHistory.setOnClickListener(new View.OnClickListener() {
+        done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 defaultStatus=2;
                 getStatus();
                 getOrderData("history");
+            }
+        });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                defaultStatus=3;
+                getStatus();
+                getOrderData("cancelled");
             }
         });
         return view;
@@ -100,16 +113,28 @@ public class OrderActivitiesFragment extends Fragment {
     private void getStatus(){
         switch (defaultStatus){
             case 1:
-                btnOngoing.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
-                btnHistory.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
-                btnOngoing.setTextColor(getResources().getColor(R.color.white));
-                btnHistory.setTextColor(getResources().getColor(R.color.black));
+                pending.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
+                done.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                cancel.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                textpending.setTextColor(getResources().getColor(R.color.white));
+                textdone.setTextColor(getResources().getColor(R.color.burgundy));
+                textcancel.setTextColor(getResources().getColor(R.color.burgundy));
                 break;
             case 2:
-                btnOngoing.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
-                btnHistory.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
-                btnOngoing.setTextColor(getResources().getColor(R.color.black));
-                btnHistory.setTextColor(getResources().getColor(R.color.white));
+                pending.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                done.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
+                cancel.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                textpending.setTextColor(getResources().getColor(R.color.burgundy));
+                textdone.setTextColor(getResources().getColor(R.color.white));
+                textcancel.setTextColor(getResources().getColor(R.color.burgundy));
+                break;
+            case 3:
+                pending.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                done.setBackground(getResources().getDrawable(R.drawable.rectangle_lightpink_radius));
+                cancel.setBackground(getResources().getDrawable(R.drawable.rectangle_burgundy_radius));
+                textpending.setTextColor(getResources().getColor(R.color.burgundy));
+                textdone.setTextColor(getResources().getColor(R.color.burgundy));
+                textcancel.setTextColor(getResources().getColor(R.color.white));
                 break;
         }
     }
@@ -156,21 +181,38 @@ public class OrderActivitiesFragment extends Fragment {
                                     orderList.add(order);
                                 }
                             }
-                        }else{
-                            if((orderStatus.equals("done") && isConfirmed) || orderStatus.equals("cancelled")){
-                                if(customerKey.equals(userKey)){
-                                    String key=snap.getKey();
-                                    Date date=snap.child("orderDate").getValue(Date.class);
-                                    double total=snap.child("total").getValue(double.class);
-                                    List<Product> productList=new ArrayList<>();
-                                    for(DataSnapshot productSnap: snap.child("productList").getChildren()){
-                                        Product product=productSnap.getValue(Product.class);
+                        }else if (status.equals("history")){
+                            if((orderStatus.equals("done") && isConfirmed)) {
+                                if (customerKey.equals(userKey)) {
+                                    String key = snap.getKey();
+                                    Date date = snap.child("orderDate").getValue(Date.class);
+                                    double total = snap.child("total").getValue(double.class);
+                                    List<Product> productList = new ArrayList<>();
+                                    for (DataSnapshot productSnap : snap.child("productList").getChildren()) {
+                                        Product product = productSnap.getValue(Product.class);
                                         productList.add(product);
                                     }
-                                    Order order=new Order(orderStatus,date,total,productList,key,isConfirmed);
+                                    Order order = new Order(orderStatus, date, total, productList, key, isConfirmed);
                                     orderList.add(order);
                                 }
                             }
+
+                        }else {
+                            if(orderStatus.equals("cancelled")){
+                            if(customerKey.equals(userKey)){
+                                String key=snap.getKey();
+                                Date date=snap.child("orderDate").getValue(Date.class);
+                                double total=snap.child("total").getValue(double.class);
+                                List<Product> productList=new ArrayList<>();
+                                for(DataSnapshot productSnap: snap.child("productList").getChildren()){
+                                    Product product=productSnap.getValue(Product.class);
+                                    productList.add(product);
+                                }
+                                Order order=new Order(orderStatus,date,total,productList,key,isConfirmed);
+                                orderList.add(order);
+                            }
+
+                        }
                         }
                     }
                     orderAdapter =new OrderAdapter(orderList);

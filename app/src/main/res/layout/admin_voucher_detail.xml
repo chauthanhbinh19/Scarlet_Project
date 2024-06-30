@@ -26,7 +26,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="0dp"
-            android:background="@drawable/rectangle_circie_gradient_burgundy2"
+            android:background="@drawable/rectangle_circle_gradient_burgundy2"
             android:layout_below="@+id/btnClose"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
@@ -35,7 +35,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_circie_gradient_burgundy"
+            android:background="@drawable/rectangle_circle_gradient_burgundy"
             android:layout_below="@+id/btnClose"
             android:layout_width="130dp"
             android:layout_height="130dp"/>
@@ -51,11 +51,24 @@
             android:layout_width="100dp"
             android:layout_height="100dp"/>
 
-        <TextView android:id="@+id/voucherName"
+        <TextView
+            android:id="@+id/voucher_name"
             android:layout_below="@+id/voucherDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Voucher Name:"
+            />
+
+        <TextView android:id="@+id/voucherName"
+            android:layout_below="@+id/voucher_name"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
@@ -64,8 +77,22 @@
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/deliveryMethod"
+        <TextView
+            android:id="@+id/delivery_method"
             android:layout_below="@+id/voucherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Delivery method:"
+            />
+
+
+        <TextView android:id="@+id/deliveryMethod"
+            android:layout_below="@+id/delivery_method"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -90,8 +117,22 @@
 <!--            android:textColor="@color/burgundy"-->
 <!--            android:layout_height="50dp"/>-->
 
-        <TextView android:id="@+id/voucherDescription"
+        <TextView
+            android:id="@+id/voucher_desc"
             android:layout_below="@+id/deliveryMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Description:"
+            />
+
+
+        <TextView android:id="@+id/voucherDescription"
+            android:layout_below="@+id/voucher_desc"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -103,8 +144,21 @@
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/voucherExpiryDate"
+        <TextView
+            android:id="@+id/voucher_expiry"
             android:layout_below="@+id/voucherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Expiry Date:"
+            />
+
+        <TextView android:id="@+id/voucherExpiryDate"
+            android:layout_below="@+id/voucher_expiry"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"

@@ -36,7 +36,7 @@ public class AppVersionFragment extends Fragment {
         View view= inflater.inflate(R.layout.app_version, container, false);
 
         BindView(view);
-        getAnimation();
+//        getAnimation();
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,34 +52,34 @@ public class AppVersionFragment extends Fragment {
         });
         return view;
     }
-    private void getAnimation(){
-        Animation logoAnim= AnimationUtils.loadAnimation(logo.getContext(), android.R.anim.fade_in);
-        Animation app_versionAnim= AnimationUtils.loadAnimation(app_version_1_0.getContext(), android.R.anim.fade_in);
-        Animation teamAnim= AnimationUtils.loadAnimation(team_10.getContext(), android.R.anim.fade_in);
-        Animation desAnim= AnimationUtils.loadAnimation(des.getContext(), android.R.anim.fade_in);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                logo.startAnimation(logoAnim);
-            }
-        },delay*1);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                app_version_1_0.startAnimation(app_versionAnim);
-            }
-        },delay*2);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                team_10.startAnimation(teamAnim);
-            }
-        },delay*3);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                des.startAnimation(desAnim);
-            }
-        },delay*4);
-    }
+//    private void getAnimation(){
+//        Animation logoAnim= AnimationUtils.loadAnimation(logo.getContext(), android.R.anim.fade_in);
+//        Animation app_versionAnim= AnimationUtils.loadAnimation(app_version_1_0.getContext(), android.R.anim.fade_in);
+//        Animation teamAnim= AnimationUtils.loadAnimation(team_10.getContext(), android.R.anim.fade_in);
+//        Animation desAnim= AnimationUtils.loadAnimation(des.getContext(), android.R.anim.fade_in);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                logo.startAnimation(logoAnim);
+//            }
+//        },delay*1);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                app_version_1_0.startAnimation(app_versionAnim);
+//            }
+//        },delay*2);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                team_10.startAnimation(teamAnim);
+//            }
+//        },delay*3);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                des.startAnimation(desAnim);
+//            }
+//        },delay*4);
+//    }
 }

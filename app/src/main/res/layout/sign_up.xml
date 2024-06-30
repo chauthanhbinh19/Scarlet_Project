@@ -153,6 +153,24 @@
 					android:background="@drawable/rectangle_white_stroke"
 					/>
 
+				<ImageButton android:id="@+id/show_1"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:layout_below="@+id/username_or_email"
+					android:layout_marginTop="25dp"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="50dp"
+					android:background="@drawable/show" />
+
+				<ImageButton android:id="@+id/hide_1"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:layout_below="@+id/username_or_email"
+					android:layout_marginTop="25dp"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="50dp"
+					android:background="@drawable/hide" />
+
 				<EditText android:id="@+id/confirm_password"
 					android:textSize="16sp"
 					android:paddingLeft="25dp"
@@ -167,6 +185,24 @@
 					android:inputType="textPassword"
 					android:background="@drawable/rectangle_white_stroke"
 					/>
+
+				<ImageButton android:id="@+id/show_2"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:layout_below="@+id/password"
+					android:layout_marginTop="25dp"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="50dp"
+					android:background="@drawable/show" />
+
+				<ImageButton android:id="@+id/hide_2"
+					android:layout_width="25dp"
+					android:layout_height="25dp"
+					android:layout_below="@+id/password"
+					android:layout_marginTop="25dp"
+					android:layout_alignParentRight="true"
+					android:layout_marginRight="50dp"
+					android:background="@drawable/hide" />
 
 				<Button
 					android:id="@+id/sign_up_ek1"

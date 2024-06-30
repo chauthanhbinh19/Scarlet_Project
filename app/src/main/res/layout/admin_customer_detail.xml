@@ -25,7 +25,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="0dp"
-            android:background="@drawable/rectangle_circie_gradient_burgundy"
+            android:background="@drawable/rectangle_circle_gradient_burgundy"
             android:layout_below="@+id/btnClose"
             android:layout_width="130dp"
             android:layout_height="130dp"/>
@@ -59,6 +59,7 @@
                 android:paddingLeft="30dp"
                 android:layout_marginRight="5dp"
                 android:textColor="@color/burgundy"
+                android:text="First Name"
                 android:layout_height="50dp"/>
 
             <TextView android:id="@+id/customerLastName"
@@ -73,11 +74,24 @@
                 android:paddingLeft="30dp"
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/burgundy"
+                android:text="Last Name"
                 android:layout_height="50dp"/>
         </LinearLayout>
 
-        <TextView android:id="@+id/customerDateofBirth"
+        <TextView
+            android:id="@+id/birthtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/name_box"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:text="Date of birth"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"/>
+
+        <TextView android:id="@+id/customerDateofBirth"
+            android:layout_below="@+id/birthtext"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -90,8 +104,20 @@
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/customerGender"
+        <TextView
+            android:id="@+id/gendertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/customerDateofBirth"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:text="Gender"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"/>
+
+        <TextView android:id="@+id/customerGender"
+            android:layout_below="@+id/gendertext"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -101,10 +127,23 @@
             android:gravity="center_vertical"
             android:paddingLeft="30dp"
             android:textColor="@color/burgundy"
+            android:text="Gender"
             android:layout_height="50dp"/>
+
+        <TextView
+            android:id="@+id/phonetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/customerGender"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:text="Phone"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"/>
 
         <TextView android:id="@+id/customerPhone"
-            android:layout_below="@+id/customerGender"
+            android:layout_below="@+id/phonetext"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -114,10 +153,23 @@
             android:textSize="14sp"
             android:paddingLeft="30dp"
             android:textColor="@color/burgundy"
+            android:text="Phone"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/customerEmail"
+        <TextView
+            android:id="@+id/emailtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/customerPhone"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="45dp"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"/>
+
+        <TextView android:id="@+id/customerEmail"
+            android:layout_below="@+id/emailtext"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -127,7 +179,9 @@
             android:gravity="center_vertical"
             android:paddingLeft="30dp"
             android:textColor="@color/burgundy"
-            android:layout_height="50dp"/>
+            android:text="Email"
+            android:layout_height="50dp" />
+
 
 
     </RelativeLayout>

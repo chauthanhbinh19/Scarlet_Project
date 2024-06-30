@@ -24,7 +24,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="0dp"
-            android:background="@drawable/rectangle_circie_gradient_burgundy2"
+            android:background="@drawable/rectangle_circle_gradient_burgundy2"
             android:layout_below="@+id/btnClose"
             android:layout_width="150dp"
             android:layout_height="150dp"/>
@@ -33,7 +33,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rectangle_circie_gradient_burgundy"
+            android:background="@drawable/rectangle_circle_gradient_burgundy"
             android:layout_below="@+id/btnClose"
             android:layout_width="130dp"
             android:layout_height="130dp"/>
@@ -49,11 +49,24 @@
             android:layout_width="100dp"
             android:layout_height="100dp"/>
 
-        <TextView android:id="@+id/offerName"
+        <TextView
+            android:id="@+id/name"
             android:layout_below="@+id/offerPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="40dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Offer Name:"
+            />
+
+        <TextView android:id="@+id/offerName"
+            android:layout_below="@+id/name"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/rectangle_lightpink_radius"
             android:layout_width="match_parent"
             android:paddingLeft="30dp"
@@ -62,8 +75,22 @@
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/offerDescription"
+        <TextView
+            android:id="@+id/offer_desc"
             android:layout_below="@+id/offerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Description:"
+            />
+
+
+        <TextView android:id="@+id/offerDescription"
+            android:layout_below="@+id/offer_desc"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -88,8 +115,21 @@
 <!--            android:textColor="@color/burgundy"-->
 <!--            android:layout_height="50dp"/>-->
 
-        <TextView android:id="@+id/offerStartDate"
+        <TextView
+            android:id="@+id/offer_start"
             android:layout_below="@+id/offerDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="Start Date:"
+            />
+
+        <TextView android:id="@+id/offerStartDate"
+            android:layout_below="@+id/offer_start"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"
@@ -101,8 +141,21 @@
             android:textColor="@color/burgundy"
             android:layout_height="50dp"/>
 
-        <TextView android:id="@+id/offerEndDate"
+        <TextView
+            android:id="@+id/offer_end"
             android:layout_below="@+id/offerStartDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/burgundy"
+            android:textStyle="bold"
+            android:text="End Date:"
+            />
+
+        <TextView android:id="@+id/offerEndDate"
+            android:layout_below="@+id/offer_end"
             android:layout_centerHorizontal="true"
             android:layout_marginRight="80dp"
             android:layout_marginTop="10dp"

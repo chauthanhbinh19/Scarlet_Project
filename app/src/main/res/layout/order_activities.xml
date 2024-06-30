@@ -69,34 +69,65 @@
 		app:layout_constraintTop_toBottomOf="@id/top_bar"
 		android:layout_below="@+id/top_bar">
 
-		<LinearLayout
-			android:layout_marginRight="90dp"
-			android:layout_centerHorizontal="true"
-			android:background="@drawable/rectangle_lightpink_radius_2"
+		<LinearLayout android:id="@+id/box"
 			android:layout_width="match_parent"
+			android:layout_marginTop="10dp"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="5dp"
+			android:layout_marginBottom="5dp"
 			android:layout_height="wrap_content"
-			android:padding="10dp"
 			android:orientation="horizontal">
 
-			<Button android:id="@+id/btnOngoing"
+			<RelativeLayout android:id="@+id/pending"
 				android:layout_width="0dp"
-				android:layout_height="40dp"
+				android:layout_height="wrap_content"
 				android:background="@drawable/rectangle_burgundy_radius"
-				android:layout_weight="1"
-				style="@style/MyButtonTheme"
-				android:textSize="14sp"
-				android:textColor="@color/white"
-				android:text="Ongoing"/>
+				android:padding="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1">
 
-			<Button android:id="@+id/btnHistory"
+				<TextView
+					android:id="@+id/textpending"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true"
+					android:layout_marginTop="5dp"
+					android:text="Ongoing"
+					android:textColor="@color/white"
+					android:textSize="15sp" />
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/done"
 				android:layout_width="0dp"
-				android:layout_height="40dp"
+				android:layout_height="wrap_content"
 				android:background="@drawable/rectangle_lightpink_radius"
-				style="@style/MyButtonTheme"
-				android:text="History"
-				android:textSize="14sp"
-				android:textColor="@color/black"
-				android:layout_weight="1"/>
+				android:padding="5dp"
+				android:layout_marginRight="5dp"
+				android:layout_weight="1">
+
+				<TextView android:id="@+id/textdone"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Completed"
+					android:textSize="12sp"
+					android:layout_marginTop="5dp"
+					android:layout_centerInParent="true"
+					android:textColor="@color/burgundy"/>
+			</RelativeLayout>
+			<RelativeLayout android:id="@+id/cancel"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:background="@drawable/rectangle_lightpink_radius"
+				android:padding="5dp"
+				android:layout_weight="1">
+				<TextView android:id="@+id/textcancel"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Cancelled"
+					android:textSize="12sp"
+					android:layout_marginTop="5dp"
+					android:layout_centerInParent="true"
+					android:textColor="@color/burgundy"/>
+			</RelativeLayout>
 		</LinearLayout>
 	</RelativeLayout>
 	<RelativeLayout android:id="@+id/order_activities"

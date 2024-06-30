@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView android:layout_centerHorizontal="true"
-        android:background="@drawable/rectangle_circie_gradient_burgundy"
+        android:background="@drawable/rectangle_circle_gradient_burgundy"
         android:layout_marginTop="50dp"
         android:layout_width="290dp"
         android:layout_height="290dp" />

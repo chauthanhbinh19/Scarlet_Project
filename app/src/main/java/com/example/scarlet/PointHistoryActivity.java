@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scarlet.Adapter.GridLayoutDecoration;
 import com.example.scarlet.Adapter.OfferAdapter;
+import com.example.scarlet.Adapter.OfferHistoryAdapter;
 import com.example.scarlet.Data.Offer;
 import com.example.scarlet.Interface.GetPointCallback;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class PointHistoryActivity extends AppCompatActivity {
 
-    private OfferAdapter offerAdapter;
+    private OfferHistoryAdapter offerAdapter;
     private List<Offer> offerList;
     RelativeLayout back_btn;
     TextView voucher_point, voucher_text_1;
@@ -98,7 +99,7 @@ public class PointHistoryActivity extends AppCompatActivity {
                                                 offerList.add(offer);
                                         }
                                         if(offerList.size()>0){
-                                            offerAdapter=new OfferAdapter(offerList,getPointCallback);
+                                            offerAdapter=new OfferHistoryAdapter(offerList,getPointCallback);
                                             recyclerView.setAdapter(offerAdapter);
                                         }
                                     }

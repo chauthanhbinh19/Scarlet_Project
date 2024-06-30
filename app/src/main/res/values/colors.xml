@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFF</color>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -23,7 +23,7 @@
     <color name="lightbrown">#938989</color>
     <color name="transparent">#00000000</color>
     <color name="db8181">#db8181</color>
-    <color name="fbcbcb">#faf0f4</color>
+    <color name="faf0f4">#faf0f4</color>
     <color name="dc8383">#dc8383</color>
     <color name="lightRed">#FECBC1</color>
     <color name="white1">#E9E9E9</color>
@@ -34,6 +34,7 @@
     <color name="bg_yellow">#B4CD02</color>
     <color name="bg_green">#46A92B</color>
     <color name="bg_gray">#565656</color>
+    <color name="bg_white">#F8F8FF</color>
 
 
     <color name="_bg__customer_color">#FFFFFF</color>

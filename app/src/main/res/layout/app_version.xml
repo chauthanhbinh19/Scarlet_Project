@@ -51,7 +51,7 @@
 				android:layout_marginTop="10dp"
 				android:layout_below="@+id/team_10"
 				android:gravity="center"
-				android:text="Đường Hàn Thuyên, khu phố 6, phường Thủ Đức, thành phố Hồ Chí Minh"
+				android:text="@string/address_t"
 				android:textColor="@color/black"
 				android:textSize="16sp" />
 

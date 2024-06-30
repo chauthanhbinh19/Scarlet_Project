@@ -23,18 +23,20 @@ import com.google.firebase.database.ValueEventListener;
 public class YourRightsActivity extends AppCompatActivity {
 
     RelativeLayout back_btn;
-    TextView voucher_point, voucher_text_1,voucher_text;
+    TextView voucher_point, voucher_text_1,voucher_text, yourright_content;
+
+
     private void BindView(){
         back_btn=findViewById(R.id.back_btn);
         voucher_point=findViewById(R.id.voucher_point);
         voucher_text_1=findViewById(R.id.voucher_text_1);
         voucher_text=findViewById(R.id.voucher_text);
+        yourright_content = findViewById(R.id.yourright_content);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.your_rights);
-
         Window window = getWindow();
         window.setNavigationBarColor(ContextCompat.getColor(this, R.color.white));
         
