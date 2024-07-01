@@ -174,12 +174,13 @@ public class SignUpActivity extends AppCompatActivity {
             case 0:
                 show1.setVisibility(View.VISIBLE);
                 hide1.setVisibility(View.GONE);
-                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 break;
             case 1:
                 show1.setVisibility(View.GONE);
                 hide1.setVisibility(View.VISIBLE);
-                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
                 break;
         }
     }
@@ -188,12 +189,12 @@ public class SignUpActivity extends AppCompatActivity {
             case 0:
                 show2.setVisibility(View.VISIBLE);
                 hide2.setVisibility(View.GONE);
-                confirmpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                confirmpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 break;
             case 1:
                 show2.setVisibility(View.GONE);
                 hide2.setVisibility(View.VISIBLE);
-                confirmpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                confirmpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 break;
         }
     }

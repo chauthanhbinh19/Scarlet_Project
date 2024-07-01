@@ -138,12 +138,12 @@ public class SignInActivity extends AppCompatActivity {
             case 0:
                 show.setVisibility(View.VISIBLE);
                 hide.setVisibility(View.GONE);
-                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                 break;
             case 1:
                 show.setVisibility(View.GONE);
                 hide.setVisibility(View.VISIBLE);
-                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 break;
         }
     }
