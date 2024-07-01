@@ -72,7 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
     double total;
     Address address;
     String deliveryStatus;
-    TextView delivery_address_content, discount_price, voucher_total, totalAfterDiscount, totalUnit, txttotal, txtdiscount;
+    TextView delivery_address_content, discount_price, voucher_total, totalAfterDiscount, totalUnit, txttotal, txtdiscount, txtTip;
     RadioButton radioZaloPay, radioCash;
     int defaultStatus=4;
     int tip=0;
@@ -103,6 +103,7 @@ public class PaymentActivity extends AppCompatActivity {
         changeAddressBtn=findViewById(R.id.changeAddressBtn);
         txttotal=findViewById(R.id.txttotal);
         txtdiscount=findViewById(R.id.txtdiscount);
+        txtTip=findViewById(R.id.txtTip);
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -191,8 +192,6 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 defaultStatus=1;
-                int price=Integer.parseInt(totalView.getText().toString());
-                tip=15*price/100;
                 getStatus();
             }
         });
@@ -200,8 +199,6 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 defaultStatus=2;
-                int price=Integer.parseInt(totalView.getText().toString());
-                tip=18*price/100;
                 getStatus();
             }
         });
@@ -209,8 +206,6 @@ public class PaymentActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 defaultStatus=3;
-                int price=Integer.parseInt(totalView.getText().toString());
-                tip=20*price/100;
                 getStatus();
             }
         });
@@ -282,6 +277,7 @@ public class PaymentActivity extends AppCompatActivity {
                                         totalUnit.setVisibility(View.GONE);
                                         txttotal.setText(totalView.getText().toString());
                                         txtdiscount.setText("0");
+                                        getStatus();
                                     }
                                 }
                             }
@@ -392,30 +388,58 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
     private void getStatus(){
+        int price=0;
+        int finalTotal=0;
+        int discount=0;
         switch (defaultStatus){
             case 1:
                 c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_burgundy));
                 c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                price=Integer.parseInt(totalView.getText().toString());
+                tip=15*price/100;
+                txtTip.setText(String.valueOf(tip));
+                discount=Integer.parseInt(txtdiscount.getText().toString());
+                finalTotal=price+tip+discount;
+                txttotal.setText(String.valueOf(finalTotal));
                 break;
             case 2:
                 c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
                 c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_burgundy));
                 c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                price=Integer.parseInt(totalView.getText().toString());
+                tip=18*price/100;
+                txtTip.setText(String.valueOf(tip));
+                discount=Integer.parseInt(txtdiscount.getText().toString());
+                finalTotal=price+tip+discount;
+                txttotal.setText(String.valueOf(finalTotal));
                 break;
             case 3:
                 c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
                 c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_burgundy));
                 c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_lightbrown));
+                price=Integer.parseInt(totalView.getText().toString());
+                tip=20*price/100;
+                txtTip.setText(String.valueOf(tip));
+                discount=Integer.parseInt(txtdiscount.getText().toString());
+                finalTotal=price+tip+discount;
+                txttotal.setText(String.valueOf(finalTotal));
                 break;
             case 4:
                 c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
                 c2Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c3Btn.setBackground(getResources().getDrawable(R.drawable.center_white_stroke_lightbrown));
                 c4Btn.setBackground(getResources().getDrawable(R.drawable.right_white_stroke_burgundy));
+                txtTip.setText("0");
+                price=Integer.parseInt(totalView.getText().toString());
+                finalTotal=Integer.parseInt(totalView.getText().toString());
+                discount=Integer.parseInt(txtdiscount.getText().toString());
+                tip=0;
+                finalTotal=price+tip+discount;
+                txttotal.setText(String.valueOf(finalTotal));
                 break;
             default:
                 c1Btn.setBackground(getResources().getDrawable(R.drawable.left_white_stroke_lightbrown));
@@ -841,14 +865,17 @@ public class PaymentActivity extends AppCompatActivity {
                         productList.add(product);
                     }
                 }
-                subTotal=subTotal+tip;
+                subTotal=subTotal;
                 total=Double.parseDouble(totalView.getText().toString());
                 double temp=total-subTotal;
-                temp=-temp;
+                if(temp >0){
+                    temp=-temp;
+                }
                 discount_price.setText(String.format("%.0f", temp) + " đ");
                 totalAfterDiscount.setText(String.format("%.0f", subTotal));
                 txttotal.setText(String.format("%.0f", subTotal));
                 txtdiscount.setText(String.format("%.0f", temp));
+                getStatus();
             }
 
             @Override

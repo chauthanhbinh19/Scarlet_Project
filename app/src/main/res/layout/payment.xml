@@ -509,7 +509,7 @@
 							android:textSize="16sp"/>
 					</RelativeLayout>
 					<RelativeLayout android:id="@+id/zalo_box"
-						android:layout_marginTop="10dp"
+						android:layout_marginTop="0dp"
 						android:layout_below="@+id/cash_box"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content">
@@ -569,12 +569,38 @@
 						android:textSize="16sp"
 						android:textColor="@color/black"
 						android:textStyle="bold"/>
+					<TextView android:id="@+id/tipText"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textColor="@color/black"
+						android:textStyle="bold"
+						android:layout_below="@+id/discountText"
+						android:textSize="16sp"
+						android:text="Tip"/>
+					<TextView android:id="@+id/txtTip"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="0"
+						android:layout_toLeftOf="@+id/txtunitTip"
+						android:textSize="16sp"
+						android:layout_below="@+id/discountText"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
+					<TextView android:id="@+id/txtunitTip"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text=" đ"
+						android:layout_below="@+id/discountText"
+						android:layout_alignParentRight="true"
+						android:textSize="16sp"
+						android:textColor="@color/black"
+						android:textStyle="bold"/>
 					<TextView
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:textColor="@color/black"
 						android:layout_marginTop="5dp"
-						android:layout_below="@+id/discountText"
+						android:layout_below="@+id/txtTip"
 						android:textStyle="bold"
 						android:textSize="16sp"
 						android:text="Total"/>
@@ -584,7 +610,7 @@
 						android:layout_height="wrap_content"
 						android:text="0"
 						android:layout_marginTop="5dp"
-						android:layout_below="@+id/discountText"
+						android:layout_below="@+id/txtTip"
 						android:layout_toLeftOf="@+id/txtunit"
 						android:textSize="16sp"
 						android:textColor="@color/black"
@@ -594,7 +620,7 @@
 						android:layout_height="wrap_content"
 						android:text=" đ"
 						android:layout_marginTop="5dp"
-						android:layout_below="@+id/discountText"
+						android:layout_below="@+id/txtTip"
 						android:layout_alignParentRight="true"
 						android:textSize="16sp"
 						android:textColor="@color/black"
